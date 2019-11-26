@@ -13,9 +13,14 @@ public class WorkWithMongo {
   }
 
   public static void main(String[] args) throws Exception {
+    //Ghj,f gjlrk.xtybz xthtp ReplicaSet к КБД на примере БД ОП02
+    MongoClient client = MongoClients.create(new ConnectionString("mongodb://admin:qwe123@eek-testcdb-mg0.tengry.com:27017/admin?replicaSet=repldoc"));
+    System.out.println("В коллекции service-prop-02-checkPointDetailsType содержится -  " + client.getDatabase("cp_registry").getCollection("service-prop-02-checkPointDetailsType").countDocuments() + " записей");
 
-   //request("eek-test1prop-mg2.tengry.com:27017", "service-prop-65", "radioElectronicDeviceRegistryDetailsType",
-          //  "propositionInclusionRadioElectronicDeviceId","PBY00000000000000204");
+
+
+    //request("eek-test1prop-mg2.tengry.com:27017", "service-prop-65", "radioElectronicDeviceRegistryDetailsType",
+    //  "propositionInclusionRadioElectronicDeviceId","PBY00000000000000204");
 
     //MongoClient mongoClient = MongoClients.create(new ConnectionString("mongodb://eek-test1prop-mg2.tengry.com:27017"));
     // String response = mongoClient.getDatabase("service-prop-65").getCollection("radioElectronicDeviceRegistryDetailsType")
