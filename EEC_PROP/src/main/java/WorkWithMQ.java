@@ -32,15 +32,17 @@ public class WorkWithMQ {
       int b = (int)file.length();//вычисляем необходимую длинну массива исходя из длины XML
       char[] a=new char[b];//Создаем массив символов с вычисленной ранее длинной
       fileReader.read(a);//записываем в массив посимвольно весь файл
-      String myStr = new String(a);//преобразуем массив символов в строку
+      String myStr = new String(a).trim();//преобразуем массив символов в строку
       TextMessage textMessage = queueSession.createTextMessage(myStr);//передаем в сессию наше сообщение
-      textMessage.setJMSReplyTo(queue);
+      //textMessage.setJMSReplyTo(queue);
       //textMessage.setJMSType("mcd://xmlns");//message type
       //textMessage.setJMSExpiration(50*1000);//message expiration
-      textMessage.setJMSDeliveryMode(DeliveryMode.PERSISTENT); //message delivery mode either persistent or non-persistemnt
+      //textMessage.setJMSDeliveryMode(DeliveryMode.PERSISTENT); //message delivery mode either persistent or non-persistemnt
 
       /*Create sender queue */
-      QueueSender queueSender = queueSession.createSender(queueSession.createQueue("Q.ADDR5"));//указываем в какую очередь отправить сообщение
+
+      //QueueSender queueSender = queueSession.createSender(queueSession.createQueue("Q.ADDR5"));//указываем в какую очередь отправить сообщение
+      QueueSender queueSender = queueSession.createSender(queueSession.createQueue("GATEWAY.EXT.IN"));//указываем в какую очередь отправить сообщение
       //queueSender.setTimeToLive(50*1000);//установка времени жизни сообщения
       queueSender.send(textMessage);//отправляем в очередь ранее созданное сообщение
       System.out.println("Сообщение отправлено");
@@ -51,16 +53,16 @@ public class WorkWithMQ {
 
 
       /*Within the session we have to create queue reciver */
-      QueueReceiver queueReceiver = queueSession.createReceiver(queue);//указываем очередь откуда читать ответное сообщение
+      //QueueReceiver queueReceiver = queueSession.createReceiver(queue);//указываем очередь откуда читать ответное сообщение
 
 
       /*Receive the message from*/
-      //Message message = queueReceiver.receive(2*1000);
+     // Message message = queueReceiver.receive(10*1000);
       //String responseMsg = ((TextMessage) message).getText();
       //System.out.println(responseMsg);
 
       queueSender.close();
-      queueReceiver.close();
+      //queueReceiver.close();
       queueSession.close();
       queueConnection.close();
       fileReader.close();
