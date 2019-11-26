@@ -40,17 +40,18 @@ public class WorkWithMQ {
       textMessage.setJMSDeliveryMode(DeliveryMode.PERSISTENT); //message delivery mode either persistent or non-persistemnt
 
       /*Create sender queue */
-      QueueSender queueSender = queueSession.createSender(queueSession.createQueue("Q.ADDR5"));
-      //queueSender.setTimeToLive(50*1000);
-      queueSender.send(textMessage);
+      QueueSender queueSender = queueSession.createSender(queueSession.createQueue("Q.ADDR5"));//указываем в какую очередь отправить сообщение
+      //queueSender.setTimeToLive(50*1000);//установка времени жизни сообщения
+      queueSender.send(textMessage);//отправляем в очередь ранее созданное сообщение
+      System.out.println("Сообщение отправлено");
 
       /*After sending a message we get message id */
-      System.out.println("after sending a message we get message id "+ textMessage.getJMSMessageID());
-      String jmsCorrelationID = " JMSCorrelationID = '" + textMessage.getJMSMessageID() + "'";
+      //System.out.println("after sending a message we get message id "+ textMessage.getJMSMessageID());
+      //String jmsCorrelationID = " JMSCorrelationID = '" + textMessage.getJMSMessageID() + "'";
 
 
       /*Within the session we have to create queue reciver */
-      QueueReceiver queueReceiver = queueSession.createReceiver(queue);
+      QueueReceiver queueReceiver = queueSession.createReceiver(queue);//указываем очередь откуда читать ответное сообщение
 
 
       /*Receive the message from*/
@@ -62,6 +63,7 @@ public class WorkWithMQ {
       queueReceiver.close();
       queueSession.close();
       queueConnection.close();
+      fileReader.close();
 
 
     } catch (JMSException e) {
