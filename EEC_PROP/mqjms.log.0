@@ -1,0 +1,39 @@
+27 ноября 2019 г. 11:06:12 MSK[main] com.ibm.msg.client.wmq.internal.WMQConnection
+Исключительная ситуация проигнорирована, поскольку обработчик исключительных ситуаций не зарегистрирован: '
+                     Сообщение : com.ibm.msg.client.jms.DetailedJMSException: JMSWMQ1107: Возникла ошибка соединения.
+Ошибка соединения IBM MQ JMS.
+Для определения причины ошибки обратитесь к связанной исключительной ситуации.
+                         Класс : class com.ibm.msg.client.jms.DetailedJMSException
+               Блокнот вкладок : com.ibm.msg.client.wmq.common.internal.Reason.reasonToException(Reason.java:595)
+                               : com.ibm.msg.client.wmq.common.internal.Reason.createException(Reason.java:215)
+                               : com.ibm.msg.client.wmq.internal.WMQMessageProducer.checkJmqiCallSuccess(WMQMessageProducer.java:1282)
+                               : com.ibm.msg.client.wmq.internal.WMQMessageProducer.checkJmqiCallSuccess(WMQMessageProducer.java:1245)
+                               : com.ibm.msg.client.wmq.internal.WMQMessageProducer.access$800(WMQMessageProducer.java:76)
+                               : com.ibm.msg.client.wmq.internal.WMQMessageProducer$SpiIdentifiedProducerShadow.initialise(WMQMessageProducer.java:837)
+                               : com.ibm.msg.client.wmq.internal.WMQMessageProducer.<init>(WMQMessageProducer.java:1221)
+                               : com.ibm.msg.client.wmq.internal.WMQSession.createProducer(WMQSession.java:1120)
+                               : com.ibm.msg.client.jms.internal.JmsSessionImpl.createProducer(JmsSessionImpl.java:1502)
+                               : com.ibm.msg.client.jms.internal.JmsQueueSessionImpl.createSender(JmsQueueSessionImpl.java:121)
+                               : com.ibm.mq.jms.MQQueueSession.createSender(MQQueueSession.java:143)
+                               : WorkWithMQ.main(WorkWithMQ.java:56)
+     Вызвано [1] --> Сообщение : com.ibm.mq.MQException: JMSCMQ0001: Не удалось выполнить вызов IBM MQ; код завершения '2' ('MQCC_FAILED'), причина '2195' ('MQRC_UNEXPECTED_ERROR').
+                         Класс : class com.ibm.mq.MQException
+               Блокнот вкладок : com.ibm.msg.client.wmq.common.internal.Reason.createException(Reason.java:203)
+                               : com.ibm.msg.client.wmq.internal.WMQMessageProducer.checkJmqiCallSuccess(WMQMessageProducer.java:1282)
+                               : com.ibm.msg.client.wmq.internal.WMQMessageProducer.checkJmqiCallSuccess(WMQMessageProducer.java:1245)
+                               : com.ibm.msg.client.wmq.internal.WMQMessageProducer.access$800(WMQMessageProducer.java:76)
+                               : com.ibm.msg.client.wmq.internal.WMQMessageProducer$SpiIdentifiedProducerShadow.initialise(WMQMessageProducer.java:837)
+                               : com.ibm.msg.client.wmq.internal.WMQMessageProducer.<init>(WMQMessageProducer.java:1221)
+                               : com.ibm.msg.client.wmq.internal.WMQSession.createProducer(WMQSession.java:1120)
+                               : com.ibm.msg.client.jms.internal.JmsSessionImpl.createProducer(JmsSessionImpl.java:1502)
+                               : com.ibm.msg.client.jms.internal.JmsQueueSessionImpl.createSender(JmsQueueSessionImpl.java:121)
+                               : com.ibm.mq.jms.MQQueueSession.createSender(MQQueueSession.java:143)
+                               : WorkWithMQ.main(WorkWithMQ.java:56)
+'.
+
+Объяснение:
+Произведена попытка доставить исключительную ситуацию в обработчик исключительных ситуаций соединений, но обработчик не зарегистрирован.
+
+Действие:
+Необходимо зарегистрировать обработчик исключений в соединении для получения его исключительных ситуаций.
+--------------------------------------------------------------------

@@ -20,4 +20,5 @@ dependencies {
     implementation 'com.jayway.restassured:rest-assured:2.9.0'
     implementation 'org.mongodb:mongo-java-driver:3.11.2'
     implementation 'com.ibm.mq:com.ibm.mq.allclient:9.1.3.0'
+    implementation 'net.sf.saxon:Saxon-HE:9.9.1-5'
 }

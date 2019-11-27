@@ -4,10 +4,18 @@ import com.ibm.mq.jms.MQQueueConnectionFactory;
 import javax.jms.*;
 import java.io.File;
 import java.io.FileReader;
+import java.util.UUID;
 
 public class WorkWithMQ {
 
+  public static UUID uuid(){
+    UUID uuid = UUID.randomUUID();
+    return uuid;
+  }
+
   public static void main(String[] args) {
+
+
     try {
 
       MQQueueConnectionFactory mqQueueConnectionFactory = new MQQueueConnectionFactory();
@@ -23,7 +31,7 @@ public class WorkWithMQ {
       QueueSession queueSession = queueConnection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
 
       /*Create response queue */
-      Queue queue = queueSession.createQueue("Q.ADDR5");
+      Queue queue = queueSession.createQueue("Q.ADDR4");
 
 
       /*Create text message */
@@ -33,6 +41,12 @@ public class WorkWithMQ {
       char[] a=new char[b];//Создаем массив символов с вычисленной ранее длинной
       fileReader.read(a);//записываем в массив посимвольно весь файл
       String myStr = new String(a).trim();//преобразуем массив символов в строку
+
+      myStr = myStr.replaceAll(">urn:uuid:.*</wsa:MessageID>",">urn:uuid:"+ uuid().toString() + "</wsa:MessageID>");
+      myStr = myStr.replaceAll(">urn:uuid:.*</int:ConversationID>",">urn:uuid:"+ uuid().toString() + "</int:ConversationID>");
+      myStr = myStr.replaceAll(">urn:uuid:.*</int:ProcedureID>",">urn:uuid:"+ uuid().toString() + "</int:ProcedureID>");
+      myStr = myStr.replaceAll(">.*</csdo:EDocId>",">"+ uuid().toString() + "</csdo:EDocId>");
+      System.out.println(myStr);
       TextMessage textMessage = queueSession.createTextMessage(myStr);//передаем в сессию наше сообщение
       //textMessage.setJMSReplyTo(queue);
       //textMessage.setJMSType("mcd://xmlns");//message type
@@ -53,16 +67,16 @@ public class WorkWithMQ {
 
 
       /*Within the session we have to create queue reciver */
-      //QueueReceiver queueReceiver = queueSession.createReceiver(queue);//указываем очередь откуда читать ответное сообщение
+      QueueReceiver queueReceiver = queueSession.createReceiver(queue);//указываем очередь откуда читать ответное сообщение
 
 
       /*Receive the message from*/
-     // Message message = queueReceiver.receive(10*1000);
-      //String responseMsg = ((TextMessage) message).getText();
-      //System.out.println(responseMsg);
+      Message message = queueReceiver.receive(10*1000);
+      String responseMsg = ((TextMessage) message).getText();
+      System.out.println(responseMsg);
 
       queueSender.close();
-      //queueReceiver.close();
+      queueReceiver.close();
       queueSession.close();
       queueConnection.close();
       fileReader.close();
