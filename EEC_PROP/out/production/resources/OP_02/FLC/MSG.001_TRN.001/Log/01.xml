@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+	<soap:Header xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:int="urn:EEC:Interaction:v1.0">
+		<wsa:MessageID>urn:uuid:c9a9ed17-84eb-4835-a9a8-2a5fde48fbb7</wsa:MessageID>
+		<int:ProcedureID>urn:uuid:9c7100a2-a126-47f0-b341-a8a89f1c5e0b</int:ProcedureID>
+		<int:ConversationID>urn:uuid:92777928-cc02-469a-80ea-0a6df57c282e</int:ConversationID>
+		<wsa:To>EAEU://RU/CP/P.CC.01/P.CC.01.ACT.001AT</wsa:To>
+		<wsa:Action>int://CP/P.CC.01/1.0.0/P.CC.01.PRC.001/P.CC.01.TRN.001/P.MSG.ERR</wsa:Action>
+		<wsa:ReplyTo>
+			<wsa:Address>EAEU://EEC/CP/P.CC.01/P.ACT.001</wsa:Address>
+		</wsa:ReplyTo>
+		<wsa:RelatesTo>urn:uuid:91ee6b83-7c45-42ad-ae8c-cf5b8e80afa8</wsa:RelatesTo>
+		<int:Integration>
+			<int:TrackID>urn:uuid:41b5a8e8-6c74-4b63-8d9b-7fa049f1e24b</int:TrackID>
+			<int:AcceptTime>2019-11-29T16:34:05+03:00</int:AcceptTime>
+		</int:Integration>
+	</soap:Header>
+	<soap:Body>
+		<sgn:ValidationError xmlns:sgn="urn:EEC:signal:v1.0">
+			<sgn:SignalId>e651d3e6-efda-4578-8272-8858646ff6db</sgn:SignalId>
+			<sgn:DateTime>2019-11-29T16:34:05.419</sgn:DateTime>
+			<sgn:Error>
+				<sgn:Code>01</sgn:Code>
+				<sgn:Description>Ошибка контроля</sgn:Description>
+				<sgn:Details>в электронном документе (сведениях) должен присутствовать только 1 экземпляр реквизита «Сведения о пункте пропуска» (cacdo:CheckPointDetails)</sgn:Details>
+				<sgn:EDocId>50daff53-b64d-40fc-9452-f1f06df11bbc</sgn:EDocId>
+			</sgn:Error>
+		</sgn:ValidationError>
+	</soap:Body>
+</soap:Envelope>

@@ -14,11 +14,13 @@ class Scratch {
         try {
 
             XdmNode node = builder.build(new File("D:\\projects\\eek\\scratch_xml\\P.DS.06.TRN.001_MSG.001.xml"));
+
             XPathCompiler compiler = processor.newXPathCompiler();
             getNamespaces().forEach(compiler::declareNamespace);
 
             String xpath = " every $x in //fpcdo:AntiDumpingDutyDetails " +
-                    "satisfies $x/fpcdo:GenericDistributableAntiDumpingDutyDetails[fpsdo:TotalAmountIndicator= '1']/fpsdo:AntiDumpingGenericDistributableDutyAmount/xs:decimal(text()) = sum($x/fpcdo:GenericDistributableAntiDumpingDutyDetails[fpsdo:TotalAmountIndicator= '0']/fpsdo:AntiDumpingGenericDistributableDutyAmount/xs:decimal(text()))";
+                    "satisfies $x/fpcdo:GenericDistributableAntiDumpingDutyDetails[fpsdo:TotalAmountIndicator= '1']/fpsdo:AntiDumpingGenericDistributableDutyAmount/xs:decimal(text()) " +
+                    "= sum($x/fpcdo:GenericDistributableAntiDumpingDutyDetails[fpsdo:TotalAmountIndicator= '0']/fpsdo:AntiDumpingGenericDistributableDutyAmount/xs:decimal(text()))";
 
             /*
             String xpath = "not((year-from-date(xs:date(//csdo:DocValidityDate))-year-from-date(xs:date(//csdo:DocStartDate)))>=1 and " +
