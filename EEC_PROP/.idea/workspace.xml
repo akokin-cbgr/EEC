@@ -52,8 +52,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/WorkWithMQ.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="53" column="56" lean-forward="true" selection-start-line="53" selection-start-column="56" selection-end-line="53" selection-end-column="56" />
+            <state relative-caret-position="153">
+              <caret line="105" column="37" selection-start-line="105" selection-start-column="37" selection-end-line="105" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -134,15 +134,15 @@
         <option value="$PROJECT_DIR$/src/main/java/Test.java" />
         <option value="$PROJECT_DIR$/src/main/java/Api.java" />
         <option value="$PROJECT_DIR$/src/test/java/TestApi.java" />
-        <option value="$PROJECT_DIR$/src/main/java/WorkWithMQ.java" />
         <option value="$PROJECT_DIR$/src/main/java/Scratch.java" />
         <option value="$PROJECT_DIR$/src/test/java/TestXpath.java" />
         <option value="$PROJECT_DIR$/src/main/java/XPathExample.java" />
         <option value="$PROJECT_DIR$/src/main/java/XPathBaseHelper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/WorkWithMQ.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="958" />
     <option name="width" value="1610" />
     <option name="height" value="1100" />
@@ -264,7 +264,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="TestNG.TestXpath.test">
+  <component name="RunManager" selected="Application.WorkWithMQ">
     <configuration name="Api" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Api" />
       <module name="PROP.EEC_PROP.main" />
@@ -307,8 +307,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.TestXpath.test" />
         <item itemvalue="Application.WorkWithMQ" />
+        <item itemvalue="TestNG.TestXpath.test" />
         <item itemvalue="Application.XPathExample" />
         <item itemvalue="Application.XPathBaseHelper" />
         <item itemvalue="Application.Api" />
@@ -337,9 +337,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="WorkWithMongoTest_test - 2019.11.25 at 17h 36m 44s.xml">
-      <configuration name="WorkWithMongoTest.test" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="WorkWithMongoTest_test - 2019.11.25 at 17h 37m 31s.xml">
       <configuration name="WorkWithMongoTest.test" configurationId="TestNG" />
     </history-entry>
@@ -367,9 +364,12 @@
     <history-entry file="TestXpath_test - 2019.12.02 at 14h 11m 44s.xml">
       <configuration name="TestXpath.test" configurationId="TestNG" />
     </history-entry>
+    <history-entry file="TestXpath_test - 2019.12.02 at 17h 06m 22s.xml">
+      <configuration name="TestXpath.test" configurationId="TestNG" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13219616" />
@@ -381,8 +381,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.39013934" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.43931088" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.28938907" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.43837085" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -480,6 +480,18 @@
     </ignored-roots>
     <MESSAGE value="удалена зависимость" />
     <option name="LAST_COMMIT_MESSAGE" value="удалена зависимость" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/WorkWithMQ.java</url>
+          <line>99</line>
+          <properties />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -648,8 +660,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/WorkWithMQ.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="53" column="56" lean-forward="true" selection-start-line="53" selection-start-column="56" selection-end-line="53" selection-end-column="56" />
+        <state relative-caret-position="153">
+          <caret line="105" column="37" selection-start-line="105" selection-start-column="37" selection-end-line="105" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

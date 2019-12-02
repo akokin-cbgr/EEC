@@ -5,6 +5,7 @@ import javax.jms.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.Scanner;
 import java.util.UUID;
 
@@ -62,8 +63,8 @@ public class WorkWithMQ {
       char[] a = new char[b];//Создаем массив символов с вычисленной ранее длинной
       fileReader.read(a);//записываем в массив посимвольно весь файл
       String myStr = new String(a).trim();//преобразуем массив символов в строку*/
-
       //fileReader.close();
+
 
       String myStr = workWithMQ.getFile("OP_02/FLC/MSG.001_TRN.001/FLC_01.xml");//считываем из файла
       myStr = myStr.replaceAll(">urn:uuid:.*</wsa:MessageID>", ">urn:uuid:" + uuid().toString() + "</wsa:MessageID>");
@@ -93,9 +94,22 @@ public class WorkWithMQ {
       QueueReceiver queueReceiver = queueSession.createReceiver(queue);//указываем очередь откуда читать ответное сообщение
 
 
+      QueueBrowser browser = queueSession.createBrowser(queue);
+      Enumeration e = browser.getEnumeration();
+      String stringMessage = "";
+      while (e.hasMoreElements()) {
+        BytesMessage message = (BytesMessage) e.nextElement();
+        byte[] byteData = null;
+        byteData = new byte[(int) message.getBodyLength()];
+        message.readBytes(byteData);
+        message.reset();
+        stringMessage = stringMessage(byteData);
+        System.out.println("Browse [" + stringMessage + "]");
 
+        System.out.println("Done");
 
-      /*Receive the message from*/
+/*
+      //Receive the message from
       Message message = queueReceiver.receive(3000);
       BytesMessage byteMessage = (BytesMessage) message;
       byte[] byteData = null;
@@ -103,21 +117,22 @@ public class WorkWithMQ {
       byteMessage.readBytes(byteData);
       byteMessage.reset();
       String stringMessage = new String(byteData);
+*/
+        //String responseMsg = ((TextMessage) message).getText();
 
-      //String responseMsg = ((TextMessage) message).getText();
-
-      Boolean bool = stringMessage.contains("<sgn:Description>Ошибка контроля</sgn:Description>");
-      System.out.println("Сообщение получено \n " + stringMessage);
-      System.out.println("Проверка - " + bool);
-
-
-      File file_w = new File("D:\\Java_learn\\EEC\\EEC\\EEC_PROP\\src\\main\\resources\\OP_02\\FLC\\MSG.001_TRN.001\\Log\\01.xml");
-      FileWriter writer = new FileWriter(file_w);
-      writer.write(stringMessage);
-      writer.flush();
-      writer.close();
+        Boolean bool = stringMessage.contains("<sgn:Description>Ошибка контроля</sgn:Description>");
+        // System.out.println("Сообщение получено \n " + stringMessage);
+        System.out.println("Проверка - " + bool);
 
 
+        File file_w = new File("D:\\Java_learn\\EEC\\EEC\\EEC_PROP\\src\\main\\resources\\OP_02\\FLC\\MSG.001_TRN.001\\Log\\01.xml");
+        FileWriter writer = new FileWriter(file_w);
+        writer.write(stringMessage);
+        writer.flush();
+        writer.close();
+      }
+
+      browser.close();
       queueSender.close();
       queueReceiver.close();
       queueSession.close();
