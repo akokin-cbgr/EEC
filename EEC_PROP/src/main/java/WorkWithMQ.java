@@ -103,14 +103,15 @@ public class WorkWithMQ {
       byteMessage.readBytes(byteData);
       byteMessage.reset();
       String stringMessage = new String(byteData);
+
       //String responseMsg = ((TextMessage) message).getText();
+
       Boolean bool = stringMessage.contains("<sgn:Description>Ошибка контроля</sgn:Description>");
-      System.out.println(stringMessage);
-      System.out.println(bool + " Проверка");
+      System.out.println("Сообщение получено \n " + stringMessage);
+      System.out.println("Проверка - " + bool);
 
 
       File file_w = new File("D:\\Java_learn\\EEC\\EEC\\EEC_PROP\\src\\main\\resources\\OP_02\\FLC\\MSG.001_TRN.001\\Log\\01.xml");
-      file_w.createNewFile();
       FileWriter writer = new FileWriter(file_w);
       writer.write(stringMessage);
       writer.flush();
