@@ -126,8 +126,12 @@ public class WorkWithMQ {
       //String jmsCorrelationID = " JMSCorrelationID = '" + textMessage.getJMSMessageID() + "'";
 
 
-      //Создаем браузер для наблюдения за очередью
+      //Обнуляем очередь и делаем задержку на получение ответов от ПРОП
+      clearQueue(queueReceiver);
       Thread.sleep(3000);
+
+      
+      //Создаем браузер для наблюдения за очередью
       QueueBrowser browser = queueSession.createBrowser(queueReciev);
       Enumeration e = browser.getEnumeration();
       StringBuilder test = new StringBuilder();
