@@ -75,12 +75,12 @@ public class WorkWithMQ {
 
   private static void clearQueue(QueueSession queueSession, Queue queueReciev, QueueReceiver queueReceiver) {
     try {
-      queueReceiver.receiveNoWait();
       QueueBrowser browser = queueSession.createBrowser(queueReciev);
       Enumeration e = browser.getEnumeration();
       while (e.hasMoreElements()) {
-        queueReceiver.receiveNoWait();// Обнуляем очередь от сообщений
+        Message message = queueReceiver.receive(100);// Обнуляем очередь от сообщений
       }
+      browser.close();
     } catch (JMSException e) {
       e.printStackTrace();
     }

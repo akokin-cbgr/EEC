@@ -1,19 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Header xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:int="urn:EEC:Interaction:v1.0"><wsa:MessageID>urn:uuid:c1c99dfe-2665-45a5-8018-00d1b2906657</wsa:MessageID><int:ProcedureID>urn:uuid:00a7c524-5bcb-478c-9888-8f93677fbfe1</int:ProcedureID><int:ConversationID>urn:uuid:393503e8-0ce9-4ec0-8ec0-4ee4b25a0fb4</int:ConversationID><wsa:To>EAEU://RU/CP/P.CC.01/P.CC.01.ACT.001AT</wsa:To><wsa:Action>int://CP/P.CC.01/1.0.0/P.CC.01.PRC.001/P.CC.01.TRN.001/P.MSG.PRS</wsa:Action><wsa:ReplyTo><wsa:Address>EAEU://EEC/CP/P.CC.01/P.ACT.001</wsa:Address></wsa:ReplyTo><wsa:RelatesTo>urn:uuid:517ff04a-b45b-4f89-a37a-4a1fd8fb62a0</wsa:RelatesTo><int:Integration>
-                        <int:TrackID>urn:uuid:4f29393b-36b1-4152-815f-06108adb195e</int:TrackID>
-                        <int:AcceptTime>2019-12-03T17:32:37+03:00</int:AcceptTime>
-                    </int:Integration></soap:Header><soap:Body><sgn:ProcessingReceipt xmlns:sgn="urn:EEC:signal:v1.0"><sgn:SignalId>fca3e343-9978-481f-a5a6-5c266cd14373</sgn:SignalId><sgn:DateTime>2019-12-03T17:32:36.910</sgn:DateTime></sgn:ProcessingReceipt></soap:Body></soap:Envelope>
-<?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Header xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:int="urn:EEC:Interaction:v1.0"><wsa:MessageID>urn:uuid:27052ca7-4eb6-4ff0-a3d9-a35b68f1196c</wsa:MessageID><int:ProcedureID>urn:uuid:00a7c524-5bcb-478c-9888-8f93677fbfe1</int:ProcedureID><int:ConversationID>urn:uuid:393503e8-0ce9-4ec0-8ec0-4ee4b25a0fb4</int:ConversationID><wsa:To>EAEU://RU/CP/P.CC.01/P.CC.01.ACT.001AT</wsa:To><wsa:Action>int://CP/P.CC.01/1.0.0/P.CC.01.PRC.001/P.CC.01.TRN.001/P.CC.01.MSG.004</wsa:Action><wsa:ReplyTo><wsa:Address>EAEU://EEC/CP/P.CC.01/P.ACT.001</wsa:Address></wsa:ReplyTo><wsa:RelatesTo>urn:uuid:517ff04a-b45b-4f89-a37a-4a1fd8fb62a0</wsa:RelatesTo><int:Integration>
-                        <int:TrackID>urn:uuid:08c4c660-6674-47f3-ba15-2bf35449605f</int:TrackID>
-                        <int:AcceptTime>2019-12-03T17:32:37+03:00</int:AcceptTime>
+<?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Header xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:int="urn:EEC:Interaction:v1.0"><wsa:MessageID>urn:uuid:481caebd-7048-43ce-b14b-71333b365f4f</wsa:MessageID><int:ProcedureID>urn:uuid:62ca9ccb-1119-493f-bbde-dbb138be09f1</int:ProcedureID><int:ConversationID>urn:uuid:9893023f-a8d8-42ee-8ac5-4227af726b27</int:ConversationID><wsa:To>EAEU://RU/CP/P.CC.01/P.CC.01.ACT.001AT</wsa:To><wsa:Action>int://CP/P.CC.01/1.0.0/P.CC.01.PRC.001/P.CC.01.TRN.001/P.MSG.PRS</wsa:Action><wsa:ReplyTo><wsa:Address>EAEU://EEC/CP/P.CC.01/P.ACT.001</wsa:Address></wsa:ReplyTo><wsa:RelatesTo>urn:uuid:8a9f6468-0edf-4d43-8e01-8121622cc6b0</wsa:RelatesTo><int:Integration>
+                        <int:TrackID>urn:uuid:302dd226-4672-4b85-9b9d-b6fd9adff420</int:TrackID>
+                        <int:AcceptTime>2019-12-03T18:00:55+03:00</int:AcceptTime>
+                    </int:Integration></soap:Header><soap:Body><sgn:ProcessingReceipt xmlns:sgn="urn:EEC:signal:v1.0"><sgn:SignalId>2486bb5b-6c4e-44f5-9cd8-194a9ebcbb3a</sgn:SignalId><sgn:DateTime>2019-12-03T18:00:55.666</sgn:DateTime></sgn:ProcessingReceipt></soap:Body></soap:Envelope>
+<?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Header xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:int="urn:EEC:Interaction:v1.0"><wsa:MessageID>urn:uuid:83aad3c7-81d9-44a3-8b01-2c0ceddce045</wsa:MessageID><int:ProcedureID>urn:uuid:62ca9ccb-1119-493f-bbde-dbb138be09f1</int:ProcedureID><int:ConversationID>urn:uuid:9893023f-a8d8-42ee-8ac5-4227af726b27</int:ConversationID><wsa:To>EAEU://RU/CP/P.CC.01/P.CC.01.ACT.001AT</wsa:To><wsa:Action>int://CP/P.CC.01/1.0.0/P.CC.01.PRC.001/P.CC.01.TRN.001/P.CC.01.MSG.004</wsa:Action><wsa:ReplyTo><wsa:Address>EAEU://EEC/CP/P.CC.01/P.ACT.001</wsa:Address></wsa:ReplyTo><wsa:RelatesTo>urn:uuid:8a9f6468-0edf-4d43-8e01-8121622cc6b0</wsa:RelatesTo><int:Integration>
+                        <int:TrackID>urn:uuid:0569b309-5867-427c-aa0b-2cbe86fe8bb8</int:TrackID>
+                        <int:AcceptTime>2019-12-03T18:00:55+03:00</int:AcceptTime>
                     </int:Integration></soap:Header><soap:Body><doc:ProcessingResultDetails xmlns:doc="urn:EEC:R:ProcessingResultDetails:v0.3.4" xmlns:casdo="urn:EEC:M:CA:SimpleDataObjects:v1.2.6" xmlns:ns14="urn:EEC:SignedData:v1.0:EDoc" xmlns:ccdo="urn:EEC:M:ComplexDataObjects:v0.3.3" xmlns:pcp="urn:EEC:R:CA:CC:02:CheckPointPassport:v1.0.0" xmlns:ns12="http://dsign.mscp.eec" xmlns:ns13="http://www.w3.org/2000/09/xmldsig#" xmlns:ns6="urn:EEC:R:ProcessingResultDetails:v1.0.0" xmlns:ns10="urn:EEC:R:CA:CC:04:ArrivePointList:v1.0.0" xmlns:ns8="urn:EEC:R:ResourceStatusDetails:v0.3.3" xmlns:csdo="urn:EEC:M:SimpleDataObjects:v0.3.3" xmlns:ns11="urn:EEC:R:ResourceStatusDetails:v1.0.0" xmlns:cpl="urn:EEC:R:CA:CC:01:CheckPointList:v1.0.0" xmlns:cacdo="urn:EEC:M:CA:ComplexDataObjects:v1.2.6">
     <ccdo:EDocHeader>
         <csdo:InfEnvelopeCode>P.CC.01.MSG.004</csdo:InfEnvelopeCode>
         <csdo:EDocCode>R.006</csdo:EDocCode>
-        <csdo:EDocId>c547ddfa-b009-4fd1-9ba5-9732011e7484</csdo:EDocId>
-        <csdo:EDocRefId>2e12085f-673d-4ab0-8dae-0af1403903d0</csdo:EDocRefId>
-        <csdo:EDocDateTime>2019-12-03T14:32:36.999Z</csdo:EDocDateTime>
+        <csdo:EDocId>a0c35666-c406-4e4a-b373-cd883654eff1</csdo:EDocId>
+        <csdo:EDocRefId>95f31577-c5aa-4193-a535-031602569ba8</csdo:EDocRefId>
+        <csdo:EDocDateTime>2019-12-03T15:00:55.722Z</csdo:EDocDateTime>
     </ccdo:EDocHeader>
-    <csdo:EventDateTime>2019-12-03T14:32:36.985Z</csdo:EventDateTime>
+    <csdo:EventDateTime>2019-12-03T15:00:55.709Z</csdo:EventDateTime>
     <csdo:ProcessingResultCode>3</csdo:ProcessingResultCode>
     <csdo:DescriptionText>Сведения добавлены</csdo:DescriptionText>
 </doc:ProcessingResultDetails></soap:Body></soap:Envelope>
