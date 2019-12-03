@@ -1,13 +1,11 @@
 import com.ibm.mq.jms.MQQueueConnectionFactory;
 
+import javax.jms.Queue;
 import javax.jms.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Enumeration;
-import java.util.Objects;
-import java.util.Scanner;
-import java.util.UUID;
+import java.util.*;
 
 import static com.ibm.mq.jms.JMSC.MQJMS_TP_CLIENT_MQ_TCPIP;
 
@@ -16,6 +14,25 @@ public class WorkWithMQ {
   private static UUID uuid() {
     return UUID.randomUUID();
   }
+
+
+  private static int randInt(int min, int max) {
+    // NOTE: This will (intentionally) not run as written so that folks
+    // copy-pasting have to think about how to initialize their
+    // Random instance.  Initialization of the Random instance is outside
+    // the main scope of the question, but some decent options are to have
+    // a field that is initialized once and then re-used as needed or to
+    // use ThreadLocalRandom (if using at least Java 1.7).
+    // 
+    // In particular, do NOT do 'Random rand = new Random()' here or you
+    // will get not very good / not very random results.
+    Random rand = new Random();
+    // nextInt is normally exclusive of the top value,
+    // so add 1 to make it inclusive
+    int randomNum = rand.nextInt((max - min) + 1) + min;
+    return randomNum;
+  }
+
 
   private static String getFile(String fileName) {
     StringBuilder result = new StringBuilder();
@@ -56,14 +73,18 @@ public class WorkWithMQ {
   }
 
 
-  private static void clearQueue(QueueReceiver queueReceiver) {
+  private static void clearQueue(QueueSession queueSession, Queue queueReciev, QueueReceiver queueReceiver) {
     try {
-      queueReceiver.receiveNoWait();// Обнуляем очередь от сообщений
+      queueReceiver.receiveNoWait();
+      QueueBrowser browser = queueSession.createBrowser(queueReciev);
+      Enumeration e = browser.getEnumeration();
+      while (e.hasMoreElements()) {
+        queueReceiver.receiveNoWait();// Обнуляем очередь от сообщений
+      }
     } catch (JMSException e) {
       e.printStackTrace();
     }
   }
-
 
   public static void main(String[] args) {
 
@@ -96,12 +117,27 @@ public class WorkWithMQ {
       String myStr = new String(a).trim();//преобразуем массив символов в строку*/
       //fileReader.close();
 
+
+      //Обнуляем очередь и делаем задержку на получение ответов от ПРОП
+      clearQueue(queueSession, queueReciev, queueReceiver);
+
+
+
       /*Создание сообщения на отправку*/
-      String myStr = getFile("OP_02/FLC/MSG.001_TRN.001/FLC_01.xml");//считываем из файла
+      //String myStr = getFile("OP_02/FLC/MSG.001_TRN.001/FLC_01.xml");//считываем из файла XML
+      String myStr = getFile("OP_02/FLC/MSG.001_TRN.001/MSG.001.xml");//считываем из файла XML
       myStr = myStr.replaceAll(">urn:uuid:.*</wsa:MessageID>", ">urn:uuid:" + uuid().toString() + "</wsa:MessageID>");
       myStr = myStr.replaceAll(">urn:uuid:.*</int:ConversationID>", ">urn:uuid:" + uuid().toString() + "</int:ConversationID>");
       myStr = myStr.replaceAll(">urn:uuid:.*</int:ProcedureID>", ">urn:uuid:" + uuid().toString() + "</int:ProcedureID>");
       myStr = myStr.replaceAll(">.*</csdo:EDocId>", ">" + uuid().toString() + "</csdo:EDocId>");
+      myStr = myStr.replaceAll(">.*</casdo:BorderCheckPointCode>", ">PPG.RU.UA." + randInt(10000000, 99999999) + "</casdo:BorderCheckPointCode>");
+
+      File file_w1 = new File("D:\\Java_learn\\EEC\\EEC\\EEC_PROP\\src\\main\\resources\\OP_02\\FLC\\MSG.001_TRN.001\\Log\\MSG_01.xml");
+      FileWriter writerInit = new FileWriter(file_w1);
+      writerInit.write(myStr);
+      writerInit.flush();
+      writerInit.close();
+
 
       //передаем в сессию наше сообщение
       TextMessage textMessage = queueSession.createTextMessage(myStr);
@@ -126,11 +162,9 @@ public class WorkWithMQ {
       //String jmsCorrelationID = " JMSCorrelationID = '" + textMessage.getJMSMessageID() + "'";
 
 
-      //Обнуляем очередь и делаем задержку на получение ответов от ПРОП
-      clearQueue(queueReceiver);
-      Thread.sleep(3000);
+      Thread.sleep(3000);//задержка на получение ответа от ПРОП
 
-      
+
       //Создаем браузер для наблюдения за очередью
       QueueBrowser browser = queueSession.createBrowser(queueReciev);
       Enumeration e = browser.getEnumeration();
@@ -149,21 +183,20 @@ public class WorkWithMQ {
         Message message = (Message) e.nextElement();
         test.append(onMessage(message)).append("\n");
         //String responseMsg = ((TextMessage) message).getText();
-
-        System.out.println("Сообщение получено \n " + test);
-        boolean bool = test.toString().contains("<sgn:Description>Ошибка контроля</sgn:Description>");
-        System.out.println("Проверка - " + bool);
-
-        //Обнуляем очередь
-        clearQueue(queueReceiver);
       }
 
+
+      //System.out.println("Сообщение получено \n " + test);
+      //boolean bool = test.toString().contains("<sgn:Description>Ошибка контроля</sgn:Description>");
+      //System.out.println("Проверка - " + bool);
+      //Обнуляем очередь
+      //clearQueue(queueSession, queueReciev, queueReceiver);
       System.out.println("Сообщение получено");
       File file_w = new File("D:\\Java_learn\\EEC\\EEC\\EEC_PROP\\src\\main\\resources\\OP_02\\FLC\\MSG.001_TRN.001\\Log\\01.xml");
-      FileWriter writer = new FileWriter(file_w);
-      writer.write(test.toString());
-      writer.flush();
-      writer.close();
+      FileWriter writerResponse = new FileWriter(file_w);
+      writerResponse.write(test.toString());
+      writerResponse.flush();
+      writerResponse.close();
 
       browser.close();
       queueSender.close();
