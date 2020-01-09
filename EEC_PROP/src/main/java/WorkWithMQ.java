@@ -23,6 +23,12 @@ public class WorkWithMQ {
   }
 
   private static String randString(String diapazon, int kol_vo) {
+    if (diapazon.equals("")) {
+      System.out.println("ОШИБКА - Используемый диапазон значений не может быть пустым");
+    }
+    if (kol_vo < 1) {
+      System.out.println("ОШИБКА - Количество символов в генерируемой строке не может быть отрицательным");
+    }
     char[] chars = diapazon.toCharArray();
     Random rand = new Random();
     StringBuilder stringBuilder = new StringBuilder();
@@ -75,10 +81,10 @@ public class WorkWithMQ {
 
   private static void clearQueue(QueueReceiver queueReceiver) {
     try {
-    while(true) {
-      Message receive = queueReceiver.receiveNoWait();
-      if (receive == null) break;
-    }
+      while (true) {
+        Message receive = queueReceiver.receiveNoWait();
+        if (receive == null) break;
+      }
     } catch (JMSException e) {
       e.printStackTrace();
     }
@@ -93,7 +99,6 @@ public class WorkWithMQ {
         //Message message = queueReceiver.receive(100);// Обнуляем очередь от сообщений
       }
       browser.close();*/
-
 
 
   }
