@@ -22,6 +22,12 @@ public class WorkWithMQ {
     return randomNum;
   }
 
+  private static String randString(){
+    Random rand = new Random();
+    int randomNum = rand.nextInt(10);
+    return "";
+  }
+
 
   private static String getFile(String fileName) {
     StringBuilder result = new StringBuilder();
