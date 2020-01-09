@@ -22,10 +22,15 @@ public class WorkWithMQ {
     return randomNum;
   }
 
-  private static String randString(){
+  private static String randString(String diapazon, int kol_vo) {
+    char[] chars = diapazon.toCharArray();
     Random rand = new Random();
-    int randomNum = rand.nextInt(10);
-    return "";
+    StringBuilder stringBuilder = new StringBuilder();
+    for (int i = 1; i < kol_vo + 1; i++) {
+      int randomNum = rand.nextInt(diapazon.length());
+      stringBuilder.append(chars[randomNum]);
+    }
+    return stringBuilder.toString();
   }
 
 

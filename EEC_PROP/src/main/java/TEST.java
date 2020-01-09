@@ -11,7 +11,10 @@ public class TEST {
   }
 
 
-  private static String randString(String diapazon, int kol_vo) {
+  private static String randString(String diapazon, int kol_vo){
+    if (diapazon.equals("")) {
+      System.out.println("ОШИБКА - Используемый диапазон значений не может быть пустым");
+    }
     char[] chars = diapazon.toCharArray();
     Random rand = new Random();
     StringBuilder stringBuilder = new StringBuilder();
@@ -22,9 +25,10 @@ public class TEST {
     return stringBuilder.toString() + "\nДлинна - " + stringBuilder.length();
   }
 
+
   public static void main(String[] args) {
     System.out.println(randString1(100) + "\n");
-    System.out.println(randString("АБВГДабвгд0123456789", 10));
+    System.out.println(randString("", 10));
 
   }
 }
