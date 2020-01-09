@@ -16,25 +16,34 @@ public class WorkWithMQ {
   }
 
 
+  /*Генерация случайного числа из устанавливаемого диапазона значений в параметрах min и max соответственно
+   Стандартно rand.nextInt() генерирует случайное число от 0 до указанного в параметре значения*/
   private static int randInt(int min, int max) {
     Random rand = new Random();
     int randomNum = rand.nextInt((max - min) + 1) + min;
     return randomNum;
   }
 
+
+  /*Генерация строки определенной длинны из определенного набора символов
+    diapazon - набор символов из которых будет генерироваться строка
+    kol_vo - длинна генерируемой строки*/
   private static String randString(String diapazon, int kol_vo) {
+    //проверки и вывод текста с ошибкой
     if (diapazon.equals("")) {
       System.out.println("ОШИБКА - Используемый диапазон значений не может быть пустым");
     }
     if (kol_vo < 1) {
       System.out.println("ОШИБКА - Количество символов в генерируемой строке не может быть отрицательным");
     }
-    char[] chars = diapazon.toCharArray();
-    Random rand = new Random();
-    StringBuilder stringBuilder = new StringBuilder();
+    char[] chars = diapazon.toCharArray();//преобразуем строку в массив символов
+    Random rand = new Random();//создаем объект типа Random
+    StringBuilder stringBuilder = new StringBuilder();//создаем StringBuilder чтобы не плодить отдельные строки
+
+    //пишем цикл длинной равной параметру kol_vo в котором выбираем случайный символ из массива и составляем новую строку
     for (int i = 1; i < kol_vo + 1; i++) {
-      int randomNum = rand.nextInt(diapazon.length());
-      stringBuilder.append(chars[randomNum]);
+      int randomNum = rand.nextInt(diapazon.length());//генерация случайного числа от 0 до величины длинны массива diapazon
+      stringBuilder.append(chars[randomNum]);//собираем строку из выбранных символов в каждом цикле
     }
     return stringBuilder.toString();
   }
@@ -56,6 +65,7 @@ public class WorkWithMQ {
     return result.toString();
   }
 
+  /*Метод преобразования полученных файлов из очереди MQ в виде строки String*/
   private static String onMessage(Message message) {
     try {
 
@@ -78,7 +88,7 @@ public class WorkWithMQ {
     return "";
   }
 
-
+  /*Метод очистки очереди IBM MQ. В качестве параметра передается очередь получатель*/
   private static void clearQueue(QueueReceiver queueReceiver) {
     try {
       while (true) {
@@ -125,7 +135,7 @@ public class WorkWithMQ {
       QueueReceiver queueReceiver = queueSession.createReceiver(queueReciev);//указываем очередь откуда читать ответное сообщение
 
 
-      /*Create text message */
+      /*ЧЕРНОВИК Create text message */
       /*File file = new File("resources/MSG_2.xml");//считываем из файла
       FileReader fileReader = new FileReader(file);//Создание объекта FileReader
       int b = (int) file.length();//вычисляем необходимую длинну массива исходя из длины XML
