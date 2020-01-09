@@ -11,6 +11,7 @@ import static com.ibm.mq.jms.JMSC.MQJMS_TP_CLIENT_MQ_TCPIP;
 
 public class WorkWithMQ {
 
+  /*Метод генерации UUID при помощи стандартной библиотеки из java.util*/
   private static UUID uuid() {
     return UUID.randomUUID();
   }
@@ -65,6 +66,7 @@ public class WorkWithMQ {
     return result.toString();
   }
 
+
   /*Метод преобразования полученных файлов из очереди MQ в виде строки String*/
   private static String onMessage(Message message) {
     try {
@@ -88,6 +90,7 @@ public class WorkWithMQ {
     return "";
   }
 
+
   /*Метод очистки очереди IBM MQ. В качестве параметра передается очередь получатель*/
   private static void clearQueue(QueueReceiver queueReceiver) {
     try {
@@ -98,8 +101,7 @@ public class WorkWithMQ {
     } catch (JMSException e) {
       e.printStackTrace();
     }
-
-    /* ЧЕРНОВИК ОЧИСТКИ ОЧЕРЕДИ
+    /* РАБОЧИЙ ЧЕРНОВИК ЕЩЁ ОДНОЙ РЕАЛИЗАЦИИ ОЧИСТКИ ОЧЕРЕДИ
     try {
       QueueBrowser browser = queueSession.createBrowser(queueReciev);
       Enumeration e = browser.getEnumeration();
@@ -109,9 +111,8 @@ public class WorkWithMQ {
         //Message message = queueReceiver.receive(100);// Обнуляем очередь от сообщений
       }
       browser.close();*/
-
-
   }
+
 
   public static void main(String[] args) {
 
