@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class TEST {
 
-  private static String randString(int max) {
+  private static String randString1(int max) {
     Random rand = new Random();
     int randomNum = rand.nextInt(10);
     int randomNum2 = rand.nextInt(max);
@@ -11,7 +11,7 @@ public class TEST {
   }
 
 
-  private static String randString2(String diapazon, int kol_vo) {
+  private static String randString(String diapazon, int kol_vo) {
     char[] chars = diapazon.toCharArray();
     Random rand = new Random();
     StringBuilder stringBuilder = new StringBuilder();
@@ -19,12 +19,12 @@ public class TEST {
       int randomNum = rand.nextInt(diapazon.length());
       stringBuilder.append(String.valueOf(chars[randomNum]));
     }
-    return stringBuilder.toString();
+    return stringBuilder.toString() + "\nДлинна - " + stringBuilder.length();
   }
 
   public static void main(String[] args) {
-    System.out.println(randString(100) + "\n");
-    System.out.println(randString2("qwerty12345",15));
+    System.out.println(randString1(100) + "\n");
+    System.out.println(randString("АБВГДабвгд0123456789", 10));
 
   }
 }
