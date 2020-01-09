@@ -17,18 +17,7 @@ public class WorkWithMQ {
 
 
   private static int randInt(int min, int max) {
-    // NOTE: This will (intentionally) not run as written so that folks
-    // copy-pasting have to think about how to initialize their
-    // Random instance.  Initialization of the Random instance is outside
-    // the main scope of the question, but some decent options are to have
-    // a field that is initialized once and then re-used as needed or to
-    // use ThreadLocalRandom (if using at least Java 1.7).
-    // 
-    // In particular, do NOT do 'Random rand = new Random()' here or you
-    // will get not very good / not very random results.
     Random rand = new Random();
-    // nextInt is normally exclusive of the top value,
-    // so add 1 to make it inclusive
     int randomNum = rand.nextInt((max - min) + 1) + min;
     return randomNum;
   }
@@ -73,17 +62,29 @@ public class WorkWithMQ {
   }
 
 
-  private static void clearQueue(QueueSession queueSession, Queue queueReciev, QueueReceiver queueReceiver) {
+  private static void clearQueue(QueueReceiver queueReceiver) {
+    try {
+    while(true) {
+      Message receive = queueReceiver.receiveNoWait();
+      if (receive == null) break;
+    }
+    } catch (JMSException e) {
+      e.printStackTrace();
+    }
+
+    /* ЧЕРНОВИК ОЧИСТКИ ОЧЕРЕДИ
     try {
       QueueBrowser browser = queueSession.createBrowser(queueReciev);
       Enumeration e = browser.getEnumeration();
       while (e.hasMoreElements()) {
-        Message message = queueReceiver.receive(100);// Обнуляем очередь от сообщений
+        Message message = (Message) e.nextElement();
+        queueReceiver.receive();
+        //Message message = queueReceiver.receive(100);// Обнуляем очередь от сообщений
       }
-      browser.close();
-    } catch (JMSException e) {
-      e.printStackTrace();
-    }
+      browser.close();*/
+
+
+
   }
 
   public static void main(String[] args) {
@@ -119,7 +120,7 @@ public class WorkWithMQ {
 
 
       //Обнуляем очередь и делаем задержку на получение ответов от ПРОП
-      clearQueue(queueSession, queueReciev, queueReceiver);
+      clearQueue(queueReceiver);
 
 
 
@@ -132,6 +133,7 @@ public class WorkWithMQ {
       myStr = myStr.replaceAll(">.*</csdo:EDocId>", ">" + uuid().toString() + "</csdo:EDocId>");
       myStr = myStr.replaceAll(">.*</casdo:BorderCheckPointCode>", ">PPG.RU.UA." + randInt(10000000, 99999999) + "</casdo:BorderCheckPointCode>");
 
+      //Запись отправляемого MSG в файл для статистики
       File file_w1 = new File("D:\\Java_learn\\EEC\\EEC\\EEC_PROP\\src\\main\\resources\\OP_02\\FLC\\MSG.001_TRN.001\\Log\\MSG_01.xml");
       FileWriter writerInit = new FileWriter(file_w1);
       writerInit.write(myStr);
@@ -139,9 +141,9 @@ public class WorkWithMQ {
       writerInit.close();
 
 
-      //передаем в сессию наше сообщение
+      //передаем сообщение
       TextMessage textMessage = queueSession.createTextMessage(myStr);
-      //в случае необходимости устанавливаем параметры сообщения
+      //в случае необходимости устанавливаем параметры для отправляемого сообщения
       //textMessage.setJMSReplyTo(queueReciever);
       //textMessage.setJMSType("mcd://xmlns");//message type
       //textMessage.setJMSExpiration(50*1000);//message expiration
@@ -162,13 +164,13 @@ public class WorkWithMQ {
       //String jmsCorrelationID = " JMSCorrelationID = '" + textMessage.getJMSMessageID() + "'";
 
 
-      Thread.sleep(3000);//задержка на получение ответа от ПРОП
+      Thread.sleep(4000);//задержка на получение ответа от ПРОП
 
 
       //Создаем браузер для наблюдения за очередью
       QueueBrowser browser = queueSession.createBrowser(queueReciev);
       Enumeration e = browser.getEnumeration();
-      StringBuilder test = new StringBuilder();
+      StringBuilder stringBuilder = new StringBuilder();
       while (e.hasMoreElements()) {
                /* Проба
                BytesMessage message = (BytesMessage) e.nextElement();
@@ -181,7 +183,8 @@ public class WorkWithMQ {
 
         //Получение сообщений
         Message message = (Message) e.nextElement();
-        test.append(onMessage(message)).append("\n");
+        stringBuilder.append(onMessage(message)).append("\n");
+        queueReceiver.receive();
         //String responseMsg = ((TextMessage) message).getText();
       }
 
@@ -190,11 +193,11 @@ public class WorkWithMQ {
       //boolean bool = test.toString().contains("<sgn:Description>Ошибка контроля</sgn:Description>");
       //System.out.println("Проверка - " + bool);
       //Обнуляем очередь
-      //clearQueue(queueSession, queueReciev, queueReceiver);
-      System.out.println("Сообщение получено");
+      clearQueue(queueReceiver);
+      System.out.println("Сообщение получено" + stringBuilder);
       File file_w = new File("D:\\Java_learn\\EEC\\EEC\\EEC_PROP\\src\\main\\resources\\OP_02\\FLC\\MSG.001_TRN.001\\Log\\01.xml");
       FileWriter writerResponse = new FileWriter(file_w);
-      writerResponse.write(test.toString());
+      writerResponse.write(stringBuilder.toString());
       writerResponse.flush();
       writerResponse.close();
 
