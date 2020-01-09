@@ -17,7 +17,7 @@ public class TEST {
     StringBuilder stringBuilder = new StringBuilder();
     for (int i = 1; i < kol_vo + 1; i++) {
       int randomNum = rand.nextInt(diapazon.length());
-      stringBuilder.append(String.valueOf(chars[randomNum]));
+      stringBuilder.append(chars[randomNum]);
     }
     return stringBuilder.toString() + "\nДлинна - " + stringBuilder.length();
   }
