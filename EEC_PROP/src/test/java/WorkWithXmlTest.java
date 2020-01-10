@@ -1,4 +1,5 @@
 import org.testng.annotations.Test;
+import ru.cbgr.EEC.WorkWithXml;
 
 import java.util.NoSuchElementException;
 

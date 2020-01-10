@@ -49,32 +49,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/WorkWithMQ.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="901">
-              <caret line="62" column="26" lean-forward="true" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/TestXML.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="6" lean-forward="true" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/HelperBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="47" column="47" lean-forward="true" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
+            <state relative-caret-position="409">
+              <caret line="150" column="53" selection-start-line="150" selection-start-column="53" selection-end-line="150" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -83,8 +62,27 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/01.xml">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/src/test/java/TestValidXml.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="885">
+              <caret line="56" column="60" lean-forward="true" selection-start-line="56" selection-start-column="60" selection-end-line="56" selection-end-column="60" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/XPathBaseHelper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-255">
+              <caret line="15" column="50" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -127,21 +125,26 @@
         <option value="$PROJECT_DIR$/src/main/java/Api.java" />
         <option value="$PROJECT_DIR$/src/test/java/TestApi.java" />
         <option value="$PROJECT_DIR$/src/main/java/Scratch.java" />
-        <option value="$PROJECT_DIR$/src/test/java/TestXpath.java" />
         <option value="$PROJECT_DIR$/src/main/java/XPathExample.java" />
         <option value="$PROJECT_DIR$/src/main/java/XPathBaseHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/TEST.java" />
-        <option value="$PROJECT_DIR$/src/test/java/TestBase.java" />
         <option value="$PROJECT_DIR$/src/main/java/WorkWithMQ.java" />
-        <option value="$PROJECT_DIR$/src/test/java/TestXML.java" />
         <option value="$PROJECT_DIR$/src/main/java/HelperBase.java" />
+        <option value="$PROJECT_DIR$/src/test/java/TestXML.java" />
+        <option value="$PROJECT_DIR$/src/test/java/TestBase.java" />
+        <option value="$PROJECT_DIR$/src/test/java/TestXpath.java" />
+        <option value="$PROJECT_DIR$/src/test/java/TestXpath1.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/XPathBaseHelper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/HelperBase.java" />
+        <option value="$PROJECT_DIR$/src/test/java/TestValidXml.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="958" />
-    <option name="width" value="1610" />
-    <option name="height" value="1100" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1066" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -183,30 +186,6 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="EEC" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="EEC_PROP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EEC_PROP" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="EEC_PROP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EEC_PROP" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="MSG.001_TRN.001" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="EEC_PROP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EEC_PROP" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="MSG.001_TRN.001" type="462c0819:PsiDirectoryNode" />
-              <item name="Log" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="EEC_PROP" type="b2602c69:ProjectViewProjectNode" />
@@ -272,9 +251,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.WorkWithMQ">
+  <component name="RunManager" selected="TestNG.TestValidXml.test">
     <configuration name="TEST" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TEST" />
+      <option name="MAIN_CLASS_NAME" value="ru.cbgr.EEC.TEST" />
       <module name="PROP.EEC_PROP.main" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -287,24 +266,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="XPathBaseHelper" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="XPathBaseHelper" />
-      <module name="PROP.EEC_PROP.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="XPathExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="XPathExample" />
-      <module name="PROP.EEC_PROP.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestXpath.test" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="TestValidXml.test" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="PROP.EEC_PROP.test" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestXpath" />
+      <option name="MAIN_CLASS_NAME" value="TestValidXml" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestValidXml.test2" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="PROP.EEC_PROP.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestValidXml" />
+      <option name="METHOD_NAME" value="test2" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestXpath1.test" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="PROP.EEC_PROP.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestXpath1" />
       <option name="METHOD_NAME" value="test" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
@@ -315,11 +304,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.TestValidXml.test" />
+        <item itemvalue="TestNG.TestValidXml.test2" />
+        <item itemvalue="TestNG.TestXpath1.test" />
         <item itemvalue="Application.WorkWithMQ" />
         <item itemvalue="Application.TEST" />
-        <item itemvalue="TestNG.TestXpath.test" />
-        <item itemvalue="Application.XPathExample" />
-        <item itemvalue="Application.XPathBaseHelper" />
       </list>
     </recent_temporary>
   </component>
@@ -345,42 +334,42 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="WorkWithMongoTest_test - 2019.11.25 at 17h 37m 31s.xml">
-      <configuration name="WorkWithMongoTest.test" configurationId="TestNG" />
+    <history-entry file="TestXpath1_test - 2020.01.10 at 14h 46m 55s.xml">
+      <configuration name="TestXpath1.test" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="WorkWithMongoTest_test - 2019.11.25 at 17h 40m 17s.xml">
-      <configuration name="WorkWithMongoTest.test" configurationId="TestNG" />
+    <history-entry file="TestXpath1_test - 2020.01.10 at 14h 47m 11s.xml">
+      <configuration name="TestXpath1.test" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="WorkWithMongoTest_test - 2019.11.26 at 09h 20m 54s.xml">
-      <configuration name="WorkWithMongoTest.test" configurationId="TestNG" />
+    <history-entry file="TestXpath1_test - 2020.01.10 at 14h 47m 25s.xml">
+      <configuration name="TestXpath1.test" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestApi_test - 2019.12.02 at 11h 56m 35s.xml">
-      <configuration name="TestApi.test" configurationId="TestNG" />
+    <history-entry file="TestXpath1_test - 2020.01.10 at 14h 48m 14s.xml">
+      <configuration name="TestXpath1.test" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestXpath_test - 2019.12.02 at 12h 57m 00s.xml">
-      <configuration name="TestXpath.test" configurationId="TestNG" />
+    <history-entry file="TestValidXml_test - 2020.01.10 at 14h 48m 57s.xml">
+      <configuration name="TestValidXml.test" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestXpath_test - 2019.12.02 at 14h 10m 43s.xml">
-      <configuration name="TestXpath.test" configurationId="TestNG" />
+    <history-entry file="TestValidXml_test2 - 2020.01.10 at 14h 56m 17s.xml">
+      <configuration name="TestValidXml.test2" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestXpath_test - 2019.12.02 at 14h 10m 49s.xml">
-      <configuration name="TestXpath.test" configurationId="TestNG" />
+    <history-entry file="TestValidXml_test2 - 2020.01.10 at 14h 56m 51s.xml">
+      <configuration name="TestValidXml.test2" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestXpath_test - 2019.12.02 at 14h 11m 20s.xml">
-      <configuration name="TestXpath.test" configurationId="TestNG" />
+    <history-entry file="TestValidXml_test - 2020.01.10 at 15h 00m 40s.xml">
+      <configuration name="TestValidXml.test" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestXpath_test - 2019.12.02 at 14h 11m 44s.xml">
-      <configuration name="TestXpath.test" configurationId="TestNG" />
+    <history-entry file="TestValidXml_test - 2020.01.10 at 15h 02m 55s.xml">
+      <configuration name="TestValidXml.test" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestXpath_test - 2019.12.02 at 17h 06m 22s.xml">
-      <configuration name="TestXpath.test" configurationId="TestNG" />
+    <history-entry file="TestValidXml_test - 2020.01.10 at 15h 03m 18s.xml">
+      <configuration name="TestValidXml.test" configurationId="TestNG" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17857143" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17857143" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -388,9 +377,9 @@
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.3290461" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" weight="0.20042872" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.34029388" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3290461" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4989339" visible="true" weight="0.3279743" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3397642" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -567,28 +556,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/WorkWithMongo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/OP_02/FLC/MSG.001_TRN.001/FLC_01.xml">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/WorkWithXml.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Api.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/TestApi.java">
@@ -598,40 +567,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/XPathBaseHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="53" selection-start-line="53" selection-end-line="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/TestXpath.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/TEST.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" selection-start-line="13" selection-end-line="29" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/TestBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="7" selection-start-column="7" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -652,17 +587,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/TestXML.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/WorkWithMQ.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="6" lean-forward="true" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/WorkWithMQ.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/WorkWithMongo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="62" column="26" lean-forward="true" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
+        <state relative-caret-position="119">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/TEST.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/TestBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/WorkWithXml.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/TestXpath1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/XPathBaseHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255">
+          <caret line="15" column="50" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/TestValidXml.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="885">
+          <caret line="56" column="60" lean-forward="true" selection-start-line="56" selection-start-column="60" selection-end-line="56" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -671,8 +657,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/HelperBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="47" column="47" lean-forward="true" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
+        <state relative-caret-position="409">
+          <caret line="150" column="53" selection-start-line="150" selection-start-column="53" selection-end-line="150" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

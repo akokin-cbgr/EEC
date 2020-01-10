@@ -1,13 +1,15 @@
+package ru.cbgr.EEC;
+
 import net.sf.saxon.s9api.*;
 
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-class XPathBaseHelper {
+public class XPathBaseHelper {
 
   //Возвращает строку вырванную из файла по соответствующему xpath
-  public String go(String filePath, String xpath) {
+  public static String go(String filePath, String xpath) {
     Processor processor = new Processor(false);
     DocumentBuilder builder = processor.newDocumentBuilder();
     try {
@@ -23,7 +25,7 @@ class XPathBaseHelper {
     return null;
   }
 
-  private Map<String, String> getNamespaces() {
+  private static Map<String, String> getNamespaces() {
     return new HashMap<String, String>() {{
 
 
@@ -32,9 +34,9 @@ class XPathBaseHelper {
       put("xmlns", "http://www.w3.org/2000/xmlns/");
       put("fn", "http://www.w3.org/2005/xpath-functions");
       put("wsa", "http://www.w3.org/2005/08/addressing");
-      put("csdo", "urn:EEC:M:SimpleDataObjects:v0.4.4");
-      put("ccdo", "urn:EEC:M:ComplexDataObjects:v0.4.4");
-      put("doc", "urn:EEC:R:ProcessingResultDetails:v0.4.4");
+      put("csdo", "urn:EEC:M:SimpleDataObjects:v0.3.3");
+      put("ccdo", "urn:EEC:M:ComplexDataObjects:v0.3.3");
+      put("doc", "urn:EEC:R:ProcessingResultDetails:v0.3.4");
       put("fpcdo", "urn:EEC:M:FP:ComplexDataObjects:v1.0.0");
       put("fpsdo", "urn:EEC:M:FP:SimpleDataObjects:v1.0.0");
       put("addr", "urn:EEC:R:FP:DS:06:AntiDumpingDutyReport:v1.0.0");

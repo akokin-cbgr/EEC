@@ -1,3 +1,5 @@
+package ru.cbgr.EEC;
+
 import java.util.Random;
 
 public class TEST {

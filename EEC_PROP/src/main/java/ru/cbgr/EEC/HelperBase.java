@@ -136,18 +136,23 @@ public class HelperBase {
     return fileRaw;
   }
 
-  public static StringBuilder receiveMsgFromQueue(QueueSession queueSession, Queue queueReciev) throws JMSException {
+  public static StringBuilder receiveMsgFromQueue(QueueSession queueSession, Queue queueReciev) throws JMSException, IOException {
     //Создаем браузер для наблюдения за очередью
     QueueBrowser browser = queueSession.createBrowser(queueReciev);
     Enumeration e = browser.getEnumeration();
     StringBuilder stringBuilder = new StringBuilder();
+    int i = 0;
     while (e.hasMoreElements()) {
       //Получение сообщений
       Message message = (Message) e.nextElement();
       stringBuilder.append(onMessage(message)).append("\n");
+      writeSendingMsgToHdd(stringBuilder.toString().replaceAll("UTF","utf"), "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/" + i + ".xml");
+      i++;
+      stringBuilder.delete(0,stringBuilder.length());
       //queueReceiver.receive();
       //String responseMsg = ((TextMessage) message).getText();
     }
+
     System.out.println("Сообщение получено");
     browser.close();
     return stringBuilder;

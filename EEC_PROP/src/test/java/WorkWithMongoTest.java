@@ -1,6 +1,7 @@
 import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import ru.cbgr.EEC.WorkWithMongo;
 
 import java.util.NoSuchElementException;
 
