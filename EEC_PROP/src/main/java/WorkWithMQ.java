@@ -50,23 +50,19 @@ public class WorkWithMQ extends HelperBase{
 
       /*Создание сообщения на отправку*/
       //String myStr = getFile("OP_02/FLC/MSG.001_TRN.001/FLC_01.xml");//считываем из файла XML
-      String myStr = getFile("OP_02/FLC/MSG.001_TRN.001/MSG.001.xml");//считываем из файла XML
-      myStr = myStr.replaceAll(">urn:uuid:.*</wsa:MessageID>", ">urn:uuid:" + uuid().toString() + "</wsa:MessageID>");
-      myStr = myStr.replaceAll(">urn:uuid:.*</int:ConversationID>", ">urn:uuid:" + uuid().toString() + "</int:ConversationID>");
-      myStr = myStr.replaceAll(">urn:uuid:.*</int:ProcedureID>", ">urn:uuid:" + uuid().toString() + "</int:ProcedureID>");
-      myStr = myStr.replaceAll(">.*</csdo:EDocId>", ">" + uuid().toString() + "</csdo:EDocId>");
-      myStr = myStr.replaceAll(">.*</casdo:BorderCheckPointCode>", ">PPG.RU.UA." + randInt(10000000, 99999999) + "</casdo:BorderCheckPointCode>");
+      String fileInit = filePreparation("OP_02/FLC/MSG.001_TRN.001/MSG.001.xml");
+      fileInit = fileInit.replaceAll(">.*</casdo:BorderCheckPointCode>", ">PPG.RU.UA." + randInt(10000000, 99999999) + "</casdo:BorderCheckPointCode>");
 
       //Запись отправляемого MSG в файл для статистики
       File file_w1 = new File("D:\\Java_learn\\EEC\\EEC\\EEC_PROP\\src\\main\\resources\\OP_02\\FLC\\MSG.001_TRN.001\\Log\\MSG_01.xml");
       FileWriter writerInit = new FileWriter(file_w1);
-      writerInit.write(myStr);
+      writerInit.write(fileInit);
       writerInit.flush();
       writerInit.close();
 
 
       //передаем сообщение
-      TextMessage textMessage = queueSession.createTextMessage(myStr);
+      TextMessage textMessage = queueSession.createTextMessage(fileInit);
       //в случае необходимости устанавливаем параметры для отправляемого сообщения
       //textMessage.setJMSReplyTo(queueReciever);
       //textMessage.setJMSType("mcd://xmlns");//message type
@@ -108,7 +104,7 @@ public class WorkWithMQ extends HelperBase{
         //Получение сообщений
         Message message = (Message) e.nextElement();
         stringBuilder.append(onMessage(message)).append("\n");
-        queueReceiver.receive();
+        //queueReceiver.receive();
         //String responseMsg = ((TextMessage) message).getText();
       }
 
@@ -135,5 +131,14 @@ public class WorkWithMQ extends HelperBase{
     } catch (Exception e) {
       e.printStackTrace();
     }
+  }
+
+  private static String filePreparation(String filePath) {
+    String fileRaw = getFile(filePath);//считываем из файла XML
+    fileRaw = fileRaw.replaceAll(">urn:uuid:.*</wsa:MessageID>", ">urn:uuid:" + uuid().toString() + "</wsa:MessageID>");
+    fileRaw = fileRaw.replaceAll(">urn:uuid:.*</int:ConversationID>", ">urn:uuid:" + uuid().toString() + "</int:ConversationID>");
+    fileRaw = fileRaw.replaceAll(">urn:uuid:.*</int:ProcedureID>", ">urn:uuid:" + uuid().toString() + "</int:ProcedureID>");
+    fileRaw = fileRaw.replaceAll(">.*</csdo:EDocId>", ">" + uuid().toString() + "</csdo:EDocId>");
+    return fileRaw;
   }
 }
