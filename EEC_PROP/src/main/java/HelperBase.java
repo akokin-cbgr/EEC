@@ -1,5 +1,6 @@
 import javax.jms.*;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Random;
@@ -102,5 +103,41 @@ public class HelperBase {
         //Message message = queueReceiver.receive(100);// Обнуляем очередь от сообщений
       }
       browser.close();*/
+  }
+
+  static void writeSendingMsgToHdd(String fileInit, String filePath) throws IOException {
+    //Запись отправляемого MSG в файл для статистики
+    File file = new File(filePath);
+    FileWriter writerInit = new FileWriter(file);
+    writerInit.write(fileInit);
+    writerInit.flush();
+    writerInit.close();
+  }
+
+  static void sendMsg(QueueSession queueSession, QueueSender queueSender, String fileInit) throws JMSException {
+    TextMessage textMessage = queueSession.createTextMessage(fileInit);
+    //в случае необходимости устанавливаем параметры для отправляемого сообщения
+    //textMessage.setJMSReplyTo(queueReciever);
+    //textMessage.setJMSType("mcd://xmlns");//message type
+    //textMessage.setJMSExpiration(50*1000);//message expiration
+    //textMessage.setJMSDeliveryMode(DeliveryMode.PERSISTENT); //message delivery mode either persistent or non-persistemnt
+    //queueSender.setTimeToLive(50*1000);// установка времени жизни сообщения
+    queueSender.send(textMessage);//отправляем в очередь ранее созданное сообщение
+    System.out.println("Сообщение отправлено");
+  }
+
+  /*Вариант получения JMSCorrelationID*/
+  //System.out.println("after sending a message we get message id "+ textMessage.getJMSMessageID());
+  //String jmsCorrelationID = " JMSCorrelationID = '" + textMessage.getJMSMessageID() + "'";
+
+
+
+  static String filePreparation(String filePath) {
+    String fileRaw = getFile(filePath);//считываем из файла XML
+    fileRaw = fileRaw.replaceAll(">urn:uuid:.*</wsa:MessageID>", ">urn:uuid:" + uuid().toString() + "</wsa:MessageID>");
+    fileRaw = fileRaw.replaceAll(">urn:uuid:.*</int:ConversationID>", ">urn:uuid:" + uuid().toString() + "</int:ConversationID>");
+    fileRaw = fileRaw.replaceAll(">urn:uuid:.*</int:ProcedureID>", ">urn:uuid:" + uuid().toString() + "</int:ProcedureID>");
+    fileRaw = fileRaw.replaceAll(">.*</csdo:EDocId>", ">" + uuid().toString() + "</csdo:EDocId>");
+    return fileRaw;
   }
 }

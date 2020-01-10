@@ -2,13 +2,11 @@ import com.ibm.mq.jms.MQQueueConnectionFactory;
 
 import javax.jms.Queue;
 import javax.jms.*;
-import java.io.File;
-import java.io.FileWriter;
 import java.util.*;
 
 import static com.ibm.mq.jms.JMSC.MQJMS_TP_CLIENT_MQ_TCPIP;
 
-public class WorkWithMQ extends HelperBase{
+public class WorkWithMQ extends HelperBase {
 
 
   public static void main(String[] args) {
@@ -21,11 +19,9 @@ public class WorkWithMQ extends HelperBase{
       mqQueueConnectionFactory.setPort(1414);
       mqQueueConnectionFactory.setQueueManager("RU.IIS.QM");
       mqQueueConnectionFactory.setTransportType(MQJMS_TP_CLIENT_MQ_TCPIP);
-
       QueueConnection queueConnection = mqQueueConnectionFactory.createQueueConnection("", "");//создаем соединение и запускаем сессию
       queueConnection.start();
       QueueSession queueSession = queueConnection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
-
       /*Создаем очереди отправки и получения*/
       Queue queueSend = queueSession.createQueue("GATEWAY.EXT.IN");
       Queue queueReciev = queueSession.createQueue("Q.ADDR5");
@@ -33,17 +29,7 @@ public class WorkWithMQ extends HelperBase{
       QueueReceiver queueReceiver = queueSession.createReceiver(queueReciev);//указываем очередь откуда читать ответное сообщение
 
 
-      /*ЧЕРНОВИК Create text message */
-      /*File file = new File("resources/MSG_2.xml");//считываем из файла
-      FileReader fileReader = new FileReader(file);//Создание объекта FileReader
-      int b = (int) file.length();//вычисляем необходимую длинну массива исходя из длины XML
-      char[] a = new char[b];//Создаем массив символов с вычисленной ранее длинной
-      fileReader.read(a);//записываем в массив посимвольно весь файл
-      String myStr = new String(a).trim();//преобразуем массив символов в строку*/
-      //fileReader.close();
-
-
-      //Обнуляем очередь и делаем задержку на получение ответов от ПРОП
+      //Обнуляем очередь получения ответных сообщений
       clearQueue(queueReceiver);
 
 
@@ -51,39 +37,17 @@ public class WorkWithMQ extends HelperBase{
       /*Создание сообщения на отправку*/
       //String myStr = getFile("OP_02/FLC/MSG.001_TRN.001/FLC_01.xml");//считываем из файла XML
       String fileInit = filePreparation("OP_02/FLC/MSG.001_TRN.001/MSG.001.xml");
+
+      /*Генерация уникального ключа для данного ОП*/
       fileInit = fileInit.replaceAll(">.*</casdo:BorderCheckPointCode>", ">PPG.RU.UA." + randInt(10000000, 99999999) + "</casdo:BorderCheckPointCode>");
 
-      //Запись отправляемого MSG в файл для статистики
-      File file_w1 = new File("D:\\Java_learn\\EEC\\EEC\\EEC_PROP\\src\\main\\resources\\OP_02\\FLC\\MSG.001_TRN.001\\Log\\MSG_01.xml");
-      FileWriter writerInit = new FileWriter(file_w1);
-      writerInit.write(fileInit);
-      writerInit.flush();
-      writerInit.close();
+      /*Запись отправляемого MSG в файл*/
+      writeSendingMsgToHdd(fileInit, "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/MSG_01.xml");
 
+      /*Отправка сообщения*/
+      sendMsg(queueSession, queueSender, fileInit);
 
-      //передаем сообщение
-      TextMessage textMessage = queueSession.createTextMessage(fileInit);
-      //в случае необходимости устанавливаем параметры для отправляемого сообщения
-      //textMessage.setJMSReplyTo(queueReciever);
-      //textMessage.setJMSType("mcd://xmlns");//message type
-      //textMessage.setJMSExpiration(50*1000);//message expiration
-      //textMessage.setJMSDeliveryMode(DeliveryMode.PERSISTENT); //message delivery mode either persistent or non-persistemnt
-
-
-      //queueSender.setTimeToLive(50*1000);// установка времени жизни сообщения
-
-      //отправляем в очередь ранее созданное сообщение
-      queueSender.send(textMessage);
-      System.out.println("Сообщение отправлено");
-
-
-
-
-      /*Вариант получения JMSCorrelationID*/
-      //System.out.println("after sending a message we get message id "+ textMessage.getJMSMessageID());
-      //String jmsCorrelationID = " JMSCorrelationID = '" + textMessage.getJMSMessageID() + "'";
-
-
+      /*Установка задержки для того чтобы ПРОП успел сформировать ответные сообщения и они попали в тупиковую очередь*/
       Thread.sleep(4000);//задержка на получение ответа от ПРОП
 
 
@@ -92,15 +56,6 @@ public class WorkWithMQ extends HelperBase{
       Enumeration e = browser.getEnumeration();
       StringBuilder stringBuilder = new StringBuilder();
       while (e.hasMoreElements()) {
-               /* Проба
-               BytesMessage message = (BytesMessage) e.nextElement();
-                byte[] byteData = new byte[(int) message.getBodyLength()];
-                message.readBytes(byteData);
-                message.reset();
-                String stringMessage = new String(byteData);
-                System.out.println("Browse [" + stringMessage + "]");
-                System.out.println("Done");*/
-
         //Получение сообщений
         Message message = (Message) e.nextElement();
         stringBuilder.append(onMessage(message)).append("\n");
@@ -115,11 +70,7 @@ public class WorkWithMQ extends HelperBase{
       //Обнуляем очередь
       clearQueue(queueReceiver);
       System.out.println("Сообщение получено" + stringBuilder);
-      File file_w = new File("D:\\Java_learn\\EEC\\EEC\\EEC_PROP\\src\\main\\resources\\OP_02\\FLC\\MSG.001_TRN.001\\Log\\01.xml");
-      FileWriter writerResponse = new FileWriter(file_w);
-      writerResponse.write(stringBuilder.toString());
-      writerResponse.flush();
-      writerResponse.close();
+      writeSendingMsgToHdd(stringBuilder.toString(), "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/01.xml");
 
       browser.close();
       queueSender.close();
@@ -133,12 +84,4 @@ public class WorkWithMQ extends HelperBase{
     }
   }
 
-  private static String filePreparation(String filePath) {
-    String fileRaw = getFile(filePath);//считываем из файла XML
-    fileRaw = fileRaw.replaceAll(">urn:uuid:.*</wsa:MessageID>", ">urn:uuid:" + uuid().toString() + "</wsa:MessageID>");
-    fileRaw = fileRaw.replaceAll(">urn:uuid:.*</int:ConversationID>", ">urn:uuid:" + uuid().toString() + "</int:ConversationID>");
-    fileRaw = fileRaw.replaceAll(">urn:uuid:.*</int:ProcedureID>", ">urn:uuid:" + uuid().toString() + "</int:ProcedureID>");
-    fileRaw = fileRaw.replaceAll(">.*</csdo:EDocId>", ">" + uuid().toString() + "</csdo:EDocId>");
-    return fileRaw;
-  }
 }
