@@ -1,3 +1,5 @@
+package ru.cbgr.EEC;
+
 import javax.jms.Queue;
 import javax.jms.*;
 import java.io.File;
@@ -7,13 +9,13 @@ import java.util.*;
 
 public class HelperBase {
   /*Метод генерации UUID при помощи стандартной библиотеки из java.util*/
-  static UUID uuid() {
+  public static UUID uuid() {
     return UUID.randomUUID();
   }
 
   /*Генерация случайного числа из устанавливаемого диапазона значений в параметрах min и max соответственно
      Стандартно rand.nextInt() генерирует случайное число от 0 до указанного в параметре значения*/
-  static int randInt(int min, int max) {
+  public static int randInt(int min, int max) {
     Random rand = new Random();
     int randomNum = rand.nextInt((max - min) + 1) + min;
     return randomNum;
@@ -22,7 +24,7 @@ public class HelperBase {
   /*Генерация строки определенной длинны из определенного набора символов
       diapazon - набор символов из которых будет генерироваться строка
       kol_vo - длинна генерируемой строки*/
-  static String randString(String diapazon, int kol_vo) {
+  public static String randString(String diapazon, int kol_vo) {
     //проверки и вывод текста с ошибкой
     if (diapazon.equals("")) {
       System.out.println("ОШИБКА - Используемый диапазон значений не может быть пустым");
@@ -42,10 +44,10 @@ public class HelperBase {
     return stringBuilder.toString();
   }
 
-  static String getFile(String fileName) {
+  public static String getFile(String fileName) {
     StringBuilder result = new StringBuilder();
-    WorkWithMQ workWithMQ = new WorkWithMQ();
-    ClassLoader classLoader = workWithMQ.getClass().getClassLoader();
+    HelperBase helperBase = new HelperBase();
+    ClassLoader classLoader = helperBase.getClass().getClassLoader();
     File file = new File(Objects.requireNonNull(classLoader.getResource(fileName)).getFile());
     try (Scanner scanner = new Scanner(file)) {
       while (scanner.hasNextLine()) {
@@ -59,22 +61,18 @@ public class HelperBase {
   }
 
   /*Метод преобразования полученных файлов из очереди MQ в виде строки String*/
-  static String onMessage(Message message) {
+  public static String onMessage(Message message) {
     try {
-
       if (message instanceof BytesMessage) {
-
         BytesMessage bytesMessage = (BytesMessage) message;
         byte[] data = new byte[(int) bytesMessage.getBodyLength()];
         bytesMessage.readBytes(data);
         bytesMessage.reset();
         return new String(data);
       } else if (message instanceof TextMessage) {
-
         TextMessage textMessage = (TextMessage) message;
         return textMessage.getText();
       }
-
     } catch (JMSException jmsEx) {
       jmsEx.printStackTrace();
     }
@@ -82,7 +80,7 @@ public class HelperBase {
   }
 
   /*Метод очистки очереди IBM MQ. В качестве параметра передается очередь получатель*/
-  static void clearQueue(QueueReceiver queueReceiver) {
+  public static void clearQueue(QueueReceiver queueReceiver) {
     try {
       while (true) {
         Message receive = queueReceiver.receiveNoWait();
@@ -103,7 +101,7 @@ public class HelperBase {
       browser.close();*/
   }
 
-  static void writeSendingMsgToHdd(String fileInit, String filePath) throws IOException {
+  public static void writeSendingMsgToHdd(String fileInit, String filePath) throws IOException {
     //Запись отправляемого MSG в файл для статистики
     File file = new File(filePath);
     FileWriter writerInit = new FileWriter(file);
@@ -112,7 +110,7 @@ public class HelperBase {
     writerInit.close();
   }
 
-  static void sendMsg(QueueSession queueSession, QueueSender queueSender, String fileInit) throws JMSException {
+  public static void sendMsg(QueueSession queueSession, QueueSender queueSender, String fileInit) throws JMSException {
     TextMessage textMessage = queueSession.createTextMessage(fileInit);
     //в случае необходимости устанавливаем параметры для отправляемого сообщения
     //textMessage.setJMSReplyTo(queueReciever);
@@ -129,7 +127,7 @@ public class HelperBase {
   //String jmsCorrelationID = " JMSCorrelationID = '" + textMessage.getJMSMessageID() + "'";
 
 
-  static String filePreparation(String filePath) {
+  public static String filePreparation(String filePath) {
     String fileRaw = getFile(filePath);//считываем из файла XML
     fileRaw = fileRaw.replaceAll(">urn:uuid:.*</wsa:MessageID>", ">urn:uuid:" + uuid().toString() + "</wsa:MessageID>");
     fileRaw = fileRaw.replaceAll(">urn:uuid:.*</int:ConversationID>", ">urn:uuid:" + uuid().toString() + "</int:ConversationID>");
@@ -138,7 +136,7 @@ public class HelperBase {
     return fileRaw;
   }
 
-  static StringBuilder receiveMsgFromQueue(QueueSession queueSession, Queue queueReciev) throws JMSException {
+  public static StringBuilder receiveMsgFromQueue(QueueSession queueSession, Queue queueReciev) throws JMSException {
     //Создаем браузер для наблюдения за очередью
     QueueBrowser browser = queueSession.createBrowser(queueReciev);
     Enumeration e = browser.getEnumeration();

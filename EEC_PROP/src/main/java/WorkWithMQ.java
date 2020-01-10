@@ -1,4 +1,5 @@
 import com.ibm.mq.jms.MQQueueConnectionFactory;
+import ru.cbgr.EEC.HelperBase;
 
 import javax.jms.*;
 
