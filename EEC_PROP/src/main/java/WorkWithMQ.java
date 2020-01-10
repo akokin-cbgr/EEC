@@ -1,8 +1,6 @@
 import com.ibm.mq.jms.MQQueueConnectionFactory;
 
-import javax.jms.Queue;
 import javax.jms.*;
-import java.util.*;
 
 import static com.ibm.mq.jms.JMSC.MQJMS_TP_CLIENT_MQ_TCPIP;
 
@@ -28,11 +26,8 @@ public class WorkWithMQ extends HelperBase {
       QueueSender queueSender = queueSession.createSender(queueSend);//указываем в какую очередь отправить сообщение
       QueueReceiver queueReceiver = queueSession.createReceiver(queueReciev);//указываем очередь откуда читать ответное сообщение
 
-
-      //Обнуляем очередь получения ответных сообщений
+      /*Обнуляем очередь получения ответных сообщений*/
       clearQueue(queueReceiver);
-
-
 
       /*Создание сообщения на отправку*/
       //String myStr = getFile("OP_02/FLC/MSG.001_TRN.001/FLC_01.xml");//считываем из файла XML
@@ -50,29 +45,20 @@ public class WorkWithMQ extends HelperBase {
       /*Установка задержки для того чтобы ПРОП успел сформировать ответные сообщения и они попали в тупиковую очередь*/
       Thread.sleep(4000);//задержка на получение ответа от ПРОП
 
-
-      //Создаем браузер для наблюдения за очередью
-      QueueBrowser browser = queueSession.createBrowser(queueReciev);
-      Enumeration e = browser.getEnumeration();
-      StringBuilder stringBuilder = new StringBuilder();
-      while (e.hasMoreElements()) {
-        //Получение сообщений
-        Message message = (Message) e.nextElement();
-        stringBuilder.append(onMessage(message)).append("\n");
-        //queueReceiver.receive();
-        //String responseMsg = ((TextMessage) message).getText();
-      }
-
+      /*Вычитка ответных сообщений из очереди queueReciev и передача их в stringBuilder*/
+      StringBuilder stringBuilder = receiveMsgFromQueue(queueSession, queueReciev);
 
       //System.out.println("Сообщение получено \n " + test);
       //boolean bool = test.toString().contains("<sgn:Description>Ошибка контроля</sgn:Description>");
       //System.out.println("Проверка - " + bool);
-      //Обнуляем очередь
+
+      /*Обнуляем очередь получения ответных сообщений*/
       clearQueue(queueReceiver);
-      System.out.println("Сообщение получено" + stringBuilder);
+
+      /*Запись полученных MSG в файл*/
       writeSendingMsgToHdd(stringBuilder.toString(), "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/01.xml");
 
-      browser.close();
+
       queueSender.close();
       queueReceiver.close();
       queueSession.close();

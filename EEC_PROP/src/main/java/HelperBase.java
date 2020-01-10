@@ -1,11 +1,9 @@
+import javax.jms.Queue;
 import javax.jms.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Objects;
-import java.util.Random;
-import java.util.Scanner;
-import java.util.UUID;
+import java.util.*;
 
 public class HelperBase {
   /*Метод генерации UUID при помощи стандартной библиотеки из java.util*/
@@ -24,7 +22,7 @@ public class HelperBase {
   /*Генерация строки определенной длинны из определенного набора символов
       diapazon - набор символов из которых будет генерироваться строка
       kol_vo - длинна генерируемой строки*/
-  private static String randString(String diapazon, int kol_vo) {
+  static String randString(String diapazon, int kol_vo) {
     //проверки и вывод текста с ошибкой
     if (diapazon.equals("")) {
       System.out.println("ОШИБКА - Используемый диапазон значений не может быть пустым");
@@ -131,7 +129,6 @@ public class HelperBase {
   //String jmsCorrelationID = " JMSCorrelationID = '" + textMessage.getJMSMessageID() + "'";
 
 
-
   static String filePreparation(String filePath) {
     String fileRaw = getFile(filePath);//считываем из файла XML
     fileRaw = fileRaw.replaceAll(">urn:uuid:.*</wsa:MessageID>", ">urn:uuid:" + uuid().toString() + "</wsa:MessageID>");
@@ -140,4 +137,22 @@ public class HelperBase {
     fileRaw = fileRaw.replaceAll(">.*</csdo:EDocId>", ">" + uuid().toString() + "</csdo:EDocId>");
     return fileRaw;
   }
+
+  static StringBuilder receiveMsgFromQueue(QueueSession queueSession, Queue queueReciev) throws JMSException {
+    //Создаем браузер для наблюдения за очередью
+    QueueBrowser browser = queueSession.createBrowser(queueReciev);
+    Enumeration e = browser.getEnumeration();
+    StringBuilder stringBuilder = new StringBuilder();
+    while (e.hasMoreElements()) {
+      //Получение сообщений
+      Message message = (Message) e.nextElement();
+      stringBuilder.append(onMessage(message)).append("\n");
+      //queueReceiver.receive();
+      //String responseMsg = ((TextMessage) message).getText();
+    }
+    System.out.println("Сообщение получено");
+    browser.close();
+    return stringBuilder;
+  }
+
 }
