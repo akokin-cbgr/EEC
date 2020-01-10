@@ -48,7 +48,7 @@ public class TestValidXml extends HelperBase {
       sendMsg(queueSession, queueSender, fileInit);
 
       /*Установка задержки для того чтобы ПРОП успел сформировать ответные сообщения и они попали в тупиковую очередь*/
-      Thread.sleep(4000);//задержка на получение ответа от ПРОП
+      Thread.sleep(5000);//задержка на получение ответа от ПРОП
 
       /*Вычитка ответных сообщений из очереди queueReciev и передача их в stringBuilder*/
       //StringBuilder stringBuilder = receiveMsgFromQueue(queueSession, queueReciev);

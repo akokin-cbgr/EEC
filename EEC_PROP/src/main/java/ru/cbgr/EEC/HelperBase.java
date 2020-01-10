@@ -129,6 +129,7 @@ public class HelperBase {
 
   public static String filePreparation(String filePath) {
     String fileRaw = getFile(filePath);//считываем из файла XML
+    /*Производим замену UUID на сгенерированные*/
     fileRaw = fileRaw.replaceAll(">urn:uuid:.*</wsa:MessageID>", ">urn:uuid:" + uuid().toString() + "</wsa:MessageID>");
     fileRaw = fileRaw.replaceAll(">urn:uuid:.*</int:ConversationID>", ">urn:uuid:" + uuid().toString() + "</int:ConversationID>");
     fileRaw = fileRaw.replaceAll(">urn:uuid:.*</int:ProcedureID>", ">urn:uuid:" + uuid().toString() + "</int:ProcedureID>");
@@ -137,23 +138,31 @@ public class HelperBase {
   }
 
   public static StringBuilder receiveMsgFromQueue(QueueSession queueSession, Queue queueReciev) throws JMSException, IOException {
-    //Создаем браузер для наблюдения за очередью
-    QueueBrowser browser = queueSession.createBrowser(queueReciev);
-    Enumeration e = browser.getEnumeration();
-    StringBuilder stringBuilder = new StringBuilder();
-    int i = 0;
+    QueueBrowser browser = queueSession.createBrowser(queueReciev);//Создаем браузер для наблюдения за очередью
+    Enumeration e = browser.getEnumeration();//получаем Enumeration
+    StringBuilder stringBuilder = new StringBuilder();//создаем stringBuilder для записи в него сообщения из очереди
+    StringBuilder result = new StringBuilder();// создаем stringBuilder для формирования строки консоли о типах полученных сообщений
+    /*Цикл вычитки и последующей записи в соответствующие файлы полученных в очереди сообщений*/
     while (e.hasMoreElements()) {
-      //Получение сообщений
-      Message message = (Message) e.nextElement();
-      stringBuilder.append(onMessage(message)).append("\n");
-      writeSendingMsgToHdd(stringBuilder.toString().replaceAll("UTF","utf"), "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/" + i + ".xml");
-      i++;
-      stringBuilder.delete(0,stringBuilder.length());
+      Message message = (Message) e.nextElement(); //Получение сообщения
+      stringBuilder.append(onMessage(message)).append("\n"); // запись в stringBuilder вычитанного сообщения
+      /*Условия сортировки сообщений по типу*/
+      if (stringBuilder.toString().contains("P.MSG.PRS")) {
+        writeSendingMsgToHdd(stringBuilder.toString().replaceAll("UTF", "utf"), "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/MSG_PRS.xml");
+        result.append("MSG.PRS");
+      } else if (stringBuilder.toString().contains("P.MSG.ERR")) {
+        writeSendingMsgToHdd(stringBuilder.toString().replaceAll("UTF", "utf"), "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/MSG_ERR.xml");
+        result.append("MSG.ERR");
+      } else if (stringBuilder.toString().contains("P.CC.01.MSG.004")) {
+        writeSendingMsgToHdd(stringBuilder.toString().replaceAll("UTF", "utf"), "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/MSG_004.xml");
+        result.append(" и MSG.004");
+      }
+      stringBuilder.delete(0, stringBuilder.length());
       //queueReceiver.receive();
       //String responseMsg = ((TextMessage) message).getText();
     }
 
-    System.out.println("Сообщение получено");
+    System.out.println("Получено " + result); // формирование строки-отчета в консоли
     browser.close();
     return stringBuilder;
   }

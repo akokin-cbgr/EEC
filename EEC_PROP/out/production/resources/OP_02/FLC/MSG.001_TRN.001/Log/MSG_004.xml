@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Header xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:int="urn:EEC:Interaction:v1.0"><wsa:MessageID>urn:uuid:ffb8d720-ca90-4cb2-86d6-49e91adb5290</wsa:MessageID><int:ProcedureID>urn:uuid:24f1923b-3511-4d36-ac78-6443eb3e3a82</int:ProcedureID><int:ConversationID>urn:uuid:9d8c0954-1128-4aab-a2b2-5994b0717438</int:ConversationID><wsa:To>EAEU://RU/CP/P.CC.01/P.CC.01.ACT.001AT</wsa:To><wsa:Action>int://CP/P.CC.01/1.0.0/P.CC.01.PRC.001/P.CC.01.TRN.001/P.CC.01.MSG.004</wsa:Action><wsa:ReplyTo><wsa:Address>EAEU://EEC/CP/P.CC.01/P.ACT.001</wsa:Address></wsa:ReplyTo><wsa:RelatesTo>urn:uuid:fd20483e-a64c-4535-a606-bc6462169fe8</wsa:RelatesTo><int:Integration>
+                        <int:TrackID>urn:uuid:7aca0d32-31c8-48e8-a9a8-a721dffd14b5</int:TrackID>
+                        <int:AcceptTime>2020-01-10T15:43:54+03:00</int:AcceptTime>
+                    </int:Integration></soap:Header><soap:Body><doc:ProcessingResultDetails xmlns:doc="urn:EEC:R:ProcessingResultDetails:v0.3.4" xmlns:casdo="urn:EEC:M:CA:SimpleDataObjects:v1.2.6" xmlns:ns14="urn:EEC:SignedData:v1.0:EDoc" xmlns:ccdo="urn:EEC:M:ComplexDataObjects:v0.3.3" xmlns:pcp="urn:EEC:R:CA:CC:02:CheckPointPassport:v1.0.0" xmlns:ns12="http://dsign.mscp.eec" xmlns:ns13="http://www.w3.org/2000/09/xmldsig#" xmlns:ns6="urn:EEC:R:ProcessingResultDetails:v1.0.0" xmlns:ns10="urn:EEC:R:CA:CC:04:ArrivePointList:v1.0.0" xmlns:ns8="urn:EEC:R:ResourceStatusDetails:v0.3.3" xmlns:csdo="urn:EEC:M:SimpleDataObjects:v0.3.3" xmlns:ns11="urn:EEC:R:ResourceStatusDetails:v1.0.0" xmlns:cpl="urn:EEC:R:CA:CC:01:CheckPointList:v1.0.0" xmlns:cacdo="urn:EEC:M:CA:ComplexDataObjects:v1.2.6">
+    <ccdo:EDocHeader>
+        <csdo:InfEnvelopeCode>P.CC.01.MSG.004</csdo:InfEnvelopeCode>
+        <csdo:EDocCode>R.006</csdo:EDocCode>
+        <csdo:EDocId>ed9badfb-2011-4b45-a13c-d089c5547334</csdo:EDocId>
+        <csdo:EDocRefId>c2442eb6-c476-4d36-bea5-c5362aef31b5</csdo:EDocRefId>
+        <csdo:EDocDateTime>2020-01-10T12:43:53.898Z</csdo:EDocDateTime>
+    </ccdo:EDocHeader>
+    <csdo:EventDateTime>2020-01-10T12:43:53.891Z</csdo:EventDateTime>
+    <csdo:ProcessingResultCode>3</csdo:ProcessingResultCode>
+    <csdo:DescriptionText>Сведения добавлены</csdo:DescriptionText>
+</doc:ProcessingResultDetails></soap:Body></soap:Envelope>
