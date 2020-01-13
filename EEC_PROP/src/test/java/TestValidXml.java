@@ -37,7 +37,7 @@ public class TestValidXml extends HelperBase {
 
       /*Создание сообщения на отправку*/
       //String myStr = getFile("OP_02/FLC/MSG.001_TRN.001/FLC_01.xml");//считываем из файла XML
-      String fileInit = filePreparation("OP_02/FLC/MSG.001_TRN.001/MSG.001.xml");
+      String fileInit = filePreparation("src/main/resources/OP_02/FLC/MSG.001_TRN.001/MSG.001.xml");
 
       /*Генерация уникального ключа для данного ОП*/
       fileInit = fileInit.replaceAll(">.*</casdo:BorderCheckPointCode>", ">PPG.RU.UA." + randInt(10000000, 99999999) + "</casdo:BorderCheckPointCode>");

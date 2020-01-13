@@ -1,24 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
-	<soap:Header xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:int="urn:EEC:Interaction:v1.0">
-		<wsa:MessageID>urn:uuid:160ec94f-2318-4da4-a135-3179f246d114</wsa:MessageID>
-		<int:ProcedureID>urn:uuid:a13c02f0-554a-446e-9720-661ced0a8086</int:ProcedureID>
-		<int:ConversationID>urn:uuid:2c28c621-92a6-4503-b9c8-42e53abbb6de</int:ConversationID>
-		<wsa:To>EAEU://RU/CP/P.CC.01/P.CC.01.ACT.001AT</wsa:To>
-		<wsa:Action>int://CP/P.CC.01/1.0.0/P.CC.01.PRC.001/P.CC.01.TRN.001/P.MSG.PRS</wsa:Action>
-		<wsa:ReplyTo>
-			<wsa:Address>EAEU://EEC/CP/P.CC.01/P.ACT.001</wsa:Address>
-		</wsa:ReplyTo>
-		<wsa:RelatesTo>urn:uuid:214520a3-a764-48b2-b48c-ec70ada06cee</wsa:RelatesTo>
-		<int:Integration>
-			<int:TrackID>urn:uuid:139a8150-843a-45f0-b76a-089218c9abf8</int:TrackID>
-			<int:AcceptTime>2020-01-13T12:03:29+03:00</int:AcceptTime>
-		</int:Integration>
-	</soap:Header>
-	<soap:Body>
-		<sgn:ProcessingReceipt xmlns:sgn="urn:EEC:signal:v1.0">
-			<sgn:SignalId>61e875f3-4c14-46a2-9e17-6af0dc34a3cd</sgn:SignalId>
-			<sgn:DateTime>2020-01-13T12:03:29.253</sgn:DateTime>
-		</sgn:ProcessingReceipt>
-	</soap:Body>
-</soap:Envelope>
+<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Header xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:int="urn:EEC:Interaction:v1.0"><wsa:MessageID>urn:uuid:820e9306-c2fa-45be-b1f0-e09b05e3d889</wsa:MessageID><int:ProcedureID>urn:uuid:464b6fc3-7d60-4980-9f08-15464718cfe6</int:ProcedureID><int:ConversationID>urn:uuid:cdcbfee9-8829-40b7-b30b-ec9a79dc6e82</int:ConversationID><wsa:To>EAEU://RU/CP/P.CC.01/P.CC.01.ACT.001AT</wsa:To><wsa:Action>int://CP/P.CC.01/1.0.0/P.CC.01.PRC.001/P.CC.01.TRN.001/P.MSG.PRS</wsa:Action><wsa:ReplyTo><wsa:Address>EAEU://EEC/CP/P.CC.01/P.ACT.001</wsa:Address></wsa:ReplyTo><wsa:RelatesTo>urn:uuid:9de3d5b4-2533-4319-93e1-482b5e0a24c0</wsa:RelatesTo><int:Integration>
+                        <int:TrackID>urn:uuid:b2368d81-a642-499d-8e47-39be1fd30e9a</int:TrackID>
+                        <int:AcceptTime>2020-01-13T15:26:15+03:00</int:AcceptTime>
+                    </int:Integration></soap:Header><soap:Body><sgn:ProcessingReceipt xmlns:sgn="urn:EEC:signal:v1.0"><sgn:SignalId>c525368a-8481-4573-94c1-f8070948afd5</sgn:SignalId><sgn:DateTime>2020-01-13T15:26:15.317</sgn:DateTime></sgn:ProcessingReceipt></soap:Body></soap:Envelope>

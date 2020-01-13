@@ -1,6 +1,10 @@
 package ru.cbgr.EEC;
 
+import org.w3c.dom.Document;
+
+import java.io.IOException;
 import java.util.Random;
+
 
 public class TEST {
 
@@ -32,9 +36,12 @@ public class TEST {
   }
 
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IOException {
     //System.out.println(randString1(100) + "\n");
-    System.out.println(randString("123456789", 4));
+    //System.out.println(randString("123456789", 4));
+    String test = HelperBase.getFile("src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_PRS.xml");
+    Document document = XmlStringFormatter.convertStringToDocument(test);
+    HelperBase.writeSendingMsgToHdd(XmlStringFormatter.toPrettyXmlString(document),"src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_PRS_2.xml");
 
   }
 }

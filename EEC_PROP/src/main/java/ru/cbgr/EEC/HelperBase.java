@@ -48,7 +48,7 @@ public class HelperBase {
     StringBuilder result = new StringBuilder();
     HelperBase helperBase = new HelperBase();
     ClassLoader classLoader = helperBase.getClass().getClassLoader();
-    File file = new File(Objects.requireNonNull(classLoader.getResource(fileName)).getFile());
+    File file = new File(fileName);
     try (Scanner scanner = new Scanner(file)) {
       while (scanner.hasNextLine()) {
         String line = scanner.nextLine();
@@ -170,20 +170,20 @@ public class HelperBase {
       /*Условия сортировки сообщений по типу*/
       if (stringBuilder.toString().contains("P.MSG.PRS")) {
         writeSendingMsgToHdd(stringBuilder.toString().replaceAll("UTF", "utf"), "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_PRS.xml");
-        result.append("MSG.PRS");
+        result.append("- MSG.PRS\n");
       } else if (stringBuilder.toString().contains("P.MSG.ERR")) {
         writeSendingMsgToHdd(stringBuilder.toString().replaceAll("UTF", "utf"), "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_ERR.xml");
-        result.append("MSG.ERR");
+        result.append("- MSG.ERR\n");
       } else if (stringBuilder.toString().contains("P.CC.01.MSG.004")) {
         writeSendingMsgToHdd(stringBuilder.toString().replaceAll("UTF", "utf"), "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_004.xml");
-        result.append(" и MSG.004");
+        result.append("- MSG.004\n");
       }
       stringBuilder.delete(0, stringBuilder.length());
       //queueReceiver.receive();
       //String responseMsg = ((TextMessage) message).getText();
     }
 
-    System.out.println("Получено " + result + "."); // формирование строки-отчета в консоли
+    System.out.println("Получено: \n" + result ); // формирование строки-отчета в консоли
     browser.close();
     return stringBuilder;
   }
