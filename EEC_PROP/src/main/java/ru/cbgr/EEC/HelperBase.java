@@ -1,5 +1,6 @@
 package ru.cbgr.EEC;
 
+import com.ibm.mq.jms.MQQueueConnectionFactory;
 import org.w3c.dom.Document;
 
 import javax.jms.Queue;
@@ -9,8 +10,22 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
+import static com.ibm.mq.jms.JMSC.MQJMS_TP_CLIENT_MQ_TCPIP;
+
 public class HelperBase {
 
+  /*Поля с путями к файлам*/
+  private static String pathCommon = "src/main/resources/";
+  protected static String pathToInitMessage = pathCommon + "OP_02/FLC/MSG.001_TRN.001/MSG.001.xml";
+  protected static String pathToLogForInitXML = pathCommon + "OP_02/FLC/MSG.001_TRN.001/Log/Init_MSG_001.xml";
+
+  /*Общие поля после инициализации*/
+  private static Queue queueReciev;
+  private static QueueSender queueSender;
+  private static QueueReceiver queueReceiver;
+  private static QueueSession queueSession;
+  private static Queue queueSend;
+  private static QueueConnection queueConnection;
 
   /*Метод генерации UUID при помощи стандартной библиотеки из java.util*/
   private static UUID uuid() {
@@ -218,4 +233,74 @@ public class HelperBase {
     return stringBuilder;
   }
 
+  protected static void init(String hostName, String channel, int port, String queueManager, String queueSending, String queueRecieve) throws JMSException {
+    //устанавливаем параметры подключения
+    MQQueueConnectionFactory mqQueueConnectionFactory = new MQQueueConnectionFactory();
+    mqQueueConnectionFactory.setHostName(hostName);
+    mqQueueConnectionFactory.setChannel(channel);
+    mqQueueConnectionFactory.setPort(port);
+    mqQueueConnectionFactory.setQueueManager(queueManager);
+    mqQueueConnectionFactory.setTransportType(MQJMS_TP_CLIENT_MQ_TCPIP);
+    //создаем соединение и запускаем сессию
+    queueConnection = mqQueueConnectionFactory.createQueueConnection("", "");
+    getQueueConnection().start();
+    queueSession = getQueueConnection().createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
+    /*Создаем очереди отправки и получения*/
+    queueSend = getQueueSession().createQueue(queueSending);
+    queueReciev = getQueueSession().createQueue(queueRecieve);
+    //указываем в какую очередь отправить сообщение
+    queueSender = getQueueSession().createSender(getQueueSend());
+    //указываем очередь откуда читать ответное сообщение
+    queueReceiver = getQueueSession().createReceiver(getQueueReciev());
+
+  }
+
+
+  protected static QueueReceiver getQueueReceiver() {
+    return queueReceiver;
+  }
+
+  private static void setQueueReceiver(QueueReceiver queueReceiver) {
+    HelperBase.queueReceiver = queueReceiver;
+  }
+
+  protected static Queue getQueueReciev() {
+    return queueReciev;
+  }
+
+  private static void setQueueReciev(Queue queueReciev) {
+    HelperBase.queueReciev = queueReciev;
+  }
+
+  protected static QueueSender getQueueSender() {
+    return queueSender;
+  }
+
+  private static void setQueueSender(QueueSender queueSender) {
+    HelperBase.queueSender = queueSender;
+  }
+
+  protected static QueueSession getQueueSession() {
+    return queueSession;
+  }
+
+  private static void setQueueSession(QueueSession queueSession) {
+    HelperBase.queueSession = queueSession;
+  }
+
+  private static Queue getQueueSend() {
+    return queueSend;
+  }
+
+  private static void setQueueSend(Queue queueSend) {
+    HelperBase.queueSend = queueSend;
+  }
+
+  protected static QueueConnection getQueueConnection() {
+    return queueConnection;
+  }
+
+  private static void setQueueConnection(QueueConnection queueConnection) {
+    HelperBase.queueConnection = queueConnection;
+  }
 }
