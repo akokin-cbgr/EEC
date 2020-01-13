@@ -10,7 +10,7 @@ import static com.ibm.mq.jms.JMSC.MQJMS_TP_CLIENT_MQ_TCPIP;
 import static org.testng.Assert.assertEquals;
 
 public class TestValidXml extends HelperBase {
-  String signalId = "";
+  private String ConversationID = "";
 
   @Test
   public void test() {
@@ -45,7 +45,7 @@ public class TestValidXml extends HelperBase {
       /*Запись отправляемого MSG в файл*/
       writeSendingMsgToHdd(fileInit, "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Init_MSG_001.xml");
 
-      signalId = variableFromXml("src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Init_MSG_001.xml", "//int:ConversationID/text()");
+      ConversationID = variableFromXml("src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Init_MSG_001.xml", "//int:ConversationID/text()");
 
       /*Отправка сообщения*/
       sendMsg(queueSession, queueSender, fileInit);
@@ -80,12 +80,11 @@ public class TestValidXml extends HelperBase {
 
   @Test
   public void test2() {
-    boolean exists = new File("src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_PRS.xml").exists();
     if (new File("src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_PRS.xml").exists()) {
       assertEquals(XPathBaseHelper.go("src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_PRS.xml",
-              "//int:ConversationID/text()"), signalId
+              "//int:ConversationID/text()"), ConversationID
       );
-      System.out.println("int:ConversationID - " + signalId);
+      System.out.println("int:ConversationID - " + ConversationID);
 
     }
   }

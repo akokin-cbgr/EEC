@@ -20,8 +20,9 @@ import javax.xml.xpath.XPathFactory;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
 
-public class XmlStringFormatter {
+class XmlStringFormatter {
 
   /*public static void main(String args[]) {
     // какая-то строка с неформатированным XML содержимым
@@ -37,7 +38,7 @@ public class XmlStringFormatter {
   }*/
 
   // в переменной indent указываем уровень(величину) отступа
-  public static String toPrettyXmlString( Document document) {
+  static String toPrettyXmlString(Document document) {
     try {
       // удаляем пробелы
       XPath xPath = XPathFactory.newInstance().newXPath();
@@ -72,11 +73,11 @@ public class XmlStringFormatter {
   }
 
   // метод для конвертации строки с XML разметкой в объект Document
-  public static Document convertStringToDocument(String xml) {
+  static Document convertStringToDocument(String xml) {
     try {
       return DocumentBuilderFactory.newInstance()
               .newDocumentBuilder()
-              .parse(new InputSource(new ByteArrayInputStream(xml.getBytes("utf-8"))));
+              .parse(new InputSource(new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))));
     } catch (SAXException | IOException | ParserConfigurationException e) {
       e.printStackTrace();
     }
