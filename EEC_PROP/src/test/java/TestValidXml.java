@@ -10,7 +10,22 @@ import static com.ibm.mq.jms.JMSC.MQJMS_TP_CLIENT_MQ_TCPIP;
 import static org.testng.Assert.assertEquals;
 
 public class TestValidXml extends HelperBase {
-  private String ConversationID = "";
+  /*Переменные для assert`ов*/
+  private String conversationID = "";
+
+  /*Переменные настройки подключения к шлюзу*/
+  private String hostName = "eek-test1-ip-mq1.tengry.com";
+  private String channel = "ESB.SVRCONN";
+  private int port = 1414;
+  private String queueManager = "RU.IIS.QM";
+  private String queueSending = "GATEWAY.EXT.IN";
+  private String queueRecieve = "Q.ADDR5";
+
+  /*Переменные с путями к файлам*/
+  private String pathCommon = "src/main/resources/";
+  private String pathToInitMessage = pathCommon + "OP_02/FLC/MSG.001_TRN.001/MSG.001.xml";
+  private String pathToLogForInitXML = pathCommon + "OP_02/FLC/MSG.001_TRN.001/Log/Init_MSG_001.xml";
+
 
   @Test
   public void test() {
@@ -18,17 +33,17 @@ public class TestValidXml extends HelperBase {
     try {
       //устанавливаем параметры подключения
       MQQueueConnectionFactory mqQueueConnectionFactory = new MQQueueConnectionFactory();
-      mqQueueConnectionFactory.setHostName("eek-test1-ip-mq1.tengry.com");
-      mqQueueConnectionFactory.setChannel("ESB.SVRCONN");
-      mqQueueConnectionFactory.setPort(1414);
-      mqQueueConnectionFactory.setQueueManager("RU.IIS.QM");
+      mqQueueConnectionFactory.setHostName(hostName);
+      mqQueueConnectionFactory.setChannel(channel);
+      mqQueueConnectionFactory.setPort(port);
+      mqQueueConnectionFactory.setQueueManager(queueManager);
       mqQueueConnectionFactory.setTransportType(MQJMS_TP_CLIENT_MQ_TCPIP);
       QueueConnection queueConnection = mqQueueConnectionFactory.createQueueConnection("", "");//создаем соединение и запускаем сессию
       queueConnection.start();
       QueueSession queueSession = queueConnection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
       /*Создаем очереди отправки и получения*/
-      Queue queueSend = queueSession.createQueue("GATEWAY.EXT.IN");
-      Queue queueReciev = queueSession.createQueue("Q.ADDR5");
+      Queue queueSend = queueSession.createQueue(queueSending);
+      Queue queueReciev = queueSession.createQueue(queueRecieve);
       QueueSender queueSender = queueSession.createSender(queueSend);//указываем в какую очередь отправить сообщение
       QueueReceiver queueReceiver = queueSession.createReceiver(queueReciev);//указываем очередь откуда читать ответное сообщение
 
@@ -36,16 +51,16 @@ public class TestValidXml extends HelperBase {
       clearQueue(queueReceiver);
 
       /*Создание сообщения на отправку*/
-      //String myStr = getFile("OP_02/FLC/MSG.001_TRN.001/FLC_01.xml");//считываем из файла XML
-      String fileInit = filePreparation("src/main/resources/OP_02/FLC/MSG.001_TRN.001/MSG.001.xml");
+      String fileInit = filePreparation(pathToInitMessage);
 
       /*Генерация уникального ключа для данного ОП*/
       fileInit = fileInit.replaceAll(">.*</casdo:BorderCheckPointCode>", ">PPG.RU.UA." + randInt(10000000, 99999999) + "</casdo:BorderCheckPointCode>");
 
       /*Запись отправляемого MSG в файл*/
-      writeMsgToHdd(fileInit, "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Init_MSG_001.xml");
+      writeMsgToHdd(fileInit, pathToLogForInitXML);
 
-      ConversationID = variableFromXml("src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Init_MSG_001.xml", "//int:ConversationID/text()");
+      /*Передаем в приватное поле сгенерированный conversationID для последующего использования в тесте с полученными ответными сообщениями*/
+      conversationID = variableFromXml(pathToLogForInitXML, "//int:conversationID/text()");
 
       /*Отправка сообщения*/
       sendMsg(queueSession, queueSender, fileInit);
@@ -54,12 +69,7 @@ public class TestValidXml extends HelperBase {
       Thread.sleep(5000);//задержка на получение ответа от ПРОП
 
       /*Вычитка ответных сообщений из очереди queueReciev и передача их в stringBuilder*/
-      //StringBuilder stringBuilder = receiveMsgFromQueue(queueSession, queueReciev);
       receiveMsgFromQueue(queueSession, queueReciev);
-
-      //System.out.println("Сообщение получено \n " + test);
-      //boolean bool = test.toString().contains("<sgn:Description>Ошибка контроля</sgn:Description>");
-      //System.out.println("Проверка - " + bool);
 
       /*Обнуляем очередь получения ответных сообщений*/
       clearQueue(queueReceiver);
@@ -79,12 +89,12 @@ public class TestValidXml extends HelperBase {
   }
 
   @Test
-  public void test2() {
-    if (new File("src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_PRS.xml").exists()) {
-      assertEquals(XPathBaseHelper.go("src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_PRS.xml",
-              "//int:ConversationID/text()"), ConversationID
+  public void testAssertFor_Msg_Prs() {
+    if (new File(pathCommon + "OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_PRS.xml").exists()) {
+      assertEquals(XPathBaseHelper.go(pathCommon + "OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_PRS.xml",
+              "//int:conversationID/text()"), conversationID
       );
-      System.out.println("int:ConversationID - " + ConversationID);
+      System.out.println("int:conversationID - " + conversationID);
 
     }
   }
