@@ -153,7 +153,7 @@ public class HelperBase {
     return fileRaw;
   }
 
-  public static String variableFromXml (String filepath, String xpath){
+  public static String variableFromXml(String filepath, String xpath) {
     String variable = XPathBaseHelper.go(filepath, xpath);
     return variable;
   }
@@ -177,13 +177,16 @@ public class HelperBase {
       } else if (stringBuilder.toString().contains("P.CC.01.MSG.004")) {
         writeSendingMsgToHdd(stringBuilder.toString().replaceAll("UTF", "utf"), "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_004.xml");
         result.append("- MSG.004\n");
+      } else {
+        writeSendingMsgToHdd(stringBuilder.toString().replaceAll("UTF", "utf"), "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_XXX.xml");
+        result.append("- MSG.XXX\n");
       }
       stringBuilder.delete(0, stringBuilder.length());
       //queueReceiver.receive();
       //String responseMsg = ((TextMessage) message).getText();
     }
 
-    System.out.println("Получено: \n" + result ); // формирование строки-отчета в консоли
+    System.out.println("Получено: \n" + result); // формирование строки-отчета в консоли
     browser.close();
     return stringBuilder;
   }
