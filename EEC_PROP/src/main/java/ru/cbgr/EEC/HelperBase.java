@@ -67,7 +67,7 @@ public class HelperBase {
 
 
   /*Метод считывания файла с HDD в строку*/
-  static String getFile(String fileName) {
+  private static String getFile(String fileName) {
     StringBuilder result = new StringBuilder();
     File file = new File(fileName);
     try (Scanner scanner = new Scanner(file)) {
@@ -190,7 +190,7 @@ public class HelperBase {
 
 
   /*Метод форматирования XML в читаемый вид*/
-  private static String formatXml(String unFormatedXml) throws IOException {
+  private static String formatXml(String unFormatedXml) {
     Document document = XmlStringFormatter.convertStringToDocument(unFormatedXml);
     return XmlStringFormatter.toPrettyXmlString(document);
   }
@@ -304,7 +304,7 @@ public class HelperBase {
     HelperBase.queueConnection = queueConnection;
   }
 
-  public static String getPathCommon() {
+  protected static String getPathCommon() {
     return pathCommon;
   }
 
