@@ -11,16 +11,15 @@ import java.util.*;
 
 public class HelperBase {
   /*Метод генерации UUID при помощи стандартной библиотеки из java.util*/
-  public static UUID uuid() {
+  private static UUID uuid() {
     return UUID.randomUUID();
   }
 
   /*Генерация случайного числа из устанавливаемого диапазона значений в параметрах min и max соответственно
      Стандартно rand.nextInt() генерирует случайное число от 0 до указанного в параметре значения*/
-  public static int randInt(int min, int max) {
+  protected static int randInt(int min, int max) {
     Random rand = new Random();
-    int randomNum = rand.nextInt((max - min) + 1) + min;
-    return randomNum;
+    return rand.nextInt((max - min) + 1) + min;
   }
 
   /*Генерация строки определенной длинны из определенного набора символов
@@ -46,7 +45,7 @@ public class HelperBase {
     return stringBuilder.toString();
   }
 
-  public static String getFile(String fileName) {
+  static String getFile(String fileName) {
     StringBuilder result = new StringBuilder();
     File file = new File(fileName);
     try (Scanner scanner = new Scanner(file)) {
@@ -61,7 +60,7 @@ public class HelperBase {
   }
 
   /*Метод преобразования полученных файлов из очереди MQ в виде строки String*/
-  public static String onMessage(Message message) {
+  private static String onMessage(Message message) {
     try {
       if (message instanceof BytesMessage) {
         BytesMessage bytesMessage = (BytesMessage) message;
@@ -80,7 +79,7 @@ public class HelperBase {
   }
 
   /*Метод очистки очереди IBM MQ. В качестве параметра передается очередь получатель*/
-  public static void clearQueue(QueueReceiver queueReceiver) {
+  protected static void clearQueue(QueueReceiver queueReceiver) {
     try {
       while (true) {
         Message receive = queueReceiver.receiveNoWait();
@@ -101,7 +100,7 @@ public class HelperBase {
       browser.close();*/
   }
 
-  public static void writeSendingMsgToHdd(String fileInit, String filePath) throws IOException {
+  protected static void writeSendingMsgToHdd(String fileInit, String filePath) throws IOException {
     //Запись отправляемого MSG в файл для статистики
     File file = new File(filePath);
     FileWriter writerInit = new FileWriter(file);
@@ -110,7 +109,7 @@ public class HelperBase {
     writerInit.close();
   }
 
-  public static void sendMsg(QueueSession queueSession, QueueSender queueSender, String fileInit) throws JMSException {
+  protected static void sendMsg(QueueSession queueSession, QueueSender queueSender, String fileInit) throws JMSException {
     StringBuilder result = new StringBuilder();// создаем stringBuilder для формирования строки консоли о типах полученных сообщений
     TextMessage textMessage = queueSession.createTextMessage(fileInit);
 
@@ -143,7 +142,7 @@ public class HelperBase {
   //String jmsCorrelationID = " JMSCorrelationID = '" + textMessage.getJMSMessageID() + "'";
 
 
-  public static String filePreparation(String filePath) {
+  protected static String filePreparation(String filePath) {
     String fileRaw = getFile(filePath);//считываем из файла XML
     /*Производим замену UUID на сгенерированные*/
     fileRaw = fileRaw.replaceAll(">urn:uuid:.*</wsa:MessageID>", ">urn:uuid:" + uuid().toString() + "</wsa:MessageID>");
@@ -153,17 +152,17 @@ public class HelperBase {
     return fileRaw;
   }
 
-  public static String variableFromXml(String filepath, String xpath) {
-    String variable = XPathBaseHelper.go(filepath, xpath);
-    return variable;
+  protected static String variableFromXml(String filepath, String xpath) {
+    return XPathBaseHelper.go(filepath, xpath);
   }
 
-  public static String formatXml (String unFormatedXml) throws IOException {
+  /*Метод форматирования XML в читаемый вид*/
+  private static String formatXml(String unFormatedXml) throws IOException {
     Document document = XmlStringFormatter.convertStringToDocument(unFormatedXml);
     return XmlStringFormatter.toPrettyXmlString(document);
   }
 
-  public static StringBuilder receiveMsgFromQueue(QueueSession queueSession, Queue queueReciev) throws JMSException, IOException {
+  protected static StringBuilder receiveMsgFromQueue(QueueSession queueSession, Queue queueReciev) throws JMSException, IOException {
     QueueBrowser browser = queueSession.createBrowser(queueReciev);//Создаем браузер для наблюдения за очередью
     Enumeration e = browser.getEnumeration();//получаем Enumeration
     StringBuilder stringBuilder = new StringBuilder();//создаем stringBuilder для записи в него сообщения из очереди
