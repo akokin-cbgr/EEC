@@ -38,7 +38,7 @@ public class WorkWithMQ extends HelperBase {
       fileInit = fileInit.replaceAll(">.*</casdo:BorderCheckPointCode>", ">PPG.RU.UA." + randInt(10000000, 99999999) + "</casdo:BorderCheckPointCode>");
 
       /*Запись отправляемого MSG в файл*/
-      writeSendingMsgToHdd(fileInit, "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/MSG_01.xml");
+      writeMsgToHdd(fileInit, "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/MSG_01.xml");
 
       /*Отправка сообщения*/
       sendMsg(queueSession, queueSender, fileInit);
@@ -57,7 +57,7 @@ public class WorkWithMQ extends HelperBase {
       clearQueue(queueReceiver);
 
       /*Запись полученных MSG в файл*/
-      writeSendingMsgToHdd(stringBuilder.toString(), "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/01.xml");
+      writeMsgToHdd(stringBuilder.toString(), "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/01.xml");
 
 
       queueSender.close();

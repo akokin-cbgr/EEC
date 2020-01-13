@@ -10,10 +10,13 @@ import java.io.IOException;
 import java.util.*;
 
 public class HelperBase {
+
+
   /*Метод генерации UUID при помощи стандартной библиотеки из java.util*/
   private static UUID uuid() {
     return UUID.randomUUID();
   }
+
 
   /*Генерация случайного числа из устанавливаемого диапазона значений в параметрах min и max соответственно
      Стандартно rand.nextInt() генерирует случайное число от 0 до указанного в параметре значения*/
@@ -22,9 +25,11 @@ public class HelperBase {
     return rand.nextInt((max - min) + 1) + min;
   }
 
+
   /*Генерация строки определенной длинны из определенного набора символов
       diapazon - набор символов из которых будет генерироваться строка
-      kol_vo - длинна генерируемой строки*/
+      kol_vo - длинна генерируемой строки
+  */
   public static String randString(String diapazon, int kol_vo) {
     //проверки и вывод текста с ошибкой
     if (diapazon.equals("")) {
@@ -45,6 +50,8 @@ public class HelperBase {
     return stringBuilder.toString();
   }
 
+
+  /*Метод считывания файла с HDD в строку*/
   static String getFile(String fileName) {
     StringBuilder result = new StringBuilder();
     File file = new File(fileName);
@@ -58,6 +65,7 @@ public class HelperBase {
     }
     return result.toString();
   }
+
 
   /*Метод преобразования полученных файлов из очереди MQ в виде строки String*/
   private static String onMessage(Message message) {
@@ -77,6 +85,7 @@ public class HelperBase {
     }
     return "";
   }
+
 
   /*Метод очистки очереди IBM MQ. В качестве параметра передается очередь получатель*/
   protected static void clearQueue(QueueReceiver queueReceiver) {
@@ -100,7 +109,9 @@ public class HelperBase {
       browser.close();*/
   }
 
-  protected static void writeSendingMsgToHdd(String fileInit, String filePath) throws IOException {
+
+  /*Метод записи передаваемого или получаемого сообщения на HDD*/
+  protected static void writeMsgToHdd(String fileInit, String filePath) throws IOException {
     //Запись отправляемого MSG в файл для статистики
     File file = new File(filePath);
     FileWriter writerInit = new FileWriter(file);
@@ -109,6 +120,8 @@ public class HelperBase {
     writerInit.close();
   }
 
+
+  /*Метод отправки инициализирубщего сообщения в соответствующую очередь MQ*/
   protected static void sendMsg(QueueSession queueSession, QueueSender queueSender, String fileInit) throws JMSException {
     StringBuilder result = new StringBuilder();// создаем stringBuilder для формирования строки консоли о типах полученных сообщений
     TextMessage textMessage = queueSession.createTextMessage(fileInit);
@@ -137,11 +150,13 @@ public class HelperBase {
     System.out.println("Сообщение " + result + " отправлено.");
   }
 
+
   /*Вариант получения JMSCorrelationID*/
   //System.out.println("after sending a message we get message id "+ textMessage.getJMSMessageID());
   //String jmsCorrelationID = " JMSCorrelationID = '" + textMessage.getJMSMessageID() + "'";
 
 
+  /*Метод подготовки XML к отправке в MQ, идет генерация UUID*/
   protected static String filePreparation(String filePath) {
     String fileRaw = getFile(filePath);//считываем из файла XML
     /*Производим замену UUID на сгенерированные*/
@@ -152,9 +167,12 @@ public class HelperBase {
     return fileRaw;
   }
 
+
+  /*Метод выборки значения из указанного файла XML согласно выражению xpath*/
   protected static String variableFromXml(String filepath, String xpath) {
     return XPathBaseHelper.go(filepath, xpath);
   }
+
 
   /*Метод форматирования XML в читаемый вид*/
   private static String formatXml(String unFormatedXml) throws IOException {
@@ -162,6 +180,8 @@ public class HelperBase {
     return XmlStringFormatter.toPrettyXmlString(document);
   }
 
+
+  /*Метод получения сообщения из определенной очереди MQ*/
   protected static StringBuilder receiveMsgFromQueue(QueueSession queueSession, Queue queueReciev) throws JMSException, IOException {
     QueueBrowser browser = queueSession.createBrowser(queueReciev);//Создаем браузер для наблюдения за очередью
     Enumeration e = browser.getEnumeration();//получаем Enumeration
@@ -173,19 +193,19 @@ public class HelperBase {
       stringBuilder.append(onMessage(message)).append("\n"); // запись в stringBuilder вычитанного сообщения
       /*Условия сортировки сообщений по типу*/
       if (stringBuilder.toString().contains("P.MSG.PRS")) {
-        writeSendingMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
+        writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
                 "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_PRS.xml");
         result.append("- MSG.PRS\n");
       } else if (stringBuilder.toString().contains("P.MSG.ERR")) {
-        writeSendingMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
+        writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
                 "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_ERR.xml");
         result.append("- MSG.ERR\n");
       } else if (stringBuilder.toString().contains("P.CC.01.MSG.004")) {
-        writeSendingMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
+        writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
                 "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_004.xml");
         result.append("- MSG.004\n");
       } else {
-        writeSendingMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
+        writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
                 "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_XXX.xml");
         result.append("- MSG.XXX\n");
       }
@@ -193,7 +213,6 @@ public class HelperBase {
       //queueReceiver.receive();
       //String responseMsg = ((TextMessage) message).getText();
     }
-
     System.out.println("Получено: \n" + result); // формирование строки-отчета в консоли
     browser.close();
     return stringBuilder;
