@@ -40,7 +40,7 @@ public class TestValidXml extends HelperBase {
       writeMsgToHdd(fileInit, pathToLogForInitXML);
 
       /*Передаем в приватное поле сгенерированный conversationID для последующего использования в тесте с полученными ответными сообщениями*/
-      conversationID = variableFromXml("src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Init_MSG_001.xml", "//int:conversationID/text()");
+      conversationID = variableFromXml("src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Init_MSG_001.xml", "//int:ConversationID/text()");
 
       /*Отправка сообщения*/
       sendMsg(getQueueSession(), getQueueSender(), fileInit);
@@ -72,9 +72,8 @@ public class TestValidXml extends HelperBase {
   public void testAssertFor_Msg_Prs() {
     if (new File(getPathCommon() + "OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_PRS.xml").exists()) {
       assertEquals(XPathBaseHelper.go(getPathCommon() + "OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_PRS.xml",
-              "//int:conversationID/text()"), conversationID
-      );
-      System.out.println("int:conversationID - " + conversationID);
+              "//int:ConversationID/text()"), conversationID );
+      System.out.println("int:ConversationID - " + conversationID);
 
     }
   }

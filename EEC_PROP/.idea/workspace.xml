@@ -52,8 +52,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/HelperBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+            <state relative-caret-position="223">
+              <caret line="188" column="3" lean-forward="true" selection-start-line="188" selection-start-column="3" selection-end-line="188" selection-end-column="3" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -73,8 +73,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/TestValidXml.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="46" selection-start-line="46" selection-end-line="46" />
+            <state relative-caret-position="-129">
+              <caret line="45" column="61" lean-forward="true" selection-start-line="45" selection-start-column="61" selection-end-line="45" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -266,7 +266,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="TestNG.TestValidXml.test">
+  <component name="RunManager" selected="TestNG.TestValidXml">
     <configuration name="TEST" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.cbgr.EEC.TEST" />
       <module name="PROP.EEC_PROP.main" />
@@ -315,11 +315,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestXpath1.test" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="TestValidXml.testAssertFor_Msg_Prs" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="PROP.EEC_PROP.test" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestXpath1" />
-      <option name="METHOD_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="TestValidXml" />
+      <option name="METHOD_NAME" value="testAssertFor_Msg_Prs" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -329,11 +329,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.TestValidXml.test" />
         <item itemvalue="TestNG.TestValidXml" />
+        <item itemvalue="TestNG.TestValidXml.testAssertFor_Msg_Prs" />
+        <item itemvalue="TestNG.TestValidXml.test" />
         <item itemvalue="Application.TEST" />
         <item itemvalue="TestNG.TestValidXml.test2" />
-        <item itemvalue="TestNG.TestXpath1.test" />
       </list>
     </recent_temporary>
   </component>
@@ -359,21 +359,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestValidXml_test - 2020.01.13 at 15h 24m 18s.xml">
-      <configuration name="TestValidXml.test" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestValidXml_test - 2020.01.13 at 15h 26m 20s.xml">
-      <configuration name="TestValidXml.test" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestValidXml_test - 2020.01.13 at 15h 26m 51s.xml">
-      <configuration name="TestValidXml.test" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestValidXml_test - 2020.01.13 at 15h 35m 24s.xml">
-      <configuration name="TestValidXml.test" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestValidXml_test - 2020.01.13 at 15h 37m 13s.xml">
-      <configuration name="TestValidXml.test" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="TestValidXml_test - 2020.01.13 at 17h 01m 59s.xml">
       <configuration name="TestValidXml.test" configurationId="TestNG" />
     </history-entry>
@@ -389,9 +374,25 @@
     <history-entry file="TestValidXml - 2020.01.13 at 17h 59m 38s.xml">
       <configuration name="TestValidXml" configurationId="TestNG" />
     </history-entry>
+    <history-entry file="TestValidXml_test - 2020.01.13 at 18h 01m 58s.xml">
+      <configuration name="TestValidXml.test" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="TestValidXml_test - 2020.01.13 at 18h 02m 05s.xml">
+      <configuration name="TestValidXml.test" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="TestValidXml_test - 2020.01.13 at 18h 02m 49s.xml">
+      <configuration name="TestValidXml.test" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="TestValidXml_test - 2020.01.13 at 18h 03m 19s.xml">
+      <configuration name="TestValidXml.test" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="TestValidXml_testAssertFor_Msg_Prs - 2020.01.13 at 18h 05m 03s.xml">
+      <configuration name="TestValidXml.testAssertFor_Msg_Prs" configurationId="TestNG" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17963752" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -501,18 +502,6 @@
     </ignored-roots>
     <MESSAGE value="удалена зависимость" />
     <option name="LAST_COMMIT_MESSAGE" value="удалена зависимость" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/TestValidXml.java</url>
-          <line>43</line>
-          <properties />
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -725,6 +714,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/HelperBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="188" column="3" lean-forward="true" selection-start-line="188" selection-start-column="3" selection-end-line="188" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/TEST.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -732,20 +731,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/HelperBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/TestValidXml.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="46" selection-start-line="46" selection-end-line="46" />
+        <state relative-caret-position="-129">
+          <caret line="45" column="61" lean-forward="true" selection-start-line="45" selection-start-column="61" selection-end-line="45" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
