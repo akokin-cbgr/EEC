@@ -1,5 +1,7 @@
 package ru.cbgr.EEC;
 
+import org.w3c.dom.Document;
+
 import javax.jms.Queue;
 import javax.jms.*;
 import java.io.File;
@@ -158,6 +160,11 @@ public class HelperBase {
     return variable;
   }
 
+  public static String formatXml (String unFormatedXml) throws IOException {
+    Document document = XmlStringFormatter.convertStringToDocument(unFormatedXml);
+    return XmlStringFormatter.toPrettyXmlString(document);
+  }
+
   public static StringBuilder receiveMsgFromQueue(QueueSession queueSession, Queue queueReciev) throws JMSException, IOException {
     QueueBrowser browser = queueSession.createBrowser(queueReciev);//Создаем браузер для наблюдения за очередью
     Enumeration e = browser.getEnumeration();//получаем Enumeration
@@ -169,16 +176,20 @@ public class HelperBase {
       stringBuilder.append(onMessage(message)).append("\n"); // запись в stringBuilder вычитанного сообщения
       /*Условия сортировки сообщений по типу*/
       if (stringBuilder.toString().contains("P.MSG.PRS")) {
-        writeSendingMsgToHdd(stringBuilder.toString().replaceAll("UTF", "utf"), "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_PRS.xml");
+        writeSendingMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
+                "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_PRS.xml");
         result.append("- MSG.PRS\n");
       } else if (stringBuilder.toString().contains("P.MSG.ERR")) {
-        writeSendingMsgToHdd(stringBuilder.toString().replaceAll("UTF", "utf"), "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_ERR.xml");
+        writeSendingMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
+                "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_ERR.xml");
         result.append("- MSG.ERR\n");
       } else if (stringBuilder.toString().contains("P.CC.01.MSG.004")) {
-        writeSendingMsgToHdd(stringBuilder.toString().replaceAll("UTF", "utf"), "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_004.xml");
+        writeSendingMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
+                "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_004.xml");
         result.append("- MSG.004\n");
       } else {
-        writeSendingMsgToHdd(stringBuilder.toString().replaceAll("UTF", "utf"), "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_XXX.xml");
+        writeSendingMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
+                "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_XXX.xml");
         result.append("- MSG.XXX\n");
       }
       stringBuilder.delete(0, stringBuilder.length());
