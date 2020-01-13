@@ -71,8 +71,8 @@ public class TestValidXml extends HelperBase {
 
   @Test
   public void testAssertFor_Msg_Prs() {
-    if (new File(pathCommon + "OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_PRS.xml").exists()) {
-      assertEquals(XPathBaseHelper.go(pathCommon + "OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_PRS.xml",
+    if (new File(getPathCommon() + "OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_PRS.xml").exists()) {
+      assertEquals(XPathBaseHelper.go(getPathCommon() + "OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_PRS.xml",
               "//int:conversationID/text()"), conversationID
       );
       System.out.println("int:conversationID - " + conversationID);

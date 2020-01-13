@@ -16,8 +16,8 @@ public class HelperBase {
 
   /*Поля с путями к файлам*/
   private static String pathCommon = "src/main/resources/";
-  protected static String pathToInitMessage = pathCommon + "OP_02/FLC/MSG.001_TRN.001/MSG.001.xml";
-  protected static String pathToLogForInitXML = pathCommon + "OP_02/FLC/MSG.001_TRN.001/Log/Init_MSG_001.xml";
+  protected static String pathToInitMessage = getPathCommon() + "OP_02/FLC/MSG.001_TRN.001/MSG.001.xml";
+  protected static String pathToLogForInitXML = getPathCommon() + "OP_02/FLC/MSG.001_TRN.001/Log/Init_MSG_001.xml";
 
   /*Общие поля после инициализации*/
   private static Queue queueReciev;
@@ -302,5 +302,13 @@ public class HelperBase {
 
   private static void setQueueConnection(QueueConnection queueConnection) {
     HelperBase.queueConnection = queueConnection;
+  }
+
+  public static String getPathCommon() {
+    return pathCommon;
+  }
+
+  public static void setPathCommon(String pathCommon) {
+    HelperBase.pathCommon = pathCommon;
   }
 }
