@@ -254,7 +254,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="TestNG.TestValidXml.test2">
+  <component name="RunManager" selected="TestNG.TestValidXml">
     <configuration name="WorkWithMQ" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="WorkWithMQ" />
       <module name="PROP.EEC_PROP.main" />
@@ -311,8 +311,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.TestValidXml.test2" />
         <item itemvalue="TestNG.TestValidXml" />
+        <item itemvalue="TestNG.TestValidXml.test2" />
         <item itemvalue="TestNG.TestValidXml.test" />
         <item itemvalue="TestNG.TestXpath1.test" />
         <item itemvalue="Application.WorkWithMQ" />

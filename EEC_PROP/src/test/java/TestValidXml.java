@@ -45,7 +45,7 @@ public class TestValidXml extends HelperBase {
       /*Запись отправляемого MSG в файл*/
       writeSendingMsgToHdd(fileInit, "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Init_MSG_001.xml");
 
-      signalId = variableFromXml("src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Init_MSG_001.xml", "//sgn:SignalId/text()");
+      signalId = variableFromXml("src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Init_MSG_001.xml", "//int:ConversationID/text()");
 
       /*Отправка сообщения*/
       sendMsg(queueSession, queueSender, fileInit);
@@ -83,9 +83,9 @@ public class TestValidXml extends HelperBase {
     boolean exists = new File("src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_PRS.xml").exists();
     if (new File("src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_PRS.xml").exists()) {
       assertEquals(XPathBaseHelper.go("src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_PRS.xml",
-              "//sgn:SignalId/text()"),signalId
-              );
-      System.out.println(signalId);
+              "//int:ConversationID/text()"), signalId
+      );
+      System.out.println("int:ConversationID - " + signalId);
 
     }
   }
