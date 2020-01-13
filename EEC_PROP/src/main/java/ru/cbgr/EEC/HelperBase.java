@@ -48,8 +48,6 @@ public class HelperBase {
 
   public static String getFile(String fileName) {
     StringBuilder result = new StringBuilder();
-    HelperBase helperBase = new HelperBase();
-    ClassLoader classLoader = helperBase.getClass().getClassLoader();
     File file = new File(fileName);
     try (Scanner scanner = new Scanner(file)) {
       while (scanner.hasNextLine()) {
