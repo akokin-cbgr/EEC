@@ -111,15 +111,31 @@ public class HelperBase {
   }
 
   public static void sendMsg(QueueSession queueSession, QueueSender queueSender, String fileInit) throws JMSException {
+    StringBuilder result = new StringBuilder();// создаем stringBuilder для формирования строки консоли о типах полученных сообщений
     TextMessage textMessage = queueSession.createTextMessage(fileInit);
-    //в случае необходимости устанавливаем параметры для отправляемого сообщения
+
+    /*в случае необходимости устанавливаем параметры для отправляемого сообщения*/
     //textMessage.setJMSReplyTo(queueReciever);
     //textMessage.setJMSType("mcd://xmlns");//message type
     //textMessage.setJMSExpiration(50*1000);//message expiration
     //textMessage.setJMSDeliveryMode(DeliveryMode.PERSISTENT); //message delivery mode either persistent or non-persistemnt
     //queueSender.setTimeToLive(50*1000);// установка времени жизни сообщения
+
+    if (textMessage.getText().contains("MSG.001")) {
+      result.append("MSG.001");
+    } else if (textMessage.getText().contains("MSG.002")) {
+      result.append("MSG.002");
+    } else if (textMessage.getText().contains("MSG.003")) {
+      result.append("MSG.003");
+    } else if (textMessage.getText().contains("MSG.004")) {
+      result.append("MSG.004");
+    } else if (textMessage.getText().contains("MSG.005")) {
+      result.append("MSG.005");
+    } else if (textMessage.getText().contains("MSG.006")) {
+      result.append("MSG.006");
+    }
     queueSender.send(textMessage);//отправляем в очередь ранее созданное сообщение
-    System.out.println("Сообщение отправлено");
+    System.out.println("Сообщение " + result + " отправлено.");
   }
 
   /*Вариант получения JMSCorrelationID*/
@@ -137,6 +153,11 @@ public class HelperBase {
     return fileRaw;
   }
 
+  public static String variableFromXml (String filepath, String xpath){
+    String variable = XPathBaseHelper.go(filepath, xpath);
+    return variable;
+  }
+
   public static StringBuilder receiveMsgFromQueue(QueueSession queueSession, Queue queueReciev) throws JMSException, IOException {
     QueueBrowser browser = queueSession.createBrowser(queueReciev);//Создаем браузер для наблюдения за очередью
     Enumeration e = browser.getEnumeration();//получаем Enumeration
@@ -148,13 +169,13 @@ public class HelperBase {
       stringBuilder.append(onMessage(message)).append("\n"); // запись в stringBuilder вычитанного сообщения
       /*Условия сортировки сообщений по типу*/
       if (stringBuilder.toString().contains("P.MSG.PRS")) {
-        writeSendingMsgToHdd(stringBuilder.toString().replaceAll("UTF", "utf"), "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/MSG_PRS.xml");
+        writeSendingMsgToHdd(stringBuilder.toString().replaceAll("UTF", "utf"), "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_PRS.xml");
         result.append("MSG.PRS");
       } else if (stringBuilder.toString().contains("P.MSG.ERR")) {
-        writeSendingMsgToHdd(stringBuilder.toString().replaceAll("UTF", "utf"), "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/MSG_ERR.xml");
+        writeSendingMsgToHdd(stringBuilder.toString().replaceAll("UTF", "utf"), "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_ERR.xml");
         result.append("MSG.ERR");
       } else if (stringBuilder.toString().contains("P.CC.01.MSG.004")) {
-        writeSendingMsgToHdd(stringBuilder.toString().replaceAll("UTF", "utf"), "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/MSG_004.xml");
+        writeSendingMsgToHdd(stringBuilder.toString().replaceAll("UTF", "utf"), "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_004.xml");
         result.append(" и MSG.004");
       }
       stringBuilder.delete(0, stringBuilder.length());
@@ -162,7 +183,7 @@ public class HelperBase {
       //String responseMsg = ((TextMessage) message).getText();
     }
 
-    System.out.println("Получено " + result); // формирование строки-отчета в консоли
+    System.out.println("Получено " + result + "."); // формирование строки-отчета в консоли
     browser.close();
     return stringBuilder;
   }

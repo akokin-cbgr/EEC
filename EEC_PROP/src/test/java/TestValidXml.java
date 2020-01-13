@@ -4,12 +4,13 @@ import ru.cbgr.EEC.HelperBase;
 import ru.cbgr.EEC.XPathBaseHelper;
 
 import javax.jms.*;
+import java.io.File;
 
 import static com.ibm.mq.jms.JMSC.MQJMS_TP_CLIENT_MQ_TCPIP;
 import static org.testng.Assert.assertEquals;
 
 public class TestValidXml extends HelperBase {
-
+  String signalId = "";
 
   @Test
   public void test() {
@@ -42,7 +43,9 @@ public class TestValidXml extends HelperBase {
       fileInit = fileInit.replaceAll(">.*</casdo:BorderCheckPointCode>", ">PPG.RU.UA." + randInt(10000000, 99999999) + "</casdo:BorderCheckPointCode>");
 
       /*Запись отправляемого MSG в файл*/
-      writeSendingMsgToHdd(fileInit, "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/MSG_01.xml");
+      writeSendingMsgToHdd(fileInit, "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Init_MSG_001.xml");
+
+      signalId = variableFromXml("src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Init_MSG_001.xml", "//sgn:SignalId/text()");
 
       /*Отправка сообщения*/
       sendMsg(queueSession, queueSender, fileInit);
@@ -77,12 +80,14 @@ public class TestValidXml extends HelperBase {
 
   @Test
   public void test2() {
-    assertEquals(XPathBaseHelper.go("src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/01.xml",
-            "//csdo:EDocId/text()"),
-            "5b6d4d94-bda7-4d1d-8a23-1bb8b2bb5629");
-    System.out.println(XPathBaseHelper.go("src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/01.xml",
-            "//csdo:EDocId/text()"));
+    boolean exists = new File("src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_PRS.xml").exists();
+    if (new File("src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_PRS.xml").exists()) {
+      assertEquals(XPathBaseHelper.go("src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_PRS.xml",
+              "//sgn:SignalId/text()"),signalId
+              );
+      System.out.println(signalId);
 
+    }
   }
 
 }
