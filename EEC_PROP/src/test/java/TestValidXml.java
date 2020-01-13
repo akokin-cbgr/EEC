@@ -19,14 +19,13 @@ public class TestValidXml extends HelperBase {
   private String queueRecieve = "Q.ADDR5";
 
 
-
   @Test
   public void test() {
 
     try {
 
       /*Инициализация подключения и создания необходимых переменных*/
-      init(hostName,channel,port,queueManager,queueSending,queueRecieve);
+      init(hostName, channel, port, queueManager, queueSending, queueRecieve);
 
       /*Обнуляем очередь получения ответных сообщений*/
       clearQueue(getQueueReceiver());
@@ -41,7 +40,7 @@ public class TestValidXml extends HelperBase {
       writeMsgToHdd(fileInit, pathToLogForInitXML);
 
       /*Передаем в приватное поле сгенерированный conversationID для последующего использования в тесте с полученными ответными сообщениями*/
-      conversationID = variableFromXml(pathToLogForInitXML, "//int:conversationID/text()");
+      conversationID = variableFromXml("src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Init_MSG_001.xml", "//int:conversationID/text()");
 
       /*Отправка сообщения*/
       sendMsg(getQueueSession(), getQueueSender(), fileInit);
