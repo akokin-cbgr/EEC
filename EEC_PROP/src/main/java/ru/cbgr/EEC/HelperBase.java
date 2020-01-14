@@ -16,8 +16,12 @@ public class HelperBase {
 
   /*Поля с путями к файлам*/
   private static String pathCommon = "src/main/resources/";
-  protected static String pathToInitMessage = getPathCommon() + "OP_02/FLC/MSG.001_TRN.001/MSG.001.xml";
-  protected static String pathToLogForInitXML = getPathCommon() + "OP_02/FLC/MSG.001_TRN.001/Log/Init_MSG_001.xml";
+  private static String opName = "OP_02" +"/";
+  private static String tipMSG = "FLC" +"/";
+  private static String tipTRN = "MSG.001_TRN.001" +"/";
+  private static String numberMSG = "MSG_001.xml";
+  protected static String pathToInitMessage = pathCommon + opName + tipMSG + tipTRN + numberMSG;
+  protected static String pathToLogForInitXML = pathCommon + pathCommon + opName + tipMSG + tipTRN + "Log/Init_" + numberMSG;
 
   /*Общие поля после инициализации*/
   private static Queue queueReciev;

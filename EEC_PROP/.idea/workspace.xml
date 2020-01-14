@@ -49,11 +49,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/HelperBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="188" column="3" lean-forward="true" selection-start-line="188" selection-start-column="3" selection-end-line="188" selection-end-column="3" />
+            <state relative-caret-position="357">
+              <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -70,11 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/TestValidXml.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-129">
-              <caret line="45" column="61" lean-forward="true" selection-start-line="45" selection-start-column="61" selection-end-line="45" selection-end-column="61" />
+            <state relative-caret-position="1003">
+              <caret line="65" column="27" selection-start-line="65" selection-start-column="27" selection-end-line="65" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -134,16 +134,15 @@
         <option value="$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/XPathBaseHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/XmlStringFormatter.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/TEST.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/HelperBase.java" />
         <option value="$PROJECT_DIR$/src/test/java/TestValidXml.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/HelperBase.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="2576" />
-    <option name="height" value="1426" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="618" />
+    <option name="width" value="1918" />
+    <option name="height" value="1410" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -151,7 +150,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -218,6 +216,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -359,9 +358,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestValidXml_test - 2020.01.13 at 17h 01m 59s.xml">
-      <configuration name="TestValidXml.test" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="TestValidXml_test - 2020.01.13 at 17h 23m 02s.xml">
       <configuration name="TestValidXml.test" configurationId="TestNG" />
     </history-entry>
@@ -389,12 +385,15 @@
     <history-entry file="TestValidXml_testAssertFor_Msg_Prs - 2020.01.13 at 18h 05m 03s.xml">
       <configuration name="TestValidXml.testAssertFor_Msg_Prs" configurationId="TestNG" />
     </history-entry>
+    <history-entry file="TestValidXml - 2020.01.13 at 18h 05m 44s.xml">
+      <configuration name="TestValidXml" configurationId="TestNG" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="618" y="0" width="1918" height="1410" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17963752" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18299246" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -404,7 +403,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3290461" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" weight="0.29689175" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3397642" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3397642" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -716,8 +715,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/HelperBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="188" column="3" lean-forward="true" selection-start-line="188" selection-start-column="3" selection-end-line="188" selection-end-column="3" />
+        <state relative-caret-position="357">
+          <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -733,8 +732,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/TestValidXml.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-129">
-          <caret line="45" column="61" lean-forward="true" selection-start-line="45" selection-start-column="61" selection-end-line="45" selection-end-column="61" />
+        <state relative-caret-position="1003">
+          <caret line="65" column="27" selection-start-line="65" selection-start-column="27" selection-end-line="65" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
