@@ -21,7 +21,7 @@ public class HelperBase {
   private static String tipTRN = "MSG.001_TRN.001" +"/";
   private static String numberMSG = "MSG_001.xml";
   protected static String pathToInitMessage = pathCommon + opName + tipMSG + tipTRN + numberMSG;
-  protected static String pathToLogForInitXML = pathCommon + pathCommon + opName + tipMSG + tipTRN + "Log/Init_" + numberMSG;
+  protected static String pathToLogForInitXML = pathCommon + opName + tipMSG + tipTRN + "Log/Init_" + numberMSG;
 
   /*Общие поля после инициализации*/
   private static Queue queueReciev;
