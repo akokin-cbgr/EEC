@@ -14,14 +14,22 @@ import static com.ibm.mq.jms.JMSC.MQJMS_TP_CLIENT_MQ_TCPIP;
 
 public class HelperBase {
 
+  /*Переменные настройки подключения к шлюзу*/
+  private static String hostName ;
+  private static String channel;
+  private static int port;
+  private static String queueManager;
+  private static String queueSending;
+  private static String queueRecieve;
+
   /*Поля с путями к файлам*/
   private static String pathCommon = "src/main/resources/";
-  private static String opName = "OP_02" +"/";
-  private static String tipMSG = "FLC" +"/";
-  private static String tipTRN = "MSG.001_TRN.001" +"/";
-  private static String numberMSG = "MSG_001.xml";
-  protected static String pathToInitMessage = pathCommon + opName + tipMSG + tipTRN + numberMSG;
-  protected static String pathToLogForInitXML = pathCommon + opName + tipMSG + tipTRN + "Log/Init_" + numberMSG;
+  private static String opName;
+  private static String tipMSG;
+  private static String tipTRN;
+  private static String numberMSG;
+  private static String pathToInitMessage = getPathCommon() + getOpName() + "/" + getTipMSG() + "/" + getTipTRN() + "/" + getNumberMSG();
+  private static String pathToLog = getPathCommon() + getOpName() + "/" + getTipMSG() + "/" + getTipTRN() + "/" + "Log/";
 
   /*Общие поля после инициализации*/
   private static Queue queueReciev;
@@ -213,19 +221,27 @@ public class HelperBase {
       /*Условия сортировки сообщений по типу*/
       if (stringBuilder.toString().contains("P.MSG.PRS")) {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                pathCommon + opName + tipMSG + tipTRN + "Log/Received_MSG_PRS.xml");
+                getPathToLog() + "Received_MSG_PRS.xml");
         result.append("- MSG.PRS\n");
+      } else if (stringBuilder.toString().contains("P.MSG.RCV")) {
+        writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
+                getPathToLog() + "Received_MSG_RCV.xml");
+        result.append("- MSG.RCV\n");
       } else if (stringBuilder.toString().contains("P.MSG.ERR")) {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                pathCommon + opName + tipMSG + tipTRN + "/Log/Received_MSG_ERR.xml");
+                getPathToLog() + "Received_MSG_ERR.xml");
         result.append("- MSG.ERR\n");
-      } else if (stringBuilder.toString().contains("P.CC.01.MSG.004")) {
+      } else if (stringBuilder.toString().contains("MSG.002")) {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                pathCommon + opName + tipMSG + tipTRN + "/Log/Received_MSG_004.xml");
+                getPathToLog() + "Received_MSG_002.xml");
+        result.append("- MSG.002\n");
+      } else if (stringBuilder.toString().contains("MSG.004")) {
+        writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
+                getPathToLog() + "Received_MSG_004.xml");
         result.append("- MSG.004\n");
       } else {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                pathCommon + opName + tipMSG + tipTRN + "/Log/Received_MSG_XXX.xml");
+                getPathToLog() + "Received_MSG_XXX.xml");
         result.append("- MSG.XXX\n");
       }
       stringBuilder.delete(0, stringBuilder.length());
@@ -258,7 +274,7 @@ public class HelperBase {
     queueReceiver = getQueueSession().createReceiver(getQueueReciev());
   }
 
-  protected static void close () throws JMSException {
+  protected static void close() throws JMSException {
     /*Остановка*/
     getQueueSender().close();
     getQueueReceiver().close();
@@ -272,7 +288,7 @@ public class HelperBase {
     return queueReceiver;
   }
 
-  private static void setQueueReceiver(QueueReceiver queueReceiver) {
+  protected static void setQueueReceiver(QueueReceiver queueReceiver) {
     HelperBase.queueReceiver = queueReceiver;
   }
 
@@ -280,7 +296,7 @@ public class HelperBase {
     return queueReciev;
   }
 
-  private static void setQueueReciev(Queue queueReciev) {
+  protected static void setQueueReciev(Queue queueReciev) {
     HelperBase.queueReciev = queueReciev;
   }
 
@@ -288,7 +304,7 @@ public class HelperBase {
     return queueSender;
   }
 
-  private static void setQueueSender(QueueSender queueSender) {
+  protected static void setQueueSender(QueueSender queueSender) {
     HelperBase.queueSender = queueSender;
   }
 
@@ -296,7 +312,7 @@ public class HelperBase {
     return queueSession;
   }
 
-  private static void setQueueSession(QueueSession queueSession) {
+  protected static void setQueueSession(QueueSession queueSession) {
     HelperBase.queueSession = queueSession;
   }
 
@@ -304,23 +320,119 @@ public class HelperBase {
     return queueSend;
   }
 
-  private static void setQueueSend(Queue queueSend) {
+  protected static void setQueueSend(Queue queueSend) {
     HelperBase.queueSend = queueSend;
   }
 
-  protected static QueueConnection getQueueConnection() {
+  private static QueueConnection getQueueConnection() {
     return queueConnection;
   }
 
-  private static void setQueueConnection(QueueConnection queueConnection) {
+  protected static void setQueueConnection(QueueConnection queueConnection) {
     HelperBase.queueConnection = queueConnection;
   }
 
-  protected static String getPathCommon() {
+  private static String getPathCommon() {
     return pathCommon;
   }
 
-  public static void setPathCommon(String pathCommon) {
+  protected static void setPathCommon(String pathCommon) {
     HelperBase.pathCommon = pathCommon;
+  }
+
+  private static String getOpName() {
+    return opName;
+  }
+
+  protected static void setOpName(String opName) {
+    HelperBase.opName = opName;
+  }
+
+  private static String getTipMSG() {
+    return tipMSG;
+  }
+
+  protected static void setTipMSG(String tipMSG) {
+    HelperBase.tipMSG = tipMSG;
+  }
+
+  private static String getTipTRN() {
+    return tipTRN;
+  }
+
+  protected static void setTipTRN(String tipTRN) {
+    HelperBase.tipTRN = tipTRN;
+  }
+
+  private static String getNumberMSG() {
+    return numberMSG;
+  }
+
+  protected static void setNumberMSG(String numberMSG) {
+    HelperBase.numberMSG = numberMSG;
+  }
+
+  protected static String getHostName() {
+    return hostName;
+  }
+
+  protected static void setHostName(String hostName) {
+    HelperBase.hostName = hostName;
+  }
+
+  protected static String getChannel() {
+    return channel;
+  }
+
+  protected static void setChannel(String channel) {
+    HelperBase.channel = channel;
+  }
+
+  protected static int getPort() {
+    return port;
+  }
+
+  protected static void setPort(int port) {
+    HelperBase.port = port;
+  }
+
+  protected static String getQueueManager() {
+    return queueManager;
+  }
+
+  protected static void setQueueManager(String queueManager) {
+    HelperBase.queueManager = queueManager;
+  }
+
+  protected static String getQueueSending() {
+    return queueSending;
+  }
+
+  protected static void setQueueSending(String queueSending) {
+    HelperBase.queueSending = queueSending;
+  }
+
+  protected static String getQueueRecieve() {
+    return queueRecieve;
+  }
+
+  protected static void setQueueRecieve(String queueRecieve) {
+    HelperBase.queueRecieve = queueRecieve;
+  }
+
+  protected static String getPathToInitMessage() {
+    return pathToInitMessage;
+  }
+
+  private static void setPathToInitMessage(String pathToInitMessage) {
+    HelperBase.pathToInitMessage = pathToInitMessage;
+  }
+
+  protected static String getPathToLog() {
+    return pathToLog;
+  }
+
+  private static void setPathToLog(String pathToLog) {
+    HelperBase.pathToLog = pathToLog;
   }
 }

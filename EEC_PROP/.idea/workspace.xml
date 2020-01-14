@@ -49,11 +49,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/HelperBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="264" column="30" lean-forward="true" selection-start-line="264" selection-start-column="30" selection-end-line="264" selection-end-column="30" />
+            <state relative-caret-position="510">
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -70,11 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/TestValidXml.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="940">
-              <caret line="64" column="5" lean-forward="true" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
+            <state relative-caret-position="-102">
+              <caret line="36" selection-start-line="36" selection-end-line="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -134,14 +134,14 @@
         <option value="$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/XPathBaseHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/XmlStringFormatter.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/TEST.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/HelperBase.java" />
         <option value="$PROJECT_DIR$/src/test/java/TestValidXml.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/HelperBase.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="618" />
-    <option name="width" value="1918" />
+    <option name="x" value="916" />
+    <option name="width" value="1644" />
     <option name="height" value="1410" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -358,42 +358,51 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestValidXml_test - 2020.01.13 at 17h 23m 02s.xml">
-      <configuration name="TestValidXml.test" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestValidXml_test - 2020.01.13 at 17h 46m 42s.xml">
-      <configuration name="TestValidXml.test" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestValidXml - 2020.01.13 at 17h 46m 57s.xml">
+    <history-entry file="TestValidXml - 2020.01.14 at 11h 20m 40s.xml">
       <configuration name="TestValidXml" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestValidXml - 2020.01.13 at 17h 59m 38s.xml">
+    <history-entry file="TestValidXml - 2020.01.14 at 13h 21m 02s.xml">
       <configuration name="TestValidXml" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestValidXml_test - 2020.01.13 at 18h 01m 58s.xml">
-      <configuration name="TestValidXml.test" configurationId="TestNG" />
+    <history-entry file="TestValidXml - 2020.01.14 at 13h 27m 13s.xml">
+      <configuration name="TestValidXml" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestValidXml_test - 2020.01.13 at 18h 02m 05s.xml">
-      <configuration name="TestValidXml.test" configurationId="TestNG" />
+    <history-entry file="TestValidXml - 2020.01.14 at 13h 27m 40s.xml">
+      <configuration name="TestValidXml" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestValidXml_test - 2020.01.13 at 18h 02m 49s.xml">
-      <configuration name="TestValidXml.test" configurationId="TestNG" />
+    <history-entry file="TestValidXml - 2020.01.14 at 13h 28m 10s.xml">
+      <configuration name="TestValidXml" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestValidXml_test - 2020.01.13 at 18h 03m 19s.xml">
-      <configuration name="TestValidXml.test" configurationId="TestNG" />
+    <history-entry file="TestValidXml - 2020.01.14 at 13h 28m 35s.xml">
+      <configuration name="TestValidXml" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestValidXml_testAssertFor_Msg_Prs - 2020.01.13 at 18h 05m 03s.xml">
-      <configuration name="TestValidXml.testAssertFor_Msg_Prs" configurationId="TestNG" />
+    <history-entry file="TestValidXml - 2020.01.14 at 13h 28m 51s.xml">
+      <configuration name="TestValidXml" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestValidXml - 2020.01.13 at 18h 05m 44s.xml">
+    <history-entry file="TestValidXml - 2020.01.14 at 13h 32m 57s.xml">
+      <configuration name="TestValidXml" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="TestValidXml - 2020.01.14 at 13h 36m 06s.xml">
+      <configuration name="TestValidXml" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="TestValidXml - 2020.01.14 at 13h 36m 20s.xml">
       <configuration name="TestValidXml" configurationId="TestNG" />
     </history-entry>
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="618" y="0" width="1918" height="1410" extended-state="0" />
+    <frame x="916" y="0" width="1644" height="1410" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18299246" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21464646" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -401,17 +410,17 @@
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3290461" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" weight="0.29689175" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3397642" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32889584" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4989339" visible="true" weight="0.29678935" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.33907595" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32967892" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3290461" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5010661" side_tool="true" weight="0.20042872" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3290461" />
       <window_info anchor="bottom" id="Build" order="10" weight="0.16827439" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32368702" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32341427" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" show_stripe_button="false" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -501,6 +510,18 @@
     </ignored-roots>
     <MESSAGE value="удалена зависимость" />
     <option name="LAST_COMMIT_MESSAGE" value="удалена зависимость" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/HelperBase.java</url>
+          <line>30</line>
+          <properties />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -720,20 +741,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/HelperBase.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/TestValidXml.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="264" column="30" lean-forward="true" selection-start-line="264" selection-start-column="30" selection-end-line="264" selection-end-column="30" />
+        <state relative-caret-position="-102">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/TestValidXml.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/HelperBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="940">
-          <caret line="64" column="5" lean-forward="true" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
+        <state relative-caret-position="510">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
