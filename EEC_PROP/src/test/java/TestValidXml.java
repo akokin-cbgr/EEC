@@ -58,10 +58,7 @@ public class TestValidXml extends HelperBase {
       //writeMsgToHdd(stringBuilder.toString().replaceAll("UTF","utf"), "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/01.xml");
 
       /*Остановка*/
-      getQueueSender().close();
-      getQueueReceiver().close();
-      getQueueSession().close();
-      getQueueConnection().close();
+      close();
 
     } catch (Exception e) {
       e.printStackTrace();

@@ -213,19 +213,19 @@ public class HelperBase {
       /*Условия сортировки сообщений по типу*/
       if (stringBuilder.toString().contains("P.MSG.PRS")) {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_PRS.xml");
+                pathCommon + opName + tipMSG + tipTRN + "Log/Received_MSG_PRS.xml");
         result.append("- MSG.PRS\n");
       } else if (stringBuilder.toString().contains("P.MSG.ERR")) {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_ERR.xml");
+                pathCommon + opName + tipMSG + tipTRN + "/Log/Received_MSG_ERR.xml");
         result.append("- MSG.ERR\n");
       } else if (stringBuilder.toString().contains("P.CC.01.MSG.004")) {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_004.xml");
+                pathCommon + opName + tipMSG + tipTRN + "/Log/Received_MSG_004.xml");
         result.append("- MSG.004\n");
       } else {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/Received_MSG_XXX.xml");
+                pathCommon + opName + tipMSG + tipTRN + "/Log/Received_MSG_XXX.xml");
         result.append("- MSG.XXX\n");
       }
       stringBuilder.delete(0, stringBuilder.length());
@@ -256,6 +256,14 @@ public class HelperBase {
     queueSender = getQueueSession().createSender(getQueueSend());
     //указываем очередь откуда читать ответное сообщение
     queueReceiver = getQueueSession().createReceiver(getQueueReciev());
+  }
+
+  protected static void close () throws JMSException {
+    /*Остановка*/
+    getQueueSender().close();
+    getQueueReceiver().close();
+    getQueueSession().close();
+    getQueueConnection().close();
 
   }
 
