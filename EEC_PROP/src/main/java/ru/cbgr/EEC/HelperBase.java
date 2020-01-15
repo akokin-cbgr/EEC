@@ -235,7 +235,6 @@ public class HelperBase {
   public StringBuilder receiveMsgFromQueue(int kolvoMSG, QueueSession queueSession, Queue queueReciev, String pathToLog) throws JMSException, IOException, InterruptedException {
     QueueBrowser browser = queueSession.createBrowser(queueReciev);//Создаем браузер для наблюдения за очередью
     Enumeration e = browser.getEnumeration();//получаем Enumeration
-    String messageSelector = browser.getMessageSelector();
     StringBuilder stringBuilder = new StringBuilder();//создаем stringBuilder для записи в него сообщения из очереди
     StringBuilder result = new StringBuilder();// создаем stringBuilder для формирования строки консоли о типах полученных сообщений
     int i = 0;
@@ -270,11 +269,17 @@ public class HelperBase {
                 pathToLog + "Received_MSG_XXX.xml");
         result.append("- MSG.XXX\n");
       }
+      if (stringBuilder.toString().equals("")){
+        System.out.println("IT`s VERY BAD because " +
+                "no MSG in " + queueRecieve);
+        return null;
+      }
       i++;
       stringBuilder.delete(0, stringBuilder.length());
       //queueReceiver.receive();
       //String responseMsg = ((TextMessage) message).getText();
     }
+
     System.out.println("Получено: \n" + result); // формирование строки-отчета в консоли
     browser.close();
     return stringBuilder;
