@@ -49,11 +49,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/HelperBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="849">
-              <caret line="295" lean-forward="true" selection-start-line="295" selection-end-line="295" />
+            <state relative-caret-position="101">
+              <caret line="274" column="7" lean-forward="true" selection-start-line="274" selection-start-column="7" selection-end-line="274" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -61,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/TestValidXml.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="85" column="21" selection-start-line="85" selection-start-column="21" selection-end-line="85" selection-end-column="21" />
+            <state relative-caret-position="-16">
+              <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -126,8 +126,8 @@
         <option value="$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/TEST.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/WorkWithMQ.java" />
         <option value="$PROJECT_DIR$/src/test/java/TestBase.java" />
-        <option value="$PROJECT_DIR$/src/test/java/TestValidXml.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/HelperBase.java" />
+        <option value="$PROJECT_DIR$/src/test/java/TestValidXml.java" />
       </list>
     </option>
   </component>
@@ -350,35 +350,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestValidXml - 2020.01.15 at 11h 17m 03s.xml">
+    <history-entry file="TestValidXml - 2020.01.15 at 14h 28m 17s.xml">
       <configuration name="TestValidXml" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestValidXml - 2020.01.15 at 11h 18m 14s.xml">
+    <history-entry file="TestValidXml - 2020.01.15 at 14h 29m 51s.xml">
       <configuration name="TestValidXml" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestValidXml_test - 2020.01.15 at 11h 19m 02s.xml">
-      <configuration name="TestValidXml.test" configurationId="TestNG" />
+    <history-entry file="TestValidXml - 2020.01.15 at 14h 31m 38s.xml">
+      <configuration name="TestValidXml" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestValidXml_test - 2020.01.15 at 11h 21m 15s.xml">
-      <configuration name="TestValidXml.test" configurationId="TestNG" />
+    <history-entry file="TestValidXml - 2020.01.15 at 14h 31m 52s.xml">
+      <configuration name="TestValidXml" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestValidXml_test - 2020.01.15 at 11h 23m 25s.xml">
-      <configuration name="TestValidXml.test" configurationId="TestNG" />
+    <history-entry file="TestValidXml - 2020.01.15 at 14h 33m 11s.xml">
+      <configuration name="TestValidXml" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestValidXml_test - 2020.01.15 at 11h 23m 48s.xml">
-      <configuration name="TestValidXml.test" configurationId="TestNG" />
+    <history-entry file="TestValidXml - 2020.01.15 at 14h 34m 38s.xml">
+      <configuration name="TestValidXml" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestValidXml_test - 2020.01.15 at 11h 27m 05s.xml">
-      <configuration name="TestValidXml.test" configurationId="TestNG" />
+    <history-entry file="TestValidXml - 2020.01.15 at 14h 35m 42s.xml">
+      <configuration name="TestValidXml" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestValidXml_test - 2020.01.15 at 11h 28m 05s.xml">
-      <configuration name="TestValidXml.test" configurationId="TestNG" />
+    <history-entry file="TestValidXml - 2020.01.15 at 14h 36m 13s.xml">
+      <configuration name="TestValidXml" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestValidXml_test - 2020.01.15 at 11h 29m 01s.xml">
-      <configuration name="TestValidXml.test" configurationId="TestNG" />
+    <history-entry file="TestValidXml - 2020.01.15 at 14h 37m 21s.xml">
+      <configuration name="TestValidXml" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestValidXml_test - 2020.01.15 at 11h 29m 25s.xml">
-      <configuration name="TestValidXml.test" configurationId="TestNG" />
+    <history-entry file="TestValidXml - 2020.01.15 at 14h 39m 51s.xml">
+      <configuration name="TestValidXml" configurationId="TestNG" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -392,7 +392,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18123667" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -502,18 +501,6 @@
     </ignored-roots>
     <MESSAGE value="удалена зависимость" />
     <option name="LAST_COMMIT_MESSAGE" value="удалена зависимость" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/HelperBase.java</url>
-          <line>239</line>
-          <properties />
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -747,20 +734,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/TestValidXml.java">
+    <entry file="jar://$JAVA_HOME$/jre/lib/rt.jar!/sun/reflect/DelegatingMethodAccessorImpl.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="85" column="21" selection-start-line="85" selection-start-column="21" selection-end-line="85" selection-end-column="21" />
+        <state relative-caret-position="208">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/HelperBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="274" column="7" lean-forward="true" selection-start-line="274" selection-start-column="7" selection-end-line="274" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/HelperBase.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/TestValidXml.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="849">
-          <caret line="295" lean-forward="true" selection-start-line="295" selection-end-line="295" />
+        <state relative-caret-position="-16">
+          <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

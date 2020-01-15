@@ -12,7 +12,6 @@ public class TestValidXml {
   private HelperBase base = new HelperBase();
   private String pathToInitMessage = "";
   private String pathToLog = "";
-  private int kolvoMSG ;
 
 
   /*Переменные для assert`ов*/
@@ -42,7 +41,6 @@ public class TestValidXml {
     base.setTipTRN("MSG.001_TRN.001");                 //Название папки проверяемой транзакции
     base.setNumberMSG("MSG_001.xml");                  //Название инициирующего сообщения
 
-    kolvoMSG = 2;                                  //Ожидаемое количество сообщений при проверке транзакции
 
 
     pathToInitMessage = base.getPathCommon() + base.getOpName() + "/" + base.getTipMSG() + "/" + base.getTipTRN() + "/" + base.getNumberMSG();
@@ -67,6 +65,9 @@ public class TestValidXml {
       /*ГЕНЕРАЦИЯ УНИКАЛЬНОГО КЛЮЧА ДЛЯ ДАННОГО ОП, В ОТПРАВЛЯЕМОЙ XML*/
       fileInit = fileInit.replaceAll(">.*</casdo:BorderCheckPointCode>", ">PPG.RU.UA." + base.randInt(10000000, 99999999) + "</casdo:BorderCheckPointCode>");
 
+      /*Очистка папки с логами от предыдущих файлов*/
+      base.deleteAllFilesFolder(pathToLog);
+
       /*Запись отправляемого MSG в файл*/
       base.writeMsgToHdd(fileInit, pathToLog + "Init_MSG_001.xml");
 
@@ -77,13 +78,13 @@ public class TestValidXml {
       base.sendMsg(base.getQueueSession(), base.getQueueSender(), fileInit);
 
       /*Установка задержки для того чтобы ПРОП успел сформировать ответные сообщения и они попали в тупиковую очередь*/
-      Thread.sleep(5000);//задержка на получение ответа от ПРОП
+      Thread.sleep(8000);//задержка на получение ответа от ПРОП
 
       /*Вычитка ответных сообщений из очереди queueReciev и передача их в stringBuilder
       * После этого проверка вернувшегося stringBuilder на null
       * Если будет null то тест упадет.
       * Внутри метода receiveMsgFromQueue реализовано условие возврата null если stringBuilder будет пустой по причине отсутствия сообщений в тупиковой очереди*/
-      assertNotNull(base.receiveMsgFromQueue(kolvoMSG, base.getQueueSession(), base.getQueueReciev(), pathToLog));
+      assertNotNull(base.receiveMsgFromQueue(base.getQueueSession(), base.getQueueReciev(), pathToLog));
 
       /*Обнуляем очередь получения ответных сообщений*/
       base.clearQueue(base.getQueueReceiver());

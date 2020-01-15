@@ -4,13 +4,11 @@ import com.ibm.mq.jms.MQQueueConnectionFactory;
 import org.w3c.dom.Document;
 
 import javax.jms.*;
+import javax.jms.Queue;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Enumeration;
-import java.util.Random;
-import java.util.Scanner;
-import java.util.UUID;
+import java.util.*;
 
 import static com.ibm.mq.jms.JMSC.MQJMS_TP_CLIENT_MQ_TCPIP;
 
@@ -96,7 +94,7 @@ public class HelperBase {
 
 
   /*Метод преобразования полученных файлов из очереди MQ в виде строки String*/
-  public String onMessage(Message message) {
+  private String onMessage(Message message) {
     try {
       if (message instanceof BytesMessage) {
         BytesMessage bytesMessage = (BytesMessage) message;
@@ -137,6 +135,12 @@ public class HelperBase {
       browser.close();*/
   }
 
+  /*Метод удаления всех файлов из папки*/
+  public void deleteAllFilesFolder(String path) {
+    for (File myFile : Objects.requireNonNull(new File(path).listFiles()))
+      if (myFile.isFile()) myFile.delete();
+  }
+
 
   /*Метод записи передаваемого или получаемого сообщения на HDD*/
   public void writeMsgToHdd(String fileInit, String filePath) throws IOException {
@@ -175,7 +179,9 @@ public class HelperBase {
       result.append("MSG.006");
     }
     queueSender.send(textMessage);//отправляем в очередь ранее созданное сообщение
-    System.out.println("Сообщение " + result + " отправлено.");
+    System.out.println("Сообщение " + result + " отправлено:\n" +
+              "- Очередь           - " + queueSending +
+            "\n- Адрес шлюза       - " + hostName + "\n");
   }
 
 
@@ -203,7 +209,7 @@ public class HelperBase {
 
 
   /*Метод форматирования XML в читаемый вид*/
-  public String formatXml(String unFormatedXml) {
+  private String formatXml(String unFormatedXml) {
     Document document = XmlStringFormatter.convertStringToDocument(unFormatedXml);
     return XmlStringFormatter.toPrettyXmlString(document);
   }
@@ -232,13 +238,11 @@ public class HelperBase {
 
 
   /*Метод получения сообщения из определенной очереди MQ*/
-  public StringBuilder receiveMsgFromQueue(int kolvoMSG, QueueSession queueSession, Queue queueReciev, String pathToLog) throws JMSException, IOException, InterruptedException {
+  public StringBuilder receiveMsgFromQueue(QueueSession queueSession, Queue queueReciev, String pathToLog) throws JMSException, IOException {
     QueueBrowser browser = queueSession.createBrowser(queueReciev);//Создаем браузер для наблюдения за очередью
     Enumeration e = browser.getEnumeration();//получаем Enumeration
     StringBuilder stringBuilder = new StringBuilder();//создаем stringBuilder для записи в него сообщения из очереди
     StringBuilder result = new StringBuilder();// создаем stringBuilder для формирования строки консоли о типах полученных сообщений
-    int i = 0;
-    //i < kolvoMSG + 1
     /*Цикл вычитки и последующей записи в соответствующие файлы полученных в очереди сообщений*/
     while (e.hasMoreElements()) {
       Message message = (Message) e.nextElement(); //Получение сообщения
@@ -269,18 +273,22 @@ public class HelperBase {
                 pathToLog + "Received_MSG_XXX.xml");
         result.append("- MSG.XXX\n");
       }
-      if (stringBuilder.toString().equals("")){
-        System.out.println("IT`s VERY BAD because " +
-                "no MSG in " + queueRecieve);
-        return null;
-      }
-      i++;
-      stringBuilder.delete(0, stringBuilder.length());
-      //queueReceiver.receive();
-      //String responseMsg = ((TextMessage) message).getText();
     }
+    /*У словие возврата null если stringBuilder будет пустой по причине отсутствия сообщений (к примеру если ПРОП не ответил)
+     * дополнительно будет сообщение о том что сообщений нет в в тупиковой очереди*/
+    if (!(e.hasMoreElements()) && stringBuilder.length() == 0) {
+      System.out.println("ИТОГ\n" +
+              "ОШИБКА ТЕСТА - Очередь " + queueRecieve + " не содержит сообщений."); // формирование строки-отчета в консоли
+      return null;
+    }
+    /*Очистка stringBuilder*/
+    stringBuilder.delete(0, stringBuilder.length());
+    //queueReceiver.receive();
+    //String responseMsg = ((TextMessage) message).getText();
 
-    System.out.println("Получено: \n" + result); // формирование строки-отчета в консоли
+
+    System.out.println("ИТОГ\n" +
+            "Получено: \n" + result); // формирование строки-отчета в консоли
     browser.close();
     return stringBuilder;
   }
