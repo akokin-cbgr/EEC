@@ -52,8 +52,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/HelperBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="237" selection-start-line="237" selection-end-line="237" />
+            <state relative-caret-position="849">
+              <caret line="295" lean-forward="true" selection-start-line="295" selection-end-line="295" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -257,7 +257,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="TestNG.TestValidXml.test">
+  <component name="RunManager" selected="TestNG.TestValidXml">
     <configuration name="TEST" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.cbgr.EEC.TEST" />
       <module name="PROP.EEC_PROP.main" />
@@ -320,8 +320,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.TestValidXml.test" />
         <item itemvalue="TestNG.TestValidXml" />
+        <item itemvalue="TestNG.TestValidXml.test" />
         <item itemvalue="TestNG.TestValidXml.testAssertFor_Msg_Prs" />
         <item itemvalue="Application.TEST" />
         <item itemvalue="TestNG.TestValidXml.test2" />
@@ -350,15 +350,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestValidXml - 2020.01.15 at 11h 14m 30s.xml">
-      <configuration name="TestValidXml" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestValidXml - 2020.01.15 at 11h 15m 49s.xml">
-      <configuration name="TestValidXml" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestValidXml - 2020.01.15 at 11h 16m 35s.xml">
-      <configuration name="TestValidXml" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="TestValidXml - 2020.01.15 at 11h 17m 03s.xml">
       <configuration name="TestValidXml" configurationId="TestNG" />
     </history-entry>
@@ -378,6 +369,15 @@
       <configuration name="TestValidXml.test" configurationId="TestNG" />
     </history-entry>
     <history-entry file="TestValidXml_test - 2020.01.15 at 11h 27m 05s.xml">
+      <configuration name="TestValidXml.test" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="TestValidXml_test - 2020.01.15 at 11h 28m 05s.xml">
+      <configuration name="TestValidXml.test" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="TestValidXml_test - 2020.01.15 at 11h 29m 01s.xml">
+      <configuration name="TestValidXml.test" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="TestValidXml_test - 2020.01.15 at 11h 29m 25s.xml">
       <configuration name="TestValidXml.test" configurationId="TestNG" />
     </history-entry>
   </component>
@@ -759,8 +759,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/HelperBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="237" selection-start-line="237" selection-end-line="237" />
+        <state relative-caret-position="849">
+          <caret line="295" lean-forward="true" selection-start-line="295" selection-end-line="295" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
