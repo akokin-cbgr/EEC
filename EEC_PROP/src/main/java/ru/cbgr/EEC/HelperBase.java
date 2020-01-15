@@ -129,8 +129,8 @@ public class HelperBase {
       Enumeration e = browser.getEnumeration();
       while (e.hasMoreElements()) {
         Message message = (Message) e.nextElement();
-        queueReceiver.receive();
-        //Message message = queueReceiver.receive(100);// Обнуляем очередь от сообщений
+        queueReceiver.receive();// Обнуляем очередь от сообщений
+        //Message message = queueReceiver.receive(100);
       }
       browser.close();*/
   }

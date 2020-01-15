@@ -78,7 +78,7 @@ public class TestValidXml {
       base.sendMsg(base.getQueueSession(), base.getQueueSender(), fileInit);
 
       /*Установка задержки для того чтобы ПРОП успел сформировать ответные сообщения и они попали в тупиковую очередь*/
-      Thread.sleep(8000);//задержка на получение ответа от ПРОП
+      Thread.sleep(10000);//задержка на получение ответа от ПРОП
 
       /*Вычитка ответных сообщений из очереди queueReciev и передача их в stringBuilder
       * После этого проверка вернувшегося stringBuilder на null
