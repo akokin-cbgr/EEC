@@ -3,8 +3,8 @@ package ru.cbgr.EEC;
 import com.ibm.mq.jms.MQQueueConnectionFactory;
 import org.w3c.dom.Document;
 
-import javax.jms.*;
 import javax.jms.Queue;
+import javax.jms.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -180,7 +180,7 @@ public class HelperBase {
     }
     queueSender.send(textMessage);//отправляем в очередь ранее созданное сообщение
     System.out.println("Сообщение " + result + " отправлено:\n" +
-              "- Очередь           - " + queueSending +
+            "- Очередь           - " + queueSending +
             "\n- Адрес шлюза       - " + hostName + "\n");
   }
 
@@ -238,11 +238,12 @@ public class HelperBase {
 
 
   /*Метод получения сообщения из определенной очереди MQ*/
-  public StringBuilder receiveMsgFromQueue(QueueSession queueSession, Queue queueReciev, String pathToLog) throws JMSException, IOException {
+  public StringBuilder receiveMsgFromQueue(int kol_vo_otvetov, QueueSession queueSession, Queue queueReciev, String pathToLog) throws JMSException, IOException {
     QueueBrowser browser = queueSession.createBrowser(queueReciev);//Создаем браузер для наблюдения за очередью
     Enumeration e = browser.getEnumeration();//получаем Enumeration
     StringBuilder stringBuilder = new StringBuilder();//создаем stringBuilder для записи в него сообщения из очереди
     StringBuilder result = new StringBuilder();// создаем stringBuilder для формирования строки консоли о типах полученных сообщений
+    int i = kol_vo_otvetov;
     /*Цикл вычитки и последующей записи в соответствующие файлы полученных в очереди сообщений*/
     while (e.hasMoreElements()) {
       Message message = (Message) e.nextElement(); //Получение сообщения
@@ -273,16 +274,18 @@ public class HelperBase {
                 pathToLog + "Received_MSG_XXX.xml");
         result.append("- MSG.XXX\n");
       }
+      i++;
+      /*Очистка stringBuilder*/
+      stringBuilder.delete(0, stringBuilder.length());
+
     }
     /*У словие возврата null если stringBuilder будет пустой по причине отсутствия сообщений (к примеру если ПРОП не ответил)
      * дополнительно будет сообщение о том что сообщений нет в в тупиковой очереди*/
-    if (!(e.hasMoreElements()) && stringBuilder.length() == 0) {
+    if (!(e.hasMoreElements()) && stringBuilder.length() == 0 && i == kol_vo_otvetov) {
       System.out.println("ИТОГ\n" +
               "ОШИБКА ТЕСТА - Очередь " + queueRecieve + " не содержит сообщений."); // формирование строки-отчета в консоли
       return null;
     }
-    /*Очистка stringBuilder*/
-    stringBuilder.delete(0, stringBuilder.length());
     //queueReceiver.receive();
     //String responseMsg = ((TextMessage) message).getText();
 

@@ -42,14 +42,13 @@ public class TestValidXml {
     base.setNumberMSG("MSG_001.xml");                  //Название инициирующего сообщения
 
 
-
     pathToInitMessage = base.getPathCommon() + base.getOpName() + "/" + base.getTipMSG() + "/" + base.getTipTRN() + "/" + base.getNumberMSG();
     pathToLog = base.getPathCommon() + base.getOpName() + "/" + base.getTipMSG() + "/" + base.getTipTRN() + "/" + "Log/";
 
   }
 
-  @Test
-  public void test() {
+  @Test(priority = 1)
+  public void test_TRN_001() {
 
     try {
 
@@ -81,10 +80,10 @@ public class TestValidXml {
       Thread.sleep(10000);//задержка на получение ответа от ПРОП
 
       /*Вычитка ответных сообщений из очереди queueReciev и передача их в stringBuilder
-      * После этого проверка вернувшегося stringBuilder на null
-      * Если будет null то тест упадет.
-      * Внутри метода receiveMsgFromQueue реализовано условие возврата null если stringBuilder будет пустой по причине отсутствия сообщений в тупиковой очереди*/
-      assertNotNull(base.receiveMsgFromQueue(base.getQueueSession(), base.getQueueReciev(), pathToLog));
+       * После этого проверка вернувшегося stringBuilder на null
+       * Если будет null то тест упадет.
+       * Внутри метода receiveMsgFromQueue реализовано условие возврата null если stringBuilder будет пустой по причине отсутствия сообщений в тупиковой очереди*/
+      assertNotNull(base.receiveMsgFromQueue(2, base.getQueueSession(), base.getQueueReciev(), pathToLog));
 
       /*Обнуляем очередь получения ответных сообщений*/
       base.clearQueue(base.getQueueReceiver());
@@ -100,13 +99,51 @@ public class TestValidXml {
     }
   }
 
-  @Test
-  public void testAssertFor_Msg_Prs() {
+
+  @Test(priority = 3)
+  public void testAssert_For_Msg_PRS() {
     if (new File(pathToLog + "Received_MSG_PRS.xml").exists()) {
       assertEquals(XPathBaseHelper.go(pathToLog + "Received_MSG_PRS.xml",
               "//int:ConversationID/text()"), conversationID);
-      System.out.println("int:ConversationID - " + conversationID);
+      System.out.println("Received_MSG_PRS.xml\n" +
+              "int:ConversationID - " + conversationID);
+    } else {
+      System.out.println("ОШИБКА\n" +
+              "Тест проверки соответствия ConversationID - Не пройден!\n" +
+              "В папке \\Log отсутствует файл - Received_MSG_PRS.xml");
+      fail();
+    }
+  }
 
+
+  @Test(priority = 2, enabled = false)
+  public void testAssert_For_Msg_RCV() {
+    if (new File(pathToLog + "Received_MSG_RCV.xml").exists()) {
+      assertEquals(XPathBaseHelper.go(pathToLog + "Received_MSG_RCV.xml",
+              "//int:ConversationID/text()"), conversationID);
+      System.out.println("Received_MSG_RCV.xml\n" +
+              "int:ConversationID - " + conversationID);
+    } else {
+      System.out.println("ОШИБКА\n" +
+              "Тест проверки соответствия ConversationID - Не пройден!\n" +
+              "В папке \\Log отсутствует файл - Received_MSG_RCV.xml");
+      fail();
+    }
+  }
+
+
+  @Test(priority = 4)
+  public void testAssert_For_Msg_004() {
+    if (new File(pathToLog + "Received_MSG_004.xml").exists()) {
+      assertEquals(XPathBaseHelper.go(pathToLog + "Received_MSG_004.xml",
+              "//int:ConversationID/text()"), conversationID);
+      System.out.println("Received_MSG_004.xml\n" +
+              "int:ConversationID - " + conversationID);
+    } else {
+      System.out.println("ОШИБКА\n" +
+              "Тест проверки соответствия ConversationID - Не пройден!\n" +
+              "В папке \\Log отсутствует файл - Received_MSG_004.xml");
+      fail();
     }
   }
 

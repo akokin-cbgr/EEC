@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+   <soap:Header xmlns:int="urn:EEC:Interaction:v1.0"
+                xmlns:wsa="http://www.w3.org/2005/08/addressing">
+      <wsa:MessageID>urn:uuid:c8ba82ea-199b-4371-99e4-b26259b484a8</wsa:MessageID>
+      <int:ProcedureID>urn:uuid:eea45c7a-3094-40ab-8e2f-bdd3979095f6</int:ProcedureID>
+      <int:ConversationID>urn:uuid:eff7c064-acf2-42a7-8a37-0e52260ac90f</int:ConversationID>
+      <wsa:To>EAEU://RU/CP/P.CC.01/P.CC.01.ACT.001AT</wsa:To>
+      <wsa:Action>int://CP/P.CC.01/1.0.0/P.CC.01.PRC.001/P.CC.01.TRN.001/P.MSG.PRS</wsa:Action>
+      <wsa:ReplyTo>
+         <wsa:Address>EAEU://EEC/CP/P.CC.01/P.ACT.001</wsa:Address>
+      </wsa:ReplyTo>
+      <wsa:RelatesTo>urn:uuid:dea4db5a-d65f-4557-a199-b5a71f0a2ddc</wsa:RelatesTo>
+      <int:Integration>
+         <int:TrackID>urn:uuid:8272d13b-8f8b-4a8f-b098-8aae4f53631f</int:TrackID>
+         <int:AcceptTime>2020-01-15T16:17:05+03:00</int:AcceptTime>
+      </int:Integration>
+   </soap:Header>
+   <soap:Body>
+      <sgn:ProcessingReceipt xmlns:sgn="urn:EEC:signal:v1.0">
+         <sgn:SignalId>c33f2f6d-9d35-4a5a-9428-28cc0239bb8f</sgn:SignalId>
+         <sgn:DateTime>2020-01-15T16:17:05.280</sgn:DateTime>
+      </sgn:ProcessingReceipt>
+   </soap:Body>
+</soap:Envelope>
