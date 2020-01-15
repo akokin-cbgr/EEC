@@ -3,51 +3,52 @@ package ru.cbgr.EEC;
 import com.ibm.mq.jms.MQQueueConnectionFactory;
 import org.w3c.dom.Document;
 
-import javax.jms.Queue;
 import javax.jms.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.*;
+import java.util.Enumeration;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.UUID;
 
 import static com.ibm.mq.jms.JMSC.MQJMS_TP_CLIENT_MQ_TCPIP;
 
 public class HelperBase {
 
+
   /*Переменные настройки подключения к шлюзу*/
-  private static String hostName ;
-  private static String channel;
-  private static int port;
-  private static String queueManager;
-  private static String queueSending;
-  private static String queueRecieve;
+  private String hostName;
+  private String channel;
+  private int port;
+  private String queueManager;
+  private String queueSending;
+  private String queueRecieve;
 
   /*Поля с путями к файлам*/
-  private static String pathCommon = "src/main/resources/";
-  private static String opName;
-  private static String tipMSG;
-  private static String tipTRN;
-  private static String numberMSG;
-  private static String pathToInitMessage = getPathCommon() + getOpName() + "/" + getTipMSG() + "/" + getTipTRN() + "/" + getNumberMSG();
-  private static String pathToLog = getPathCommon() + getOpName() + "/" + getTipMSG() + "/" + getTipTRN() + "/" + "Log/";
+  private String pathCommon = "src/main/resources/";
+  private String opName;
+  private String tipMSG;
+  private String tipTRN;
+  private String numberMSG;
 
   /*Общие поля после инициализации*/
-  private static Queue queueReciev;
-  private static QueueSender queueSender;
-  private static QueueReceiver queueReceiver;
-  private static QueueSession queueSession;
-  private static Queue queueSend;
-  private static QueueConnection queueConnection;
+  private Queue queueReciev;
+  private QueueSender queueSender;
+  private QueueReceiver queueReceiver;
+  private QueueSession queueSession;
+  private Queue queueSend;
+  private QueueConnection queueConnection;
 
   /*Метод генерации UUID при помощи стандартной библиотеки из java.util*/
-  private static UUID uuid() {
+  private UUID uuid() {
     return UUID.randomUUID();
   }
 
 
   /*Генерация случайного числа из устанавливаемого диапазона значений в параметрах min и max соответственно
      Стандартно rand.nextInt() генерирует случайное число от 0 до указанного в параметре значения*/
-  protected static int randInt(int min, int max) {
+  public int randInt(int min, int max) {
     Random rand = new Random();
     return rand.nextInt((max - min) + 1) + min;
   }
@@ -57,7 +58,7 @@ public class HelperBase {
       diapazon - набор символов из которых будет генерироваться строка
       kol_vo - длинна генерируемой строки
   */
-  public static String randString(String diapazon, int kol_vo) {
+  public String randString(String diapazon, int kol_vo) {
     //проверки и вывод текста с ошибкой
     if (diapazon.equals("")) {
       System.out.println("ОШИБКА - Используемый диапазон значений не может быть пустым");
@@ -79,7 +80,7 @@ public class HelperBase {
 
 
   /*Метод считывания файла с HDD в строку*/
-  private static String getFile(String fileName) {
+  private String getFile(String fileName) {
     StringBuilder result = new StringBuilder();
     File file = new File(fileName);
     try (Scanner scanner = new Scanner(file)) {
@@ -95,7 +96,7 @@ public class HelperBase {
 
 
   /*Метод преобразования полученных файлов из очереди MQ в виде строки String*/
-  private static String onMessage(Message message) {
+  public String onMessage(Message message) {
     try {
       if (message instanceof BytesMessage) {
         BytesMessage bytesMessage = (BytesMessage) message;
@@ -115,7 +116,7 @@ public class HelperBase {
 
 
   /*Метод очистки очереди IBM MQ. В качестве параметра передается очередь получатель*/
-  protected static void clearQueue(QueueReceiver queueReceiver) {
+  public void clearQueue(QueueReceiver queueReceiver) {
     try {
       while (true) {
         Message receive = queueReceiver.receiveNoWait();
@@ -138,7 +139,7 @@ public class HelperBase {
 
 
   /*Метод записи передаваемого или получаемого сообщения на HDD*/
-  protected static void writeMsgToHdd(String fileInit, String filePath) throws IOException {
+  public void writeMsgToHdd(String fileInit, String filePath) throws IOException {
     //Запись отправляемого MSG в файл для статистики
     File file = new File(filePath);
     FileWriter writerInit = new FileWriter(file);
@@ -149,7 +150,7 @@ public class HelperBase {
 
 
   /*Метод отправки инициализирубщего сообщения в соответствующую очередь MQ*/
-  protected static void sendMsg(QueueSession queueSession, QueueSender queueSender, String fileInit) throws JMSException {
+  public void sendMsg(QueueSession queueSession, QueueSender queueSender, String fileInit) throws JMSException {
     StringBuilder result = new StringBuilder();// создаем stringBuilder для формирования строки консоли о типах полученных сообщений
     TextMessage textMessage = queueSession.createTextMessage(fileInit);
 
@@ -184,7 +185,7 @@ public class HelperBase {
 
 
   /*Метод подготовки XML к отправке в MQ, идет генерация UUID*/
-  protected static String filePreparation(String filePath) {
+  public String filePreparation(String filePath) {
     String fileRaw = getFile(filePath);//считываем из файла XML
     /*Производим замену UUID на сгенерированные*/
     fileRaw = fileRaw.replaceAll(">urn:uuid:.*</wsa:MessageID>", ">urn:uuid:" + uuid().toString() + "</wsa:MessageID>");
@@ -196,64 +197,19 @@ public class HelperBase {
 
 
   /*Метод выборки значения из указанного файла XML согласно выражению xpath*/
-  protected static String variableFromXml(String filepath, String xpath) {
+  public String variableFromXml(String filepath, String xpath) {
     return XPathBaseHelper.go(filepath, xpath);
   }
 
 
   /*Метод форматирования XML в читаемый вид*/
-  private static String formatXml(String unFormatedXml) {
+  public String formatXml(String unFormatedXml) {
     Document document = XmlStringFormatter.convertStringToDocument(unFormatedXml);
     return XmlStringFormatter.toPrettyXmlString(document);
   }
 
 
-  /*Метод получения сообщения из определенной очереди MQ*/
-  protected static StringBuilder receiveMsgFromQueue(QueueSession queueSession, Queue queueReciev) throws JMSException, IOException {
-    QueueBrowser browser = queueSession.createBrowser(queueReciev);//Создаем браузер для наблюдения за очередью
-    Enumeration e = browser.getEnumeration();//получаем Enumeration
-    StringBuilder stringBuilder = new StringBuilder();//создаем stringBuilder для записи в него сообщения из очереди
-    StringBuilder result = new StringBuilder();// создаем stringBuilder для формирования строки консоли о типах полученных сообщений
-    /*Цикл вычитки и последующей записи в соответствующие файлы полученных в очереди сообщений*/
-    while (e.hasMoreElements()) {
-      Message message = (Message) e.nextElement(); //Получение сообщения
-      stringBuilder.append(onMessage(message)).append("\n"); // запись в stringBuilder вычитанного сообщения
-      /*Условия сортировки сообщений по типу*/
-      if (stringBuilder.toString().contains("P.MSG.PRS")) {
-        writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                getPathToLog() + "Received_MSG_PRS.xml");
-        result.append("- MSG.PRS\n");
-      } else if (stringBuilder.toString().contains("P.MSG.RCV")) {
-        writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                getPathToLog() + "Received_MSG_RCV.xml");
-        result.append("- MSG.RCV\n");
-      } else if (stringBuilder.toString().contains("P.MSG.ERR")) {
-        writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                getPathToLog() + "Received_MSG_ERR.xml");
-        result.append("- MSG.ERR\n");
-      } else if (stringBuilder.toString().contains("MSG.002")) {
-        writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                getPathToLog() + "Received_MSG_002.xml");
-        result.append("- MSG.002\n");
-      } else if (stringBuilder.toString().contains("MSG.004")) {
-        writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                getPathToLog() + "Received_MSG_004.xml");
-        result.append("- MSG.004\n");
-      } else {
-        writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                getPathToLog() + "Received_MSG_XXX.xml");
-        result.append("- MSG.XXX\n");
-      }
-      stringBuilder.delete(0, stringBuilder.length());
-      //queueReceiver.receive();
-      //String responseMsg = ((TextMessage) message).getText();
-    }
-    System.out.println("Получено: \n" + result); // формирование строки-отчета в консоли
-    browser.close();
-    return stringBuilder;
-  }
-
-  protected static void init(String hostName, String channel, int port, String queueManager, String queueSending, String queueRecieve) throws JMSException {
+  public void init(String hostName, String channel, int port, String queueManager, String queueSending, String queueRecieve) throws JMSException {
     //устанавливаем параметры подключения
     MQQueueConnectionFactory mqQueueConnectionFactory = new MQQueueConnectionFactory();
     mqQueueConnectionFactory.setHostName(hostName);
@@ -274,165 +230,200 @@ public class HelperBase {
     queueReceiver = getQueueSession().createReceiver(getQueueReciev());
   }
 
-  protected static void close() throws JMSException {
+
+  /*Метод получения сообщения из определенной очереди MQ*/
+  public StringBuilder receiveMsgFromQueue(int kolvoMSG, QueueSession queueSession, Queue queueReciev, String pathToLog) throws JMSException, IOException, InterruptedException {
+    QueueBrowser browser = queueSession.createBrowser(queueReciev);//Создаем браузер для наблюдения за очередью
+    Enumeration e = browser.getEnumeration();//получаем Enumeration
+    String messageSelector = browser.getMessageSelector();
+    StringBuilder stringBuilder = new StringBuilder();//создаем stringBuilder для записи в него сообщения из очереди
+    StringBuilder result = new StringBuilder();// создаем stringBuilder для формирования строки консоли о типах полученных сообщений
+    int i = 0;
+    //i < kolvoMSG + 1
+    /*Цикл вычитки и последующей записи в соответствующие файлы полученных в очереди сообщений*/
+    while (e.hasMoreElements()) {
+      Message message = (Message) e.nextElement(); //Получение сообщения
+      stringBuilder.append(onMessage(message)).append("\n"); // запись в stringBuilder вычитанного сообщения
+      /*Условия сортировки сообщений по типу*/
+      if (stringBuilder.toString().contains("P.MSG.PRS")) {
+        writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
+                pathToLog + "Received_MSG_PRS.xml");
+        result.append("- MSG.PRS\n");
+      } else if (stringBuilder.toString().contains("P.MSG.RCV")) {
+        writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
+                pathToLog + "Received_MSG_RCV.xml");
+        result.append("- MSG.RCV\n");
+      } else if (stringBuilder.toString().contains("P.MSG.ERR")) {
+        writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
+                pathToLog + "Received_MSG_ERR.xml");
+        result.append("- MSG.ERR\n");
+      } else if (stringBuilder.toString().contains("MSG.002")) {
+        writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
+                pathToLog + "Received_MSG_002.xml");
+        result.append("- MSG.002\n");
+      } else if (stringBuilder.toString().contains("MSG.004")) {
+        writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
+                pathToLog + "Received_MSG_004.xml");
+        result.append("- MSG.004\n");
+      } else {
+        writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
+                pathToLog + "Received_MSG_XXX.xml");
+        result.append("- MSG.XXX\n");
+      }
+      i++;
+      stringBuilder.delete(0, stringBuilder.length());
+      //queueReceiver.receive();
+      //String responseMsg = ((TextMessage) message).getText();
+    }
+    System.out.println("Получено: \n" + result); // формирование строки-отчета в консоли
+    browser.close();
+    return stringBuilder;
+  }
+
+
+  public void close() throws JMSException {
     /*Остановка*/
     getQueueSender().close();
     getQueueReceiver().close();
     getQueueSession().close();
     getQueueConnection().close();
-
   }
 
 
-  protected static QueueReceiver getQueueReceiver() {
+  public QueueReceiver getQueueReceiver() {
     return queueReceiver;
   }
 
-  protected static void setQueueReceiver(QueueReceiver queueReceiver) {
-    HelperBase.queueReceiver = queueReceiver;
+  public void setQueueReceiver(QueueReceiver queueReceiver) {
+    this.queueReceiver = queueReceiver;
   }
 
-  protected static Queue getQueueReciev() {
+  public Queue getQueueReciev() {
     return queueReciev;
   }
 
-  protected static void setQueueReciev(Queue queueReciev) {
-    HelperBase.queueReciev = queueReciev;
+  public void setQueueReciev(Queue queueReciev) {
+    this.queueReciev = queueReciev;
   }
 
-  protected static QueueSender getQueueSender() {
+  public QueueSender getQueueSender() {
     return queueSender;
   }
 
-  protected static void setQueueSender(QueueSender queueSender) {
-    HelperBase.queueSender = queueSender;
+  public void setQueueSender(QueueSender queueSender) {
+    this.queueSender = queueSender;
   }
 
-  protected static QueueSession getQueueSession() {
+  public QueueSession getQueueSession() {
     return queueSession;
   }
 
-  protected static void setQueueSession(QueueSession queueSession) {
-    HelperBase.queueSession = queueSession;
+  public void setQueueSession(QueueSession queueSession) {
+    this.queueSession = queueSession;
   }
 
-  private static Queue getQueueSend() {
+  public Queue getQueueSend() {
     return queueSend;
   }
 
-  protected static void setQueueSend(Queue queueSend) {
-    HelperBase.queueSend = queueSend;
+  public void setQueueSend(Queue queueSend) {
+    this.queueSend = queueSend;
   }
 
-  private static QueueConnection getQueueConnection() {
+  public QueueConnection getQueueConnection() {
     return queueConnection;
   }
 
-  protected static void setQueueConnection(QueueConnection queueConnection) {
-    HelperBase.queueConnection = queueConnection;
+  public void setQueueConnection(QueueConnection queueConnection) {
+    this.queueConnection = queueConnection;
   }
 
-  private static String getPathCommon() {
+  public String getPathCommon() {
     return pathCommon;
   }
 
-  protected static void setPathCommon(String pathCommon) {
-    HelperBase.pathCommon = pathCommon;
+  public void setPathCommon(String pathCommon) {
+    this.pathCommon = pathCommon;
   }
 
-  private static String getOpName() {
+  public String getOpName() {
     return opName;
   }
 
-  protected static void setOpName(String opName) {
-    HelperBase.opName = opName;
+  public void setOpName(String opName) {
+    this.opName = opName;
   }
 
-  private static String getTipMSG() {
+  public String getTipMSG() {
     return tipMSG;
   }
 
-  protected static void setTipMSG(String tipMSG) {
-    HelperBase.tipMSG = tipMSG;
+  public void setTipMSG(String tipMSG) {
+    this.tipMSG = tipMSG;
   }
 
-  private static String getTipTRN() {
+  public String getTipTRN() {
     return tipTRN;
   }
 
-  protected static void setTipTRN(String tipTRN) {
-    HelperBase.tipTRN = tipTRN;
+  public void setTipTRN(String tipTRN) {
+    this.tipTRN = tipTRN;
   }
 
-  private static String getNumberMSG() {
+  public String getNumberMSG() {
     return numberMSG;
   }
 
-  protected static void setNumberMSG(String numberMSG) {
-    HelperBase.numberMSG = numberMSG;
+  public void setNumberMSG(String numberMSG) {
+    this.numberMSG = numberMSG;
   }
 
-  protected static String getHostName() {
+  public String getHostName() {
     return hostName;
   }
 
-  protected static void setHostName(String hostName) {
-    HelperBase.hostName = hostName;
+  public void setHostName(String hostName) {
+    this.hostName = hostName;
   }
 
-  protected static String getChannel() {
+  public String getChannel() {
     return channel;
   }
 
-  protected static void setChannel(String channel) {
-    HelperBase.channel = channel;
+  public void setChannel(String channel) {
+    this.channel = channel;
   }
 
-  protected static int getPort() {
+  public int getPort() {
     return port;
   }
 
-  protected static void setPort(int port) {
-    HelperBase.port = port;
+  public void setPort(int port) {
+    this.port = port;
   }
 
-  protected static String getQueueManager() {
+  public String getQueueManager() {
     return queueManager;
   }
 
-  protected static void setQueueManager(String queueManager) {
-    HelperBase.queueManager = queueManager;
+  public void setQueueManager(String queueManager) {
+    this.queueManager = queueManager;
   }
 
-  protected static String getQueueSending() {
+  public String getQueueSending() {
     return queueSending;
   }
 
-  protected static void setQueueSending(String queueSending) {
-    HelperBase.queueSending = queueSending;
+  public void setQueueSending(String queueSending) {
+    this.queueSending = queueSending;
   }
 
-  protected static String getQueueRecieve() {
+  public String getQueueRecieve() {
     return queueRecieve;
   }
 
-  protected static void setQueueRecieve(String queueRecieve) {
-    HelperBase.queueRecieve = queueRecieve;
+  public void setQueueRecieve(String queueRecieve) {
+    this.queueRecieve = queueRecieve;
   }
 
-  protected static String getPathToInitMessage() {
-    return pathToInitMessage;
-  }
-
-  private static void setPathToInitMessage(String pathToInitMessage) {
-    HelperBase.pathToInitMessage = pathToInitMessage;
-  }
-
-  protected static String getPathToLog() {
-    return pathToLog;
-  }
-
-  private static void setPathToLog(String pathToLog) {
-    HelperBase.pathToLog = pathToLog;
-  }
 }
