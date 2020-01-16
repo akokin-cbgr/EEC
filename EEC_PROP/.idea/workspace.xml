@@ -52,8 +52,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/Test_OP02_Valid_TRN_001.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="175" column="61" selection-start-line="175" selection-start-column="61" selection-end-line="175" selection-end-column="61" />
+            <state relative-caret-position="-221">
+              <caret line="113" column="48" selection-start-line="113" selection-start-column="48" selection-end-line="113" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -64,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/TestBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="473">
-              <caret line="450" column="3" lean-forward="true" selection-start-line="450" selection-start-column="3" selection-end-line="450" selection-end-column="3" />
+            <state relative-caret-position="1784">
+              <caret line="320" column="16" selection-start-line="320" selection-start-column="16" selection-end-line="320" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -351,35 +351,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.16 at 09h 40m 11s.xml">
+    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.16 at 10h 20m 39s.xml">
       <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.16 at 09h 41m 52s.xml">
+    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.16 at 10h 21m 02s.xml">
       <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.16 at 09h 44m 28s.xml">
+    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.16 at 10h 25m 25s.xml">
       <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.16 at 09h 45m 16s.xml">
+    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.16 at 10h 27m 34s.xml">
       <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.16 at 09h 46m 04s.xml">
+    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.16 at 10h 28m 51s.xml">
       <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001_testAssert_For_Msg_004 - 2020.01.16 at 09h 54m 27s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001.testAssert_For_Msg_004" configurationId="TestNG" />
+    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.16 at 10h 34m 40s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001_testAssert_For_Msg_004 - 2020.01.16 at 09h 55m 21s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001.testAssert_For_Msg_004" configurationId="TestNG" />
+    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.16 at 10h 35m 43s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001_testAssert_For_Msg_004 - 2020.01.16 at 09h 57m 41s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001.testAssert_For_Msg_004" configurationId="TestNG" />
+    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.16 at 10h 42m 16s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001_testAssert_For_Msg_004 - 2020.01.16 at 09h 58m 19s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001.testAssert_For_Msg_004" configurationId="TestNG" />
+    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.16 at 10h 44m 00s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001_testAssert_For_Msg_004 - 2020.01.16 at 09h 58m 22s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001.testAssert_For_Msg_004" configurationId="TestNG" />
+    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.16 at 10h 47m 29s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -505,16 +505,11 @@
     <option name="LAST_COMMIT_MESSAGE" value="удалена зависимость" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/Test_OP02_Valid_TRN_001.java</url>
-          <line>170</line>
-          <properties />
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="TestNG">
+        <watch expression="base" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -661,34 +656,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.testng/testng/7.0.0/5a0241ace5a7b8eb3d31556a7d5dd2b3aae9baf/testng-7.0.0-sources.jar!/org/testng/internal/MethodRunner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="80" selection-start-line="80" selection-end-line="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.testng/testng/7.0.0/5a0241ace5a7b8eb3d31556a7d5dd2b3aae9baf/testng-7.0.0-sources.jar!/org/testng/internal/TestInvoker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="147" selection-start-line="147" selection-end-line="147" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.testng/testng/7.0.0/5a0241ace5a7b8eb3d31556a7d5dd2b3aae9baf/testng-7.0.0-sources.jar!/org/testng/internal/TestMethodWorker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="132" selection-start-line="132" selection-end-line="132" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.testng/testng/7.0.0/5a0241ace5a7b8eb3d31556a7d5dd2b3aae9baf/testng-7.0.0-sources.jar!/org/testng/TestRunner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="593" selection-start-line="593" selection-end-line="593" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.testng/testng/7.0.0/5a0241ace5a7b8eb3d31556a7d5dd2b3aae9baf/testng-7.0.0-sources.jar!/org/testng/internal/MethodInvocationHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
@@ -758,10 +725,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.testng/testng/7.0.0/5a0241ace5a7b8eb3d31556a7d5dd2b3aae9baf/testng-7.0.0-sources.jar!/org/testng/internal/MethodRunner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="80" selection-start-line="80" selection-end-line="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.testng/testng/7.0.0/5a0241ace5a7b8eb3d31556a7d5dd2b3aae9baf/testng-7.0.0-sources.jar!/org/testng/TestRunner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="771" selection-start-line="771" selection-end-line="771" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.testng/testng/7.0.0/5a0241ace5a7b8eb3d31556a7d5dd2b3aae9baf/testng-7.0.0-sources.jar!/org/testng/internal/TestMethodWorker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="132" selection-start-line="132" selection-end-line="132" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.testng/testng/7.0.0/5a0241ace5a7b8eb3d31556a7d5dd2b3aae9baf/testng-7.0.0-sources.jar!/org/testng/internal/TestInvoker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="147" selection-start-line="147" selection-end-line="147" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/TestBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="450" column="3" lean-forward="true" selection-start-line="450" selection-start-column="3" selection-end-line="450" selection-end-column="3" />
+        <state relative-caret-position="1784">
+          <caret line="320" column="16" selection-start-line="320" selection-start-column="16" selection-end-line="320" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -770,8 +765,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/Test_OP02_Valid_TRN_001.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="175" column="61" selection-start-line="175" selection-start-column="61" selection-end-line="175" selection-end-column="61" />
+        <state relative-caret-position="-221">
+          <caret line="113" column="48" selection-start-line="113" selection-start-column="48" selection-end-line="113" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

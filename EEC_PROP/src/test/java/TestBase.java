@@ -29,8 +29,11 @@ public class TestBase {
   private String tipMSG;
   private String tipTRN;
   private String numberMSG;
+  private String pathToInitMessage;
+  private String pathToLog;
 
   /*Общие поля после инициализации*/
+
   private Queue queueReciev;
   private QueueSender queueSender;
   private QueueReceiver queueReceiver;
@@ -39,28 +42,27 @@ public class TestBase {
   private QueueConnection queueConnection;
 
   /*Переменные для assert`ов*/
-
   private String conversationID = "";
 
-  /*Метод генерации UUID при помощи стандартной библиотеки из java.util*/
 
+  /*Метод генерации UUID при помощи стандартной библиотеки из java.util*/
   private UUID uuid() {
     return UUID.randomUUID();
   }
 
+
   /*Генерация случайного числа из устанавливаемого диапазона значений в параметрах min и max соответственно
      Стандартно rand.nextInt() генерирует случайное число от 0 до указанного в параметре значения*/
-
   int randInt(int min, int max) {
     Random rand = new Random();
     return rand.nextInt((max - min) + 1) + min;
   }
 
+
   /*Генерация строки определенной длинны из определенного набора символов
       diapazon - набор символов из которых будет генерироваться строка
       kol_vo - длинна генерируемой строки
   */
-
   public String randString(String diapazon, int kol_vo) {
     //проверки и вывод текста с ошибкой
     if (diapazon.equals("")) {
@@ -81,24 +83,28 @@ public class TestBase {
     return stringBuilder.toString();
   }
 
-  /*Метод считывания файла с HDD в строку*/
 
+  /*Метод считывания файла с HDD в строку*/
   private String getFile(String fileName) {
     StringBuilder result = new StringBuilder();
-    File file = new File(fileName);
-    try (Scanner scanner = new Scanner(file)) {
-      while (scanner.hasNextLine()) {
-        String line = scanner.nextLine();
-        result.append(line).append("\n");
+    if (new File(fileName).exists()) {
+      File file = new File(fileName);
+      try (Scanner scanner = new Scanner(file)) {
+        while (scanner.hasNextLine()) {
+          String line = scanner.nextLine();
+          result.append(line).append("\n");
+        }
+      } catch (IOException e) {
+        e.printStackTrace();
       }
-    } catch (IOException e) {
-      e.printStackTrace();
+    } else {
+      return "File not found!";
     }
     return result.toString();
   }
 
-  /*Метод преобразования полученных файлов из очереди MQ в виде строки String*/
 
+  /*Метод преобразования полученных файлов из очереди MQ в виде строки String*/
   private String onMessage(Message message) {
     try {
       if (message instanceof BytesMessage) {
@@ -117,8 +123,8 @@ public class TestBase {
     return "";
   }
 
-  /*Метод очистки очереди IBM MQ. В качестве параметра передается очередь получатель*/
 
+  /*Метод очистки очереди IBM MQ. В качестве параметра передается очередь получатель*/
   void clearQueue(QueueReceiver queueReceiver) {
     try {
       while (true) {
@@ -139,15 +145,15 @@ public class TestBase {
       }
       browser.close();*/
   }
-  /*Метод удаления всех файлов из папки*/
 
+  /*Метод удаления всех файлов из папки*/
   void deleteAllFilesFolder(String path) {
     for (File myFile : Objects.requireNonNull(new File(path).listFiles()))
       if (myFile.isFile()) myFile.delete();
   }
 
-  /*Метод записи передаваемого или получаемого сообщения на HDD*/
 
+  /*Метод записи передаваемого или получаемого сообщения на HDD*/
   void writeMsgToHdd(String fileInit, String filePath) throws IOException {
     //Запись отправляемого MSG в файл для статистики
     File file = new File(filePath);
@@ -157,8 +163,8 @@ public class TestBase {
     writerInit.close();
   }
 
-  /*Метод отправки инициализирубщего сообщения в соответствующую очередь MQ*/
 
+  /*Метод отправки инициализирубщего сообщения в соответствующую очередь MQ*/
   void sendMsg(QueueSession queueSession, QueueSender queueSender, String fileInit) throws JMSException {
     StringBuilder result = new StringBuilder();// создаем stringBuilder для формирования строки консоли о типах полученных сообщений
     TextMessage textMessage = queueSession.createTextMessage(fileInit);
@@ -190,13 +196,16 @@ public class TestBase {
   }
 
 
+
   /*Вариант получения JMSCorrelationID*/
   //System.out.println("after sending a message we get message id "+ textMessage.getJMSMessageID());
   //String jmsCorrelationID = " JMSCorrelationID = '" + textMessage.getJMSMessageID() + "'";
 
   /*Метод подготовки XML к отправке в MQ, идет генерация UUID*/
-
   String filePreparation(String filePath) {
+    if (getFile(filePath).equals("\"File not found!\"")){
+      return "File not found!";
+    }
     String fileRaw = getFile(filePath);//считываем из файла XML
     /*Производим замену UUID на сгенерированные*/
     fileRaw = fileRaw.replaceAll(">urn:uuid:.*</wsa:MessageID>", ">urn:uuid:" + uuid().toString() + "</wsa:MessageID>");
@@ -206,14 +215,14 @@ public class TestBase {
     return fileRaw;
   }
 
-  /*Метод выборки значения из указанного файла XML согласно выражению xpath*/
 
+  /*Метод выборки значения из указанного файла XML согласно выражению xpath*/
   String variableFromXml(String filepath, String xpath) {
     return XPathBaseHelper.go(filepath, xpath);
   }
 
-  /*Метод форматирования XML в читаемый вид*/
 
+  /*Метод форматирования XML в читаемый вид*/
   private String formatXml(String unFormatedXml) {
     Document document = XmlStringFormatter.convertStringToDocument(unFormatedXml);
     return XmlStringFormatter.toPrettyXmlString(document);
@@ -242,7 +251,6 @@ public class TestBase {
 
 
   /*Метод получения сообщения из определенной очереди MQ*/
-
   StringBuilder receiveMsgFromQueue(int kol_vo_otvetov, QueueSession queueSession, Queue queueReciev, String pathToLog) throws JMSException, IOException {
     QueueBrowser browser = queueSession.createBrowser(queueReciev);//Создаем браузер для наблюдения за очередью
     Enumeration e = browser.getEnumeration();//получаем Enumeration
@@ -446,12 +454,66 @@ public class TestBase {
     this.queueRecieve = queueRecieve;
   }
 
-  public String getConversationID() {
+  String getConversationID() {
     return conversationID;
   }
 
-  public void setConversationID(String conversationID) {
+  void setConversationID(String conversationID) {
     this.conversationID = conversationID;
   }
 
+  String getPathToInitMessage() {
+    return this.pathToInitMessage = this.getPathCommon() + this.getOpName() + "/" + this.getTipMSG() + "/" + this.getTipTRN() + "/" + this.getNumberMSG();
+  }
+
+  void setPathToInitMessage(String pathToInitMessage) {
+    this.pathToInitMessage = pathToInitMessage;
+  }
+
+  String getPathToLog() {
+    return this.pathToLog = this.getPathCommon() + this.getOpName() + "/" + this.getTipMSG() + "/" + this.getTipTRN() + "/" + "Log/";
+  }
+
+  void setPathToLog(String pathToLog) {
+    this.pathToLog = pathToLog;
+  }
+
+
+/*
+  public void testAssert_For_Msg_004() {
+    if (new File(pathToLog + "Received_MSG_004.xml").exists()) {
+      base.setConversationID(base.variableFromXml(pathToLog + "Init_MSG_001.xml", "//int:ConversationID/text()"));
+      if (XPathBaseHelper.go(pathToLog + "Received_MSG_004.xml",
+              "//int:ConversationID/text()").equals(base.getConversationID())) {
+        System.out.println("Тесты для - Received_MSG_004.xml:\n" +
+                "int:ConversationID - совпадает с ID транзакции");
+      } else {
+        System.out.println("Тесты для - Received_MSG_004.xml:\n" +
+                "int:ConversationID - Не совпадает с ID транзакции");
+        fail();
+      }
+      if (Objects.requireNonNull(XPathBaseHelper.go(pathToLog + "Received_MSG_004.xml",
+              "//csdo:ProcessingResultCode/text()")).equals("3")) {
+        System.out.println(
+                "csdo:ProcessingResultCode - содержит верный код \"3\"");
+      } else {
+        System.out.println(
+                "csdo:ProcessingResultCode - содержит НЕверный код");
+        fail();
+      }
+      if (Objects.requireNonNull(XPathBaseHelper.go(pathToLog + "Received_MSG_004.xml",
+              "//csdo:DescriptionText/text()")).equals("Сведения добавлены")) {
+        System.out.println(
+                "csdo:DescriptionText - соответствует значению \"Сведения добавлены\"");
+      } else {
+        System.out.println("csdo:DescriptionText - НЕ соответствует значению");
+        fail();
+      }
+    } else {
+      System.out.println("ОШИБКА\n" +
+              "Тест проверки соответствия ConversationID - Не пройден!\n" +
+              "В папке \\Log отсутствует файл - Received_MSG_004.xml");
+      fail();
+    }
+  }*/
 }
