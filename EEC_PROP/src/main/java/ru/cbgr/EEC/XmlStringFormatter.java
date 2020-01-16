@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
 
-class XmlStringFormatter {
+public class XmlStringFormatter {
 
   /*public static void main(String args[]) {
     // какая-то строка с неформатированным XML содержимым
@@ -38,7 +38,7 @@ class XmlStringFormatter {
   }*/
 
   // в переменной indent указываем уровень(величину) отступа
-  static String toPrettyXmlString(Document document) {
+  public static String toPrettyXmlString(Document document) {
     try {
       // удаляем пробелы
       XPath xPath = XPathFactory.newInstance().newXPath();
@@ -73,7 +73,7 @@ class XmlStringFormatter {
   }
 
   // метод для конвертации строки с XML разметкой в объект Document
-  static Document convertStringToDocument(String xml) {
+  public static Document convertStringToDocument(String xml) {
     try {
       return DocumentBuilderFactory.newInstance()
               .newDocumentBuilder()

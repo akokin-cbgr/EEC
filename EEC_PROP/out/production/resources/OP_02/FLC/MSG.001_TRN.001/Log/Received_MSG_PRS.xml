@@ -2,24 +2,24 @@
 <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
    <soap:Header xmlns:int="urn:EEC:Interaction:v1.0"
                 xmlns:wsa="http://www.w3.org/2005/08/addressing">
-      <wsa:MessageID>urn:uuid:479daea0-06ff-46a7-af1e-77d7fa083cda</wsa:MessageID>
-      <int:ProcedureID>urn:uuid:9407c15f-78a1-4482-baf8-b823ebbc122b</int:ProcedureID>
-      <int:ConversationID>urn:uuid:382cefd5-013b-4908-b9e0-5540d9e9b59d</int:ConversationID>
+      <wsa:MessageID>urn:uuid:b02fee60-ae47-4c35-8d3e-8182c31f457f</wsa:MessageID>
+      <int:ProcedureID>urn:uuid:f8ebb2b8-e9c5-48ee-9877-c9dc986ac5b0</int:ProcedureID>
+      <int:ConversationID>urn:uuid:bcb2abb3-7b22-479f-8761-f90a9d080c1b</int:ConversationID>
       <wsa:To>EAEU://RU/CP/P.CC.01/P.CC.01.ACT.001AT</wsa:To>
       <wsa:Action>int://CP/P.CC.01/1.0.0/P.CC.01.PRC.001/P.CC.01.TRN.001/P.MSG.PRS</wsa:Action>
       <wsa:ReplyTo>
          <wsa:Address>EAEU://EEC/CP/P.CC.01/P.ACT.001</wsa:Address>
       </wsa:ReplyTo>
-      <wsa:RelatesTo>urn:uuid:ab87badc-71d3-4ea2-82f2-a281bbf3f178</wsa:RelatesTo>
+      <wsa:RelatesTo>urn:uuid:ae95c4ce-8549-4f76-901b-4343617051bb</wsa:RelatesTo>
       <int:Integration>
-         <int:TrackID>urn:uuid:4c016541-844f-40fb-889b-5d0c4ec7539a</int:TrackID>
-         <int:AcceptTime>2020-01-15T16:15:24+03:00</int:AcceptTime>
+         <int:TrackID>urn:uuid:15db2948-5542-43b6-b8ac-2d7c8ba56714</int:TrackID>
+         <int:AcceptTime>2020-01-16T10:00:45+03:00</int:AcceptTime>
       </int:Integration>
    </soap:Header>
    <soap:Body>
       <sgn:ProcessingReceipt xmlns:sgn="urn:EEC:signal:v1.0">
-         <sgn:SignalId>42d4f4f3-a1ec-42c4-9a4d-6c60ac0ea391</sgn:SignalId>
-         <sgn:DateTime>2020-01-15T16:15:24.060</sgn:DateTime>
+         <sgn:SignalId>2b729f9e-b2ba-4034-b108-c0c2a2027799</sgn:SignalId>
+         <sgn:DateTime>2020-01-16T10:00:44.980</sgn:DateTime>
       </sgn:ProcessingReceipt>
    </soap:Body>
 </soap:Envelope>

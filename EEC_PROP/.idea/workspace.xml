@@ -49,23 +49,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/HelperBase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-112">
-              <caret line="283" column="68" selection-start-line="283" selection-start-column="68" selection-end-line="283" selection-end-column="68" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/TestValidXml.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/Test_OP02_Valid_TRN_001.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="133" lean-forward="true" selection-start-line="133" selection-end-line="133" />
+            <state relative-caret-position="269">
+              <caret line="175" column="61" selection-start-line="175" selection-start-column="61" selection-end-line="175" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -74,10 +62,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/XmlStringFormatter.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/TestBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="79" column="15" selection-start-line="79" selection-start-column="15" selection-end-line="79" selection-end-column="15" />
+            <state relative-caret-position="473">
+              <caret line="450" column="3" lean-forward="true" selection-start-line="450" selection-start-column="3" selection-end-line="450" selection-end-column="3" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -137,9 +125,11 @@
         <option value="$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/XmlStringFormatter.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/TEST.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/WorkWithMQ.java" />
-        <option value="$PROJECT_DIR$/src/test/java/TestBase.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/HelperBase.java" />
         <option value="$PROJECT_DIR$/src/test/java/TestValidXml.java" />
+        <option value="$PROJECT_DIR$/src/test/java/Test_OP02_TRN_001.java" />
+        <option value="$PROJECT_DIR$/src/test/java/TestBase.java" />
+        <option value="$PROJECT_DIR$/src/test/java/Test_OP02_Valid_TRN_001.java" />
       </list>
     </option>
   </component>
@@ -269,24 +259,11 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="TestNG.TestValidXml">
-    <configuration name="TEST" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.cbgr.EEC.TEST" />
-      <module name="PROP.EEC_PROP.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.cbgr.EEC.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestValidXml" type="TestNG" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="TestNG.Test_OP02_Valid_TRN_001">
+    <configuration name="Test_OP02_Valid_TRN_001" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="PROP.EEC_PROP.test" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestValidXml" />
+      <option name="MAIN_CLASS_NAME" value="Test_OP02_Valid_TRN_001" />
       <option name="TEST_OBJECT" value="CLASS" />
       <properties />
       <listeners />
@@ -294,22 +271,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestValidXml.test" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="Test_OP02_Valid_TRN_001.test2" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="PROP.EEC_PROP.test" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestValidXml" />
-      <option name="METHOD_NAME" value="test" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestValidXml.test2" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="PROP.EEC_PROP.test" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestValidXml" />
+      <option name="MAIN_CLASS_NAME" value="Test_OP02_Valid_TRN_001" />
       <option name="METHOD_NAME" value="test2" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
@@ -318,11 +283,35 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestValidXml.testAssertFor_Msg_Prs" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="Test_OP02_Valid_TRN_001.testAssertFor_Msg_Prs" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="PROP.EEC_PROP.test" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestValidXml" />
+      <option name="MAIN_CLASS_NAME" value="Test_OP02_Valid_TRN_001" />
       <option name="METHOD_NAME" value="testAssertFor_Msg_Prs" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test_OP02_Valid_TRN_001.testAssert_For_Msg_004" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="PROP.EEC_PROP.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Test_OP02_Valid_TRN_001" />
+      <option name="METHOD_NAME" value="testAssert_For_Msg_004" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test_OP02_Valid_TRN_001.testAssert_For_Msg_PRS" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="PROP.EEC_PROP.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Test_OP02_Valid_TRN_001" />
+      <option name="METHOD_NAME" value="testAssert_For_Msg_PRS" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -332,11 +321,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.TestValidXml" />
-        <item itemvalue="TestNG.TestValidXml.testAssertFor_Msg_Prs" />
-        <item itemvalue="TestNG.TestValidXml.test2" />
-        <item itemvalue="TestNG.TestValidXml.test" />
-        <item itemvalue="Application.TEST" />
+        <item itemvalue="TestNG.Test_OP02_Valid_TRN_001" />
+        <item itemvalue="TestNG.Test_OP02_Valid_TRN_001.testAssert_For_Msg_004" />
+        <item itemvalue="TestNG.Test_OP02_Valid_TRN_001.testAssert_For_Msg_PRS" />
+        <item itemvalue="TestNG.Test_OP02_Valid_TRN_001.testAssertFor_Msg_Prs" />
+        <item itemvalue="TestNG.Test_OP02_Valid_TRN_001.test2" />
       </list>
     </recent_temporary>
   </component>
@@ -362,35 +351,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestValidXml - 2020.01.15 at 15h 53m 45s.xml">
-      <configuration name="TestValidXml" configurationId="TestNG" />
+    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.16 at 09h 40m 11s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestValidXml - 2020.01.15 at 15h 55m 05s.xml">
-      <configuration name="TestValidXml" configurationId="TestNG" />
+    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.16 at 09h 41m 52s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestValidXml - 2020.01.15 at 15h 55m 41s.xml">
-      <configuration name="TestValidXml" configurationId="TestNG" />
+    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.16 at 09h 44m 28s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestValidXml - 2020.01.15 at 16h 02m 32s.xml">
-      <configuration name="TestValidXml" configurationId="TestNG" />
+    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.16 at 09h 45m 16s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestValidXml - 2020.01.15 at 16h 04m 13s.xml">
-      <configuration name="TestValidXml" configurationId="TestNG" />
+    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.16 at 09h 46m 04s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestValidXml - 2020.01.15 at 16h 05m 57s.xml">
-      <configuration name="TestValidXml" configurationId="TestNG" />
+    <history-entry file="Test_OP02_Valid_TRN_001_testAssert_For_Msg_004 - 2020.01.16 at 09h 54m 27s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001.testAssert_For_Msg_004" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestValidXml - 2020.01.15 at 16h 07m 11s.xml">
-      <configuration name="TestValidXml" configurationId="TestNG" />
+    <history-entry file="Test_OP02_Valid_TRN_001_testAssert_For_Msg_004 - 2020.01.16 at 09h 55m 21s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001.testAssert_For_Msg_004" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestValidXml - 2020.01.15 at 16h 09m 19s.xml">
-      <configuration name="TestValidXml" configurationId="TestNG" />
+    <history-entry file="Test_OP02_Valid_TRN_001_testAssert_For_Msg_004 - 2020.01.16 at 09h 57m 41s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001.testAssert_For_Msg_004" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestValidXml - 2020.01.15 at 16h 14m 53s.xml">
-      <configuration name="TestValidXml" configurationId="TestNG" />
+    <history-entry file="Test_OP02_Valid_TRN_001_testAssert_For_Msg_004 - 2020.01.16 at 09h 58m 19s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001.testAssert_For_Msg_004" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestValidXml - 2020.01.15 at 16h 15m 33s.xml">
-      <configuration name="TestValidXml" configurationId="TestNG" />
+    <history-entry file="Test_OP02_Valid_TRN_001_testAssert_For_Msg_004 - 2020.01.16 at 09h 58m 22s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001.testAssert_For_Msg_004" configurationId="TestNG" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -416,7 +405,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32889584" />
       <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4989339" visible="true" weight="0.29581994" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.1693462" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.5123258" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32967892" />
@@ -514,6 +503,18 @@
     </ignored-roots>
     <MESSAGE value="удалена зависимость" />
     <option name="LAST_COMMIT_MESSAGE" value="удалена зависимость" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/Test_OP02_Valid_TRN_001.java</url>
+          <line>170</line>
+          <properties />
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -737,13 +738,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/TestBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="6" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/XmlStringFormatter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="411">
@@ -756,18 +750,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/HelperBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-112">
-          <caret line="283" column="68" selection-start-line="283" selection-start-column="68" selection-end-line="283" selection-end-column="68" />
+        <state relative-caret-position="663">
+          <caret line="39" selection-end-line="445" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/TestValidXml.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/TestBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="133" lean-forward="true" selection-start-line="133" selection-end-line="133" />
+        <state relative-caret-position="473">
+          <caret line="450" column="3" lean-forward="true" selection-start-line="450" selection-start-column="3" selection-end-line="450" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/Test_OP02_Valid_TRN_001.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="175" column="61" selection-start-line="175" selection-start-column="61" selection-end-line="175" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
