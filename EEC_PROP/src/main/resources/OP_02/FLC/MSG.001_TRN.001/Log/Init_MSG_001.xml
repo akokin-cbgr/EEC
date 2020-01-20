@@ -2,24 +2,24 @@
 	<soap:Header xmlns:int="urn:EEC:Interaction:v1.0" xmlns:wsa="http://www.w3.org/2005/08/addressing">
 		<wsa:To>EAEU://EEC/CP/P.CC.01/P.ACT.001</wsa:To>
 		<wsa:ReplyTo>
-			<wsa:Address>EAEU://RU/CP/P.CC.01/P.CC.01.ACT.001AT</wsa:Address>
+			<wsa:Address>EAEU://EEC/CP/P.CC.01/P.CC.01.ACT.022AT</wsa:Address>
 		</wsa:ReplyTo>
 		<wsa:Action>int://CP/P.CC.01/1.0.0/P.CC.01.PRC.001/P.CC.01.TRN.001/P.CC.01.MSG.001</wsa:Action>
-		<wsa:MessageID>urn:uuid:99ad1877-1e5d-4d19-bbba-8fb36ede6e3c</wsa:MessageID>
-		<int:ProcedureID>urn:uuid:6b5c9da1-36ef-43b0-bdab-18cb3353a7fa</int:ProcedureID>
-		<int:ConversationID>urn:uuid:02a47045-551a-4298-bd03-a54e67ce9126</int:ConversationID>
+		<wsa:MessageID>urn:uuid:ea789333-fcc4-46a2-8592-bfe71cc5f31e</wsa:MessageID>
+		<int:ProcedureID>urn:uuid:84576358-9bc2-4e41-86d5-3135eff5e27b</int:ProcedureID>
+		<int:ConversationID>urn:uuid:d0b2ce2b-6d99-4743-82d1-b134d3ef373f</int:ConversationID>
 	</soap:Header>
 	<soap:Body>
 		<cpl:CheckPointList xmlns:cacdo="urn:EEC:M:CA:ComplexDataObjects:v1.2.6" xmlns:casdo="urn:EEC:M:CA:SimpleDataObjects:v1.2.6" xmlns:ccdo="urn:EEC:M:ComplexDataObjects:v0.3.3" xmlns:cpl="urn:EEC:R:CA:CC:01:CheckPointList:v1.0.0" xmlns:csdo="urn:EEC:M:SimpleDataObjects:v0.3.3" xmlns:doc="urn:EEC:R:ProcessingResultDetails:v0.3.4" xmlns:ns6="urn:EEC:R:ResourceStatusDetails:v0.3.3">
 			<ccdo:EDocHeader>
 				<csdo:InfEnvelopeCode>P.CC.01.MSG.001</csdo:InfEnvelopeCode>
 				<csdo:EDocCode>R.CA.CC.01.001</csdo:EDocCode>
-				<csdo:EDocId>ac15bf8f-9e70-4d6d-894d-ed97d37fbbb3</csdo:EDocId>
+				<csdo:EDocId>9cb958ff-0253-4f2a-97bb-38f2dcf5a28f</csdo:EDocId>
 				<csdo:EDocDateTime>2019-10-31T10:53:58Z</csdo:EDocDateTime>
 			</ccdo:EDocHeader>
 			<cacdo:CheckPointDetails>
 				<casdo:RegisterCountryCode>RU</casdo:RegisterCountryCode>
-				<casdo:BorderCheckPointCode>PPG.RU.UA.94160196</casdo:BorderCheckPointCode>
+				<casdo:BorderCheckPointCode>PPG.RU.UA.37260346</casdo:BorderCheckPointCode>
 				<casdo:BorderCheckPointName>Романово</casdo:BorderCheckPointName>
 				<cacdo:NeighboringCheckPointDetails>
 					<casdo:BorderCheckPointName>Сергеево</casdo:BorderCheckPointName>

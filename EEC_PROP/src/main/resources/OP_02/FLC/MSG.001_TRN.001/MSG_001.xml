@@ -2,7 +2,7 @@
 	<soap:Header xmlns:int="urn:EEC:Interaction:v1.0" xmlns:wsa="http://www.w3.org/2005/08/addressing">
 		<wsa:To>EAEU://EEC/CP/P.CC.01/P.ACT.001</wsa:To>
 		<wsa:ReplyTo>
-			<wsa:Address>EAEU://RU/CP/P.CC.01/P.CC.01.ACT.001AT</wsa:Address>
+			<wsa:Address>EAEU://EEC/CP/P.CC.01/P.CC.01.ACT.022AT</wsa:Address>
 		</wsa:ReplyTo>
 		<wsa:Action>int://CP/P.CC.01/1.0.0/P.CC.01.PRC.001/P.CC.01.TRN.001/P.CC.01.MSG.001</wsa:Action>
 		<wsa:MessageID>urn:uuid:aadd42e2-444d-4bab-ba86-892ac825ee7f</wsa:MessageID>

@@ -17,12 +17,15 @@ public class Test_OP02_Valid_TRN_001 {
   private void initial() {
 
     /*Переменные настройки подключения к шлюзу*/
-    base.setHostName("eek-test1-ip-mq1.tengry.com");  //Адресс шлюза
+    base.setHostName("eek-test1-ip-mq-sync.tengry.com");  //Адресс шлюза SYNC
+    //base.setHostName("eek-test1-ip-mq1.tengry.com");  //Адресс шлюза RU
     base.setChannel("ESB.SVRCONN");                   //Канал
     base.setPort(1414);                               //Порт
-    base.setQueueManager("RU.IIS.QM");                //Менеджер очередей
-    base.setQueueSending("GATEWAY.EXT.IN");           //Очередь для отправки сообщений
-    base.setQueueRecieve("Q.ADDR5");                  //Тупиковая очередь для ответный сообщений
+//    base.setQueueManager("RU.IIS.QM");                //Менеджер очередей RU
+    base.setQueueManager("SYNC.IIS.QM");                //Менеджер очередей SYNC
+//    base.setQueueSending("GATEWAY.EXT.IN");           //Очередь для отправки сообщений
+    base.setQueueSending("ADP.PROP.IN");           //Очередь для отправки сообщений
+    base.setQueueRecieve("Q.ADDR1");                  //Тупиковая очередь для ответных сообщений
 
 
     /*Настройка переменных теста под определенное тестируемое ОП.
@@ -76,7 +79,7 @@ public class Test_OP02_Valid_TRN_001 {
       base.sendMsg(base.getQueueSession(), base.getQueueSender(), fileInit);
 
       /*Установка задержки для того чтобы ПРОП успел сформировать ответные сообщения и они попали в тупиковую очередь*/
-      Thread.sleep(10000);//задержка на получение ответа от ПРОП
+      Thread.sleep(8000);//задержка на получение ответа от ПРОП
 
       /*Вычитка ответных сообщений из очереди queueReciev и передача их в stringBuilder
        * После этого проверка вернувшегося stringBuilder на null
@@ -101,6 +104,7 @@ public class Test_OP02_Valid_TRN_001 {
       e.printStackTrace();
     }
   }
+
 
 
   @Test(priority = 1, enabled = false)
