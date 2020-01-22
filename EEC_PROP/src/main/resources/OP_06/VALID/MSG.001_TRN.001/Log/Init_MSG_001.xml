@@ -6,9 +6,9 @@
 			<wsa:Address>EAEU://EEC/CP/P.CC.05/P.CC.05.ACT.022AT</wsa:Address>
 		</wsa:ReplyTo>
 		<wsa:Action>int://CP/P.CC.05/1.1.1/P.CC.05.PRC.001/P.CC.05.TRN.001/P.CC.05.MSG.001</wsa:Action>
-		<wsa:MessageID>urn:uuid:b76cae5d-a8bc-4c17-affe-0a52fdaed987</wsa:MessageID>
-		<int:ConversationID>urn:uuid:7286344e-919b-4b3f-8669-15e4bd518fce</int:ConversationID>
-		<int:ProcedureID>urn:uuid:c6f15da3-6a7d-4130-b322-a15379a0cd7b</int:ProcedureID>
+		<wsa:MessageID>urn:uuid:c2ffb990-4d5f-48f6-a8ab-48c351bd4dc2</wsa:MessageID>
+		<int:ConversationID>urn:uuid:29319a86-db57-4283-a4a4-885cf1e35ed0</int:ConversationID>
+		<int:ProcedureID>urn:uuid:9b9a8d5d-b016-4ef3-badf-5d49363c7807</int:ProcedureID>
 	</soap:Header>
 	<!---->
 	<soap:Body>
@@ -16,14 +16,14 @@
 			<ccdo:EDocHeader>
 				<csdo:InfEnvelopeCode>P.CC.05.MSG.001</csdo:InfEnvelopeCode>
 				<csdo:EDocCode>R.CA.CC.05.001</csdo:EDocCode>
-				<csdo:EDocId>8e6a3902-bbb5-437a-bf8a-b5da8ee6ca83</csdo:EDocId>
+				<csdo:EDocId>7824d6d3-dce0-4aac-bdde-7a44f4458fc1</csdo:EDocId>
 				<csdo:EDocDateTime>2019-07-15T18:02:28.904Z</csdo:EDocDateTime>
 				<csdo:LanguageCode>ru</csdo:LanguageCode>
 			</ccdo:EDocHeader>
 			<cacdo:RegisterCustomsBrokerDetails>
 				<casdo:RegisterCountryCode>RU</casdo:RegisterCountryCode>
 				<cacdo:RegisterDocumentDetails>
-					<casdo:RegistrationNumberIdentifier>6332/135</casdo:RegistrationNumberIdentifier>
+					<casdo:RegistrationNumberIdentifier>7127/469</casdo:RegistrationNumberIdentifier>
 					<csdo:DocCreationDate>2019-08-28</csdo:DocCreationDate>
 					<casdo:RegisterDocumentCode>3</casdo:RegisterDocumentCode>
 				</cacdo:RegisterDocumentDetails>

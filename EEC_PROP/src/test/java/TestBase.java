@@ -348,24 +348,35 @@ public class TestBase {
   }
 
 
-  String testAssert_For_Reply_Msg(String checkedFile, String tegCheckCode, String tegDescriptionText) {
+  String testAssert_For_Reply_Msg(String checkedFile, String tegCheckCode, String resultCode, String tegDescriptionText, String descriptionText) {
     if (new File(this.getPathToLog() + checkedFile).exists()) {
       setConversationIdForAssert();
       String str = "";
       if (Objects.requireNonNull(XPathBaseHelper.go(this.getPathToLog() + checkedFile,
               "//int:ConversationID/text()")).equals(this.getConversationID())) {
         System.out.println("Тесты для - " + checkedFile + ":\n" +
-                "int:ConversationID             - PASSED - совпадает с ID транзакции");
+                "int:ConversationID             - PASSED - совпадает с ID транзакции.");
         str = "Passed";
       } else {
         System.out.println("Тесты для - " + checkedFile + ":\n" +
-                "ОШИБКА ТЕСТА                   - FAIL - int:ConversationID не совпадает с ID транзакции");
+                "ОШИБКА ТЕСТА                   - FAIL - int:ConversationID не совпадает с ID транзакции.");
         str = "NOT Passed";
       }
+
       if (Objects.requireNonNull(XPathBaseHelper.go(this.getPathToLog() + checkedFile,
-              "//" + tegCheckCode + "/text()")).equals("3")) {
+              "//csdo:EventDateTime/text()")).length() != 0) {
         System.out.println(
-                tegCheckCode + "      - PASSED - содержит верный код \"3\"");
+                "csdo:EventDateTime             - PASSED - заполнен и присутствует.");
+        str = "Passed";
+      } else {
+        System.out.println(
+                "ОШИБКА ТЕСТА                   - FAIL - csdo:EventDateTime отсутствует или не заполнен.");
+        str = "NOT Passed";
+      }
+
+      if (Objects.requireNonNull(XPathBaseHelper.go(this.getPathToLog() + checkedFile,
+              "//" + tegCheckCode + "/text()")).equals(resultCode)) {
+        System.out.println(tegCheckCode + "      - PASSED - содержит верный код \"" + resultCode + "\"");
         str = "Passed";
       } else {
         System.out.println(
@@ -373,13 +384,12 @@ public class TestBase {
         str = "NOT Passed";
       }
       if (Objects.requireNonNull(XPathBaseHelper.go(this.getPathToLog() + checkedFile,
-              "//" + tegDescriptionText + "/text()")).equals("Сведения добавлены")) {
-        System.out.println(
-                tegDescriptionText + "           - PASSED - соответствует значению \"Сведения добавлены\"");
+              "//" + tegDescriptionText + "/text()")).equals(descriptionText)) {
+        System.out.println(tegDescriptionText + "           - PASSED - соответствует значению \"" + descriptionText + "\"");
         str = "Passed";
       } else {
         System.out.println(
-                "ОШИБКА ТЕСТА                   - FAIL - " + tegDescriptionText + " НЕ соответствует значению");
+                "ОШИБКА ТЕСТА                   - FAIL - " + tegDescriptionText + " НЕ соответствует значению.");
         str = "NOT Passed";
       }
       return str;
@@ -391,7 +401,7 @@ public class TestBase {
     }
   }
 
-  public String testAssert_For_Signal(String checkedFile) {
+  String testAssert_For_Signal(String checkedFile) {
     if (new File(this.getPathToLog() + checkedFile).exists()) {
       setConversationIdForAssert();
       String str = "";

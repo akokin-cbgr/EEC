@@ -52,8 +52,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/TestBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="340" column="44" selection-start-line="340" selection-start-column="44" selection-end-line="340" selection-end-column="44" />
+            <state relative-caret-position="-263">
+              <caret line="403" column="2" selection-start-line="403" selection-start-column="2" selection-end-line="403" selection-end-column="2" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -64,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/Test_OP02_Valid_TRN_001.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-180">
-              <caret line="19" column="67" selection-start-line="19" selection-start-column="67" selection-end-line="19" selection-end-column="67" />
+            <state relative-caret-position="469">
+              <caret line="107" column="50" lean-forward="true" selection-start-line="107" selection-start-column="50" selection-end-line="107" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -76,8 +76,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/Test_OP06_Valid_TRN_001.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="918">
-              <caret line="57" column="77" lean-forward="true" selection-start-line="57" selection-start-column="77" selection-end-line="57" selection-end-column="77" />
+            <state relative-caret-position="350">
+              <caret line="100" column="3" lean-forward="true" selection-start-line="100" selection-start-column="3" selection-end-line="100" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -356,15 +356,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 12h 15m 25s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 12h 16m 17s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 12h 17m 16s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 12h 18m 13s.xml">
       <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
@@ -384,6 +375,15 @@
       <configuration name="Test_OP06_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
     <history-entry file="Test_OP06_Valid_TRN_001 - 2020.01.22 at 14h 11m 30s.xml">
+      <configuration name="Test_OP06_Valid_TRN_001" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_OP06_Valid_TRN_001 - 2020.01.22 at 14h 13m 28s.xml">
+      <configuration name="Test_OP06_Valid_TRN_001" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_OP06_Valid_TRN_001 - 2020.01.22 at 14h 13m 49s.xml">
+      <configuration name="Test_OP06_Valid_TRN_001" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_OP06_Valid_TRN_001 - 2020.01.22 at 14h 49m 35s.xml">
       <configuration name="Test_OP06_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
   </component>
@@ -770,8 +770,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/TestBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="340" column="44" selection-start-line="340" selection-start-column="44" selection-end-line="340" selection-end-column="44" />
+        <state relative-caret-position="-263">
+          <caret line="403" column="2" selection-start-line="403" selection-start-column="2" selection-end-line="403" selection-end-column="2" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -780,8 +780,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/Test_OP02_Valid_TRN_001.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-180">
-          <caret line="19" column="67" selection-start-line="19" selection-start-column="67" selection-end-line="19" selection-end-column="67" />
+        <state relative-caret-position="469">
+          <caret line="107" column="50" lean-forward="true" selection-start-line="107" selection-start-column="50" selection-end-line="107" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -790,8 +790,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/Test_OP06_Valid_TRN_001.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="57" column="77" lean-forward="true" selection-start-line="57" selection-start-column="77" selection-end-line="57" selection-end-column="77" />
+        <state relative-caret-position="350">
+          <caret line="100" column="3" lean-forward="true" selection-start-line="100" selection-start-column="3" selection-end-line="100" selection-end-column="3" />
         </state>
       </provider>
     </entry>
