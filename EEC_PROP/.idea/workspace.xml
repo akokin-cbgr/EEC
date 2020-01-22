@@ -52,8 +52,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/TestBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="264" column="3" lean-forward="true" selection-start-line="264" selection-start-column="3" selection-end-line="264" selection-end-column="3" />
+            <state relative-caret-position="3611">
+              <caret line="321" column="63" selection-start-line="321" selection-start-column="63" selection-end-line="321" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -64,8 +64,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/Test_OP02_Valid_TRN_001.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="679">
-              <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
+            <state relative-caret-position="152">
+              <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -184,14 +184,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="EEC_PROP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EEC_PROP" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="MSG.001_TRN.001" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="EEC_PROP" type="b2602c69:ProjectViewProjectNode" />
@@ -352,18 +344,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 10h 26m 29s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 10h 27m 44s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 10h 32m 44s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 10h 33m 00s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 10h 33m 33s.xml">
       <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
@@ -380,6 +360,18 @@
       <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
     <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 11h 35m 00s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 11h 43m 32s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 11h 50m 35s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 11h 52m 22s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 11h 53m 22s.xml">
       <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
   </component>
@@ -756,8 +748,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/TestBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="264" column="3" lean-forward="true" selection-start-line="264" selection-start-column="3" selection-end-line="264" selection-end-column="3" />
+        <state relative-caret-position="3611">
+          <caret line="321" column="63" selection-start-line="321" selection-start-column="63" selection-end-line="321" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -766,8 +758,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/Test_OP02_Valid_TRN_001.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="679">
-          <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
+        <state relative-caret-position="152">
+          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

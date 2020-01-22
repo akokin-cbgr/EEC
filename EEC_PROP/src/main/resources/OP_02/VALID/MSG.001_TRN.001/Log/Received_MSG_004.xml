@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+   <soap:Header xmlns:int="urn:EEC:Interaction:v1.0"
+                xmlns:wsa="http://www.w3.org/2005/08/addressing">
+      <wsa:MessageID>urn:uuid:26630600-93d4-4928-86d5-093a6dcee3d8</wsa:MessageID>
+      <int:ProcedureID>urn:uuid:a3420c53-6136-4206-9225-2faac8bc845e</int:ProcedureID>
+      <int:ConversationID>urn:uuid:d0209c6e-21db-41a1-8cac-3a260f60edd5</int:ConversationID>
+      <wsa:To>EAEU://EEC/CP/P.CC.01/P.CC.01.ACT.022AT</wsa:To>
+      <wsa:Action>int://CP/P.CC.01/1.0.0/P.CC.01.PRC.001/P.CC.01.TRN.001/P.CC.01.MSG.004</wsa:Action>
+      <wsa:ReplyTo>
+         <wsa:Address>EAEU://EEC/CP/P.CC.01/P.ACT.001</wsa:Address>
+      </wsa:ReplyTo>
+      <wsa:RelatesTo>urn:uuid:d72bfa94-a919-488a-a8a8-58736cabf9da</wsa:RelatesTo>
+      <int:Integration>
+         <int:TrackID>urn:uuid:9e408c9e-3151-4c2e-9e61-5a9a17fa6bc0</int:TrackID>
+         <int:AcceptTime>2020-01-22T12:01:48+03:00</int:AcceptTime>
+      </int:Integration>
+   </soap:Header>
+   <soap:Body>
+      <doc:ProcessingResultDetails xmlns:doc="urn:EEC:R:ProcessingResultDetails:v0.3.4"
+                                   xmlns:cacdo="urn:EEC:M:CA:ComplexDataObjects:v1.2.6"
+                                   xmlns:casdo="urn:EEC:M:CA:SimpleDataObjects:v1.2.6"
+                                   xmlns:ccdo="urn:EEC:M:ComplexDataObjects:v0.3.3"
+                                   xmlns:cpl="urn:EEC:R:CA:CC:01:CheckPointList:v1.0.0"
+                                   xmlns:csdo="urn:EEC:M:SimpleDataObjects:v0.3.3"
+                                   xmlns:ns10="urn:EEC:R:CA:CC:04:ArrivePointList:v1.0.0"
+                                   xmlns:ns11="urn:EEC:R:ResourceStatusDetails:v1.0.0"
+                                   xmlns:ns12="http://dsign.mscp.eec"
+                                   xmlns:ns13="http://www.w3.org/2000/09/xmldsig#"
+                                   xmlns:ns14="urn:EEC:SignedData:v1.0:EDoc"
+                                   xmlns:ns6="urn:EEC:R:ProcessingResultDetails:v1.0.0"
+                                   xmlns:ns8="urn:EEC:R:ResourceStatusDetails:v0.3.3"
+                                   xmlns:pcp="urn:EEC:R:CA:CC:02:CheckPointPassport:v1.0.0">
+         <ccdo:EDocHeader>
+            <csdo:InfEnvelopeCode>P.CC.01.MSG.004</csdo:InfEnvelopeCode>
+            <csdo:EDocCode>R.006</csdo:EDocCode>
+            <csdo:EDocId>eecc6cb3-7114-40cb-9920-c60daee8ca41</csdo:EDocId>
+            <csdo:EDocRefId>1060a5c4-a0f9-4fcd-9e01-6fcfad5ad1e5</csdo:EDocRefId>
+            <csdo:EDocDateTime>2020-01-22T09:01:48.668Z</csdo:EDocDateTime>
+         </ccdo:EDocHeader>
+         <csdo:EventDateTime>2020-01-22T09:01:48.658Z</csdo:EventDateTime>
+         <csdo:ProcessingResultCode>3</csdo:ProcessingResultCode>
+         <csdo:DescriptionText>Сведения добавлены</csdo:DescriptionText>
+      </doc:ProcessingResultDetails>
+   </soap:Body>
+</soap:Envelope>

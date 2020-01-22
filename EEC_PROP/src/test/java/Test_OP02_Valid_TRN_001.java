@@ -1,6 +1,8 @@
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
+import javax.jms.JMSException;
+
 import static org.testng.Assert.*;
 
 public class Test_OP02_Valid_TRN_001 {
@@ -10,7 +12,7 @@ public class Test_OP02_Valid_TRN_001 {
 
 
   @BeforeSuite
-  private void initial() {
+  private void initial() throws JMSException {
 
     /*Переменные настройки подключения к шлюзу*/
     base.setHostName("eek-test1-ip-mq-sync.tengry.com");  //Адресс шлюза SYNC
@@ -27,17 +29,16 @@ public class Test_OP02_Valid_TRN_001 {
     /*Настройка переменных теста под определенное тестируемое ОП.
      * Названия должны совпадать с названиями папок где хранятся файлы для отправки.
      * Например :
-     * \src\main\resources\OP_02\FLC\MSG.001_TRN.001\     - путь к файлам инициирующих сообщений
-     * \src\main\resources\OP_02\FLC\MSG.001_TRN.001\Log     - путь к логам, туда сохранятся файлы отправленных и ответных сообщений*/
+     * \src\main\resources\OP_02\VALID\MSG.001_TRN.001\        - путь к файлам инициирующих сообщений
+     * \src\main\resources\OP_02\VALID\MSG.001_TRN.001\Log     - путь к логам, туда сохранятся файлы отправленных и ответных сообщений*/
 
     base.setOpName("OP_02");                           //Название папки общего процесса
-    base.setTipMSG("FLC");                             //Название папки с типом проверок (ошибки ФЛК или Valid)
+    base.setTipMSG("VALID");                             //Название папки с типом проверок (ошибки ФЛК или Valid)
     base.setTipTRN("MSG.001_TRN.001");                 //Название папки проверяемой транзакции
     base.setNumberMSG("MSG_001.xml");                  //Название инициирующего сообщения
 
     /*Очистка папки с логами*/
-//    base.deleteAllFilesFolder(base.getPathToLog());
-
+    base.deleteAllFilesFolder(base.getPathToLog());
   }
 
   @Test()
@@ -62,9 +63,6 @@ public class Test_OP02_Valid_TRN_001 {
       /*ГЕНЕРАЦИЯ УНИКАЛЬНОГО КЛЮЧА ДЛЯ ДАННОГО ОП, В ОТПРАВЛЯЕМОЙ XML*/
       fileInit = fileInit.replaceAll(">.*</casdo:BorderCheckPointCode>", ">PPG.RU.UA." + base.randInt(10000000, 99999999) + "</casdo:BorderCheckPointCode>");
 
-      /*Очистка папки с логами от предыдущих файлов*/
-      base.deleteAllFilesFolder(base.getPathToLog());
-
       /*Запись отправляемого MSG в файл*/
       base.writeMsgToHdd(fileInit, base.getPathToLog() + "Init_MSG_001.xml");
 
@@ -74,9 +72,7 @@ public class Test_OP02_Valid_TRN_001 {
       /*Отправка сообщения*/
       base.sendMsg(base.getQueueSession(), base.getQueueSender(), fileInit);
 
-      /*Установка задержки для того чтобы ПРОП успел сформировать ответные сообщения и они попали в тупиковую очередь*/
-//      Thread.sleep(8000);//задержка на получение ответа от ПРОП
-
+      /*Шаг проверки очереди на наличие ответных сообщений от ПРОП с ограничением максимального времени ожидания*/
       base.checkAndWaitMsgInQueue(60);
 
       /*Вычитка ответных сообщений из очереди queueReciev и передача их в stringBuilder
@@ -85,15 +81,13 @@ public class Test_OP02_Valid_TRN_001 {
        * Внутри метода receiveMsgFromQueue реализовано условие возврата null если stringBuilder будет пустой по причине отсутствия сообщений в тупиковой очереди*/
       assertNotNull(base.receiveMsgFromQueue(base.getQueueSession(), base.getQueueReciev(), base.getPathToLog()));
 
-      /**/
+      /*Проверки что созданы файлы ответных сообщений*/
+      assertTrue(base.checkFileExist("Received_MSG_PRS.xml"));
+      assertTrue(base.checkFileExist("Received_MSG_004.xml"));
+
+      /*Вывод в консоль ID транзакции*/
       System.out.println(
               "ID транзакции                  - " + base.getConversationID() + "\n");
-
-      /*Обнуляем очередь получения ответных сообщений*/
-      base.clearQueue(base.getQueueReceiver());
-
-      /*Запись полученных MSG в файл*/
-      //writeMsgToHdd(stringBuilder.toString().replaceAll("UTF","utf"), "src/main/resources/OP_02/FLC/MSG.001_TRN.001/Log/01.xml");
 
       /*Остановка*/
       base.close();

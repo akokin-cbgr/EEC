@@ -149,7 +149,9 @@ public class TestBase {
   /*Метод удаления всех файлов из папки*/
   void deleteAllFilesFolder(String path) {
     for (File myFile : Objects.requireNonNull(new File(path).listFiles()))
-      if (myFile.isFile()) myFile.delete();
+      if (myFile.isFile()) {
+        myFile.delete();
+      }
   }
 
 
@@ -317,7 +319,7 @@ public class TestBase {
     //queueReceiver.receive();
     //String responseMsg = ((TextMessage) message).getText();
     System.out.println("ИТОГ\n" +
-            "Получено: \n" + result); // формирование строки-отчета в консоли
+            "Получено и созданно в " + this.getPathToLog() + " : \n" + result); // формирование строки-отчета в консоли
     browser.close();
     return stringBuilder;
   }
@@ -336,6 +338,10 @@ public class TestBase {
     if (new File(this.getPathToLog() + "Init_MSG_001.xml").exists()) {
       setConversationID(variableFromXml(this.getPathToLog() + "Init_MSG_001.xml", "//int:ConversationID/text()"));
     }
+  }
+
+  Boolean checkFileExist(String fileName) {
+    return new File(this.getPathToLog() + fileName).exists();
   }
 
 
