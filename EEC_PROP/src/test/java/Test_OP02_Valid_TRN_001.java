@@ -1,10 +1,7 @@
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import javax.jms.JMSException;
-
 import static org.testng.Assert.*;
-import static org.testng.Assert.assertNotNull;
 
 public class Test_OP02_Valid_TRN_001 {
 
@@ -13,16 +10,13 @@ public class Test_OP02_Valid_TRN_001 {
 
 
   @BeforeSuite
-  private void initial() throws JMSException {
+  private void initial() {
 
     /*Переменные настройки подключения к шлюзу*/
     base.setHostName("eek-test1-ip-mq-sync.tengry.com");  //Адресс шлюза SYNC
-    //base.setHostName("eek-test1-ip-mq1.tengry.com");  //Адресс шлюза RU
     base.setChannel("ESB.SVRCONN");                   //Канал
     base.setPort(1414);                               //Порт
-//    base.setQueueManager("RU.IIS.QM");                //Менеджер очередей RU
     base.setQueueManager("SYNC.IIS.QM");                //Менеджер очередей SYNC
-//    base.setQueueSending("GATEWAY.EXT.IN");           //Очередь для отправки сообщений
     base.setQueueSending("ADP.PROP.IN");           //Очередь для отправки сообщений
     base.setQueueRecieve("Q.ADDR1");                  //Тупиковая очередь для ответных сообщений
 
@@ -95,16 +89,15 @@ public class Test_OP02_Valid_TRN_001 {
   }
 
 
-
   @Test(priority = 1, enabled = false)
   public void test_For_Msg_RCV() {
-    assertEquals(base.testAssert_For_Signal("Received_MSG_RCV.xml"),"Passed");
+    assertEquals(base.testAssert_For_Signal("Received_MSG_RCV.xml"), "Passed");
   }
 
 
   @Test(priority = 2)
   public void test_For_Msg_PRS() {
-    assertEquals(base.testAssert_For_Signal("Received_MSG_PRS.xml"),"Passed");
+    assertEquals(base.testAssert_For_Signal("Received_MSG_PRS.xml"), "Passed");
   }
 
 
