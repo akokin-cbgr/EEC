@@ -64,8 +64,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/Test_OP02_Valid_TRN_001.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="79" column="38" selection-start-line="79" selection-start-column="38" selection-end-line="79" selection-end-column="38" />
+            <state relative-caret-position="679">
+              <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -352,18 +352,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Test_OP02_Valid_TRN_001_test_For_Msg_004 - 2020.01.21 at 17h 04m 25s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001.test_For_Msg_004" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001_test_For_Msg_002 - 2020.01.21 at 17h 06m 33s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001.test_For_Msg_002" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.21 at 17h 16m 04s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.21 at 17h 17m 09s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 10h 26m 29s.xml">
       <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
@@ -380,6 +368,18 @@
       <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
     <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 10h 36m 10s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 11h 29m 38s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 11h 30m 03s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 11h 31m 40s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 11h 35m 00s.xml">
       <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
   </component>
@@ -506,16 +506,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="удалена зависимость" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/Test_OP02_Valid_TRN_001.java</url>
-          <line>79</line>
-          <properties />
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="TestNG">
         <watch expression="base" language="JAVA" />
@@ -776,8 +766,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/Test_OP02_Valid_TRN_001.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="79" column="38" selection-start-line="79" selection-start-column="38" selection-end-line="79" selection-end-column="38" />
+        <state relative-caret-position="679">
+          <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

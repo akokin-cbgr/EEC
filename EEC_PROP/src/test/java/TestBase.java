@@ -250,15 +250,15 @@ public class TestBase {
   }
 
 
-  void checkAndWaitMsgInQueue(int waitTimeSec) throws JMSException, InterruptedException {
+  void checkAndWaitMsgInQueue(int maxWaitTimeSec) throws JMSException, InterruptedException {
     QueueBrowser browser = this.queueSession.createBrowser(this.queueReciev);//Создаем браузер для наблюдения за очередью
     Enumeration e = browser.getEnumeration();//получаем Enumeration
     int i = 0;
     while (!e.hasMoreElements()) {
       Thread.sleep(1000);
       i++;
-      if (i == waitTimeSec) {
-        System.out.println("ОШИБКА ТЕСТА - Превышено время(" + waitTimeSec + "секунд) ожидания ответов от ПРОП");
+      if (i == maxWaitTimeSec) {
+        System.out.println("ОШИБКА ТЕСТА - Превышено время(" + maxWaitTimeSec + "секунд) ожидания ответов от ПРОП");
         break;
       }
     }
