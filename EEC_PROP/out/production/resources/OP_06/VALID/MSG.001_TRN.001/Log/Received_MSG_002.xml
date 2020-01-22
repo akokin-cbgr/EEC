@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+   <soap:Header xmlns:int="urn:EEC:Interaction:v1.0"
+                xmlns:wsa="http://www.w3.org/2005/08/addressing">
+      <wsa:MessageID>urn:uuid:cc6dfdea-396b-4f5c-b1fd-e526a0ce5045</wsa:MessageID>
+      <int:ProcedureID>urn:uuid:4875be16-60ce-4611-8f2c-8e675ec2d80b</int:ProcedureID>
+      <int:ConversationID>urn:uuid:f4e3ddd0-ceb7-4091-a5f2-ac9103387f85</int:ConversationID>
+      <wsa:To>EAEU://EEC/CP/P.CC.05/P.CC.05.ACT.022AT</wsa:To>
+      <wsa:Action>int://CP/P.CC.05/1.1.1/P.CC.05.PRC.001/P.CC.05.TRN.001/P.CC.05.MSG.002</wsa:Action>
+      <wsa:ReplyTo>
+         <wsa:Address>EAEU://EEC/CP/P.CC.05/P.ACT.001</wsa:Address>
+      </wsa:ReplyTo>
+      <wsa:RelatesTo>urn:uuid:69f2bd33-f04b-4fa7-8425-ad47be3d5051</wsa:RelatesTo>
+      <int:Integration>
+         <int:TrackID>urn:uuid:42feaa99-b754-416e-8417-95768ade3c5d</int:TrackID>
+         <int:AcceptTime>2020-01-22T14:13:27+03:00</int:AcceptTime>
+      </int:Integration>
+   </soap:Header>
+   <soap:Body>
+      <doc:ProcessingResultDetails xmlns:doc="urn:EEC:R:ProcessingResultDetails:v0.3.4"
+                                   xmlns:cacdo="urn:EEC:M:CA:ComplexDataObjects:v1.2.3"
+                                   xmlns:casdo="urn:EEC:M:CA:SimpleDataObjects:v1.2.3"
+                                   xmlns:ccdo="urn:EEC:M:ComplexDataObjects:v0.3.3"
+                                   xmlns:csdo="urn:EEC:M:SimpleDataObjects:v0.3.3"
+                                   xmlns:ns10="http://www.w3.org/2000/09/xmldsig#"
+                                   xmlns:ns11="urn:EEC:SignedData:v1.0:EDoc"
+                                   xmlns:ns7="urn:EEC:R:ResourceStatusDetails:v0.3.3"
+                                   xmlns:ns8="urn:EEC:TTP:v1.0:receipt"
+                                   xmlns:ns9="http://dsign.mscp.eec"
+                                   xmlns:rcb="urn:EEC:R:CA:CC:05:RegisterCustomsBroker:v1.2.4">
+         <ccdo:EDocHeader>
+            <csdo:InfEnvelopeCode>P.CC.05.MSG.002</csdo:InfEnvelopeCode>
+            <csdo:EDocCode>R.006</csdo:EDocCode>
+            <csdo:EDocId>d703b813-c413-414d-a01d-5e6b5134343d</csdo:EDocId>
+            <csdo:EDocRefId>dc017e11-d684-4ead-b1c7-37ef0ad2488c</csdo:EDocRefId>
+            <csdo:EDocDateTime>2020-01-22T11:13:27.121Z</csdo:EDocDateTime>
+         </ccdo:EDocHeader>
+         <csdo:EventDateTime>2020-01-22T11:13:26.864Z</csdo:EventDateTime>
+         <csdo:ProcessingResultCode>3</csdo:ProcessingResultCode>
+         <csdo:DescriptionText>Сведения добавлены</csdo:DescriptionText>
+      </doc:ProcessingResultDetails>
+   </soap:Body>
+</soap:Envelope>

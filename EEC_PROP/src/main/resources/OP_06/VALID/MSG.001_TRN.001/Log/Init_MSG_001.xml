@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:int="urn:EEC:Interaction:v1.0" xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:wsa="http://www.w3.org/2005/08/addressing">
+	<soap:Header>
+		<wsa:To>EAEU://EEC/CP/P.CC.05/P.ACT.001</wsa:To>
+		<wsa:ReplyTo>
+			<wsa:Address>EAEU://EEC/CP/P.CC.05/P.CC.05.ACT.022AT</wsa:Address>
+		</wsa:ReplyTo>
+		<wsa:Action>int://CP/P.CC.05/1.1.1/P.CC.05.PRC.001/P.CC.05.TRN.001/P.CC.05.MSG.001</wsa:Action>
+		<wsa:MessageID>urn:uuid:b76cae5d-a8bc-4c17-affe-0a52fdaed987</wsa:MessageID>
+		<int:ConversationID>urn:uuid:7286344e-919b-4b3f-8669-15e4bd518fce</int:ConversationID>
+		<int:ProcedureID>urn:uuid:c6f15da3-6a7d-4130-b322-a15379a0cd7b</int:ProcedureID>
+	</soap:Header>
+	<!---->
+	<soap:Body>
+		<rcb:RegisterCustomsBroker xsi:schemaLocation="urn:EEC:R:CA:CC:05:RegisterCustomsBroker:v1.2.4 EEC_R_CA_CC_05_RegisterCustomsBroker_v1.2.4.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cacdo="urn:EEC:M:CA:ComplexDataObjects:v1.2.3" xmlns:casdo="urn:EEC:M:CA:SimpleDataObjects:v1.2.3" xmlns:ccdo="urn:EEC:M:ComplexDataObjects:v0.3.3" xmlns:csdo="urn:EEC:M:SimpleDataObjects:v0.3.3" xmlns:rcb="urn:EEC:R:CA:CC:05:RegisterCustomsBroker:v1.2.4">
+			<ccdo:EDocHeader>
+				<csdo:InfEnvelopeCode>P.CC.05.MSG.001</csdo:InfEnvelopeCode>
+				<csdo:EDocCode>R.CA.CC.05.001</csdo:EDocCode>
+				<csdo:EDocId>8e6a3902-bbb5-437a-bf8a-b5da8ee6ca83</csdo:EDocId>
+				<csdo:EDocDateTime>2019-07-15T18:02:28.904Z</csdo:EDocDateTime>
+				<csdo:LanguageCode>ru</csdo:LanguageCode>
+			</ccdo:EDocHeader>
+			<cacdo:RegisterCustomsBrokerDetails>
+				<casdo:RegisterCountryCode>RU</casdo:RegisterCountryCode>
+				<cacdo:RegisterDocumentDetails>
+					<casdo:RegistrationNumberIdentifier>6332/135</casdo:RegistrationNumberIdentifier>
+					<csdo:DocCreationDate>2019-08-28</csdo:DocCreationDate>
+					<casdo:RegisterDocumentCode>3</casdo:RegisterDocumentCode>
+				</cacdo:RegisterDocumentDetails>
+				<cacdo:CustomsBrokerDetails>
+					<cacdo:BrokerParentDetails>
+						<ccdo:OrganizationDetails>
+							<csdo:CountryCode>RU</csdo:CountryCode>
+							<csdo:OrganizationName>ООО "ИНТЕРАЦИЯ-СИБИРЬ"</csdo:OrganizationName>
+							<csdo:OrganizationBriefName>ООО "ИНТЕРАЦИЯ-СИБИРЬ"</csdo:OrganizationBriefName>
+							<csdo:BusinessEntityTypeName>ООО</csdo:BusinessEntityTypeName>	
+							<csdo:LanguageCode>ru</csdo:LanguageCode>
+						</ccdo:OrganizationDetails>
+						<ccdo:TaxpayerDetails>
+							<csdo:TaxpayerId>5404521953</csdo:TaxpayerId>
+						</ccdo:TaxpayerDetails>
+						<ccdo:AddressDetails>
+							<csdo:CountryCode>RU</csdo:CountryCode>
+							<csdo:TerritoryCode>54</csdo:TerritoryCode>
+							<csdo:PostCode>630052</csdo:PostCode>
+							<csdo:RegionName>Новосибирская обл.</csdo:RegionName>
+							<csdo:DistrictName>Новосибирская обл.</csdo:DistrictName>
+							<csdo:CityName>Новосибирск</csdo:CityName>
+							<csdo:SettlementName>г.Новосибирск</csdo:SettlementName>
+							<csdo:StreetName>ул. Троллейная</csdo:StreetName>
+							<csdo:BuildingNumberId>87</csdo:BuildingNumberId>
+							<csdo:RoomNumberId>223, 224</csdo:RoomNumberId>
+						</ccdo:AddressDetails>
+						<ccdo:CommunicationDetails>
+							<csdo:CommunicationChannelCode>FX</csdo:CommunicationChannelCode>
+							<csdo:CommunicationChannelName>факс</csdo:CommunicationChannelName>
+							<csdo:CommunicationChannelId>+7(383)334-05-27</csdo:CommunicationChannelId>
+						</ccdo:CommunicationDetails>
+						<ccdo:CommunicationDetails>
+							<csdo:CommunicationChannelCode>TE</csdo:CommunicationChannelCode>
+							<csdo:CommunicationChannelName>тел.</csdo:CommunicationChannelName>
+							<csdo:CommunicationChannelId>+7(383)334-05-27</csdo:CommunicationChannelId>
+						</ccdo:CommunicationDetails>
+						<ccdo:CommunicationDetails>
+							<csdo:CommunicationChannelCode>EM</csdo:CommunicationChannelCode>
+							<csdo:CommunicationChannelName>электронная почта</csdo:CommunicationChannelName>
+							<csdo:CommunicationChannelId>info@interacia.ru</csdo:CommunicationChannelId>
+						</ccdo:CommunicationDetails>
+						<cacdo:PostalAddressDetails>
+							<csdo:CountryCode>RU</csdo:CountryCode>
+							<csdo:TerritoryCode>54</csdo:TerritoryCode>
+							<csdo:PostCode>630052</csdo:PostCode>
+							<csdo:RegionName>Новосибирская обл.</csdo:RegionName>
+							<csdo:CityName>Новосибирск</csdo:CityName>
+							<csdo:StreetName>ул. Троллейная</csdo:StreetName>
+							<csdo:BuildingNumberId>87</csdo:BuildingNumberId>
+							<csdo:RoomNumberId>223, 224</csdo:RoomNumberId>
+						</cacdo:PostalAddressDetails>
+						<casdo:BranchFlagCode>0</casdo:BranchFlagCode>
+					</cacdo:BrokerParentDetails>
+					<cacdo:BrokerBranchDetails>
+						<ccdo:OrganizationDetails>
+							<csdo:CountryCode>RU</csdo:CountryCode>
+							<csdo:OrganizationName>Барнаульский филиал ООО "Интерация-Сибирь"</csdo:OrganizationName>
+							<csdo:OrganizationBriefName>ООО "Интерация-Сибирь" (г.Барнаул)</csdo:OrganizationBriefName>
+							<csdo:LanguageCode>ru</csdo:LanguageCode>
+						</ccdo:OrganizationDetails>
+						<ccdo:TaxpayerDetails>
+							<csdo:TaxpayerId>9999922770</csdo:TaxpayerId>
+						</ccdo:TaxpayerDetails>
+						<ccdo:AddressDetails>
+							<csdo:CountryCode>RU</csdo:CountryCode>
+							<csdo:PostCode>656043</csdo:PostCode>
+							<csdo:CityName>г. Барнаул</csdo:CityName>
+							<csdo:StreetName>ул. Интернациональная</csdo:StreetName>
+							<csdo:BuildingNumberId>106</csdo:BuildingNumberId>
+							<csdo:RoomNumberId>109</csdo:RoomNumberId>
+						</ccdo:AddressDetails>
+						<ccdo:CommunicationDetails>
+							<csdo:CommunicationChannelCode>TE</csdo:CommunicationChannelCode>
+							<csdo:CommunicationChannelName>телефон</csdo:CommunicationChannelName>
+							<csdo:CommunicationChannelId>8(3852)25-40-27</csdo:CommunicationChannelId>
+						</ccdo:CommunicationDetails>
+						<cacdo:PostalAddressDetails>
+							<csdo:CountryCode>RU</csdo:CountryCode>
+							<csdo:PostCode>656043</csdo:PostCode>
+							<csdo:CityName>г. Барнаул</csdo:CityName>
+							<csdo:StreetName>ул. Интернациональная</csdo:StreetName>
+							<csdo:BuildingNumberId>106</csdo:BuildingNumberId>
+						</cacdo:PostalAddressDetails>
+						<casdo:BranchFlagCode>1</casdo:BranchFlagCode>
+					</cacdo:BrokerBranchDetails>
+				</cacdo:CustomsBrokerDetails>
+				<casdo:StartActivityDate>2019-08-28</casdo:StartActivityDate>
+				<ccdo:ResourceItemStatusDetails>
+					<ccdo:ValidityPeriodDetails>
+						<csdo:StartDateTime>2019-08-28T00:00:00Z</csdo:StartDateTime>
+					</ccdo:ValidityPeriodDetails>
+					<csdo:UpdateDateTime>2019-08-28T00:00:00Z</csdo:UpdateDateTime>
+				</ccdo:ResourceItemStatusDetails>
+			</cacdo:RegisterCustomsBrokerDetails>
+		</rcb:RegisterCustomsBroker>
+	</soap:Body>
+</soap:Envelope>
