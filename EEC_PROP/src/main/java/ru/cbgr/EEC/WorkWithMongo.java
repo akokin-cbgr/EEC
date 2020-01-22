@@ -17,7 +17,8 @@ public class WorkWithMongo {
   public static void main(String[] args) throws Exception {
     //ReplicaSet к КБД на примере БД ОП02
     MongoClient client = MongoClients.create(new ConnectionString("mongodb://admin:qwe123@eek-testcdb-mg0.tengry.com:27017/admin?replicaSet=repldoc"));
-    System.out.println("В коллекции service-prop-02-checkPointDetailsType содержится -  " + client.getDatabase("cp_registry").getCollection("service-prop-02-checkPointDetailsType").countDocuments() + " записей");
+    System.out.println("В коллекции service-prop-02-checkPointDetailsType содержится -  " + client.getDatabase("cp_registry")
+            .getCollection("service-prop-02-checkPointDetailsType").countDocuments() + " записей");
 
 
 

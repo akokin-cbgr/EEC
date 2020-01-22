@@ -203,7 +203,7 @@ public class TestBase {
 
   /*Метод подготовки XML к отправке в MQ, идет генерация UUID*/
   String filePreparation(String filePath) {
-    if (getFile(filePath).equals("\"File not found!\"")){
+    if (getFile(filePath).equals("\"File not found!\"")) {
       return "File not found!";
     }
     String fileRaw = getFile(filePath);//считываем из файла XML
@@ -256,29 +256,29 @@ public class TestBase {
     Enumeration e = browser.getEnumeration();//получаем Enumeration
     StringBuilder stringBuilder = new StringBuilder();//создаем stringBuilder для записи в него сообщения из очереди
     StringBuilder result = new StringBuilder();// создаем stringBuilder для формирования строки консоли о типах полученных сообщений
-    int i = kol_vo_otvetov;
+    int i = 1;
     /*Цикл вычитки и последующей записи в соответствующие файлы полученных в очереди сообщений*/
-    while (e.hasMoreElements()) {
+    while (e.hasMoreElements() & i < kol_vo_otvetov + 1) {
       Message message = (Message) e.nextElement(); //Получение сообщения
       stringBuilder.append(onMessage(message)).append("\n"); // запись в stringBuilder вычитанного сообщения
       /*Условия сортировки сообщений по типу*/
-      if (stringBuilder.toString().contains("P.MSG.PRS")) {
+      if (stringBuilder.toString().contains("P.MSG.PRS</wsa:Action>")) {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
                 pathToLog + "Received_MSG_PRS.xml");
         result.append("- MSG.PRS\n");
-      } else if (stringBuilder.toString().contains("P.MSG.RCV")) {
+      } else if (stringBuilder.toString().contains("P.MSG.RCV</wsa:Action>")) {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
                 pathToLog + "Received_MSG_RCV.xml");
         result.append("- MSG.RCV\n");
-      } else if (stringBuilder.toString().contains("P.MSG.ERR")) {
+      } else if (stringBuilder.toString().contains("P.MSG.ERR</wsa:Action>")) {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
                 pathToLog + "Received_MSG_ERR.xml");
         result.append("- MSG.ERR\n");
-      } else if (stringBuilder.toString().contains("MSG.002")) {
+      } else if (stringBuilder.toString().contains("MSG.002</wsa:Action>")) {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
                 pathToLog + "Received_MSG_002.xml");
         result.append("- MSG.002\n");
-      } else if (stringBuilder.toString().contains("MSG.004")) {
+      } else if (stringBuilder.toString().contains("MSG.004</wsa:Action>")) {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
                 pathToLog + "Received_MSG_004.xml");
         result.append("- MSG.004\n");
@@ -294,7 +294,7 @@ public class TestBase {
     }
     /*У словие возврата null если stringBuilder будет пустой по причине отсутствия сообщений (к примеру если ПРОП не ответил)
      * дополнительно будет сообщение о том что сообщений нет в в тупиковой очереди*/
-    if (!(e.hasMoreElements()) && stringBuilder.length() == 0 && i == kol_vo_otvetov) {
+    if (!(e.hasMoreElements()) & stringBuilder.length() == 0 & i == 1) {
       System.out.println("ИТОГ\n" +
               "ОШИБКА ТЕСТА - Очередь " + queueRecieve + " не содержит сообщений."); // формирование строки-отчета в консоли
       return null;
@@ -479,41 +479,78 @@ public class TestBase {
   }
 
 
-/*
-  public void testAssert_For_Msg_004() {
-    if (new File(pathToLog + "Received_MSG_004.xml").exists()) {
-      base.setConversationID(base.variableFromXml(pathToLog + "Init_MSG_001.xml", "//int:ConversationID/text()"));
-      if (XPathBaseHelper.go(pathToLog + "Received_MSG_004.xml",
-              "//int:ConversationID/text()").equals(base.getConversationID())) {
-        System.out.println("Тесты для - Received_MSG_004.xml:\n" +
-                "int:ConversationID - совпадает с ID транзакции");
-      } else {
-        System.out.println("Тесты для - Received_MSG_004.xml:\n" +
-                "int:ConversationID - Не совпадает с ID транзакции");
-        fail();
-      }
-      if (Objects.requireNonNull(XPathBaseHelper.go(pathToLog + "Received_MSG_004.xml",
-              "//csdo:ProcessingResultCode/text()")).equals("3")) {
-        System.out.println(
-                "csdo:ProcessingResultCode - содержит верный код \"3\"");
-      } else {
-        System.out.println(
-                "csdo:ProcessingResultCode - содержит НЕверный код");
-        fail();
-      }
-      if (Objects.requireNonNull(XPathBaseHelper.go(pathToLog + "Received_MSG_004.xml",
-              "//csdo:DescriptionText/text()")).equals("Сведения добавлены")) {
-        System.out.println(
-                "csdo:DescriptionText - соответствует значению \"Сведения добавлены\"");
-      } else {
-        System.out.println("csdo:DescriptionText - НЕ соответствует значению");
-        fail();
-      }
-    } else {
-      System.out.println("ОШИБКА\n" +
-              "Тест проверки соответствия ConversationID - Не пройден!\n" +
-              "В папке \\Log отсутствует файл - Received_MSG_004.xml");
-      fail();
+  private void setConversationIdForAssert() {
+    if (new File(this.getPathToLog() + "Init_MSG_001.xml").exists()) {
+      setConversationID(variableFromXml(this.getPathToLog() + "Init_MSG_001.xml", "//int:ConversationID/text()"));
     }
-  }*/
+  }
+
+
+  String testAssert_For_Reply_Msg(String checkedFile, String tegCheckCode, String tegDescriptionText) {
+    if (new File(this.getPathToLog() + checkedFile).exists()) {
+      setConversationIdForAssert();
+      String str = "";
+      if (Objects.requireNonNull(XPathBaseHelper.go(this.getPathToLog() + checkedFile,
+              "//int:ConversationID/text()")).equals(this.getConversationID())) {
+        System.out.println("Тесты для - " + checkedFile + ":\n" +
+                "int:ConversationID             - PASSED - совпадает с ID транзакции");
+        str = "Passed";
+      } else {
+        System.out.println("Тесты для - " + checkedFile + ":\n" +
+                "ОШИБКА ТЕСТА                   - FAIL - int:ConversationID не совпадает с ID транзакции");
+        str = "NOT Passed";
+      }
+      if (Objects.requireNonNull(XPathBaseHelper.go(this.getPathToLog() + checkedFile,
+              "//" + tegCheckCode + "/text()")).equals("3")) {
+        System.out.println(
+                tegCheckCode + "      - PASSED - содержит верный код \"3\"");
+        str = "Passed";
+      } else {
+        System.out.println(
+                "ОШИБКА ТЕСТА                   - FAIL - " + tegCheckCode + " содержит НЕверный код");
+        str = "NOT Passed";
+      }
+      if (Objects.requireNonNull(XPathBaseHelper.go(this.getPathToLog() + checkedFile,
+              "//" + tegDescriptionText + "/text()")).equals("Сведения добавлены")) {
+        System.out.println(
+                tegDescriptionText + "           - PASSED - соответствует значению \"Сведения добавлены\"");
+        str = "Passed";
+      } else {
+        System.out.println(
+                "ОШИБКА ТЕСТА                   - FAIL - " + tegDescriptionText + " НЕ соответствует значению");
+        str = "NOT Passed";
+      }
+      return str;
+    } else {
+      System.out.println("Тесты для - " + checkedFile + ":\n" +
+              "ОШИБКА ТЕСТА - В папке \n" + this.getPathToLog() + "\n" +
+              "отсутствует файл - " + checkedFile + ":\n");
+      return "NOT Passed";
+    }
+  }
+
+  public String testAssert_For_Signal(String checkedFile) {
+    if (new File(this.getPathToLog() + checkedFile).exists()) {
+      setConversationIdForAssert();
+      String str = "";
+      if (Objects.requireNonNull(XPathBaseHelper.go(this.getPathToLog() + checkedFile,
+              "//int:ConversationID/text()")).equals(this.getConversationID())) {
+        System.out.println("Тесты для - " + checkedFile + ":\n" +
+                "int:ConversationID             - PASSED - совпадает с ID транзакции\n");
+        str = "Passed";
+      } else {
+        System.out.println("Тесты для - " + checkedFile + ":\n" +
+                "ОШИБКА ТЕСТА                   - FAIL - int:ConversationID не совпадает с ID транзакции\n");
+        str = "NOT Passed";
+      }
+      return str;
+    } else {
+      System.out.println("Тесты для - " + checkedFile + ":\n" +
+              "ОШИБКА ТЕСТА - В папке \n" + this.getPathToLog() + "\n" +
+              "отсутствует файл - " + checkedFile + ":\n");
+      return "NOT Passed";
+    }
+  }
+
+
 }

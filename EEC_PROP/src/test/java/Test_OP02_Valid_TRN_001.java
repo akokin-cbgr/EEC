@@ -1,9 +1,5 @@
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
-import ru.cbgr.EEC.XPathBaseHelper;
-
-import java.io.File;
-import java.util.Objects;
 
 import static org.testng.Assert.*;
 
@@ -40,7 +36,7 @@ public class Test_OP02_Valid_TRN_001 {
     base.setNumberMSG("MSG_001.xml");                  //Название инициирующего сообщения
 
     /*Очистка папки с логами*/
-    base.deleteAllFilesFolder(base.getPathToLog());
+//    base.deleteAllFilesFolder(base.getPathToLog());
 
   }
 
@@ -108,84 +104,23 @@ public class Test_OP02_Valid_TRN_001 {
 
 
   @Test(priority = 1, enabled = false)
-  public void testAssert_For_Msg_RCV() {
-    if (new File(base.getPathToLog() + "Received_MSG_RCV.xml").exists()) {
-      if (Objects.requireNonNull(XPathBaseHelper.go(base.getPathToLog() + "Received_MSG_RCV.xml",
-              "//int:ConversationID/text()")).equals(base.getConversationID())) {
-        System.out.println("Тесты для - Received_MSG_RCV.xml:\n" +
-                "int:ConversationID             - совпадает с ID транзакции\n");
-      } else {
-        System.out.println("Тесты для - Received_MSG_RCV.xml:\n" +
-                "ОШИБКА ТЕСТА                   - int:ConversationID не совпадает с ID транзакции\n");
-        fail();
-      }
-    } else {
-      System.out.println("Тесты для - Received_MSG_RCV.xml:\n" +
-              "ОШИБКА ТЕСТА - В папке \n" + base.getPathToLog() + "\n" +
-              "отсутствует файл - Received_MSG_RCV.xml\n");
-      fail();
-    }
+  public void test_For_Msg_RCV() {
+    assertEquals(base.testAssert_For_Signal("Received_MSG_RCV.xml"),"Passed");
   }
 
 
   @Test(priority = 2)
-  public void testAssert_For_Msg_PRS() {
-    if (new File(base.getPathToLog() + "Received_MSG_PRS.xml").exists()) {
-      if (Objects.requireNonNull(XPathBaseHelper.go(base.getPathToLog() + "Received_MSG_PRS.xml",
-              "//int:ConversationID/text()")).equals(base.getConversationID())) {
-        System.out.println("Тесты для - Received_MSG_PRS.xml:\n" +
-                "int:ConversationID             - совпадает с ID транзакции\n");
-      } else {
-        System.out.println("Тесты для - Received_MSG_PRS.xml:\n" +
-                "ОШИБКА ТЕСТА                   - int:ConversationID не совпадает с ID транзакции\n");
-        fail();
-      }
-    } else {
-      System.out.println("Тесты для - Received_MSG_PRS.xml:\n" +
-              "ОШИБКА ТЕСТА - В папке \n" + base.getPathToLog() + "\n" +
-              "отсутствует файл - Received_MSG_PRS.xml\n");
-      fail();
-    }
+  public void test_For_Msg_PRS() {
+    assertEquals(base.testAssert_For_Signal("Received_MSG_PRS.xml"),"Passed");
   }
 
 
   @Test(priority = 3)
-  public void testAssert_For_Msg_004() {
-    if (new File(base.getPathToLog() + "Received_MSG_004.xml").exists()) {
-      base.setConversationID(base.variableFromXml(base.getPathToLog() + "Init_MSG_001.xml", "//int:ConversationID/text()"));
-      if (Objects.requireNonNull(XPathBaseHelper.go(base.getPathToLog() + "Received_MSG_004.xml",
-              "//int:ConversationID/text()")).equals(base.getConversationID())) {
-        System.out.println("Тесты для - Received_MSG_004.xml:\n" +
-                "int:ConversationID             - совпадает с ID транзакции");
-      } else {
-        System.out.println("Тесты для - Received_MSG_004.xml:\n" +
-                "ОШИБКА ТЕСТА                   - int:ConversationID не совпадает с ID транзакции");
-        fail();
-      }
-      if (Objects.requireNonNull(XPathBaseHelper.go(base.getPathToLog() + "Received_MSG_004.xml",
-              "//csdo:ProcessingResultCode/text()")).equals("3")) {
-        System.out.println(
-                "csdo:ProcessingResultCode      - содержит верный код \"3\"");
-      } else {
-        System.out.println(
-                "ОШИБКА ТЕСТА                   - csdo:ProcessingResultCode содержит НЕверный код");
-        fail();
-      }
-      if (Objects.requireNonNull(XPathBaseHelper.go(base.getPathToLog() + "Received_MSG_004.xml",
-              "//csdo:DescriptionText/text()")).equals("Сведения добавлены")) {
-        System.out.println(
-                "csdo:DescriptionText           - соответствует значению \"Сведения добавлены\"");
-      } else {
-        System.out.println(
-                "ОШИБКА ТЕСТА                   - csdo:DescriptionText НЕ соответствует значению");
-        fail();
-      }
-    } else {
-      System.out.println("Тесты для - Received_MSG_004.xml:\n" +
-              "ОШИБКА ТЕСТА - В папке \n" + base.getPathToLog() + "\n" +
-              "отсутствует файл - Received_MSG_004.xml\n");
-      fail();
-    }
+  public void test_For_Msg_004() {
+    assertEquals(base.testAssert_For_Reply_Msg("Received_MSG_004.xml",
+            "csdo:ProcessingResultCode",
+            "csdo:DescriptionText"),
+            "Passed");
   }
 
 }
