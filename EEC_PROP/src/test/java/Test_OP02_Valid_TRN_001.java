@@ -75,13 +75,15 @@ public class Test_OP02_Valid_TRN_001 {
       base.sendMsg(base.getQueueSession(), base.getQueueSender(), fileInit);
 
       /*Установка задержки для того чтобы ПРОП успел сформировать ответные сообщения и они попали в тупиковую очередь*/
-      Thread.sleep(8000);//задержка на получение ответа от ПРОП
+//      Thread.sleep(8000);//задержка на получение ответа от ПРОП
+
+      base.checkAndWaitMsgInQueue(60);
 
       /*Вычитка ответных сообщений из очереди queueReciev и передача их в stringBuilder
        * После этого проверка вернувшегося stringBuilder на null
        * Если будет null то тест упадет.
        * Внутри метода receiveMsgFromQueue реализовано условие возврата null если stringBuilder будет пустой по причине отсутствия сообщений в тупиковой очереди*/
-      assertNotNull(base.receiveMsgFromQueue(2, base.getQueueSession(), base.getQueueReciev(), base.getPathToLog()));
+      assertNotNull(base.receiveMsgFromQueue(base.getQueueSession(), base.getQueueReciev(), base.getPathToLog()));
 
       /**/
       System.out.println(
