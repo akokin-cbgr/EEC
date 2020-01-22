@@ -87,18 +87,14 @@ public class TestBase {
   /*Метод считывания файла с HDD в строку*/
   private String getFile(String fileName) {
     StringBuilder result = new StringBuilder();
-    if (new File(fileName).exists()) {
-      File file = new File(fileName);
-      try (Scanner scanner = new Scanner(file)) {
-        while (scanner.hasNextLine()) {
-          String line = scanner.nextLine();
-          result.append(line).append("\n");
-        }
-      } catch (IOException e) {
-        e.printStackTrace();
+    File file = new File(fileName);
+    try (Scanner scanner = new Scanner(file)) {
+      while (scanner.hasNextLine()) {
+        String line = scanner.nextLine();
+        result.append(line).append("\n");
       }
-    } else {
-      return "File not found!";
+    } catch (IOException e) {
+      e.printStackTrace();
     }
     return result.toString();
   }
@@ -205,9 +201,6 @@ public class TestBase {
 
   /*Метод подготовки XML к отправке в MQ, идет генерация UUID*/
   String filePreparation(String filePath) {
-    if (getFile(filePath).equals("\"File not found!\"")) {
-      return "File not found!";
-    }
     String fileRaw = getFile(filePath);//считываем из файла XML
     /*Производим замену UUID на сгенерированные*/
     fileRaw = fileRaw.replaceAll(">urn:uuid:.*</wsa:MessageID>", ">urn:uuid:" + uuid().toString() + "</wsa:MessageID>");
@@ -340,8 +333,18 @@ public class TestBase {
     }
   }
 
-  Boolean checkFileExist(String fileName) {
+  Boolean checkLogFileExist(String fileName) {
     return new File(this.getPathToLog() + fileName).exists();
+  }
+
+  Boolean checkInitFileExist() {
+    if (new File(this.getPathToInitMessage()).exists()) {
+      return true;
+    } else {
+      System.out.println("ОШИБКА ТЕСТА - Не найден инициирующий файл по пути: \n"
+              + this.getPathToInitMessage() + "\n");
+      return false;
+    }
   }
 
 
@@ -383,7 +386,7 @@ public class TestBase {
     } else {
       System.out.println("Тесты для - " + checkedFile + ":\n" +
               "ОШИБКА ТЕСТА - В папке \n" + this.getPathToLog() + "\n" +
-              "отсутствует файл - " + checkedFile + ":\n");
+              "отсутствует файл - " + checkedFile + "\n");
       return "NOT Passed";
     }
   }
@@ -406,7 +409,7 @@ public class TestBase {
     } else {
       System.out.println("Тесты для - " + checkedFile + ":\n" +
               "ОШИБКА ТЕСТА - В папке \n" + this.getPathToLog() + "\n" +
-              "отсутствует файл - " + checkedFile + ":\n");
+              "отсутствует файл - " + checkedFile + "\n");
       return "NOT Passed";
     }
   }

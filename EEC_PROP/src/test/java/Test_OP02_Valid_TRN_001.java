@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 import javax.jms.JMSException;
 
 import static org.testng.Assert.*;
+import static org.testng.Assert.assertNotNull;
 
 public class Test_OP02_Valid_TRN_001 {
 
@@ -53,12 +54,8 @@ public class Test_OP02_Valid_TRN_001 {
       base.clearQueue(base.getQueueReceiver());
 
       /*Создание сообщения на отправку*/
+      assertTrue(base.checkInitFileExist());
       String fileInit = base.filePreparation(base.getPathToInitMessage());
-      if (fileInit.equals("File not found!")) {
-        System.out.println("Файл инициирующего сообщения не найден. \n" +
-                "Путь - " + base.getPathToInitMessage());
-        fail();
-      }
 
       /*ГЕНЕРАЦИЯ УНИКАЛЬНОГО КЛЮЧА ДЛЯ ДАННОГО ОП, В ОТПРАВЛЯЕМОЙ XML*/
       fileInit = fileInit.replaceAll(">.*</casdo:BorderCheckPointCode>", ">PPG.RU.UA." + base.randInt(10000000, 99999999) + "</casdo:BorderCheckPointCode>");
@@ -82,8 +79,8 @@ public class Test_OP02_Valid_TRN_001 {
       assertNotNull(base.receiveMsgFromQueue(base.getQueueSession(), base.getQueueReciev(), base.getPathToLog()));
 
       /*Проверки что созданы файлы ответных сообщений*/
-      assertTrue(base.checkFileExist("Received_MSG_PRS.xml"));
-      assertTrue(base.checkFileExist("Received_MSG_004.xml"));
+      assertTrue(base.checkLogFileExist("Received_MSG_PRS.xml"));
+      assertTrue(base.checkLogFileExist("Received_MSG_004.xml"));
 
       /*Вывод в консоль ID транзакции*/
       System.out.println(
