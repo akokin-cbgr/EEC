@@ -153,7 +153,6 @@ public class TestBase {
 
   /*Метод записи передаваемого или получаемого сообщения на HDD*/
   void writeMsgToHdd(String fileInit, String filePath) throws IOException {
-    //Запись отправляемого MSG в файл для статистики
     File file = new File(filePath);
     FileWriter writerInit = new FileWriter(file);
     writerInit.write(fileInit);

@@ -52,8 +52,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/TestBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="190" column="52" lean-forward="true" selection-start-line="190" selection-start-column="52" selection-end-line="190" selection-end-column="52" />
+            <state relative-caret-position="148">
+              <caret line="155" selection-start-line="155" selection-end-line="155" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -356,12 +356,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 12h 19m 34s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 12h 19m 55s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 12h 20m 10s.xml">
       <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
@@ -386,6 +380,12 @@
     <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 15h 06m 45s.xml">
       <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
+    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 15h 12m 03s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_OP06_Valid_TRN_001 - 2020.01.22 at 15h 12m 33s.xml">
+      <configuration name="Test_OP06_Valid_TRN_001" configurationId="TestNG" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -409,7 +409,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3279743" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4989339" visible="true" weight="0.2636656" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" weight="0.2636656" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5123258" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -758,6 +758,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/Test_OP06_Valid_TRN_001.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="31" column="18" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/Test_OP02_Valid_TRN_001.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1819">
@@ -768,17 +775,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/Test_OP06_Valid_TRN_001.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="31" column="18" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/TestBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="190" column="52" lean-forward="true" selection-start-line="190" selection-start-column="52" selection-end-line="190" selection-end-column="52" />
+        <state relative-caret-position="148">
+          <caret line="155" selection-start-line="155" selection-end-line="155" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
