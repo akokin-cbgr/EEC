@@ -49,11 +49,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/TestBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-263">
-              <caret line="403" column="2" selection-start-line="403" selection-start-column="2" selection-end-line="403" selection-end-column="2" />
+            <state relative-caret-position="468">
+              <caret line="190" column="52" lean-forward="true" selection-start-line="190" selection-start-column="52" selection-end-line="190" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -64,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/Test_OP02_Valid_TRN_001.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
-              <caret line="107" column="50" lean-forward="true" selection-start-line="107" selection-start-column="50" selection-end-line="107" selection-end-column="50" />
+            <state relative-caret-position="1819">
+              <caret line="107" column="51" selection-start-line="107" selection-start-column="51" selection-end-line="107" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -73,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/Test_OP06_Valid_TRN_001.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="100" column="3" lean-forward="true" selection-start-line="100" selection-start-column="3" selection-end-line="100" selection-end-column="3" />
+            <state relative-caret-position="476">
+              <caret line="31" column="18" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -138,9 +138,9 @@
         <option value="$PROJECT_DIR$/src/test/java/TestValidXml.java" />
         <option value="$PROJECT_DIR$/src/test/java/Test_OP02_TRN_001.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/WorkWithMongo.java" />
-        <option value="$PROJECT_DIR$/src/test/java/TestBase.java" />
-        <option value="$PROJECT_DIR$/src/test/java/Test_OP02_Valid_TRN_001.java" />
         <option value="$PROJECT_DIR$/src/test/java/Test_OP06_Valid_TRN_001.java" />
+        <option value="$PROJECT_DIR$/src/test/java/Test_OP02_Valid_TRN_001.java" />
+        <option value="$PROJECT_DIR$/src/test/java/TestBase.java" />
       </list>
     </option>
   </component>
@@ -356,12 +356,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 12h 18m 13s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 12h 19m 10s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 12h 19m 34s.xml">
       <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
@@ -385,6 +379,12 @@
     </history-entry>
     <history-entry file="Test_OP06_Valid_TRN_001 - 2020.01.22 at 14h 49m 35s.xml">
       <configuration name="Test_OP06_Valid_TRN_001" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_OP06_Valid_TRN_001 - 2020.01.22 at 15h 05m 32s.xml">
+      <configuration name="Test_OP06_Valid_TRN_001" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_OP02_Valid_TRN_001 - 2020.01.22 at 15h 06m 45s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001" configurationId="TestNG" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -510,16 +510,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="удалена зависимость" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/TestBase.java</url>
-          <line>340</line>
-          <properties />
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="TestNG">
         <watch expression="base" language="JAVA" />
@@ -768,20 +758,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/TestBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-263">
-          <caret line="403" column="2" selection-start-line="403" selection-start-column="2" selection-end-line="403" selection-end-column="2" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/Test_OP02_Valid_TRN_001.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="107" column="50" lean-forward="true" selection-start-line="107" selection-start-column="50" selection-end-line="107" selection-end-column="50" />
+        <state relative-caret-position="1819">
+          <caret line="107" column="51" selection-start-line="107" selection-start-column="51" selection-end-line="107" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -790,8 +770,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/Test_OP06_Valid_TRN_001.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="100" column="3" lean-forward="true" selection-start-line="100" selection-start-column="3" selection-end-line="100" selection-end-column="3" />
+        <state relative-caret-position="476">
+          <caret line="31" column="18" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/TestBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="190" column="52" lean-forward="true" selection-start-line="190" selection-start-column="52" selection-end-line="190" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

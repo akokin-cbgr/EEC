@@ -104,8 +104,8 @@ public class Test_OP02_Valid_TRN_001 {
   @Test(priority = 3)
   public void test_For_Msg_004() {
     assertEquals(base.testAssert_For_Reply_Msg("Received_MSG_004.xml",
-            "csdo:ProcessingResultCode","3",
-            "csdo:DescriptionText","Сведения добавлены"),
+            "csdo:ProcessingResultCode", "3",
+            "csdo:DescriptionText", "Сведения добавлены"),
             "Passed");
   }
 

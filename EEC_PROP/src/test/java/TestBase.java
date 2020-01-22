@@ -188,7 +188,7 @@ public class TestBase {
       result.append("MSG.006");
     }
     queueSender.send(textMessage);//отправляем в очередь ранее созданное сообщение
-    System.out.println("Сообщение " + result + " отправлено:\n" +
+    System.out.println("Запуск теста для "+ opName + " - " + tipTRN + "\nСообщение " + result + " отправлено:\n" +
             "- Очередь           - " + queueSending +
             "\n- Адрес шлюза       - " + hostName + "\n");
   }
