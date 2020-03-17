@@ -299,7 +299,6 @@ public class TestBase {
       i++;
       /*Очистка stringBuilder*/
       stringBuilder.delete(0, stringBuilder.length());
-
     }
     /*У словие возврата null если stringBuilder будет пустой по причине отсутствия сообщений (к примеру если ПРОП не ответил)
      * дополнительно будет сообщение о том что сообщений нет в в тупиковой очереди*/

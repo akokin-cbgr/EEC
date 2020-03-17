@@ -14,9 +14,9 @@ public class Test_OP02_Valid_TRN_001 {
 
     /*Переменные настройки подключения к шлюзу*/
     base.setHostName("eek-test1-ip-mq-sync.tengry.com");  //Адресс шлюза SYNC
-    base.setChannel("ESB.SVRCONN");                   //Канал
-    base.setPort(1414);                               //Порт
-    base.setQueueManager("SYNC.IIS.QM");                //Менеджер очередей SYNC
+    base.setChannel("ESB.SVRCONN");                       //Канал
+    base.setPort(1414);                                   //Порт
+    base.setQueueManager("SYNC.IIS.QM");                  //Менеджер очередей SYNC
     base.setQueueSending("ADP.PROP.IN");           //Очередь для отправки сообщений
     base.setQueueRecieve("Q.ADDR1");                  //Тупиковая очередь для ответных сообщений
 
