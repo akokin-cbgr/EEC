@@ -12,7 +12,7 @@ import java.util.*;
 
 import static com.ibm.mq.jms.JMSC.MQJMS_TP_CLIENT_MQ_TCPIP;
 
-public class TestBase {
+abstract public class TestBase {
 
 
   /*Переменные настройки подключения к шлюзу*/
@@ -400,7 +400,7 @@ public class TestBase {
   }
 
   String testAssert_For_Signal(String checkedFile) {
-    if (new File(this.getPathToLog() + checkedFile).exists()) {
+    if ( new File(this.getPathToLog() + checkedFile).exists()) {
       setConversationIdForAssert();
       String str = "";
       if (Objects.requireNonNull(XPathBaseHelper.go(this.getPathToLog() + checkedFile,
@@ -567,20 +567,28 @@ public class TestBase {
     this.conversationID = conversationID;
   }
 
+//  String getPathToInitMessage() {
+//    return this.pathToInitMessage = this.getPathCommon() + this.getOpName() + "/" + this.getTipMSG() + "/" + this.getTipTRN() + "/" + this.getNumberMSG();
+//  }
+
   String getPathToInitMessage() {
-    return this.pathToInitMessage = this.getPathCommon() + this.getOpName() + "/" + this.getTipMSG() + "/" + this.getTipTRN() + "/" + this.getNumberMSG();
+    return this.pathToInitMessage;
   }
 
-  void setPathToInitMessage(String pathToInitMessage) {
-    this.pathToInitMessage = pathToInitMessage;
+  void setPathToInitMessage( String pathToInitMessage) {
+    this.pathToInitMessage = pathCommon + pathToInitMessage;
   }
+
+//  String getPathToLog() {
+//    return this.pathToLog = this.getPathCommon() + this.getOpName() + "/" + this.getTipMSG() + "/" + this.getTipTRN() + "/" + "Log/";
+//  }
 
   String getPathToLog() {
-    return this.pathToLog = this.getPathCommon() + this.getOpName() + "/" + this.getTipMSG() + "/" + this.getTipTRN() + "/" + "Log/";
+    return this.pathToLog;
   }
 
   void setPathToLog(String pathToLog) {
-    this.pathToLog = pathToLog;
+    this.pathToLog = pathCommon + pathToLog;
   }
 
 
