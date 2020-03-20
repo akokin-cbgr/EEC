@@ -1,51 +1,45 @@
-import org.testng.annotations.BeforeSuite;
+package ru.EEC;
+
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import java.io.File;
 
 import static org.testng.Assert.*;
 
-public class Test_OP02_Valid_TRN_001 extends TestBase{
+public class Test_OP02_Valid_TRN_001 extends TestBase {
 
-  @BeforeSuite
-  private void initial() {
-
-    /*Переменные настройки подключения к шлюзу*/
-    setHostName("eek-test1-ip-mq-sync.tengry.com");  //Адресс шлюза SYNC
-    setChannel("ESB.SVRCONN");                       //Канал
-    setPort(1414);                                   //Порт
-    setQueueManager("SYNC.IIS.QM");                  //Менеджер очередей SYNC
-    setQueueSending("ADP.PROP.IN");           //Очередь для отправки сообщений
-    setQueueRecieve("Q.ADDR1");                  //Тупиковая очередь для ответных сообщений
-
-
+  @BeforeClass
+  private void set() {
     /*Настройка переменных теста под определенное тестируемое ОП.
      * Названия должны совпадать с названиями папок где хранятся файлы для отправки.
      * Например :
      * \src\main\resources\OP_02\VALID\MSG.001_TRN.001\        - путь к файлам инициирующих сообщений
-     * \src\main\resources\OP_02\VALID\MSG.001_TRN.001\Log     - путь к логам, туда сохранятся файлы отправленных и ответных сообщений*/
+     * \src\main\resources\OP_02\VALID\MSG.001_TRN.001\Log     - путь к логам, туда сохранятся файлы отправленных и ответных сообщений
+     * В папке log создаются файлы с именами :
+     * - Received_MSG_PRS.xml
+     * - Received_MSG_RCV.xml
+     * - Received_MSG_ERR.xml
+     * - Received_MSG_002.xml
+     * - Received_MSG_004.xml
+     * - Received_MSG_XXX.xml
+     * */
+    setPathToInitMessage("OP_02/VALID/MSG.001_TRN.001/MSG_001.xml");
+    setNameOfSaveInitMessage("Init_MSG_001.xml");
 
-//    setOpName("OP_02");                           //Название папки общего процесса
-//    setTipMSG("VALID");                             //Название папки с типом проверок (ошибки ФЛК или Valid)
-//    setTipTRN("MSG.001_TRN.001");                 //Название папки проверяемой транзакции
-//    setNumberMSG("MSG_001.xml");                  //Название инициирующего сообщения
+    setPathToLog("OP_02/VALID/MSG.001_TRN.001/Log/");
+
+    /*Очистка папки с логами*/
+    deleteAllFilesFolder(getPathToLog());
+
+    /*Обнуляем очередь получения ответных сообщений*/
+    clearQueue(getQueueReceiver());
 
   }
 
   @Test()
   public void test_TRN() {
-
     try {
-      setPathToInitMessage("OP_02\\VALID\\MSG.001_TRN.001\\MSG_001.xml");
-      setPathToLog("OP_02\\VALID\\MSG.001_TRN.001\\Log");
-
-      /*Очистка папки с логами*/
-      deleteAllFilesFolder(getPathToLog());
-
-      /*Инициализация подключения и создания необходимых переменных*/
-      init(getHostName(), getChannel(), getPort(), getQueueManager(), getQueueSending(), getQueueRecieve());
-
-      /*Обнуляем очередь получения ответных сообщений*/
-      clearQueue(getQueueReceiver());
-
       /*Создание сообщения на отправку*/
       assertTrue(checkInitFileExist());
       String fileInit = filePreparation(getPathToInitMessage());
@@ -57,7 +51,7 @@ public class Test_OP02_Valid_TRN_001 extends TestBase{
       writeMsgToHdd(fileInit, getPathToLog() + "Init_MSG_001.xml");
 
       /*Передаем в приватное поле сгенерированный conversationID для последующего использования в тесте с полученными ответными сообщениями*/
-      setConversationID(variableFromXml(getPathToLog() + "Init_MSG_001.xml", "//int:ConversationID/text()"));
+      setConversationID(variableFromXml(getPathToLog() + getNameOfSaveInitMessage(), "//int:ConversationID/text()"));
 
       /*Отправка сообщения*/
       sendMsg(getQueueSession(), getQueueSender(), fileInit);
@@ -69,18 +63,16 @@ public class Test_OP02_Valid_TRN_001 extends TestBase{
        * После этого проверка вернувшегося stringBuilder на null
        * Если будет null то тест упадет.
        * Внутри метода receiveMsgFromQueue реализовано условие возврата null если stringBuilder будет пустой по причине отсутствия сообщений в тупиковой очереди*/
-      assertNotNull(receiveMsgFromQueue(getQueueSession(), getQueueReciev(), getPathToLog()));
+      receiveMsgFromQueue();
 
       /*Проверки что созданы файлы ответных сообщений*/
-      assertTrue(checkLogFileExist("Received_MSG_PRS.xml"));
-      assertTrue(checkLogFileExist("Received_MSG_004.xml"));
+      assertTrue(new File(getPathToLog() + "Received_MSG_PRS.xml").exists(),"Ответный файл Received_MSG_04.xml в папке " + getPathToLog() + " не создан!\n");
+      assertTrue(new File(getPathToLog() + "Received_MSG_004.xml").exists(),"Ответный файл Received_MSG_04.xml в папке " + getPathToLog() + " не создан!\n");
 
       /*Вывод в консоль ID транзакции*/
       System.out.println(
               "ID транзакции                  - " + getConversationID() + "\n");
 
-      /*Остановка*/
-      close();
 
     } catch (Exception e) {
       e.printStackTrace();
@@ -94,13 +86,13 @@ public class Test_OP02_Valid_TRN_001 extends TestBase{
   }
 
 
-  @Test(priority = 2)
+  @Test(priority = 2, enabled = false)
   public void test_For_Msg_PRS() {
     assertEquals(testAssert_For_Signal("Received_MSG_PRS.xml"), "Passed");
   }
 
 
-  @Test(priority = 3)
+  @Test(priority = 3, enabled = false)
   public void test_For_Msg_004() {
     assertEquals(testAssert_For_Reply_Msg("Received_MSG_004.xml",
             "csdo:ProcessingResultCode", "3",

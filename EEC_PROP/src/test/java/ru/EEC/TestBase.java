@@ -1,4 +1,8 @@
+package ru.EEC;
+
 import com.ibm.mq.jms.MQQueueConnectionFactory;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.w3c.dom.Document;
 import ru.cbgr.EEC.XPathBaseHelper;
 import ru.cbgr.EEC.XmlStringFormatter;
@@ -16,53 +20,88 @@ abstract public class TestBase {
 
 
   /*Переменные настройки подключения к шлюзу*/
-  private String hostName;
-  private String channel;
-  private int port;
-  private String queueManager;
-  private String queueSending;
-  private String queueRecieve;
+  private String hostName = "eek-test1-ip-mq-sync.tengry.com";       //Адресс шлюза SYNC;
+  private String channel = "ESB.SVRCONN";                           //Канал
+  private int port = 1414;                                           //Порт
+  private String queueManager = "SYNC.IIS.QM";                       //Менеджер очередей SYNC
+  private String queueSending = "ADP.PROP.IN";                       //Очередь для отправки сообщений
+  private String queueRecieve = "Q.ADDR1";                           //Тупиковая очередь для ответных сообщений
 
   /*Поля с путями к файлам*/
-  private String pathCommon = "src/main/resources/";
-  private String opName;
-  private String tipMSG;
-  private String tipTRN;
-  private String numberMSG;
+  private final String pathCommon = "src/main/resources/";
+
+  private String nameOfSavedInitMessage;
+
   private String pathToInitMessage;
   private String pathToLog;
 
   /*Общие поля после инициализации*/
-
   private Queue queueReciev;
+
   private QueueSender queueSender;
   private QueueReceiver queueReceiver;
   private QueueSession queueSession;
   private Queue queueSend;
   private QueueConnection queueConnection;
-
   /*Переменные для assert`ов*/
+
   private String conversationID = "";
+
+  @BeforeTest
+  public void setUp() throws JMSException {
+    /*Инициализация подключения и создания необходимых переменных*/
+    //устанавливаем параметры подключения
+    MQQueueConnectionFactory mqQueueConnectionFactory = new MQQueueConnectionFactory();
+    mqQueueConnectionFactory.setHostName(hostName);
+    mqQueueConnectionFactory.setChannel(channel);
+    mqQueueConnectionFactory.setPort(port);
+    mqQueueConnectionFactory.setQueueManager(queueManager);
+    mqQueueConnectionFactory.setTransportType(MQJMS_TP_CLIENT_MQ_TCPIP);
+    //создаем соединение и запускаем сессию
+    queueConnection = mqQueueConnectionFactory.createQueueConnection("", "");
+    queueConnection.start();
+    queueSession = queueConnection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
+    /*Создаем очереди отправки и получения*/
+    queueSend = queueSession.createQueue(queueSending);
+    queueReciev = queueSession.createQueue(queueRecieve);
+    //указываем в какую очередь отправить сообщение
+    queueSender = queueSession.createSender(queueSend);
+    //указываем очередь откуда читать ответное сообщение
+    queueReceiver = queueSession.createReceiver(queueReciev);
+
+
+
+  }
+
+  @AfterTest
+  void close() throws JMSException {
+    /*Остановка*/
+    getQueueSender().close();
+    getQueueReceiver().close();
+    getQueueSession().close();
+    getQueueConnection().close();
+  }
 
 
   /*Метод генерации UUID при помощи стандартной библиотеки из java.util*/
+
   private UUID uuid() {
     return UUID.randomUUID();
   }
 
-
   /*Генерация случайного числа из устанавливаемого диапазона значений в параметрах min и max соответственно
      Стандартно rand.nextInt() генерирует случайное число от 0 до указанного в параметре значения*/
+
   int randInt(int min, int max) {
     Random rand = new Random();
     return rand.nextInt((max - min) + 1) + min;
   }
 
-
   /*Генерация строки определенной длинны из определенного набора символов
       diapazon - набор символов из которых будет генерироваться строка
       kol_vo - длинна генерируемой строки
   */
+
   public String randString(String diapazon, int kol_vo) {
     //проверки и вывод текста с ошибкой
     if (diapazon.equals("")) {
@@ -83,8 +122,8 @@ abstract public class TestBase {
     return stringBuilder.toString();
   }
 
-
   /*Метод считывания файла с HDD в строку*/
+
   private String getFile(String fileName) {
     StringBuilder result = new StringBuilder();
     File file = new File(fileName);
@@ -99,8 +138,8 @@ abstract public class TestBase {
     return result.toString();
   }
 
-
   /*Метод преобразования полученных файлов из очереди MQ в виде строки String*/
+
   private String onMessage(Message message) {
     try {
       if (message instanceof BytesMessage) {
@@ -119,8 +158,8 @@ abstract public class TestBase {
     return "";
   }
 
-
   /*Метод очистки очереди IBM MQ. В качестве параметра передается очередь получатель*/
+
   void clearQueue(QueueReceiver queueReceiver) {
     try {
       while (true) {
@@ -141,8 +180,8 @@ abstract public class TestBase {
       }
       browser.close();*/
   }
-
   /*Метод удаления всех файлов из папки*/
+
   void deleteAllFilesFolder(String path) {
     for (File myFile : Objects.requireNonNull(new File(path).listFiles()))
       if (myFile.isFile()) {
@@ -150,8 +189,8 @@ abstract public class TestBase {
       }
   }
 
-
   /*Метод записи передаваемого или получаемого сообщения на HDD*/
+
   void writeMsgToHdd(String fileInit, String filePath) throws IOException {
     File file = new File(filePath);
     FileWriter writerInit = new FileWriter(file);
@@ -160,8 +199,8 @@ abstract public class TestBase {
     writerInit.close();
   }
 
-
   /*Метод отправки инициализирубщего сообщения в соответствующую очередь MQ*/
+
   void sendMsg(QueueSession queueSession, QueueSender queueSender, String fileInit) throws JMSException {
     StringBuilder result = new StringBuilder();// создаем stringBuilder для формирования строки консоли о типах полученных сообщений
     TextMessage textMessage = queueSession.createTextMessage(fileInit);
@@ -187,7 +226,7 @@ abstract public class TestBase {
       result.append("MSG.006");
     }
     queueSender.send(textMessage);//отправляем в очередь ранее созданное сообщение
-    System.out.println("Запуск теста для "+ opName + " - " + tipTRN + "\nСообщение " + result + " отправлено:\n" +
+    System.out.println("Запуск теста для " + "OP2" + " - " + "001" + "\nСообщение " + result + " отправлено:\n" +
             "- Очередь           - " + queueSending +
             "\n- Адрес шлюза       - " + hostName + "\n");
   }
@@ -197,8 +236,8 @@ abstract public class TestBase {
   /*Вариант получения JMSCorrelationID*/
   //System.out.println("after sending a message we get message id "+ textMessage.getJMSMessageID());
   //String jmsCorrelationID = " JMSCorrelationID = '" + textMessage.getJMSMessageID() + "'";
-
   /*Метод подготовки XML к отправке в MQ, идет генерация UUID*/
+
   String filePreparation(String filePath) {
     String fileRaw = getFile(filePath);//считываем из файла XML
     /*Производим замену UUID на сгенерированные*/
@@ -209,40 +248,18 @@ abstract public class TestBase {
     return fileRaw;
   }
 
-
   /*Метод выборки значения из указанного файла XML согласно выражению xpath*/
+
   String variableFromXml(String filepath, String xpath) {
     return XPathBaseHelper.go(filepath, xpath);
   }
 
-
   /*Метод форматирования XML в читаемый вид*/
+
   private String formatXml(String unFormatedXml) {
     Document document = XmlStringFormatter.convertStringToDocument(unFormatedXml);
     return XmlStringFormatter.toPrettyXmlString(document);
   }
-
-  void init(String hostName, String channel, int port, String queueManager, String queueSending, String queueRecieve) throws JMSException {
-    //устанавливаем параметры подключения
-    MQQueueConnectionFactory mqQueueConnectionFactory = new MQQueueConnectionFactory();
-    mqQueueConnectionFactory.setHostName(hostName);
-    mqQueueConnectionFactory.setChannel(channel);
-    mqQueueConnectionFactory.setPort(port);
-    mqQueueConnectionFactory.setQueueManager(queueManager);
-    mqQueueConnectionFactory.setTransportType(MQJMS_TP_CLIENT_MQ_TCPIP);
-    //создаем соединение и запускаем сессию
-    queueConnection = mqQueueConnectionFactory.createQueueConnection("", "");
-    getQueueConnection().start();
-    queueSession = getQueueConnection().createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
-    /*Создаем очереди отправки и получения*/
-    queueSend = getQueueSession().createQueue(queueSending);
-    queueReciev = getQueueSession().createQueue(queueRecieve);
-    //указываем в какую очередь отправить сообщение
-    queueSender = getQueueSession().createSender(getQueueSend());
-    //указываем очередь откуда читать ответное сообщение
-    queueReceiver = getQueueSession().createReceiver(getQueueReciev());
-  }
-
 
   void checkAndWaitMsgInQueue(int maxWaitTimeSec) throws JMSException, InterruptedException {
     QueueBrowser browser = this.queueSession.createBrowser(this.queueReciev);//Создаем браузер для наблюдения за очередью
@@ -260,8 +277,9 @@ abstract public class TestBase {
 
 
   /*Метод получения сообщения из определенной очереди MQ*/
-  StringBuilder receiveMsgFromQueue(QueueSession queueSession, Queue queueReciev, String pathToLog) throws JMSException, IOException {
-    QueueBrowser browser = queueSession.createBrowser(queueReciev);//Создаем браузер для наблюдения за очередью
+
+  StringBuilder receiveMsgFromQueue() throws JMSException, IOException {
+    QueueBrowser browser = this.queueSession.createBrowser(this.queueReciev);//Создаем браузер для наблюдения за очередью
     Enumeration e = browser.getEnumeration();//получаем Enumeration
     StringBuilder stringBuilder = new StringBuilder();//создаем stringBuilder для записи в него сообщения из очереди
     StringBuilder result = new StringBuilder();// создаем stringBuilder для формирования строки консоли о типах полученных сообщений
@@ -273,27 +291,27 @@ abstract public class TestBase {
       /*Условия сортировки сообщений по типу*/
       if (stringBuilder.toString().contains("P.MSG.PRS</wsa:Action>")) {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                pathToLog + "Received_MSG_PRS.xml");
+                this.pathToLog + "Received_MSG_PRS.xml");
         result.append("- MSG.PRS\n");
       } else if (stringBuilder.toString().contains("P.MSG.RCV</wsa:Action>")) {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                pathToLog + "Received_MSG_RCV.xml");
+                this.pathToLog + "Received_MSG_RCV.xml");
         result.append("- MSG.RCV\n");
       } else if (stringBuilder.toString().contains("P.MSG.ERR</wsa:Action>")) {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                pathToLog + "Received_MSG_ERR.xml");
+                this.pathToLog + "Received_MSG_ERR.xml");
         result.append("- MSG.ERR\n");
       } else if (stringBuilder.toString().contains("MSG.002</wsa:Action>")) {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                pathToLog + "Received_MSG_002.xml");
+                this.pathToLog + "Received_MSG_002.xml");
         result.append("- MSG.002\n");
       } else if (stringBuilder.toString().contains("MSG.004</wsa:Action>")) {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                pathToLog + "Received_MSG_004.xml");
+                this.pathToLog + "Received_MSG_004.xml");
         result.append("- MSG.004\n");
       } else {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                pathToLog + "Received_MSG_XXX.xml");
+                this.pathToLog + "Received_MSG_XXX.xml");
         result.append("- MSG.XXX\n");
       }
       i++;
@@ -310,47 +328,37 @@ abstract public class TestBase {
     //queueReceiver.receive();
     //String responseMsg = ((TextMessage) message).getText();
     System.out.println("ИТОГ\n" +
-            "Получено и созданно в " + this.getPathToLog() + " : \n" + result); // формирование строки-отчета в консоли
+            "Получено и созданно в " + this.pathToLog + " : \n" + result); // формирование строки-отчета в консоли
     browser.close();
     return stringBuilder;
   }
 
-
-  void close() throws JMSException {
-    /*Остановка*/
-    getQueueSender().close();
-    getQueueReceiver().close();
-    getQueueSession().close();
-    getQueueConnection().close();
-  }
-
-
   private void setConversationIdForAssert() {
-    if (new File(this.getPathToLog() + "Init_MSG_001.xml").exists()) {
-      setConversationID(variableFromXml(this.getPathToLog() + "Init_MSG_001.xml", "//int:ConversationID/text()"));
+    if (new File(this.pathToLog + this.nameOfSavedInitMessage).exists()) {
+      setConversationID(variableFromXml(this.pathToLog + this.nameOfSavedInitMessage, "//int:ConversationID/text()"));
     }
   }
 
   Boolean checkLogFileExist(String fileName) {
-    return new File(this.getPathToLog() + fileName).exists();
+    return new File(this.pathToLog + fileName).exists();
   }
 
   Boolean checkInitFileExist() {
-    if (new File(this.getPathToInitMessage()).exists()) {
+    if (new File(this.pathToInitMessage).exists()) {
       return true;
     } else {
       System.out.println("ОШИБКА ТЕСТА - Не найден инициирующий файл по пути: \n"
-              + this.getPathToInitMessage() + "\n");
+              + this.pathToInitMessage + "\n");
       return false;
     }
   }
 
 
   String testAssert_For_Reply_Msg(String checkedFile, String tegCheckCode, String resultCode, String tegDescriptionText, String descriptionText) {
-    if (new File(this.getPathToLog() + checkedFile).exists()) {
+    if (new File(this.pathToLog + checkedFile).exists()) {
       setConversationIdForAssert();
       String str = "";
-      if (Objects.requireNonNull(XPathBaseHelper.go(this.getPathToLog() + checkedFile,
+      if (Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
               "//int:ConversationID/text()")).equals(this.getConversationID())) {
         System.out.println("Тесты для - " + checkedFile + ":\n" +
                 "int:ConversationID             - PASSED - совпадает с ID транзакции.");
@@ -361,7 +369,7 @@ abstract public class TestBase {
         str = "NOT Passed";
       }
 
-      if (Objects.requireNonNull(XPathBaseHelper.go(this.getPathToLog() + checkedFile,
+      if (Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
               "//csdo:EventDateTime/text()")).length() != 0) {
         System.out.println(
                 "csdo:EventDateTime             - PASSED - заполнен и присутствует.");
@@ -372,7 +380,7 @@ abstract public class TestBase {
         str = "NOT Passed";
       }
 
-      if (Objects.requireNonNull(XPathBaseHelper.go(this.getPathToLog() + checkedFile,
+      if (Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
               "//" + tegCheckCode + "/text()")).equals(resultCode)) {
         System.out.println(tegCheckCode + "      - PASSED - содержит верный код \"" + resultCode + "\"");
         str = "Passed";
@@ -381,7 +389,7 @@ abstract public class TestBase {
                 "ОШИБКА ТЕСТА                   - FAIL - " + tegCheckCode + " содержит НЕверный код");
         str = "NOT Passed";
       }
-      if (Objects.requireNonNull(XPathBaseHelper.go(this.getPathToLog() + checkedFile,
+      if (Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
               "//" + tegDescriptionText + "/text()")).equals(descriptionText)) {
         System.out.println(tegDescriptionText + "           - PASSED - соответствует значению \"" + descriptionText + "\"");
         str = "Passed";
@@ -393,17 +401,17 @@ abstract public class TestBase {
       return str;
     } else {
       System.out.println("Тесты для - " + checkedFile + ":\n" +
-              "ОШИБКА ТЕСТА - В папке \n" + this.getPathToLog() + "\n" +
+              "ОШИБКА ТЕСТА - В папке \n" + this.pathToLog + "\n" +
               "отсутствует файл - " + checkedFile + "\n");
       return "NOT Passed";
     }
   }
 
-  String testAssert_For_Signal(String checkedFile) {
-    if ( new File(this.getPathToLog() + checkedFile).exists()) {
+  protected String testAssert_For_Signal(String checkedFile) {
+    if (new File(this.pathToLog + checkedFile).exists()) {
       setConversationIdForAssert();
       String str = "";
-      if (Objects.requireNonNull(XPathBaseHelper.go(this.getPathToLog() + checkedFile,
+      if (Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
               "//int:ConversationID/text()")).equals(this.getConversationID())) {
         System.out.println("Тесты для - " + checkedFile + ":\n" +
                 "int:ConversationID             - PASSED - совпадает с ID транзакции\n");
@@ -416,7 +424,7 @@ abstract public class TestBase {
       return str;
     } else {
       System.out.println("Тесты для - " + checkedFile + ":\n" +
-              "ОШИБКА ТЕСТА - В папке \n" + this.getPathToLog() + "\n" +
+              "ОШИБКА ТЕСТА - В папке \n" + this.pathToLog + "\n" +
               "отсутствует файл - " + checkedFile + "\n");
       return "NOT Passed";
     }
@@ -471,51 +479,11 @@ abstract public class TestBase {
     this.queueConnection = queueConnection;
   }
 
-  String getPathCommon() {
-    return pathCommon;
-  }
-
-  public void setPathCommon(String pathCommon) {
-    this.pathCommon = pathCommon;
-  }
-
-  String getOpName() {
-    return opName;
-  }
-
-  void setOpName(String opName) {
-    this.opName = opName;
-  }
-
-  String getTipMSG() {
-    return tipMSG;
-  }
-
-  void setTipMSG(String tipMSG) {
-    this.tipMSG = tipMSG;
-  }
-
-  String getTipTRN() {
-    return tipTRN;
-  }
-
-  void setTipTRN(String tipTRN) {
-    this.tipTRN = tipTRN;
-  }
-
-  String getNumberMSG() {
-    return numberMSG;
-  }
-
-  void setNumberMSG(String numberMSG) {
-    this.numberMSG = numberMSG;
-  }
-
   String getHostName() {
     return hostName;
   }
 
-  void setHostName(String hostName) {
+  protected void setHostName(String hostName) {
     this.hostName = hostName;
   }
 
@@ -567,27 +535,27 @@ abstract public class TestBase {
     this.conversationID = conversationID;
   }
 
-//  String getPathToInitMessage() {
-//    return this.pathToInitMessage = this.getPathCommon() + this.getOpName() + "/" + this.getTipMSG() + "/" + this.getTipTRN() + "/" + this.getNumberMSG();
-//  }
+  public String getNameOfSaveInitMessage() {
+    return nameOfSavedInitMessage;
+  }
+
+  public void setNameOfSaveInitMessage(String nameOfSaveInitMessage) {
+    this.nameOfSavedInitMessage = nameOfSaveInitMessage;
+  }
 
   String getPathToInitMessage() {
     return this.pathToInitMessage;
   }
 
-  void setPathToInitMessage( String pathToInitMessage) {
+  protected void setPathToInitMessage(String pathToInitMessage) {
     this.pathToInitMessage = pathCommon + pathToInitMessage;
   }
-
-//  String getPathToLog() {
-//    return this.pathToLog = this.getPathCommon() + this.getOpName() + "/" + this.getTipMSG() + "/" + this.getTipTRN() + "/" + "Log/";
-//  }
 
   String getPathToLog() {
     return this.pathToLog;
   }
 
-  void setPathToLog(String pathToLog) {
+  protected void setPathToLog(String pathToLog) {
     this.pathToLog = pathCommon + pathToLog;
   }
 
