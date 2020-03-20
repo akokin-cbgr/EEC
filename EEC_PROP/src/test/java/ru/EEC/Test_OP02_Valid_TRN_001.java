@@ -2,6 +2,7 @@ package ru.EEC;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import ru.cbgr.EEC.XPathBaseHelper;
 
 import java.io.File;
 
@@ -25,9 +26,10 @@ public class Test_OP02_Valid_TRN_001 extends TestBase {
      * - Received_MSG_XXX.xml
      * */
     setPathToInitMessage("OP_02/VALID/MSG.001_TRN.001/MSG_001.xml");
+    setPathToLog("OP_02/VALID/MSG.001_TRN.001/Log/");
+
     setNameOfSaveInitMessage("Init_MSG_001.xml");
 
-    setPathToLog("OP_02/VALID/MSG.001_TRN.001/Log/");
 
     /*Очистка папки с логами*/
     deleteAllFilesFolder(getPathToLog());
@@ -41,17 +43,25 @@ public class Test_OP02_Valid_TRN_001 extends TestBase {
   public void test_TRN() {
     try {
       /*Создание сообщения на отправку*/
-      assertTrue(checkInitFileExist());
       String fileInit = filePreparation(getPathToInitMessage());
+
+
+
 
       /*ГЕНЕРАЦИЯ УНИКАЛЬНОГО КЛЮЧА ДЛЯ ДАННОГО ОП, В ОТПРАВЛЯЕМОЙ XML*/
       fileInit = fileInit.replaceAll(">.*</casdo:BorderCheckPointCode>", ">PPG.RU.UA." + randInt(10000000, 99999999) + "</casdo:BorderCheckPointCode>");
 
+
+
+
       /*Запись отправляемого MSG в файл*/
-      writeMsgToHdd(fileInit, getPathToLog() + "Init_MSG_001.xml");
+      writeMsgToHdd(fileInit, getPathToLog() + getNameOfSaveInitMessage());
 
       /*Передаем в приватное поле сгенерированный conversationID для последующего использования в тесте с полученными ответными сообщениями*/
-      setConversationID(variableFromXml(getPathToLog() + getNameOfSaveInitMessage(), "//int:ConversationID/text()"));
+//      setConversationID(variableFromXml(getPathToLog() + getNameOfSaveInitMessage(), "//int:ConversationID/text()"));
+      assertTrue(new File(getPathToLog() + getNameOfSaveInitMessage()).exists(), "\nОШИБКА ТЕСТА - В папке \n" + getPathToLog() + "\n" +
+              "отсутствует инициирующий файл транзакции - " + getNameOfSaveInitMessage() + "\n");
+      setConversationID(XPathBaseHelper.go(getPathToLog() + getNameOfSaveInitMessage(), "//int:ConversationID/text()"));
 
       /*Отправка сообщения*/
       sendMsg(getQueueSession(), getQueueSender(), fileInit);
@@ -71,7 +81,7 @@ public class Test_OP02_Valid_TRN_001 extends TestBase {
 
       /*Вывод в консоль ID транзакции*/
       System.out.println(
-              "ID транзакции                  - " + getConversationID() + "\n");
+              "ID транзакции                  - " + XPathBaseHelper.go(getPathToLog() + getNameOfSaveInitMessage(), "//int:ConversationID/text()") + "\n");
 
 
     } catch (Exception e) {

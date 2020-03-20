@@ -64,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/Signal/Test_Signal_RCV.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+            <state relative-caret-position="238">
+              <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -73,8 +73,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/Test_OP02_Valid_TRN_001.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+            <state relative-caret-position="244">
+              <caret line="57" selection-start-line="57" selection-end-line="57" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -85,8 +85,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/TestBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="313" column="54" selection-start-line="313" selection-start-column="34" selection-end-line="313" selection-end-column="54" />
+            <state relative-caret-position="329">
+              <caret line="342" column="72" lean-forward="true" selection-start-line="341" selection-start-column="4" selection-end-line="342" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -179,7 +179,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -472,34 +472,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Test_OP02_Valid_TRN_001_test_TRN_(1) - 2020.03.20 at 14h 34m 54s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001.test_TRN (1)" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001_test_TRN_(1) - 2020.03.20 at 14h 36m 12s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001.test_TRN (1)" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001_test_TRN_(1) - 2020.03.20 at 15h 23m 28s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001.test_TRN (1)" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001_test_TRN_(1) - 2020.03.20 at 15h 24m 28s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001.test_TRN (1)" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001_test_TRN_(1) - 2020.03.20 at 15h 26m 51s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001.test_TRN (1)" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001_test_TRN_(1) - 2020.03.20 at 15h 27m 46s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001.test_TRN (1)" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001_test_TRN_(1) - 2020.03.20 at 16h 08m 27s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001.test_TRN (1)" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001_test_TRN_(1) - 2020.03.20 at 16h 09m 34s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001.test_TRN (1)" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001_test_TRN_(1) - 2020.03.20 at 16h 10m 12s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001.test_TRN (1)" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="Test_OP02_Valid_TRN_001_test_TRN_(1) - 2020.03.20 at 16h 10m 35s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001.test_TRN (1)" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_OP02_Valid_TRN_001_test_TRN_(1) - 2020.03.20 at 17h 18m 42s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001.test_TRN (1)" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_OP02_Valid_TRN_001_test_TRN_(1) - 2020.03.20 at 17h 19m 37s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001.test_TRN (1)" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_OP02_Valid_TRN_001_test_TRN_(1) - 2020.03.20 at 17h 20m 03s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001.test_TRN (1)" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_OP02_Valid_TRN_001_test_TRN_(1) - 2020.03.20 at 17h 20m 41s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001.test_TRN (1)" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_OP02_Valid_TRN_001_test_TRN_(1) - 2020.03.20 at 17h 23m 00s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001.test_TRN (1)" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_OP02_Valid_TRN_001_test_TRN_(1) - 2020.03.20 at 17h 23m 27s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001.test_TRN (1)" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_OP02_Valid_TRN_001_test_TRN_(1) - 2020.03.20 at 17h 23m 31s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001.test_TRN (1)" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_OP02_Valid_TRN_001_test_TRN_(1) - 2020.03.20 at 17h 23m 46s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001.test_TRN (1)" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_OP02_Valid_TRN_001_test_TRN_(1) - 2020.03.20 at 18h 14m 07s.xml">
       <configuration name="Test_OP02_Valid_TRN_001.test_TRN (1)" configurationId="TestNG" />
     </history-entry>
   </component>
@@ -514,7 +514,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1609808" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -626,6 +625,22 @@
     <option name="LAST_COMMIT_MESSAGE" value="удалена зависимость" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/EEC/Test_OP02_Valid_TRN_001.java</url>
+          <line>57</line>
+          <properties />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/EEC/Test_OP02_Valid_TRN_001.java</url>
+          <line>61</line>
+          <properties />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="TestNG">
         <watch expression="base" language="JAVA" />
@@ -739,13 +754,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="132" selection-start-line="132" selection-end-line="132" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.testng/testng/7.0.0/5a0241ace5a7b8eb3d31556a7d5dd2b3aae9baf/testng-7.0.0-sources.jar!/org/testng/internal/TestInvoker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="147" selection-start-line="147" selection-end-line="147" />
         </state>
       </provider>
     </entry>
@@ -928,25 +936,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/Signal/Test_Signal_RCV.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="238">
+          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/TestBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="313" column="54" selection-start-line="313" selection-start-column="34" selection-end-line="313" selection-end-column="54" />
+        <state relative-caret-position="329">
+          <caret line="342" column="72" lean-forward="true" selection-start-line="341" selection-start-column="4" selection-end-line="342" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.testng/testng/7.0.0/5a0241ace5a7b8eb3d31556a7d5dd2b3aae9baf/testng-7.0.0-sources.jar!/org/testng/internal/TestInvoker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="594" selection-start-line="594" selection-end-line="594" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/Test_OP02_Valid_TRN_001.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+        <state relative-caret-position="244">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

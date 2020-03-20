@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.*;
 
 import static com.ibm.mq.jms.JMSC.MQJMS_TP_CLIENT_MQ_TCPIP;
+import static org.testng.Assert.assertTrue;
 
 abstract public class TestBase {
 
@@ -68,7 +69,6 @@ abstract public class TestBase {
     queueSender = queueSession.createSender(queueSend);
     //указываем очередь откуда читать ответное сообщение
     queueReceiver = queueSession.createReceiver(queueReciev);
-
 
 
   }
@@ -238,7 +238,12 @@ abstract public class TestBase {
   //String jmsCorrelationID = " JMSCorrelationID = '" + textMessage.getJMSMessageID() + "'";
   /*Метод подготовки XML к отправке в MQ, идет генерация UUID*/
 
+
   String filePreparation(String filePath) {
+
+    /*Проверка что инициирующее сообщение существует в папке отправки*/
+    assertTrue(new File(this.pathToInitMessage).exists(), "ОШИБКА ТЕСТА - Не найден инициирующий файл по пути: \n" + this.pathToInitMessage + "\n");
+
     String fileRaw = getFile(filePath);//считываем из файла XML
     /*Производим замену UUID на сгенерированные*/
     fileRaw = fileRaw.replaceAll(">urn:uuid:.*</wsa:MessageID>", ">urn:uuid:" + uuid().toString() + "</wsa:MessageID>");
@@ -334,24 +339,24 @@ abstract public class TestBase {
   }
 
   private void setConversationIdForAssert() {
-    if (new File(this.pathToLog + this.nameOfSavedInitMessage).exists()) {
-      setConversationID(variableFromXml(this.pathToLog + this.nameOfSavedInitMessage, "//int:ConversationID/text()"));
-    }
+    assertTrue(new File(this.pathToLog + this.nameOfSavedInitMessage).exists(), "ОШИБКА ТЕСТА - В папке \n" + this.pathToLog + "\n" +
+            "отсутствует файл - " + this.nameOfSavedInitMessage + "\n");
+    setConversationID(variableFromXml(this.pathToLog + this.nameOfSavedInitMessage, "//int:ConversationID/text()"));
   }
 
-  Boolean checkLogFileExist(String fileName) {
-    return new File(this.pathToLog + fileName).exists();
-  }
-
-  Boolean checkInitFileExist() {
-    if (new File(this.pathToInitMessage).exists()) {
-      return true;
-    } else {
-      System.out.println("ОШИБКА ТЕСТА - Не найден инициирующий файл по пути: \n"
-              + this.pathToInitMessage + "\n");
-      return false;
-    }
-  }
+//  Boolean checkLogFileExist(String fileName) {
+//    return new File(this.pathToLog + fileName).exists();
+//  }
+//
+//  Boolean checkInitFileExist() {
+//    if (new File(this.pathToInitMessage).exists()) {
+//      return true;
+//    } else {
+//      System.out.println("ОШИБКА ТЕСТА - Не найден инициирующий файл по пути: \n"
+//              + this.pathToInitMessage + "\n");
+//      return false;
+//    }
+//  }
 
 
   String testAssert_For_Reply_Msg(String checkedFile, String tegCheckCode, String resultCode, String tegDescriptionText, String descriptionText) {
