@@ -22,7 +22,7 @@ abstract public class TestBase {
 
   /*Переменные настройки подключения к шлюзу*/
   private String hostName = "eek-test1-ip-mq-sync.tengry.com";       //Адресс шлюза SYNC;
-  private String channel = "ESB.SVRCONN";                           //Канал
+  private String channel = "ESB.SVRCONN";                            //Канал
   private int port = 1414;                                           //Порт
   private String queueManager = "SYNC.IIS.QM";                       //Менеджер очередей SYNC
   private String queueSending = "ADP.PROP.IN";                       //Очередь для отправки сообщений
@@ -46,7 +46,7 @@ abstract public class TestBase {
   private QueueConnection queueConnection;
   /*Переменные для assert`ов*/
 
-  private String conversationID = "";
+  private String conversationID ;
 
   @BeforeTest
   public void setUp() throws JMSException {
@@ -76,6 +76,8 @@ abstract public class TestBase {
 
   @AfterTest
   void close() throws JMSException {
+    /*Обнуляем очередь получения ответных сообщений*/
+    clearQueue(getQueueReceiver());
     /*Остановка*/
     getQueueSender().close();
     getQueueReceiver().close();

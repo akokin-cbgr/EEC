@@ -73,8 +73,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/Test_OP02_Valid_TRN_001.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="605">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="365">
+              <caret line="68" column="63" selection-start-line="68" selection-start-column="63" selection-end-line="68" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -85,8 +85,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/TestBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="718">
-              <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
+            <state relative-caret-position="-3308">
+              <caret line="171" column="7" selection-start-line="171" selection-start-column="7" selection-end-line="171" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -179,7 +179,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -462,15 +462,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Test_Signal_RCV_test_Signal_RCV - 2020.03.22 at 16h 05m 42s.xml">
-      <configuration name="Test_Signal_RCV.test_Signal_RCV" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_Signal_RCV_test_Signal_RCV - 2020.03.22 at 16h 05m 54s.xml">
-      <configuration name="Test_Signal_RCV.test_Signal_RCV" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_Signal_RCV_test_Signal_RCV - 2020.03.22 at 16h 06m 57s.xml">
-      <configuration name="Test_Signal_RCV.test_Signal_RCV" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="Test_Signal_RCV_test_Signal_RCV - 2020.03.22 at 16h 07m 08s.xml">
       <configuration name="Test_Signal_RCV.test_Signal_RCV" configurationId="TestNG" />
     </history-entry>
@@ -490,6 +481,15 @@
       <configuration name="Test_OP02_Valid_TRN_001 (1)" configurationId="TestNG" />
     </history-entry>
     <history-entry file="Test_OP02_Valid_TRN_001_(1) - 2020.03.22 at 16h 13m 40s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001 (1)" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_OP02_Valid_TRN_001_(1) - 2020.03.22 at 17h 07m 25s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001 (1)" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_OP02_Valid_TRN_001_(1) - 2020.03.22 at 17h 13m 04s.xml">
+      <configuration name="Test_OP02_Valid_TRN_001 (1)" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_OP02_Valid_TRN_001_(1) - 2020.03.22 at 17h 14m 26s.xml">
       <configuration name="Test_OP02_Valid_TRN_001 (1)" configurationId="TestNG" />
     </history-entry>
   </component>
@@ -516,7 +516,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3279743" />
       <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4989339" visible="true" weight="0.28383604" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39442658" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39365816" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32967892" />
@@ -862,8 +862,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/Test_OP02_Valid_TRN_001.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="605">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        <state relative-caret-position="365">
+          <caret line="68" column="63" selection-start-line="68" selection-start-column="63" selection-end-line="68" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -872,8 +872,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/TestBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="718">
-          <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
+        <state relative-caret-position="-3308">
+          <caret line="171" column="7" selection-start-line="171" selection-start-column="7" selection-end-line="171" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
