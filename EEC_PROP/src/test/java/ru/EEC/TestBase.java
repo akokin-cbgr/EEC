@@ -255,7 +255,7 @@ abstract public class TestBase {
 
   /*Метод выборки значения из указанного файла XML согласно выражению xpath*/
 
-  String variableFromXml(String filepath, String xpath) {
+  private String variableFromXml(String filepath, String xpath) {
     return XPathBaseHelper.go(filepath, xpath);
   }
 
@@ -283,7 +283,7 @@ abstract public class TestBase {
 
   /*Метод получения сообщения из определенной очереди MQ*/
 
-  StringBuilder receiveMsgFromQueue() throws JMSException, IOException {
+  void receiveMsgFromQueue() throws JMSException, IOException {
     QueueBrowser browser = this.queueSession.createBrowser(this.queueReciev);//Создаем браузер для наблюдения за очередью
     Enumeration e = browser.getEnumeration();//получаем Enumeration
     StringBuilder stringBuilder = new StringBuilder();//создаем stringBuilder для записи в него сообщения из очереди
@@ -323,19 +323,17 @@ abstract public class TestBase {
       /*Очистка stringBuilder*/
       stringBuilder.delete(0, stringBuilder.length());
     }
-    /*У словие возврата null если stringBuilder будет пустой по причине отсутствия сообщений (к примеру если ПРОП не ответил)
-     * дополнительно будет сообщение о том что сообщений нет в в тупиковой очереди*/
+    /*Условие возврата null если stringBuilder будет пустой по причине отсутствия сообщений (к примеру если ПРОП не ответил)
+     * дополнительно будет сообщение о том что сообщений нет в тупиковой очереди*/
     if (!(e.hasMoreElements()) & stringBuilder.length() == 0 & i == 1) {
       System.out.println("ИТОГ\n" +
               "ОШИБКА ТЕСТА - Очередь " + queueRecieve + " не содержит сообщений."); // формирование строки-отчета в консоли
-      return null;
     }
     //queueReceiver.receive();
     //String responseMsg = ((TextMessage) message).getText();
     System.out.println("ИТОГ\n" +
             "Получено и созданно в " + this.pathToLog + " : \n" + result); // формирование строки-отчета в консоли
     browser.close();
-    return stringBuilder;
   }
 
   private void setConversationIdForAssert() {

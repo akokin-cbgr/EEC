@@ -46,23 +46,19 @@ public class Test_OP02_Valid_TRN_001 extends TestBase {
       String fileInit = filePreparation(getPathToInitMessage());
 
 
-
-
       /*ГЕНЕРАЦИЯ УНИКАЛЬНОГО КЛЮЧА ДЛЯ ДАННОГО ОП, В ОТПРАВЛЯЕМОЙ XML*/
       fileInit = fileInit.replaceAll(">.*</casdo:BorderCheckPointCode>", ">PPG.RU.UA." + randInt(10000000, 99999999) + "</casdo:BorderCheckPointCode>");
-
-
 
 
       /*Запись отправляемого MSG в файл*/
       writeMsgToHdd(fileInit, getPathToLog() + getNameOfSaveInitMessage());
 
-      /*Передаем в приватное поле сгенерированный conversationID для последующего использования в тесте с полученными ответными сообщениями*/
-//      setConversationID(variableFromXml(getPathToLog() + getNameOfSaveInitMessage(), "//int:ConversationID/text()"));
-      assertTrue(new File(getPathToLog() + getNameOfSaveInitMessage()).exists(),
-              "\nОШИБКА ТЕСТА - В папке \n" + getPathToLog() + "\n" +
-              "отсутствует инициирующий файл для транзакции - " + getNameOfSaveInitMessage() + "\n");
-      setConversationID(XPathBaseHelper.go(getPathToLog() + getNameOfSaveInitMessage(), "//int:ConversationID/text()"));
+//      /*Передаем в приватное поле сгенерированный conversationID для последующего использования в тесте с полученными ответными сообщениями*/
+//      setConversationID(variableFromXml(getPathToLog() + getNameOfSaveInitMessage(), "//int:ConversationID/text()"));//старая рализация
+//      assertTrue(new File(getPathToLog() + getNameOfSaveInitMessage()).exists(),
+//              "\nОШИБКА ТЕСТА - В папке \n" + getPathToLog() + "\n" +
+//              "отсутствует инициирующий файл для транзакции - " + getNameOfSaveInitMessage() + "\n");
+//      setConversationID(XPathBaseHelper.go(getPathToLog() + getNameOfSaveInitMessage(), "//int:ConversationID/text()"));
 
       /*Отправка сообщения*/
       sendMsg(getQueueSession(), getQueueSender(), fileInit);
@@ -77,8 +73,8 @@ public class Test_OP02_Valid_TRN_001 extends TestBase {
       receiveMsgFromQueue();
 
       /*Проверки что созданы файлы ответных сообщений*/
-      assertTrue(new File(getPathToLog() + "Received_MSG_PRS.xml").exists(),"Ответный файл Received_MSG_04.xml в папке " + getPathToLog() + " не создан!\n");
-      assertTrue(new File(getPathToLog() + "Received_MSG_004.xml").exists(),"Ответный файл Received_MSG_04.xml в папке " + getPathToLog() + " не создан!\n");
+      assertTrue(new File(getPathToLog() + "Received_MSG_PRS.xml").exists(),"Ответный файл Received_MSG_PRS.xml в папке " + getPathToLog() + " не создан!\n");
+      assertTrue(new File(getPathToLog() + "Received_MSG_004.xml").exists(),"Ответный файл Received_MSG_004.xml в папке " + getPathToLog() + " не создан!\n");
 
       /*Вывод в консоль ID транзакции*/
       System.out.println(
