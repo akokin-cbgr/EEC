@@ -70,7 +70,8 @@ abstract public class TestBase {
     //указываем очередь откуда читать ответное сообщение
     queueReceiver = queueSession.createReceiver(queueReciev);
 
-
+    /*Обнуляем очередь получения ответных сообщений*/
+    clearQueue(getQueueReceiver());
   }
 
   @AfterTest
@@ -89,6 +90,8 @@ abstract public class TestBase {
     return UUID.randomUUID();
   }
 
+
+
   /*Генерация случайного числа из устанавливаемого диапазона значений в параметрах min и max соответственно
      Стандартно rand.nextInt() генерирует случайное число от 0 до указанного в параметре значения*/
 
@@ -96,6 +99,8 @@ abstract public class TestBase {
     Random rand = new Random();
     return rand.nextInt((max - min) + 1) + min;
   }
+
+
 
   /*Генерация строки определенной длинны из определенного набора символов
       diapazon - набор символов из которых будет генерироваться строка
@@ -121,6 +126,8 @@ abstract public class TestBase {
     }
     return stringBuilder.toString();
   }
+
+
 
   /*Метод считывания файла с HDD в строку*/
 
@@ -226,7 +233,7 @@ abstract public class TestBase {
       result.append("MSG.006");
     }
     queueSender.send(textMessage);//отправляем в очередь ранее созданное сообщение
-    System.out.println("Запуск теста для " + "OP2" + " - " + "001" + "\nСообщение " + result + " отправлено:\n" +
+    System.out.println("Запуск теста для ОП " + getPathToInitMessage().toString().substring(22, 24) + " - TRN." + getPathToInitMessage().toString().substring(43, 46) + "\nСообщение " + result + " отправлено:\n" +
             "- Очередь           - " + queueSending +
             "\n- Адрес шлюза       - " + hostName + "\n");
   }
@@ -546,7 +553,7 @@ abstract public class TestBase {
     this.nameOfSavedInitMessage = nameOfSaveInitMessage;
   }
 
-  String getPathToInitMessage() {
+  public String getPathToInitMessage() {
     return this.pathToInitMessage;
   }
 

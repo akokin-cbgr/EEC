@@ -3,8 +3,6 @@ package ru.EEC.Signal;
 import org.testng.annotations.Test;
 import ru.EEC.TestBase;
 
-import static org.testng.Assert.assertEquals;
-
 
 public class Test_Signal_RCV extends TestBase {
 
@@ -15,7 +13,8 @@ public class Test_Signal_RCV extends TestBase {
     setPathToInitMessage("OP_02/VALID/MSG.001_TRN.001/MSG_001.xml");
     setPathToLog("OP_02/VALID/MSG.001_TRN.001/Log/");
 
-    assertEquals(testAssert_For_Signal("Received_MSG_RCV.xml"), "Passed");
+    System.out.println(getPathToInitMessage().toString().substring(43,46));
+//    assertEquals(testAssert_For_Signal("Received_MSG_RCV.xml"), "Passed");
 
 //      /*Передаем в приватное поле сгенерированный conversationID для последующего использования в тесте с полученными ответными сообщениями*/
 //      setConversationID(variableFromXml(getPathToLog() + "Init_MSG_001.xml", "//int:ConversationID/text()"));

@@ -14,10 +14,11 @@ public class Test_OP02_Valid_TRN_001 extends TestBase {
   private void set() {
     /*Настройка переменных теста под определенное тестируемое ОП.
      * Названия должны совпадать с названиями папок где хранятся файлы для отправки.
-     * Например :
+     * Образец :
      * \src\main\resources\OP_02\VALID\MSG.001_TRN.001\        - путь к файлам инициирующих сообщений
      * \src\main\resources\OP_02\VALID\MSG.001_TRN.001\Log     - путь к логам, туда сохранятся файлы отправленных и ответных сообщений
-     * В папке log создаются файлы с именами :
+     *
+     * В папке Log создаются файлы с именами :
      * - Received_MSG_PRS.xml
      * - Received_MSG_RCV.xml
      * - Received_MSG_ERR.xml
@@ -30,12 +31,10 @@ public class Test_OP02_Valid_TRN_001 extends TestBase {
 
     setNameOfSaveInitMessage("Init_MSG_001.xml");
 
-
     /*Очистка папки с логами*/
     deleteAllFilesFolder(getPathToLog());
 
-    /*Обнуляем очередь получения ответных сообщений*/
-    clearQueue(getQueueReceiver());
+
 
   }
 
