@@ -59,8 +59,9 @@ public class Test_OP02_Valid_TRN_001 extends TestBase {
 
       /*Передаем в приватное поле сгенерированный conversationID для последующего использования в тесте с полученными ответными сообщениями*/
 //      setConversationID(variableFromXml(getPathToLog() + getNameOfSaveInitMessage(), "//int:ConversationID/text()"));
-      assertTrue(new File(getPathToLog() + getNameOfSaveInitMessage()).exists(), "\nОШИБКА ТЕСТА - В папке \n" + getPathToLog() + "\n" +
-              "отсутствует инициирующий файл транзакции - " + getNameOfSaveInitMessage() + "\n");
+      assertTrue(new File(getPathToLog() + getNameOfSaveInitMessage()).exists(),
+              "\nОШИБКА ТЕСТА - В папке \n" + getPathToLog() + "\n" +
+              "отсутствует инициирующий файл для транзакции - " + getNameOfSaveInitMessage() + "\n");
       setConversationID(XPathBaseHelper.go(getPathToLog() + getNameOfSaveInitMessage(), "//int:ConversationID/text()"));
 
       /*Отправка сообщения*/
