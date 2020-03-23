@@ -13,6 +13,8 @@ public class Test_OP02_Valid_TRN_001 extends TestBase {
   @BeforeClass
   private void set() {
     /*Настройка переменных теста под определенное тестируемое ОП.
+     * Указываем путь к каталогу с инициирующим файлом и путь куда будет сохранено вычитанное сообщение
+     *
      * Названия должны совпадать с названиями папок где хранятся файлы для отправки.
      * Образец :
      * \src\main\resources\OP_02\VALID\MSG.001_TRN.001\        - путь к файлам инициирующих сообщений
@@ -35,7 +37,6 @@ public class Test_OP02_Valid_TRN_001 extends TestBase {
     deleteAllFilesFolder(getPathToLog());
 
 
-
   }
 
   @Test()
@@ -52,13 +53,6 @@ public class Test_OP02_Valid_TRN_001 extends TestBase {
       /*Запись отправляемого MSG в файл*/
       writeMsgToHdd(fileInit, getPathToLog() + getNameOfSaveInitMessage());
 
-//      /*Передаем в приватное поле сгенерированный conversationID для последующего использования в тесте с полученными ответными сообщениями*/
-//      setConversationID(variableFromXml(getPathToLog() + getNameOfSaveInitMessage(), "//int:ConversationID/text()"));//старая рализация
-//      assertTrue(new File(getPathToLog() + getNameOfSaveInitMessage()).exists(),
-//              "\nОШИБКА ТЕСТА - В папке \n" + getPathToLog() + "\n" +
-//              "отсутствует инициирующий файл для транзакции - " + getNameOfSaveInitMessage() + "\n");
-//      setConversationID(XPathBaseHelper.go(getPathToLog() + getNameOfSaveInitMessage(), "//int:ConversationID/text()"));
-
       /*Отправка сообщения*/
       sendMsg(getQueueSession(), getQueueSender(), fileInit);
 
@@ -66,14 +60,14 @@ public class Test_OP02_Valid_TRN_001 extends TestBase {
       checkAndWaitMsgInQueue(60);
 
       /*Вычитка ответных сообщений из очереди queueReciev и передача их в stringBuilder
-       * После этого проверка вернувшегося stringBuilder на null
-       * Если будет null то тест упадет.
-       * Внутри метода receiveMsgFromQueue реализовано условие возврата null если stringBuilder будет пустой по причине отсутствия сообщений в тупиковой очереди*/
+       * Внутри метода receiveMsgFromQueue реализована проверка assertTrue если stringBuilder будет пустой по причине отсутствия сообщений в тупиковой очереди*/
       receiveMsgFromQueue();
 
-      /*Проверки что созданы файлы ответных сообщений*/
-      assertTrue(new File(getPathToLog() + "Received_MSG_PRS.xml").exists(),"Ответный файл Received_MSG_PRS.xml в папке " + getPathToLog() + " не создан!\n");
-      assertTrue(new File(getPathToLog() + "Received_MSG_004.xml").exists(),"Ответный файл Received_MSG_004.xml в папке " + getPathToLog() + " не создан!\n");
+      /*Проверки теста, о том что ответные файлы по транзакции успешно созданны. Это означает что они были действительно вычитаны методом receiveMsgFromQueue()*/
+      assertTrue(new File(getPathToLog() + "Received_MSG_PRS.xml").exists(),
+              "Ответный файл Received_MSG_PRS.xml в папке " + getPathToLog() + " не создан!\n");
+      assertTrue(new File(getPathToLog() + "Received_MSG_004.xml").exists(),
+              "Ответный файл Received_MSG_004.xml в папке " + getPathToLog() + " не создан!\n");
 
       /*Вывод в консоль ID транзакции*/
       System.out.println(
@@ -86,24 +80,15 @@ public class Test_OP02_Valid_TRN_001 extends TestBase {
   }
 
 
-  @Test(priority = 1, enabled = false)
-  public void test_For_Msg_RCV() {
-    assertEquals(testAssert_For_Signal("Received_MSG_RCV.xml"), "Passed");
-  }
-
-
-  @Test(priority = 2, enabled = false)
-  public void test_For_Msg_PRS() {
-    assertEquals(testAssert_For_Signal("Received_MSG_PRS.xml"), "Passed");
-  }
-
-
-  @Test(priority = 3, enabled = false)
-  public void test_For_Msg_004() {
-    assertEquals(testAssert_For_Reply_Msg("Received_MSG_004.xml",
-            "csdo:ProcessingResultCode", "3",
-            "csdo:DescriptionText", "Сведения добавлены"),
-            "Passed");
-  }
-
 }
+
+
+//       МУСОР и заготовки
+
+//      /*Передаем в приватное поле сгенерированный conversationID для последующего использования в тесте с полученными ответными сообщениями*/
+//      setConversationID(variableFromXml(getPathToLog() + getNameOfSaveInitMessage(), "//int:ConversationID/text()"));//старая рализация
+//      assertTrue(new File(getPathToLog() + getNameOfSaveInitMessage()).exists(),
+//              "\nОШИБКА ТЕСТА - В папке \n" + getPathToLog() + "\n" +
+//              "отсутствует инициирующий файл для транзакции - " + getNameOfSaveInitMessage() + "\n");
+//      setConversationID(XPathBaseHelper.go(getPathToLog() + getNameOfSaveInitMessage(), "//int:ConversationID/text()"));
+

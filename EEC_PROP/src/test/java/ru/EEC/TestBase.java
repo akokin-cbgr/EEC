@@ -46,7 +46,7 @@ abstract public class TestBase {
   private QueueConnection queueConnection;
   /*Переменные для assert`ов*/
 
-  private String conversationID ;
+  private String conversationID;
 
   @BeforeTest
   public void setUp() throws JMSException {
@@ -303,6 +303,7 @@ abstract public class TestBase {
       Message message = (Message) e.nextElement(); //Получение сообщения
       stringBuilder.append(onMessage(message)).append("\n"); // запись в stringBuilder вычитанного сообщения
       /*Условия сортировки сообщений по типу*/
+
       if (stringBuilder.toString().contains("P.MSG.PRS</wsa:Action>")) {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
                 this.pathToLog + "Received_MSG_PRS.xml");
@@ -334,10 +335,8 @@ abstract public class TestBase {
     }
     /*Условие возврата null если stringBuilder будет пустой по причине отсутствия сообщений (к примеру если ПРОП не ответил)
      * дополнительно будет сообщение о том что сообщений нет в тупиковой очереди*/
-    if (!(e.hasMoreElements()) & stringBuilder.length() == 0 & i == 1) {
-      System.out.println("ИТОГ\n" +
-              "ОШИБКА ТЕСТА - Очередь " + queueRecieve + " не содержит сообщений."); // формирование строки-отчета в консоли
-    }
+    assertTrue(!(e.hasMoreElements()) & stringBuilder.length() == 0 & i == 1,
+            "ИТОГ\n" + "ОШИБКА ТЕСТА - Очередь " + queueRecieve + " не содержит сообщений."); // формирование строки-отчета в консоли
     //queueReceiver.receive();
     //String responseMsg = ((TextMessage) message).getText();
     System.out.println("ИТОГ\n" +
