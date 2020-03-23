@@ -333,19 +333,18 @@ abstract public class TestBase {
       /*Очистка stringBuilder*/
       stringBuilder.delete(0, stringBuilder.length());
     }
-    /*Условие возврата null если stringBuilder будет пустой по причине отсутствия сообщений (к примеру если ПРОП не ответил)
-     * дополнительно будет сообщение о том что сообщений нет в тупиковой очереди*/
-    assertTrue(!(e.hasMoreElements()) & stringBuilder.length() == 0 & i == 1,
-            "ИТОГ\n" + "ОШИБКА ТЕСТА - Очередь " + queueRecieve + " не содержит сообщений."); // формирование строки-отчета в консоли
+
+//    assertTrue(!(e.hasMoreElements()) ,
+//            "\nИТОГ\n" + "ОШИБКА ТЕСТА - Очередь " + queueRecieve + " не содержит сообщений."); // формирование строки-отчета в консоли
     //queueReceiver.receive();
     //String responseMsg = ((TextMessage) message).getText();
-    System.out.println("ИТОГ\n" +
+    System.out.println("\nИТОГ\n" +
             "Получено и созданно в " + this.pathToLog + " : \n" + result); // формирование строки-отчета в консоли
     browser.close();
   }
 
   private void setConversationIdForAssert() {
-    assertTrue(new File(this.pathToLog + this.nameOfSavedInitMessage).exists(), "ОШИБКА ТЕСТА - В папке \n" + this.pathToLog + "\n" +
+    assertTrue(new File(this.pathToLog + this.nameOfSavedInitMessage).exists(), "\nОШИБКА ТЕСТА - В папке \n" + this.pathToLog + "\n" +
             "отсутствует файл - " + this.nameOfSavedInitMessage + "\n");
     setConversationID(variableFromXml(this.pathToLog + this.nameOfSavedInitMessage, "//int:ConversationID/text()"));
   }
@@ -371,11 +370,11 @@ abstract public class TestBase {
       String str = "";
       if (Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
               "//int:ConversationID/text()")).equals(this.getConversationID())) {
-        System.out.println("Тесты для - " + checkedFile + ":\n" +
+        System.out.println("\nТесты для - " + checkedFile + ":\n" +
                 "int:ConversationID             - PASSED - совпадает с ID транзакции.");
         str = "Passed";
       } else {
-        System.out.println("Тесты для - " + checkedFile + ":\n" +
+        System.out.println("\nТесты для - " + checkedFile + ":\n" +
                 "ОШИБКА ТЕСТА                   - FAIL - int:ConversationID не совпадает с ID транзакции.");
         str = "NOT Passed";
       }
@@ -411,7 +410,7 @@ abstract public class TestBase {
       }
       return str;
     } else {
-      System.out.println("Тесты для - " + checkedFile + ":\n" +
+      System.out.println("\nТесты для - " + checkedFile + ":\n" +
               "ОШИБКА ТЕСТА - В папке \n" + this.pathToLog + "\n" +
               "отсутствует файл - " + checkedFile + "\n");
       return "NOT Passed";
