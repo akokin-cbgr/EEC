@@ -13,7 +13,6 @@ final class Property {
   /*Поля с путями к файлам*/
   static final String PATHCOMMON = "src/main/resources/";
 
-  private Property(){
-
+  private Property() {
   }
 }

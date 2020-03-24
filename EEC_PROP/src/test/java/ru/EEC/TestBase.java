@@ -237,8 +237,8 @@ abstract public class TestBase {
   /*Метод подготовки XML к отправке в очередь IBM MQ, идет генерация UUID в хедере отправляемого сообщения*/
   String filePreparation(String filePath) {
     /*Проверка что инициирующее сообщение существует в папке отправки*/
-    assertTrue(new File(this.pathToInitMessage).exists(),
-            "ОШИБКА ТЕСТА - Не найден инициирующий файл по пути: \n" + this.pathToInitMessage + "\n");
+    assertTrue(new File(pathToInitMessage).exists(),
+            "ОШИБКА ТЕСТА - Не найден инициирующий файл по пути: \n" + pathToInitMessage + "\n");
     String fileRaw = getFile(filePath);//считываем из файла XML
     /*Производим замену UUID на сгенерированные*/
     fileRaw = fileRaw.replaceAll(">urn:uuid:.*</wsa:MessageID>", ">urn:uuid:" + uuid() + "</wsa:MessageID>");
@@ -261,7 +261,7 @@ abstract public class TestBase {
 
   /*Метод ожидания сообщений из целевой очереди*/
   void checkAndWaitMsgInQueue(int maxWaitTimeSec) throws JMSException, InterruptedException {
-    QueueBrowser browser = this.queueSession.createBrowser(this.queueReciev);//Создаем браузер для наблюдения за очередью
+    QueueBrowser browser = queueSession.createBrowser(queueReciev);//Создаем браузер для наблюдения за очередью
     Enumeration e = browser.getEnumeration();//получаем Enumeration
     int i = 0;
     while (!e.hasMoreElements()) {
@@ -278,7 +278,7 @@ abstract public class TestBase {
   /*Метод получения сообщения из определенной очереди MQ*/
 
   void receiveMsgFromQueue() throws JMSException, IOException {
-    QueueBrowser browser = this.queueSession.createBrowser(this.queueReciev);//Создаем браузер для наблюдения за очередью
+    QueueBrowser browser = queueSession.createBrowser(queueReciev);//Создаем браузер для наблюдения за очередью
     Enumeration e = browser.getEnumeration();//получаем Enumeration
     StringBuilder stringBuilder = new StringBuilder();//создаем stringBuilder для записи в него сообщения из очереди
     StringBuilder result = new StringBuilder();// создаем stringBuilder для формирования строки консоли о типах полученных сообщений
@@ -291,27 +291,27 @@ abstract public class TestBase {
 
       if (stringBuilder.toString().contains("P.MSG.PRS</wsa:Action>")) {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                this.pathToLog + "Received_MSG_PRS.xml");
+                pathToLog + "Received_MSG_PRS.xml");
         result.append("- MSG.PRS\n");
       } else if (stringBuilder.toString().contains("P.MSG.RCV</wsa:Action>")) {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                this.pathToLog + "Received_MSG_RCV.xml");
+                pathToLog + "Received_MSG_RCV.xml");
         result.append("- MSG.RCV\n");
       } else if (stringBuilder.toString().contains("P.MSG.ERR</wsa:Action>")) {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                this.pathToLog + "Received_MSG_ERR.xml");
+                pathToLog + "Received_MSG_ERR.xml");
         result.append("- MSG.ERR\n");
       } else if (stringBuilder.toString().contains("MSG.002</wsa:Action>")) {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                this.pathToLog + "Received_MSG_002.xml");
+                pathToLog + "Received_MSG_002.xml");
         result.append("- MSG.002\n");
       } else if (stringBuilder.toString().contains("MSG.004</wsa:Action>")) {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                this.pathToLog + "Received_MSG_004.xml");
+                pathToLog + "Received_MSG_004.xml");
         result.append("- MSG.004\n");
       } else {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                this.pathToLog + "Received_MSG_XXX.xml");
+                pathToLog + "Received_MSG_XXX.xml");
         result.append("- MSG.XXX\n");
       }
       /*Очистка stringBuilder*/
@@ -328,24 +328,24 @@ abstract public class TestBase {
   }
 
   private void setConversationIdForAssert() {
-    assertTrue(new File(this.pathToLog + this.nameOfSavedInitMessage).exists(), "\nОШИБКА ТЕСТА - В папке \n" + this.pathToLog + "\n" +
-            "отсутствует файл - " + this.nameOfSavedInitMessage + "\n");
-    this.conversationID = variableFromXml(this.pathToLog + this.nameOfSavedInitMessage, "//int:ConversationID/text()");
+    assertTrue(new File(pathToLog + nameOfSavedInitMessage).exists(), "\nОШИБКА ТЕСТА - В папке \n" + pathToLog + "\n" +
+            "отсутствует файл - " + nameOfSavedInitMessage + "\n");
+    conversationID = variableFromXml(pathToLog + nameOfSavedInitMessage, "//int:ConversationID/text()");
   }
 
 
   protected void testAssert_For_Reply_Msg(String checkedFile, String tegCheckCode, String resultCode, String tegDescriptionText, String descriptionText) {
     /*Проверка что проверяемый файл присутствует в папке*/
-    assertTrue(new File(this.pathToLog + checkedFile).exists(),
+    assertTrue(new File(pathToLog + checkedFile).exists(),
             "\nТесты для - " + checkedFile + ":\n" +
-                    "ОШИБКА ТЕСТА - В папке \n" + this.pathToLog + "\n" +
+                    "ОШИБКА ТЕСТА - В папке \n" + pathToLog + "\n" +
                     "отсутствует файл - " + checkedFile + "\n");
 
     /*Считывание ConversationID из сохраненного в Log после отправки инициирующего файла*/
     setConversationIdForAssert();
 
     /*Проверка сопадения ConversationID между ответным сообщением и инициирующим из папки Log*/
-    assertEquals(this.conversationID, Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
+    assertEquals(conversationID, Objects.requireNonNull(XPathBaseHelper.go(pathToLog + checkedFile,
             "//int:ConversationID/text()")),
             "\nТесты для - " + checkedFile + ":\n" +
                     "ОШИБКА ТЕСТА                   - FAIL - int:ConversationID не совпадает с ID транзакции.\n");
@@ -354,7 +354,7 @@ abstract public class TestBase {
             "int:ConversationID             - PASSED - совпадает с ID транзакции.");
 
     /*Проверка наличия и заполненности тега csdo:EventDateTime*/
-    assertTrue(Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
+    assertTrue(Objects.requireNonNull(XPathBaseHelper.go(pathToLog + checkedFile,
             "//csdo:EventDateTime/text()")).length() != 0,
             "ОШИБКА ТЕСТА                   - FAIL - csdo:EventDateTime отсутствует или не заполнен.\n");
     /*Если все ок, печатается лог проверки в консоль*/
@@ -365,7 +365,7 @@ abstract public class TestBase {
      * для транзакции создания   - код равен "1"
      * для транзакции изменения  - код равен "2"
      * для транзакции исключения - код равен "3" и т.д*/
-    assertEquals(resultCode, Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
+    assertEquals(resultCode, Objects.requireNonNull(XPathBaseHelper.go(pathToLog + checkedFile,
             "//" + tegCheckCode + "/text()")),
             "ОШИБКА ТЕСТА                   - FAIL - " + tegCheckCode + " содержит НЕверный код\n");
     /*Если все ок, печатается лог проверки в консоль*/
@@ -376,7 +376,7 @@ abstract public class TestBase {
      * для транзакции создания   - "Сведения добавлены"
      * для транзакции изменения  - "Сведения изменены"
      * для транзакции исключения - "Сведения исключены" и т.д*/
-    assertEquals(descriptionText, Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
+    assertEquals(descriptionText, Objects.requireNonNull(XPathBaseHelper.go(pathToLog + checkedFile,
             "//" + tegDescriptionText + "/text()")),
             "ОШИБКА ТЕСТА                   - FAIL - " + tegDescriptionText + " НЕ соответствует значению.\n");
     /*Если все ок, печатается лог проверки в консоль*/
@@ -388,16 +388,16 @@ abstract public class TestBase {
   protected void testAssert_For_Signal(String checkedFile) {
 
     /*Проверка что проверяемый файл присутствует в папке*/
-    assertTrue(new File(this.pathToLog + checkedFile).exists(),
+    assertTrue(new File(pathToLog + checkedFile).exists(),
             "Тесты для - " + checkedFile + ":\n" +
-                    "ОШИБКА ТЕСТА - В папке \n" + this.pathToLog + "\n" +
+                    "ОШИБКА ТЕСТА - В папке \n" + pathToLog + "\n" +
                     "отсутствует файл - " + checkedFile + "\n");
 
     /*Считывание ConversationID из сохраненного в Log после отправки инициирующего файла*/
     setConversationIdForAssert();
 
     /*Проверка сопадения ConversationID между ответным сообщением и инициирующим из папки Log*/
-    assertEquals(this.conversationID, Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
+    assertEquals(conversationID, Objects.requireNonNull(XPathBaseHelper.go(pathToLog + checkedFile,
             "//int:ConversationID/text()")),
             "\nТесты для - " + checkedFile + ":\n" +
                     "ОШИБКА ТЕСТА                   - FAIL - int:ConversationID не совпадает с ID транзакции.\n");
@@ -413,24 +413,24 @@ abstract public class TestBase {
     return nameOfSavedInitMessage;
   }
 
-  protected void setNameOfSaveInitMessage(String nameOfSaveInitMessage) {
-    this.nameOfSavedInitMessage = nameOfSaveInitMessage;
+  protected void setNameOfSaveInitMessage(String nameOfSaveInitMessageUser) {
+    nameOfSavedInitMessage = nameOfSaveInitMessageUser;
   }
 
   String getPathToInitMessage() {
-    return this.pathToInitMessage;
+    return pathToInitMessage;
   }
 
-  protected void setPathToInitMessage(String pathToInitMessage) {
-    this.pathToInitMessage = PATHCOMMON + pathToInitMessage;
+  protected void setPathToInitMessage(String pathToInitMessageUser) {
+    pathToInitMessage = PATHCOMMON + pathToInitMessageUser;
   }
 
   String getPathToLog() {
-    return this.pathToLog;
+    return pathToLog;
   }
 
-  protected void setPathToLog(String pathToLog) {
-    this.pathToLog = PATHCOMMON + pathToLog;
+  protected void setPathToLog(String pathToLogUser) {
+    pathToLog = PATHCOMMON + pathToLogUser;
   }
 
 
