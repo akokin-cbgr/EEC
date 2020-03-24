@@ -1,17 +1,18 @@
-package ru.EEC;
+package ru.EEC.P_CC_05_TRN_001;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import ru.EEC.TestBase;
 import ru.cbgr.EEC.XPathBaseHelper;
 
 import java.io.File;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertTrue;
 
-public class Test_OP02_Valid_TRN_001 extends TestBase {
+public class Test_OP06_Valid_TRN_001 extends TestBase {
 
   @BeforeClass
-  private void set() {
+  private void configTest() {
     /*Настройка переменных теста под определенное тестируемое ОП.
      * Указываем путь к каталогу с инициирующим файлом и путь куда будет сохранено вычитанное сообщение
      *
@@ -28,8 +29,8 @@ public class Test_OP02_Valid_TRN_001 extends TestBase {
      * - Received_MSG_004.xml
      * - Received_MSG_XXX.xml
      * */
-    setPathToInitMessage("OP_02/VALID/MSG.001_TRN.001/MSG_001.xml");
-    setPathToLog("OP_02/VALID/MSG.001_TRN.001/Log/");
+    setPathToInitMessage("OP_06/VALID/MSG.001_TRN.001/MSG_001.xml");
+    setPathToLog("OP_06/VALID/MSG.001_TRN.001/Log/");
 
     setNameOfSaveInitMessage("Init_MSG_001.xml");
 
@@ -39,6 +40,12 @@ public class Test_OP02_Valid_TRN_001 extends TestBase {
 
   }
 
+  /*Для настройки теста стандартной TRN.001(создание записи в БД ПРОП) под другой ОП необходимо:
+   * 1. Прописать путь к инициирующему файлу и логам.
+   * 2. Изменить генерацию уникального бизнес ключа в XML, чтобы не упала ФЛК на стороне ПРОП
+   * 3. Прописать правильное имя ответного сообщения в assert
+   * */
+
   @Test()
   public void test_TRN() {
     try {
@@ -47,7 +54,7 @@ public class Test_OP02_Valid_TRN_001 extends TestBase {
 
 
       /*ГЕНЕРАЦИЯ УНИКАЛЬНОГО КЛЮЧА ДЛЯ ДАННОГО ОП, В ОТПРАВЛЯЕМОЙ XML*/
-      fileInit = fileInit.replaceAll(">.*</casdo:BorderCheckPointCode>", ">PPG.RU.UA." + randInt(10000000, 99999999) + "</casdo:BorderCheckPointCode>");
+      fileInit = fileInit.replaceAll(">.*</casdo:RegistrationNumberIdentifier>", ">" + randInt(1000, 9999) + "/" + randInt(1000, 9999) + "</casdo:RegistrationNumberIdentifier>");
 
 
       /*Запись отправляемого MSG в файл*/
@@ -66,8 +73,8 @@ public class Test_OP02_Valid_TRN_001 extends TestBase {
       /*Проверки теста, о том что ответные файлы по транзакции успешно созданы. Это означает что они были действительно вычитаны методом receiveMsgFromQueue()*/
       assertTrue(new File(getPathToLog() + "Received_MSG_PRS.xml").exists(),
               "Ответный файл Received_MSG_PRS.xml в папке " + getPathToLog() + " не создан!\n");
-      assertTrue(new File(getPathToLog() + "Received_MSG_004.xml").exists(),
-              "Ответный файл Received_MSG_004.xml в папке " + getPathToLog() + " не создан!\n");
+      assertTrue(new File(getPathToLog() + "Received_MSG_002.xml").exists(),
+              "Ответный файл Received_MSG_002.xml в папке " + getPathToLog() + " не создан!\n");
 
       /*Вывод в консоль ID транзакции*/
       System.out.println(

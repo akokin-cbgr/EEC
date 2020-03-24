@@ -1,14 +1,16 @@
-package ru.EEC.Signal;
+package ru.EEC.P_CC_05_TRN_001.Test_Reply_MSG;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import ru.EEC.TestBase;
 
 
-public class Test_Signal_RCV extends TestBase {
+public class Test_Reply_MSG extends TestBase {
+
+
 
   @BeforeClass
-  private void set() {
+  private void configTest() {
     /*Настройка переменных теста под определенное тестируемое ОП.
      * Указываем путь к каталогу с инициирующим файлом и путь куда будет сохранено вычитанное сообщение
      *
@@ -25,18 +27,19 @@ public class Test_Signal_RCV extends TestBase {
      * - Received_MSG_004.xml
      * - Received_MSG_XXX.xml
      * */
-    setPathToLog("OP_02/VALID/MSG.001_TRN.001/Log/");
+    setPathToLog("OP_06/VALID/MSG.001_TRN.001/Log/");
     setNameOfSaveInitMessage("Init_MSG_001.xml");
   }
 
 
   @Test()
-  public void test_Signal_RCV() {
+  public void Test_Reply_MSG() {
 
-    setPathToInitMessage("OP_02/VALID/MSG.001_TRN.001/MSG_001.xml");
-    setPathToLog("OP_02/VALID/MSG.001_TRN.001/Log/");
+    testAssert_For_Reply_Msg("Received_MSG_002.xml",
+            "csdo:ProcessingResultCode","3",
+            "csdo:DescriptionText","Сведения добавлены");
 
-    testAssert_For_Signal("Received_MSG_RCV.xml");
+//    assertEquals(testAssert_For_Signal("Received_MSG_RCV.xml"), "Passed");
 
 //      /*Передаем в приватное поле сгенерированный conversationID для последующего использования в тесте с полученными ответными сообщениями*/
 //      setConversationID(variableFromXml(getPathToLog() + "Init_MSG_001.xml", "//int:ConversationID/text()"));

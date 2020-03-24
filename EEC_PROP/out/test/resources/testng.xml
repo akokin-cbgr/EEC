@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Tests" parallel="tests">
+
+
+
+    <test name="TRN.001">
+        <classes>
+            <class name="ru.EEC.P_CC_01_TRN_001.Test_OP02_Valid_TRN_001"/>
+            <class name="ru.EEC.P_CC_01_TRN_001.Test_Reply_MSG.Test_Reply_MSG"/>
+            <class name="ru.EEC.P_CC_01_TRN_001.Test_Signal.Test_Signal_PRS"/>
+        </classes>
+    </test>
+<!--    <listeners>-->
+<!--        <listener class-name="ru.rgs.APITests.RetryListener"/>-->
+<!--    </listeners>-->
+
+    <!--<test name="remove">
+            <classes>
+                <class name="ru.rgs.APITests.tests.agentStatement.RemoveAgentStatementNoDelTests"/>
+                <class name="ru.rgs.APITests.tests.agentStatement.RemoveAgentStatementTests"/>
+                <class name="ru.rgs.APITests.tests.contracts.osago.RemoveOsagoTests"/>
+                <class name="ru.rgs.APITests.tests.contracts.casco.RemoveCascoTests"/>
+                <class name="ru.rgs.APITests.tests.contracts.casco.RemoveCascoConditionalTests"/>
+                <class name="ru.rgs.APITests.tests.contracts.casco.RemoveCascoBusinessAutoTest"/>
+                <class name="ru.rgs.APITests.tests.contracts.dsago.RemoveDsagoTests"/>
+                <class name="ru.rgs.APITests.tests.contracts.greenCard.RemoveGreenCardTests"/>
+                <class name="ru.rgs.APITests.tests.contracts.ob.RemovePrimaryBusinessTests"/>
+                <class name="ru.rgs.APITests.tests.contracts.ob.RemovePrimaryBusinessNoBsoTests"/>
+                <class name="ru.rgs.APITests.tests.contracts.ob.RemovePrimaryBusinessConditionalTests"/>
+                <class name="ru.rgs.APITests.tests.contracts.ob.RemovePrimaryBusinessNoBsoConditionalTests"/>
+                <class name="ru.rgs.APITests.tests.contracts.boxed.RemoveBoxedTests"/>
+                <class name="ru.rgs.APITests.tests.contracts.techInspection.RemoveTechInspectionTests"/>
+                <class name="ru.rgs.APITests.tests.contracts.osgopp.RemoveOsgoppTests"/>
+                <class name="ru.rgs.APITests.tests.contracts.osopo.RemoveOsopoTests"/>
+            </classes>
+    </test>-->
+
+<!--    <test name="search">-->
+
+<!--        <classes>-->
+<!--            <class name="ru.rgs.APITests.tests.search.SearchAgentStatementTests"/>-->
+<!--            <class name="ru.rgs.APITests.tests.search.SearchAgentTests"/>-->
+<!--            <class name="ru.rgs.APITests.tests.search.SearchContractTests"/>-->
+<!--            <class name="ru.rgs.APITests.tests.search.SearchContractTiTests"/>-->
+<!--            <class name="ru.rgs.APITests.tests.search.SearchPersonTests"/>-->
+<!--            <class name="ru.rgs.APITests.tests.search.SearchVehicleTests"/>-->
+<!--            <class name="ru.rgs.APITests.tests.search.SearchBlankTests"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="agentStatement">-->
+<!--         <classes>-->
+<!--             <class name="ru.rgs.APITests.tests.agentStatement.CreateAgentStatementTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.agentStatement.CreateAgentStatementNoActiveAgentTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.agentStatement.RemoveAgentStatementNoDelTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.agentStatement.RemoveAgentStatementTests"/>-->
+<!--         </classes>-->
+<!--     </test>-->
+
+<!--     <test name="osago">-->
+<!--         <classes>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.osago.CreateOsagoTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.BSO.CheckBsoCreateContract"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.osago.ReissueOsagoTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.osago.AddPaymentOsagoTest"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.osago.ChPaymentAddReturnOsagoTest"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.osago.CorrectErrorChVehicleOsagoTest"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.osago.AddAgentOsagoTest"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.osago.TerminationOsagoTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.osago.RemoveVersionOsago"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.osago.ReissueOsagoChBsoTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.osago.CorrectErrorChOwnerOsagoTest"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.osago.CreateOsagoRegTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.osago.ReissueOsagoRegTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.osago.AddPaymentToAnotherStatementRegTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.osago.TerminationOsagoRegTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.osago.RemoveVersionOsagoReg"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.osago.RemoveOsagoTests"/>-->
+<!--         </classes>-->
+<!--     </test>-->
+
+<!--    <test name="casko">-->
+<!--        <classes>-->
+<!--            <class name="ru.rgs.APITests.tests.contracts.casco.CreateCascoTests"/>-->
+<!--            <class name="ru.rgs.APITests.tests.contracts.casco.ReissueCascoTests"/>-->
+<!--            <class name="ru.rgs.APITests.tests.contracts.casco.AddPaymentCasco2Test"/>-->
+<!--            <class name="ru.rgs.APITests.tests.contracts.casco.ChPaymentAddReturnCascoTest"/>-->
+<!--            <class name="ru.rgs.APITests.tests.contracts.casco.CorrectErrorChVehicleCascoTest"/>-->
+<!--            <class name="ru.rgs.APITests.tests.contracts.casco.TerminationCascoTests60"/>-->
+<!--            <class name="ru.rgs.APITests.tests.contracts.casco.TerminationCascoTests70"/>-->
+<!--            <class name="ru.rgs.APITests.tests.contracts.casco.RemoveVersionCasco2"/>-->
+<!--            <class name="ru.rgs.APITests.tests.contracts.casco.RemoveVersionCasco1"/>-->
+<!--            <class name="ru.rgs.APITests.tests.contracts.casco.AddPaymentCasco1Test"/>-->
+<!--            <class name="ru.rgs.APITests.tests.contracts.casco.CorrectErrorChInsurerCasco1Test"/>-->
+<!--            <class name="ru.rgs.APITests.tests.contracts.casco.AddAgentCascoTest"/>-->
+<!--            <class name="ru.rgs.APITests.tests.contracts.casco.ReissueCascoChBsoTests"/>-->
+<!--            <class name="ru.rgs.APITests.tests.contracts.casco.RemoveCascoTests"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--    <test name="caskoConditional">-->
+<!--        <classes>-->
+<!--            <class name="ru.rgs.APITests.tests.contracts.casco.CreateCascoConditionalTests"/>-->
+<!--            <class name="ru.rgs.APITests.tests.contracts.casco.TerminationCascoConditionalTests"/>-->
+<!--            <class name="ru.rgs.APITests.tests.contracts.casco.RemoveCascoConditionalTests"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--    <test name="caskoBusinessAuto">-->
+<!--        <classes>-->
+<!--            <class name="ru.rgs.APITests.tests.contracts.casco.CreateCascoBusinessAutoTest"/>-->
+<!--            <class name="ru.rgs.APITests.tests.contracts.casco.ReissueCascoBusinessAutoChBso"/>-->
+<!--            <class name="ru.rgs.APITests.tests.contracts.casco.RemoveCascoBusinessAutoTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--    <test name="dsago">-->
+<!--         <classes>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.dsago.CreateDsagoTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.dsago.ReissueDsagoTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.dsago.AddPaymentDsagoTest"/>-->
+<!--             &lt;!&ndash;<class name="ru.rgs.APITests.tests.BSO.CheckBsoCreatePayment"/>&ndash;&gt;-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.dsago.ChPaymentAddReturnDsagoTest"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.dsago.TerminationDsagoTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.dsago.RemoveVersionDsago"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.dsago.CorrectErrorChVehicleDsagoTest"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.dsago.ReissueDsagoChBsoTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.dsago.CorrectErrorChInsurerDsagoTest"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.dsago.AddAgentDsagoTest"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.dsago.RemoveDsagoTests"/>-->
+<!--         </classes>-->
+<!--     </test>-->
+
+<!--     <test name="greenCard">-->
+<!--         <classes>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.greenCard.CreateGreenCardTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.greenCard.ReissueGreenCardTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.greenCard.AddReturnEditPaymentGreenCardTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.greenCard.TerminationGreenCardTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.greenCard.RemoveVersionGreenCard"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.greenCard.CorrectErrorChVehicleGreenCardTest"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.greenCard.AddAgentGreenCardTest"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.greenCard.ReissueGreenCardChBsoTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.greenCard.CorrectErrorChInsurerGreenCardTest"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.greenCard.RemoveGreenCardTests"/>-->
+<!--         </classes>-->
+<!--     </test>-->
+
+<!--     <test name="obBSO">-->
+<!--         <classes>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.ob.CreatePrimaryBusinessTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.ob.ReissuePrimaryBusinessTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.ob.AddPaymentReturnPbTest"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.ob.CorrectErrorPbTest"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.ob.TerminationPrimaryBusinessTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.ob.RemoveVersionPb"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.ob.CorrectErrorPbChIssureObjTest"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.ob.AddClaimPbTest"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.ob.RemoveClaimPb"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.ob.AddAgentPbTest"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.ob.RemovePrimaryBusinessTests"/>-->
+<!--         </classes>-->
+<!--     </test>-->
+
+<!--     <test name="obNoBSO">-->
+<!--         <classes>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.ob.CreatePrimaryBusinessNoBsoTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.ob.TerminationPrimaryBusinessTestsNoBso"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.ob.RemoveVersionPbNoBso"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.ob.RemovePrimaryBusinessNoBsoTests"/>-->
+<!--         </classes>-->
+<!--     </test>-->
+
+<!--     <test name="obConditional">-->
+<!--         <classes>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.ob.CreatePrimaryBusinessConditionalTest"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.ob.TerminationPrimaryBusinessConditionalTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.ob.RemoveVersionPbConditional"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.ob.RemovePrimaryBusinessConditionalTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.ob.CreatePrimaryBusinessConditionalNoBsoTest"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.ob.TerminationPrimaryBusinessConditionalNoBsoTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.ob.RemoveVersionPbConditionalNoBso"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.ob.RemovePrimaryBusinessNoBsoConditionalTests"/>-->
+<!--         </classes>-->
+<!--     </test>-->
+
+<!--     <test name="boxed">-->
+<!--         <classes>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.boxed.CreateBoxedCascoTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.boxed.ReissueBoxedTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.boxed.ChPaymentAddReturnBoxTest"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.boxed.TerminationBoxedTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.boxed.RemoveVersionBoxed"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.boxed.CorrectErrorChVehicleBoxedTest"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.boxed.AddAgentBoxTest"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.boxed.ReissueBoxedChBsoTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.boxed.CorrectErrorChInsurerBoxedTest"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.boxed.RemoveBoxedTests"/>-->
+<!--         </classes>-->
+<!--     </test>-->
+
+<!--    <test name="Osgopp">-->
+<!--        <classes>-->
+<!--            <class name="ru.rgs.APITests.tests.contracts.osgopp.CreateOsgoppTests"/>-->
+<!--            <class name="ru.rgs.APITests.tests.contracts.osgopp.RemoveOsgoppTests"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--    <test name="Osopo">-->
+<!--        <classes>-->
+<!--            <class name="ru.rgs.APITests.tests.contracts.osopo.CreateOsopoTests"/>-->
+<!--            <class name="ru.rgs.APITests.tests.contracts.osopo.ReissueOsopoTest"/>-->
+<!--            <class name="ru.rgs.APITests.tests.contracts.osopo.TerminationOsopoTests"/>-->
+<!--            <class name="ru.rgs.APITests.tests.contracts.osopo.RemoveOsopoTests"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--     <test name="techInspection">-->
+<!--         <classes>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.techInspection.CreateTechInspectionTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.techInspection.EditTechInspectionTests"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.techInspection.RemoveVersionTi"/>-->
+<!--             <class name="ru.rgs.APITests.tests.contracts.techInspection.RemoveTechInspectionTests"/>-->
+<!--         </classes>-->
+<!--     </test>-->
+
+<!--    <test name="BSO">-->
+<!--        <classes>-->
+<!--            <class name="ru.rgs.APITests.tests.BSO.CheckBsoDelContract"/>-->
+<!--            <class name="ru.rgs.APITests.tests.BSO.CheckBsoDelPayment"/>-->
+<!--            <class name="ru.rgs.APITests.tests.BSO.CheckBsoCreateContractIsMain"/>-->
+<!--            <class name="ru.rgs.APITests.tests.BSO.CheckBsoCreatePaymentIsMain"/>-->
+<!--            <class name="ru.rgs.APITests.tests.BSO.CheckBsoCreateContractAgreemIsMain"/>-->
+<!--            <class name="ru.rgs.APITests.tests.BSO.CheckWriteOffIsMain"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+</suite>

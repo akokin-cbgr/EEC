@@ -2,18 +2,18 @@
 <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
    <soap:Header xmlns:int="urn:EEC:Interaction:v1.0"
                 xmlns:wsa="http://www.w3.org/2005/08/addressing">
-      <wsa:MessageID>urn:uuid:cb4cda52-193f-4e67-9ef2-80de04856d5c</wsa:MessageID>
-      <int:ProcedureID>urn:uuid:ac0f4e31-d682-4312-8ff2-c747c7cde541</int:ProcedureID>
-      <int:ConversationID>urn:uuid:637aac06-b660-4484-85ac-01ef2cdcba20</int:ConversationID>
+      <wsa:MessageID>urn:uuid:90a0028c-8027-49c7-9cbc-280a1f3ab48f</wsa:MessageID>
+      <int:ProcedureID>urn:uuid:da2ec7ba-93bb-4186-9c20-4951a1bb4272</int:ProcedureID>
+      <int:ConversationID>urn:uuid:a56734e7-b059-447e-a29b-b2faa014a812</int:ConversationID>
       <wsa:To>EAEU://EEC/CP/P.CC.05/P.CC.05.ACT.022AT</wsa:To>
       <wsa:Action>int://CP/P.CC.05/1.1.1/P.CC.05.PRC.001/P.CC.05.TRN.001/P.CC.05.MSG.002</wsa:Action>
       <wsa:ReplyTo>
          <wsa:Address>EAEU://EEC/CP/P.CC.05/P.ACT.001</wsa:Address>
       </wsa:ReplyTo>
-      <wsa:RelatesTo>urn:uuid:4bed55c6-5d98-4317-93bc-e6aff25a2916</wsa:RelatesTo>
+      <wsa:RelatesTo>urn:uuid:333ea622-14b8-424a-ab66-c12222708a81</wsa:RelatesTo>
       <int:Integration>
-         <int:TrackID>urn:uuid:f39fea54-2089-454d-8eb5-ec0633669b07</int:TrackID>
-         <int:AcceptTime>2020-01-22T15:12:31+03:00</int:AcceptTime>
+         <int:TrackID>urn:uuid:a052ed6b-ea82-49d4-b756-b7cdafbb51f1</int:TrackID>
+         <int:AcceptTime>2020-03-24T20:55:30+03:00</int:AcceptTime>
       </int:Integration>
    </soap:Header>
    <soap:Body>
@@ -22,20 +22,20 @@
                                    xmlns:casdo="urn:EEC:M:CA:SimpleDataObjects:v1.2.3"
                                    xmlns:ccdo="urn:EEC:M:ComplexDataObjects:v0.3.3"
                                    xmlns:csdo="urn:EEC:M:SimpleDataObjects:v0.3.3"
-                                   xmlns:ns10="http://www.w3.org/2000/09/xmldsig#"
+                                   xmlns:ns10="http://dsign.mscp.eec"
                                    xmlns:ns11="urn:EEC:SignedData:v1.0:EDoc"
                                    xmlns:ns7="urn:EEC:R:ResourceStatusDetails:v0.3.3"
-                                   xmlns:ns8="urn:EEC:TTP:v1.0:receipt"
-                                   xmlns:ns9="http://dsign.mscp.eec"
+                                   xmlns:ns8="http://www.w3.org/2000/09/xmldsig#"
+                                   xmlns:ns9="urn:EEC:TTP:v1.0:receipt"
                                    xmlns:rcb="urn:EEC:R:CA:CC:05:RegisterCustomsBroker:v1.2.4">
          <ccdo:EDocHeader>
             <csdo:InfEnvelopeCode>P.CC.05.MSG.002</csdo:InfEnvelopeCode>
             <csdo:EDocCode>R.006</csdo:EDocCode>
-            <csdo:EDocId>5b032359-b940-411a-8169-75495a30d13a</csdo:EDocId>
-            <csdo:EDocRefId>944ac508-391a-4458-8c2c-0159f4113a85</csdo:EDocRefId>
-            <csdo:EDocDateTime>2020-01-22T12:12:31.727Z</csdo:EDocDateTime>
+            <csdo:EDocId>45df1836-ecbc-49cb-bda1-c34aa32d06b9</csdo:EDocId>
+            <csdo:EDocRefId>ba4f7356-53d1-4e5e-981c-db05b96f0ddb</csdo:EDocRefId>
+            <csdo:EDocDateTime>2020-03-24T17:55:30.793Z</csdo:EDocDateTime>
          </ccdo:EDocHeader>
-         <csdo:EventDateTime>2020-01-22T12:12:31.715Z</csdo:EventDateTime>
+         <csdo:EventDateTime>2020-03-24T17:55:30.784Z</csdo:EventDateTime>
          <csdo:ProcessingResultCode>3</csdo:ProcessingResultCode>
          <csdo:DescriptionText>Сведения добавлены</csdo:DescriptionText>
       </doc:ProcessingResultDetails>

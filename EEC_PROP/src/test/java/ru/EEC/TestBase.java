@@ -88,7 +88,7 @@ abstract public class TestBase {
 
   /*Генерация случайного числа из устанавливаемого диапазона значений в параметрах min и max соответственно
    * Стандартно rand.nextInt() генерирует случайное число от 0 до указанного в параметре значения*/
-  int randInt(int min, int max) {
+  protected int randInt(int min, int max) {
     Random rand = new Random();
     return rand.nextInt((max - min) + 1) + min;
   }
@@ -178,7 +178,7 @@ abstract public class TestBase {
 
 
   /*Метод удаления всех файлов из указываемой папки*/
-  void deleteAllFilesFolder(String path) {
+  protected void deleteAllFilesFolder(String path) {
     for (File myFile : Objects.requireNonNull(new File(path).listFiles()))
       if (myFile.isFile()) {
         myFile.delete();
@@ -187,7 +187,7 @@ abstract public class TestBase {
 
 
   /*Метод записи передаваемого или получаемого сообщения на HDD*/
-  void writeMsgToHdd(String fileInit, String filePath) throws IOException {
+  protected void writeMsgToHdd(String fileInit, String filePath) throws IOException {
     File file = new File(filePath);
     FileWriter writerInit = new FileWriter(file);
     writerInit.write(fileInit);
@@ -197,7 +197,7 @@ abstract public class TestBase {
 
 
   /*Метод отправки инициализирубщего сообщения в соответствующую очередь MQ*/
-  void sendMsg(String fileInit) throws JMSException {
+  protected void sendMsg(String fileInit) throws JMSException {
     StringBuilder result = new StringBuilder();// создаем stringBuilder для формирования строки консоли о типах отправляемых сообщений
     TextMessage textMessage = queueSession.createTextMessage(fileInit);
 
@@ -235,7 +235,7 @@ abstract public class TestBase {
 
 
   /*Метод подготовки XML к отправке в очередь IBM MQ, идет генерация UUID в хедере отправляемого сообщения*/
-  String filePreparation(String filePath) {
+  protected String filePreparation(String filePath) {
     /*Проверка что инициирующее сообщение существует в папке отправки*/
     assertTrue(new File(pathToInitMessage).exists(),
             "ОШИБКА ТЕСТА - Не найден инициирующий файл по пути: \n" + pathToInitMessage + "\n");
@@ -260,7 +260,7 @@ abstract public class TestBase {
   }
 
   /*Метод ожидания сообщений из целевой очереди*/
-  void checkAndWaitMsgInQueue(int maxWaitTimeSec) throws JMSException, InterruptedException {
+  protected void checkAndWaitMsgInQueue(int maxWaitTimeSec) throws JMSException, InterruptedException {
     QueueBrowser browser = queueSession.createBrowser(queueReciev);//Создаем браузер для наблюдения за очередью
     Enumeration e = browser.getEnumeration();//получаем Enumeration
     int i = 0;
@@ -277,7 +277,7 @@ abstract public class TestBase {
 
   /*Метод получения сообщения из определенной очереди MQ*/
 
-  void receiveMsgFromQueue() throws JMSException, IOException {
+  protected void receiveMsgFromQueue() throws JMSException, IOException {
     QueueBrowser browser = queueSession.createBrowser(queueReciev);//Создаем браузер для наблюдения за очередью
     Enumeration e = browser.getEnumeration();//получаем Enumeration
     StringBuilder stringBuilder = new StringBuilder();//создаем stringBuilder для записи в него сообщения из очереди
@@ -409,7 +409,7 @@ abstract public class TestBase {
 
 
 
-  String getNameOfSaveInitMessage() {
+  protected String getNameOfSaveInitMessage() {
     return nameOfSavedInitMessage;
   }
 
@@ -417,7 +417,7 @@ abstract public class TestBase {
     nameOfSavedInitMessage = nameOfSaveInitMessageUser;
   }
 
-  String getPathToInitMessage() {
+  protected String getPathToInitMessage() {
     return pathToInitMessage;
   }
 
@@ -425,7 +425,7 @@ abstract public class TestBase {
     pathToInitMessage = PATHCOMMON + pathToInitMessageUser;
   }
 
-  String getPathToLog() {
+  protected String getPathToLog() {
     return pathToLog;
   }
 

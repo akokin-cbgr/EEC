@@ -1,16 +1,14 @@
-package ru.EEC.Reply_MSG;
+package ru.EEC.template;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import ru.EEC.TestBase;
 
 
-public class Test_Reply_MSG extends TestBase {
-
-
+public class Test_Signal_RCV extends TestBase {
 
   @BeforeClass
-  private void set() {
+  private void configTest() {
     /*Настройка переменных теста под определенное тестируемое ОП.
      * Указываем путь к каталогу с инициирующим файлом и путь куда будет сохранено вычитанное сообщение
      *
@@ -33,13 +31,12 @@ public class Test_Reply_MSG extends TestBase {
 
 
   @Test()
-  public void Test_Reply_MSG() {
+  public void test_Signal_RCV() {
 
-    testAssert_For_Reply_Msg("Received_MSG_004.xml",
-            "csdo:ProcessingResultCode","3",
-            "csdo:DescriptionText","Сведения добавлены");
+    setPathToInitMessage("OP_02/VALID/MSG.001_TRN.001/MSG_001.xml");
+    setPathToLog("OP_02/VALID/MSG.001_TRN.001/Log/");
 
-//    assertEquals(testAssert_For_Signal("Received_MSG_RCV.xml"), "Passed");
+    testAssert_For_Signal("Received_MSG_RCV.xml");
 
 //      /*Передаем в приватное поле сгенерированный conversationID для последующего использования в тесте с полученными ответными сообщениями*/
 //      setConversationID(variableFromXml(getPathToLog() + "Init_MSG_001.xml", "//int:ConversationID/text()"));
