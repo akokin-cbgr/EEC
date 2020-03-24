@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.*;
 
 import static com.ibm.mq.jms.JMSC.MQJMS_TP_CLIENT_MQ_TCPIP;
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 abstract public class TestBase {
@@ -191,7 +192,7 @@ abstract public class TestBase {
   }
   /*Метод удаления всех файлов из папки*/
 
-  void deleteAllFilesFolder(String path) {
+  protected void deleteAllFilesFolder(String path) {
     for (File myFile : Objects.requireNonNull(new File(path).listFiles()))
       if (myFile.isFile()) {
         myFile.delete();
@@ -364,57 +365,56 @@ abstract public class TestBase {
 //  }
 
 
-  String testAssert_For_Reply_Msg(String checkedFile, String tegCheckCode, String resultCode, String tegDescriptionText, String descriptionText) {
-    if (new File(this.pathToLog + checkedFile).exists()) {
-      setConversationIdForAssert();
-      String str = "";
-      if (Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
-              "//int:ConversationID/text()")).equals(this.getConversationID())) {
-        System.out.println("\nТесты для - " + checkedFile + ":\n" +
-                "int:ConversationID             - PASSED - совпадает с ID транзакции.");
-        str = "Passed";
-      } else {
-        System.out.println("\nТесты для - " + checkedFile + ":\n" +
-                "ОШИБКА ТЕСТА                   - FAIL - int:ConversationID не совпадает с ID транзакции.");
-        str = "NOT Passed";
-      }
+  protected void testAssert_For_Reply_Msg(String checkedFile, String tegCheckCode, String resultCode, String tegDescriptionText, String descriptionText) {
+    /*Проверка что проверяемый файл присутствует в папке*/
+    assertTrue(new File(this.pathToLog + checkedFile).exists(),
+            "\nТесты для - " + checkedFile + ":\n" +
+                    "ОШИБКА ТЕСТА - В папке \n" + this.pathToLog + "\n" +
+                    "отсутствует файл - " + checkedFile + "\n");
 
-      if (Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
-              "//csdo:EventDateTime/text()")).length() != 0) {
-        System.out.println(
-                "csdo:EventDateTime             - PASSED - заполнен и присутствует.");
-        str = "Passed";
-      } else {
-        System.out.println(
-                "ОШИБКА ТЕСТА                   - FAIL - csdo:EventDateTime отсутствует или не заполнен.");
-        str = "NOT Passed";
-      }
+    /*Считывание ConversationID из сохраненного в Log после отправки инициирующего файла*/
+    setConversationIdForAssert();
 
-      if (Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
-              "//" + tegCheckCode + "/text()")).equals(resultCode)) {
-        System.out.println(tegCheckCode + "      - PASSED - содержит верный код \"" + resultCode + "\"");
-        str = "Passed";
-      } else {
-        System.out.println(
-                "ОШИБКА ТЕСТА                   - FAIL - " + tegCheckCode + " содержит НЕверный код");
-        str = "NOT Passed";
-      }
-      if (Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
-              "//" + tegDescriptionText + "/text()")).equals(descriptionText)) {
-        System.out.println(tegDescriptionText + "           - PASSED - соответствует значению \"" + descriptionText + "\"");
-        str = "Passed";
-      } else {
-        System.out.println(
-                "ОШИБКА ТЕСТА                   - FAIL - " + tegDescriptionText + " НЕ соответствует значению.");
-        str = "NOT Passed";
-      }
-      return str;
-    } else {
-      System.out.println("\nТесты для - " + checkedFile + ":\n" +
-              "ОШИБКА ТЕСТА - В папке \n" + this.pathToLog + "\n" +
-              "отсутствует файл - " + checkedFile + "\n");
-      return "NOT Passed";
-    }
+    /*Проверка сопадения ConversationID между ответным сообщением и инициирующим из папки Log*/
+    assertEquals(this.getConversationID(), Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
+            "//int:ConversationID/text()")),
+            "\nТесты для - " + checkedFile + ":\n" +
+                    "ОШИБКА ТЕСТА                   - FAIL - int:ConversationID не совпадает с ID транзакции.");
+    /*Если все ок, печатается лог проверки в консоль*/
+    System.out.println("\nТесты для - " + checkedFile + ":\n" +
+            "int:ConversationID             - PASSED - совпадает с ID транзакции.");
+
+
+    /*Проверка наличия и заполненности тега csdo:EventDateTime*/
+    assertTrue(Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
+            "//csdo:EventDateTime/text()")).length() != 0,
+            "ОШИБКА ТЕСТА                   - FAIL - csdo:EventDateTime отсутствует или не заполнен.");
+    /*Если все ок, печатается лог проверки в консоль*/
+    System.out.println("csdo:EventDateTime             - PASSED - заполнен и присутствует.");
+
+
+    /*Проверка наличия в соответствующем теге ответного сообщения ПРОП, правильного по постановке кода завершения транзакции
+     *  Например :
+     * для транзакции создания   - код равен "1"
+     * для транзакции изменения  - код равен "2"
+     * для транзакции исключения - код равен "3" и т.д*/
+    assertEquals(resultCode, Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
+            "//" + tegCheckCode + "/text()")),
+            "ОШИБКА ТЕСТА                   - FAIL - " + tegCheckCode + " содержит НЕверный код");
+    /*Если все ок, печатается лог проверки в консоль*/
+    System.out.println(tegCheckCode + "      - PASSED - содержит верный код \"" + resultCode + "\"");
+
+
+    /*Проверка текста в соответсвующем теге ответного сообщения ПРОП, на соответствие с ожидаемым по постановке.
+     * Например :
+     * для транзакции создания   - "Сведения добавлены"
+     * для транзакции изменения  - "Сведения изменены"
+     * для транзакции исключения - "Сведения исключены" и т.д*/
+    assertEquals(descriptionText, Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
+            "//" + tegDescriptionText + "/text()")), "ОШИБКА ТЕСТА                   - FAIL - " + tegDescriptionText + " НЕ соответствует значению.");
+    /*Если все ок, печатается лог проверки в консоль*/
+    System.out.println(tegDescriptionText + "           - PASSED - соответствует значению \"" + descriptionText + "\"");
+
   }
 
   protected String testAssert_For_Signal(String checkedFile) {
@@ -561,7 +561,7 @@ abstract public class TestBase {
     this.pathToInitMessage = pathCommon + pathToInitMessage;
   }
 
-  String getPathToLog() {
+  protected String getPathToLog() {
     return this.pathToLog;
   }
 
