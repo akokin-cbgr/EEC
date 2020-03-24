@@ -35,9 +35,6 @@ public class Test_Reply_MSG extends TestBase {
   @Test()
   public void Test_Reply_MSG() {
 
-    setPathToInitMessage("OP_02/VALID/MSG.001_TRN.001/MSG_001.xml");
-    setPathToLog("OP_02/VALID/MSG.001_TRN.001/Log/");
-
     testAssert_For_Reply_Msg("Received_MSG_004.xml",
             "csdo:ProcessingResultCode","3",
             "csdo:DescriptionText","Сведения добавлены");

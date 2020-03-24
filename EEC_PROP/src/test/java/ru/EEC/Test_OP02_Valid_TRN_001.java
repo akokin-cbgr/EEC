@@ -63,7 +63,7 @@ public class Test_OP02_Valid_TRN_001 extends TestBase {
        * Внутри метода receiveMsgFromQueue реализована проверка assertTrue если stringBuilder будет пустой по причине отсутствия сообщений в тупиковой очереди*/
       receiveMsgFromQueue();
 
-      /*Проверки теста, о том что ответные файлы по транзакции успешно созданны. Это означает что они были действительно вычитаны методом receiveMsgFromQueue()*/
+      /*Проверки теста, о том что ответные файлы по транзакции успешно созданы. Это означает что они были действительно вычитаны методом receiveMsgFromQueue()*/
       assertTrue(new File(getPathToLog() + "Received_MSG_PRS.xml").exists(),
               "Ответный файл Received_MSG_PRS.xml в папке " + getPathToLog() + " не создан!\n");
       assertTrue(new File(getPathToLog() + "Received_MSG_004.xml").exists(),

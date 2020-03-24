@@ -52,8 +52,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/Signal/Test_Signal_PRS.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="17" selection-start-line="17" selection-end-line="18" />
+            <state relative-caret-position="360">
+              <caret line="28" column="39" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -64,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/Signal/Test_Signal_RCV.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="80">
+              <caret line="9" column="14" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -73,41 +73,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/Test_OP02_Valid_TRN_001.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="45" column="30" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="30" />
+            <state relative-caret-position="480">
+              <caret line="66" column="76" lean-forward="true" selection-start-line="66" selection-start-column="76" selection-end-line="66" selection-end-column="76" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/TestBase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="597">
-              <caret line="408" column="17" lean-forward="true" selection-start-line="408" selection-start-column="17" selection-end-line="408" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/OP_02/VALID/MSG.001_TRN.001/Log/Received_MSG_004.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="26" column="86" lean-forward="true" selection-start-line="26" selection-start-column="86" selection-end-line="26" selection-end-column="86" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/TestBase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="557">
+              <caret line="429" lean-forward="true" selection-start-line="429" selection-end-line="429" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/Reply_MSG/Test_Reply_MSG.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="516">
-              <caret line="41" column="42" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
+            <state relative-caret-position="576">
+              <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -189,14 +180,14 @@
         <option value="$PROJECT_DIR$/src/test/java/Signal/Test_OP02_Valid_TRN_001.java" />
         <option value="$PROJECT_DIR$/src/test/java/Signal/Test_Signal.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/EEC/Signal/Test_Signal.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ru/EEC/Signal/Test_Signal_PRS.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/EEC/Property.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/EEC/Test_OP06_Valid_TRN_001.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ru/EEC/Test_OP02_Valid_TRN_001.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ru/EEC/Signal/Test_Signal_RCV.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ru/EEC/TestBase.java" />
         <option value="$PROJECT_DIR$/src/main/resources/OP_02/VALID/MSG.001_TRN.001/Log/Received_MSG_004.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/ru/EEC/Signal/Test_Signal_RCV.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ru/EEC/Signal/Test_Signal_PRS.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/EEC/Reply_MSG/Test_Reply_MSG.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ru/EEC/Test_OP02_Valid_TRN_001.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ru/EEC/TestBase.java" />
       </list>
     </option>
   </component>
@@ -371,7 +362,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="TestNG.Test_Reply_MSG">
+  <component name="RunManager" selected="TestNG.Test_Reply_MSG.Test_Reply_MSG">
     <configuration name="Test_OP02_Valid_TRN_001 (1)" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="PROP.EEC_PROP.test" />
       <extension name="coverage">
@@ -383,24 +374,6 @@
       <option name="PACKAGE_NAME" value="ru.EEC" />
       <option name="MAIN_CLASS_NAME" value="ru.EEC.Test_OP02_Valid_TRN_001" />
       <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test_OP02_Valid_TRN_001.test_TRN (1)" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="PROP.EEC_PROP.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.EEC.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ru.EEC" />
-      <option name="MAIN_CLASS_NAME" value="ru.EEC.Test_OP02_Valid_TRN_001" />
-      <option name="METHOD_NAME" value="test_TRN" />
-      <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
       <method v="2">
@@ -424,7 +397,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test_Signal_PRS.test_TRN" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="Test_Reply_MSG.Test_Reply_MSG" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="PROP.EEC_PROP.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.EEC.Reply_MSG.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.EEC.Reply_MSG" />
+      <option name="MAIN_CLASS_NAME" value="ru.EEC.Reply_MSG.Test_Reply_MSG" />
+      <option name="METHOD_NAME" value="Test_Reply_MSG" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test_Signal_PRS.test_Signal_PRS" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="PROP.EEC_PROP.test" />
       <extension name="coverage">
         <pattern>
@@ -434,7 +425,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="ru.EEC.Signal" />
       <option name="MAIN_CLASS_NAME" value="ru.EEC.Signal.Test_Signal_PRS" />
-      <option name="METHOD_NAME" value="test_TRN" />
+      <option name="METHOD_NAME" value="test_Signal_PRS" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -462,11 +453,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.Test_Reply_MSG.Test_Reply_MSG" />
+        <item itemvalue="TestNG.Test_Signal_PRS.test_Signal_PRS" />
+        <item itemvalue="TestNG.Test_Signal_RCV.test_Signal_RCV" />
         <item itemvalue="TestNG.Test_Reply_MSG" />
         <item itemvalue="TestNG.Test_OP02_Valid_TRN_001 (1)" />
-        <item itemvalue="TestNG.Test_Signal_RCV.test_Signal_RCV" />
-        <item itemvalue="TestNG.Test_OP02_Valid_TRN_001.test_TRN (1)" />
-        <item itemvalue="TestNG.Test_Signal_PRS.test_TRN" />
       </list>
     </recent_temporary>
   </component>
@@ -492,15 +483,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Test_Reply_MSG - 2020.03.24 at 10h 57m 43s.xml">
-      <configuration name="Test_Reply_MSG" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_Reply_MSG - 2020.03.24 at 11h 04m 06s.xml">
-      <configuration name="Test_Reply_MSG" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_Reply_MSG - 2020.03.24 at 11h 04m 43s.xml">
-      <configuration name="Test_Reply_MSG" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="Test_Reply_MSG - 2020.03.24 at 11h 05m 38s.xml">
       <configuration name="Test_Reply_MSG" configurationId="TestNG" />
     </history-entry>
@@ -521,6 +503,15 @@
     </history-entry>
     <history-entry file="Test_Reply_MSG - 2020.03.24 at 11h 15m 32s.xml">
       <configuration name="Test_Reply_MSG" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_Reply_MSG - 2020.03.24 at 11h 16m 05s.xml">
+      <configuration name="Test_Reply_MSG" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_Signal_PRS_test_Signal_PRS - 2020.03.24 at 11h 21m 26s.xml">
+      <configuration name="Test_Signal_PRS.test_Signal_PRS" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_Reply_MSG_Test_Reply_MSG - 2020.03.24 at 11h 22m 34s.xml">
+      <configuration name="Test_Reply_MSG.Test_Reply_MSG" configurationId="TestNG" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -877,27 +868,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/OP_02/VALID/MSG.001_TRN.001/Log/Received_MSG_004.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="26" column="86" lean-forward="true" selection-start-line="26" selection-start-column="86" selection-end-line="26" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/Signal/Test_Signal_RCV.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="9" column="14" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/Signal/Test_Signal_PRS.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" selection-start-line="17" selection-end-line="18" />
+        <state relative-caret-position="360">
+          <caret line="28" column="39" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/Signal/Test_Signal_RCV.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/Test_OP02_Valid_TRN_001.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        <state relative-caret-position="480">
+          <caret line="66" column="76" lean-forward="true" selection-start-line="66" selection-start-column="76" selection-end-line="66" selection-end-column="76" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/Test_OP02_Valid_TRN_001.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/Reply_MSG/Test_Reply_MSG.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="45" column="30" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="30" />
+        <state relative-caret-position="576">
+          <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -906,25 +914,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/TestBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
-          <caret line="408" column="17" lean-forward="true" selection-start-line="408" selection-start-column="17" selection-end-line="408" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/OP_02/VALID/MSG.001_TRN.001/Log/Received_MSG_004.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="26" column="86" lean-forward="true" selection-start-line="26" selection-start-column="86" selection-end-line="26" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/Reply_MSG/Test_Reply_MSG.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="41" column="42" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
+        <state relative-caret-position="557">
+          <caret line="429" lean-forward="true" selection-start-line="429" selection-end-line="429" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

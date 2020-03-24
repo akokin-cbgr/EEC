@@ -350,19 +350,7 @@ abstract public class TestBase {
     setConversationID(variableFromXml(this.pathToLog + this.nameOfSavedInitMessage, "//int:ConversationID/text()"));
   }
 
-//  Boolean checkLogFileExist(String fileName) {
-//    return new File(this.pathToLog + fileName).exists();
-//  }
-//
-//  Boolean checkInitFileExist() {
-//    if (new File(this.pathToInitMessage).exists()) {
-//      return true;
-//    } else {
-//      System.out.println("ОШИБКА ТЕСТА - Не найден инициирующий файл по пути: \n"
-//              + this.pathToInitMessage + "\n");
-//      return false;
-//    }
-//  }
+
 
 
   protected void testAssert_For_Reply_Msg(String checkedFile, String tegCheckCode, String resultCode, String tegDescriptionText, String descriptionText) {
@@ -384,14 +372,12 @@ abstract public class TestBase {
     System.out.println("\nТесты для - " + checkedFile + ":\n" +
             "int:ConversationID             - PASSED - совпадает с ID транзакции.");
 
-
     /*Проверка наличия и заполненности тега csdo:EventDateTime*/
     assertTrue(Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
             "//csdo:EventDateTime/text()")).length() != 0,
             "ОШИБКА ТЕСТА                   - FAIL - csdo:EventDateTime отсутствует или не заполнен.\n");
     /*Если все ок, печатается лог проверки в консоль*/
     System.out.println("csdo:EventDateTime             - PASSED - заполнен и присутствует.");
-
 
     /*Проверка наличия в соответствующем теге ответного сообщения ПРОП, правильного по постановке кода завершения транзакции
      *  Например :
@@ -403,7 +389,6 @@ abstract public class TestBase {
             "ОШИБКА ТЕСТА                   - FAIL - " + tegCheckCode + " содержит НЕверный код\n");
     /*Если все ок, печатается лог проверки в консоль*/
     System.out.println(tegCheckCode + "      - PASSED - содержит верный код \"" + resultCode + "\"");
-
 
     /*Проверка текста в соответсвующем теге ответного сообщения ПРОП, на соответствие с ожидаемым по постановке.
      * Например :
@@ -418,27 +403,29 @@ abstract public class TestBase {
 
   }
 
-  protected String testAssert_For_Signal(String checkedFile) {
-    if (new File(this.pathToLog + checkedFile).exists()) {
-      setConversationIdForAssert();
-      String str = "";
-      if (Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
-              "//int:ConversationID/text()")).equals(this.getConversationID())) {
-        System.out.println("Тесты для - " + checkedFile + ":\n" +
-                "int:ConversationID             - PASSED - совпадает с ID транзакции\n");
-        str = "Passed";
-      } else {
-        System.out.println("Тесты для - " + checkedFile + ":\n" +
-                "ОШИБКА ТЕСТА                   - FAIL - int:ConversationID не совпадает с ID транзакции\n");
-        str = "NOT Passed";
-      }
-      return str;
-    } else {
-      System.out.println("Тесты для - " + checkedFile + ":\n" +
-              "ОШИБКА ТЕСТА - В папке \n" + this.pathToLog + "\n" +
-              "отсутствует файл - " + checkedFile + "\n");
-      return "NOT Passed";
-    }
+
+
+
+  protected void testAssert_For_Signal(String checkedFile) {
+
+    /*Проверка что проверяемый файл присутствует в папке*/
+    assertTrue(new File(this.pathToLog + checkedFile).exists(),
+            "Тесты для - " + checkedFile + ":\n" +
+                    "ОШИБКА ТЕСТА - В папке \n" + this.pathToLog + "\n" +
+                    "отсутствует файл - " + checkedFile + "\n");
+
+    /*Считывание ConversationID из сохраненного в Log после отправки инициирующего файла*/
+    setConversationIdForAssert();
+
+    /*Проверка сопадения ConversationID между ответным сообщением и инициирующим из папки Log*/
+    assertEquals(this.getConversationID(), Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
+            "//int:ConversationID/text()")),
+            "\nТесты для - " + checkedFile + ":\n" +
+                    "ОШИБКА ТЕСТА                   - FAIL - int:ConversationID не совпадает с ID транзакции.\n");
+    /*Если все ок, печатается лог проверки в консоль*/
+    System.out.println("\nТесты для - " + checkedFile + ":\n" +
+            "int:ConversationID             - PASSED - совпадает с ID транзакции.");
+
   }
 
 
