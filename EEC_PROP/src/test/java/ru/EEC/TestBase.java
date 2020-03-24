@@ -379,7 +379,7 @@ abstract public class TestBase {
     assertEquals(this.getConversationID(), Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
             "//int:ConversationID/text()")),
             "\nТесты для - " + checkedFile + ":\n" +
-                    "ОШИБКА ТЕСТА                   - FAIL - int:ConversationID не совпадает с ID транзакции.");
+                    "ОШИБКА ТЕСТА                   - FAIL - int:ConversationID не совпадает с ID транзакции.\n");
     /*Если все ок, печатается лог проверки в консоль*/
     System.out.println("\nТесты для - " + checkedFile + ":\n" +
             "int:ConversationID             - PASSED - совпадает с ID транзакции.");
@@ -388,7 +388,7 @@ abstract public class TestBase {
     /*Проверка наличия и заполненности тега csdo:EventDateTime*/
     assertTrue(Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
             "//csdo:EventDateTime/text()")).length() != 0,
-            "ОШИБКА ТЕСТА                   - FAIL - csdo:EventDateTime отсутствует или не заполнен.");
+            "ОШИБКА ТЕСТА                   - FAIL - csdo:EventDateTime отсутствует или не заполнен.\n");
     /*Если все ок, печатается лог проверки в консоль*/
     System.out.println("csdo:EventDateTime             - PASSED - заполнен и присутствует.");
 
@@ -400,7 +400,7 @@ abstract public class TestBase {
      * для транзакции исключения - код равен "3" и т.д*/
     assertEquals(resultCode, Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
             "//" + tegCheckCode + "/text()")),
-            "ОШИБКА ТЕСТА                   - FAIL - " + tegCheckCode + " содержит НЕверный код");
+            "ОШИБКА ТЕСТА                   - FAIL - " + tegCheckCode + " содержит НЕверный код\n");
     /*Если все ок, печатается лог проверки в консоль*/
     System.out.println(tegCheckCode + "      - PASSED - содержит верный код \"" + resultCode + "\"");
 
@@ -411,7 +411,8 @@ abstract public class TestBase {
      * для транзакции изменения  - "Сведения изменены"
      * для транзакции исключения - "Сведения исключены" и т.д*/
     assertEquals(descriptionText, Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
-            "//" + tegDescriptionText + "/text()")), "ОШИБКА ТЕСТА                   - FAIL - " + tegDescriptionText + " НЕ соответствует значению.");
+            "//" + tegDescriptionText + "/text()")),
+            "ОШИБКА ТЕСТА                   - FAIL - " + tegDescriptionText + " НЕ соответствует значению.\n");
     /*Если все ок, печатается лог проверки в консоль*/
     System.out.println(tegDescriptionText + "           - PASSED - соответствует значению \"" + descriptionText + "\"");
 

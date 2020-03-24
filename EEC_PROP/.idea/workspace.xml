@@ -82,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/TestBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="537">
-              <caret line="399" column="56" lean-forward="true" selection-start-line="399" selection-start-column="56" selection-end-line="399" selection-end-column="56" />
+            <state relative-caret-position="597">
+              <caret line="408" column="17" lean-forward="true" selection-start-line="408" selection-start-column="17" selection-end-line="408" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -95,10 +95,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/OP_02/VALID/MSG.001_TRN.001/Log/Received_MSG_004.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="520">
+              <caret line="26" column="86" lean-forward="true" selection-start-line="26" selection-start-column="86" selection-end-line="26" selection-end-column="86" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/Reply_MSG/Test_Reply_MSG.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="536">
-              <caret line="42" column="54" lean-forward="true" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="54" />
+            <state relative-caret-position="516">
+              <caret line="41" column="42" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -137,7 +146,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test/java/test.java" />
         <option value="$PROJECT_DIR$/src/test/java/Test.java" />
         <option value="$PROJECT_DIR$/src/main/java/First.java" />
         <option value="$PROJECT_DIR$/src/test/java/TestTest.java" />
@@ -185,9 +193,10 @@
         <option value="$PROJECT_DIR$/src/test/java/ru/EEC/Property.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/EEC/Test_OP06_Valid_TRN_001.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/EEC/Test_OP02_Valid_TRN_001.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ru/EEC/Reply_MSG/Test_Reply_MSG.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/EEC/Signal/Test_Signal_RCV.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/EEC/TestBase.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/OP_02/VALID/MSG.001_TRN.001/Log/Received_MSG_004.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/ru/EEC/Reply_MSG/Test_Reply_MSG.java" />
       </list>
     </option>
   </component>
@@ -483,34 +492,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Test_OP02_Valid_TRN_001_(1) - 2020.03.23 at 17h 40m 02s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001 (1)" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001_(1) - 2020.03.23 at 17h 42m 46s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001 (1)" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_OP02_Valid_TRN_001_(1) - 2020.03.23 at 17h 57m 11s.xml">
-      <configuration name="Test_OP02_Valid_TRN_001 (1)" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_Reply_MSG - 2020.03.24 at 10h 03m 19s.xml">
-      <configuration name="Test_Reply_MSG" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_Reply_MSG - 2020.03.24 at 10h 04m 24s.xml">
-      <configuration name="Test_Reply_MSG" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_Reply_MSG - 2020.03.24 at 10h 06m 06s.xml">
-      <configuration name="Test_Reply_MSG" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_Reply_MSG - 2020.03.24 at 10h 06m 30s.xml">
-      <configuration name="Test_Reply_MSG" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_Reply_MSG - 2020.03.24 at 10h 07m 41s.xml">
-      <configuration name="Test_Reply_MSG" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Test_Reply_MSG - 2020.03.24 at 10h 14m 51s.xml">
-      <configuration name="Test_Reply_MSG" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="Test_Reply_MSG - 2020.03.24 at 10h 57m 43s.xml">
+      <configuration name="Test_Reply_MSG" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_Reply_MSG - 2020.03.24 at 11h 04m 06s.xml">
+      <configuration name="Test_Reply_MSG" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_Reply_MSG - 2020.03.24 at 11h 04m 43s.xml">
+      <configuration name="Test_Reply_MSG" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_Reply_MSG - 2020.03.24 at 11h 05m 38s.xml">
+      <configuration name="Test_Reply_MSG" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_Reply_MSG - 2020.03.24 at 11h 11m 40s.xml">
+      <configuration name="Test_Reply_MSG" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_Reply_MSG - 2020.03.24 at 11h 12m 06s.xml">
+      <configuration name="Test_Reply_MSG" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_Reply_MSG - 2020.03.24 at 11h 12m 58s.xml">
+      <configuration name="Test_Reply_MSG" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_Reply_MSG - 2020.03.24 at 11h 13m 19s.xml">
+      <configuration name="Test_Reply_MSG" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_Reply_MSG - 2020.03.24 at 11h 15m 19s.xml">
+      <configuration name="Test_Reply_MSG" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Test_Reply_MSG - 2020.03.24 at 11h 15m 32s.xml">
       <configuration name="Test_Reply_MSG" configurationId="TestNG" />
     </history-entry>
   </component>
@@ -861,13 +870,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/OP_02/VALID/MSG.001_TRN.001/Log/Received_MSG_004.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="820">
-          <caret line="41" column="35" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.testng/testng/7.0.0/5a0241ace5a7b8eb3d31556a7d5dd2b3aae9baf/testng-7.0.0-sources.jar!/org/testng/Assert.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="313">
@@ -902,20 +904,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/Reply_MSG/Test_Reply_MSG.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/TestBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="536">
-          <caret line="42" column="54" lean-forward="true" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="54" />
+        <state relative-caret-position="597">
+          <caret line="408" column="17" lean-forward="true" selection-start-line="408" selection-start-column="17" selection-end-line="408" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/TestBase.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/OP_02/VALID/MSG.001_TRN.001/Log/Received_MSG_004.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="399" column="56" lean-forward="true" selection-start-line="399" selection-start-column="56" selection-end-line="399" selection-end-column="56" />
+        <state relative-caret-position="520">
+          <caret line="26" column="86" lean-forward="true" selection-start-line="26" selection-start-column="86" selection-end-line="26" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/Reply_MSG/Test_Reply_MSG.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="516">
+          <caret line="41" column="42" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
