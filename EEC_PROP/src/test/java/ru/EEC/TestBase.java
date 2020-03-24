@@ -155,7 +155,7 @@ abstract public class TestBase {
 
 
   /*Метод очистки очереди IBM MQ. В качестве параметра передается очередь получатель*/
-  void clearQueue(QueueReceiver queueReceiver) {
+  private void clearQueue(QueueReceiver queueReceiver) {
     try {
       while (true) {
         Message receive = queueReceiver.receiveNoWait();
@@ -223,7 +223,7 @@ abstract public class TestBase {
       result.append("MSG.006");
     }
     queueSender.send(textMessage);//отправляем в очередь ранее созданное сообщение
-    System.out.println("Запуск теста для ОП " + getPathToInitMessage().toString().substring(22, 24) + " - TRN." + getPathToInitMessage().toString().substring(43, 46) + "\nСообщение " + result + " отправлено:\n" +
+    System.out.println("Запуск теста для ОП " + getPathToInitMessage().substring(22, 24) + " - TRN." + getPathToInitMessage().substring(43, 46) + "\nСообщение " + result + " отправлено:\n" +
             "- Очередь           - " + QUEUESENDING +
             "\n- Адрес шлюза       - " + HOSTNAME + "\n");
   }
@@ -282,7 +282,6 @@ abstract public class TestBase {
     Enumeration e = browser.getEnumeration();//получаем Enumeration
     StringBuilder stringBuilder = new StringBuilder();//создаем stringBuilder для записи в него сообщения из очереди
     StringBuilder result = new StringBuilder();// создаем stringBuilder для формирования строки консоли о типах полученных сообщений
-    int i = 1;
     /*Цикл вычитки и последующей записи в соответствующие файлы полученных в очереди сообщений*/
     while (e.hasMoreElements()) {
       Message message = (Message) e.nextElement(); //Получение сообщения
@@ -315,7 +314,6 @@ abstract public class TestBase {
                 this.pathToLog + "Received_MSG_XXX.xml");
         result.append("- MSG.XXX\n");
       }
-      i++;
       /*Очистка stringBuilder*/
       stringBuilder.delete(0, stringBuilder.length());
     }
