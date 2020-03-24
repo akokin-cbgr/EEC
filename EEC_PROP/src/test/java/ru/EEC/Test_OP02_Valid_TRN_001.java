@@ -54,7 +54,7 @@ public class Test_OP02_Valid_TRN_001 extends TestBase {
       writeMsgToHdd(fileInit, getPathToLog() + getNameOfSaveInitMessage());
 
       /*Отправка сообщения*/
-      sendMsg(getQueueSession(), getQueueSender(), fileInit);
+      sendMsg(fileInit);
 
       /*Шаг проверки очереди на наличие ответных сообщений от ПРОП с ограничением максимального времени ожидания*/
       checkAndWaitMsgInQueue(60);

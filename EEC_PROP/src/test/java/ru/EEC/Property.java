@@ -1,18 +1,16 @@
 package ru.EEC;
 
-public class Property {
+class Property {
 
   /*Переменные настройки подключения к шлюзу*/
-   String hostName = "eek-test1-ip-mq-sync.tengry.com";       //Адресс шлюза SYNC;
-   String channel  = "ESB.SVRCONN";                           //Канал
-   int port = 1414;                                           //Порт
-   String queueManager = "SYNC.IIS.QM";                       //Менеджер очередей SYNC
-   String queueSending = "ADP.PROP.IN";                       //Очередь для отправки сообщений
-   String queueRecieve = "Q.ADDR1";                           //Тупиковая очередь для ответных сообщений
+  static final String HOSTNAME = "eek-test1-ip-mq-sync.tengry.com";       //Адресс шлюза SYNC;
+  static final String CHANNEL = "ESB.SVRCONN";                            //Канал
+  static final int PORT = 1414;                                           //Порт
+  static final String QUEUEMANAGER = "SYNC.IIS.QM";                       //Менеджер очередей SYNC
+  static final String QUEUESENDING = "ADP.PROP.IN";                       //Очередь для отправки сообщений
+  static final String QUEUERECIVE = "Q.ADDR1";                            //Тупиковая очередь для ответных сообщений
 
   /*Поля с путями к файлам*/
-   final String pathCommon = "src/main/resources/";
-   String pathToInitMessage;
-   String pathToLog;
+  static final String PATHCOMMON = "src/main/resources/";
 
 }

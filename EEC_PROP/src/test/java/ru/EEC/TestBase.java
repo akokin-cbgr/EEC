@@ -17,23 +17,11 @@ import java.util.*;
 import static com.ibm.mq.jms.JMSC.MQJMS_TP_CLIENT_MQ_TCPIP;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
+import static ru.EEC.Property.*;
 
 abstract public class TestBase {
 
-
-  /*Переменные настройки подключения к шлюзу*/
-  private String hostName = "eek-test1-ip-mq-sync.tengry.com";       //Адресс шлюза SYNC;
-  private String channel = "ESB.SVRCONN";                            //Канал
-  private int port = 1414;                                           //Порт
-  private String queueManager = "SYNC.IIS.QM";                       //Менеджер очередей SYNC
-  private String queueSending = "ADP.PROP.IN";                       //Очередь для отправки сообщений
-  private String queueRecieve = "Q.ADDR1";                           //Тупиковая очередь для ответных сообщений
-
-  /*Поля с путями к файлам*/
-  private final String pathCommon = "src/main/resources/";
-
   private String nameOfSavedInitMessage;
-
   private String pathToInitMessage;
   private String pathToLog;
 
@@ -43,10 +31,9 @@ abstract public class TestBase {
   private QueueSender queueSender;
   private QueueReceiver queueReceiver;
   private QueueSession queueSession;
-  private Queue queueSend;
   private QueueConnection queueConnection;
-  /*Переменные для assert`ов*/
 
+  /*Переменные для assert`ов*/
   private String conversationID;
 
   @BeforeTest
@@ -54,62 +41,62 @@ abstract public class TestBase {
     /*Инициализация подключения и создания необходимых переменных*/
     //устанавливаем параметры подключения
     MQQueueConnectionFactory mqQueueConnectionFactory = new MQQueueConnectionFactory();
-    mqQueueConnectionFactory.setHostName(hostName);
-    mqQueueConnectionFactory.setChannel(channel);
-    mqQueueConnectionFactory.setPort(port);
-    mqQueueConnectionFactory.setQueueManager(queueManager);
+    mqQueueConnectionFactory.setHostName(HOSTNAME);
+    mqQueueConnectionFactory.setChannel(CHANNEL);
+    mqQueueConnectionFactory.setPort(PORT);
+    mqQueueConnectionFactory.setQueueManager(QUEUEMANAGER);
     mqQueueConnectionFactory.setTransportType(MQJMS_TP_CLIENT_MQ_TCPIP);
     //создаем соединение и запускаем сессию
     queueConnection = mqQueueConnectionFactory.createQueueConnection("", "");
     queueConnection.start();
     queueSession = queueConnection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
     /*Создаем очереди отправки и получения*/
-    queueSend = queueSession.createQueue(queueSending);
-    queueReciev = queueSession.createQueue(queueRecieve);
+    Queue queueSend = queueSession.createQueue(QUEUESENDING);
+    queueReciev = queueSession.createQueue(QUEUERECIVE);
     //указываем в какую очередь отправить сообщение
     queueSender = queueSession.createSender(queueSend);
     //указываем очередь откуда читать ответное сообщение
     queueReceiver = queueSession.createReceiver(queueReciev);
 
-    /*Обнуляем очередь получения ответных сообщений*/
-    clearQueue(getQueueReceiver());
+    /*Обнуляем очередь получения ответных сообщений ДО выполнения теста*/
+    clearQueue(queueReceiver);
   }
 
+
+
+  /*Последовательность действий выполняемых ПОСЛЕ теста*/
   @AfterTest
   void close() throws JMSException {
-    /*Обнуляем очередь получения ответных сообщений*/
-    clearQueue(getQueueReceiver());
+
+    /*Обнуляем очередь получения ответных сообщений ПОСЛЕ выполнения теста*/
+    clearQueue(queueReceiver);
+
     /*Остановка*/
-    getQueueSender().close();
-    getQueueReceiver().close();
-    getQueueSession().close();
-    getQueueConnection().close();
+    queueSender.close();
+    queueReceiver.close();
+    queueSession.close();
+    queueConnection.close();
   }
 
 
-  /*Метод генерации UUID при помощи стандартной библиотеки из java.util*/
-
-  private UUID uuid() {
-    return UUID.randomUUID();
+  /*Метод генерации UUID при помощи стандартной библиотеки из java.util,
+   * возвращается строка для использование в подготовке отправляемого инициирующего файла транзакции*/
+  private String uuid() {
+    return UUID.randomUUID().toString();
   }
-
 
 
   /*Генерация случайного числа из устанавливаемого диапазона значений в параметрах min и max соответственно
-     Стандартно rand.nextInt() генерирует случайное число от 0 до указанного в параметре значения*/
-
+   * Стандартно rand.nextInt() генерирует случайное число от 0 до указанного в параметре значения*/
   int randInt(int min, int max) {
     Random rand = new Random();
     return rand.nextInt((max - min) + 1) + min;
   }
 
 
-
   /*Генерация строки определенной длинны из определенного набора символов
-      diapazon - набор символов из которых будет генерироваться строка
-      kol_vo - длинна генерируемой строки
-  */
-
+   * diapazon - набор символов из которых будет генерироваться строка
+   * kol_vo - длинна генерируемой строки */
   public String randString(String diapazon, int kol_vo) {
     //проверки и вывод текста с ошибкой
     if (diapazon.equals("")) {
@@ -131,9 +118,7 @@ abstract public class TestBase {
   }
 
 
-
-  /*Метод считывания файла с HDD в строку*/
-
+  /*Метод считывания файла с диска HDD в строку*/
   private String getFile(String fileName) {
     StringBuilder result = new StringBuilder();
     File file = new File(fileName);
@@ -148,8 +133,8 @@ abstract public class TestBase {
     return result.toString();
   }
 
-  /*Метод преобразования полученных файлов из очереди MQ в виде строки String*/
 
+  /*Метод преобразования полученных файлов из очереди MQ в виде строки String*/
   private String onMessage(Message message) {
     try {
       if (message instanceof BytesMessage) {
@@ -168,8 +153,8 @@ abstract public class TestBase {
     return "";
   }
 
-  /*Метод очистки очереди IBM MQ. В качестве параметра передается очередь получатель*/
 
+  /*Метод очистки очереди IBM MQ. В качестве параметра передается очередь получатель*/
   void clearQueue(QueueReceiver queueReceiver) {
     try {
       while (true) {
@@ -190,17 +175,18 @@ abstract public class TestBase {
       }
       browser.close();*/
   }
-  /*Метод удаления всех файлов из папки*/
 
-  protected void deleteAllFilesFolder(String path) {
+
+  /*Метод удаления всех файлов из указываемой папки*/
+  void deleteAllFilesFolder(String path) {
     for (File myFile : Objects.requireNonNull(new File(path).listFiles()))
       if (myFile.isFile()) {
         myFile.delete();
       }
   }
 
-  /*Метод записи передаваемого или получаемого сообщения на HDD*/
 
+  /*Метод записи передаваемого или получаемого сообщения на HDD*/
   void writeMsgToHdd(String fileInit, String filePath) throws IOException {
     File file = new File(filePath);
     FileWriter writerInit = new FileWriter(file);
@@ -209,10 +195,10 @@ abstract public class TestBase {
     writerInit.close();
   }
 
-  /*Метод отправки инициализирубщего сообщения в соответствующую очередь MQ*/
 
-  void sendMsg(QueueSession queueSession, QueueSender queueSender, String fileInit) throws JMSException {
-    StringBuilder result = new StringBuilder();// создаем stringBuilder для формирования строки консоли о типах полученных сообщений
+  /*Метод отправки инициализирубщего сообщения в соответствующую очередь MQ*/
+  void sendMsg(String fileInit) throws JMSException {
+    StringBuilder result = new StringBuilder();// создаем stringBuilder для формирования строки консоли о типах отправляемых сообщений
     TextMessage textMessage = queueSession.createTextMessage(fileInit);
 
     /*в случае необходимости устанавливаем параметры для отправляемого сообщения*/
@@ -222,6 +208,7 @@ abstract public class TestBase {
     //textMessage.setJMSDeliveryMode(DeliveryMode.PERSISTENT); //message delivery mode either persistent or non-persistemnt
     //queueSender.setTimeToLive(50*1000);// установка времени жизни сообщения
 
+    /*Определение типа отправляемого сообщения*/
     if (textMessage.getText().contains("MSG.001")) {
       result.append("MSG.001");
     } else if (textMessage.getText().contains("MSG.002")) {
@@ -237,45 +224,42 @@ abstract public class TestBase {
     }
     queueSender.send(textMessage);//отправляем в очередь ранее созданное сообщение
     System.out.println("Запуск теста для ОП " + getPathToInitMessage().toString().substring(22, 24) + " - TRN." + getPathToInitMessage().toString().substring(43, 46) + "\nСообщение " + result + " отправлено:\n" +
-            "- Очередь           - " + queueSending +
-            "\n- Адрес шлюза       - " + hostName + "\n");
+            "- Очередь           - " + QUEUESENDING +
+            "\n- Адрес шлюза       - " + HOSTNAME + "\n");
   }
-
 
 
   /*Вариант получения JMSCorrelationID*/
   //System.out.println("after sending a message we get message id "+ textMessage.getJMSMessageID());
   //String jmsCorrelationID = " JMSCorrelationID = '" + textMessage.getJMSMessageID() + "'";
-  /*Метод подготовки XML к отправке в MQ, идет генерация UUID*/
 
 
+  /*Метод подготовки XML к отправке в очередь IBM MQ, идет генерация UUID в хедере отправляемого сообщения*/
   String filePreparation(String filePath) {
-
     /*Проверка что инициирующее сообщение существует в папке отправки*/
-    assertTrue(new File(this.pathToInitMessage).exists(), "ОШИБКА ТЕСТА - Не найден инициирующий файл по пути: \n" + this.pathToInitMessage + "\n");
-
+    assertTrue(new File(this.pathToInitMessage).exists(),
+            "ОШИБКА ТЕСТА - Не найден инициирующий файл по пути: \n" + this.pathToInitMessage + "\n");
     String fileRaw = getFile(filePath);//считываем из файла XML
     /*Производим замену UUID на сгенерированные*/
-    fileRaw = fileRaw.replaceAll(">urn:uuid:.*</wsa:MessageID>", ">urn:uuid:" + uuid().toString() + "</wsa:MessageID>");
-    fileRaw = fileRaw.replaceAll(">urn:uuid:.*</int:ConversationID>", ">urn:uuid:" + uuid().toString() + "</int:ConversationID>");
-    fileRaw = fileRaw.replaceAll(">urn:uuid:.*</int:ProcedureID>", ">urn:uuid:" + uuid().toString() + "</int:ProcedureID>");
-    fileRaw = fileRaw.replaceAll(">.*</csdo:EDocId>", ">" + uuid().toString() + "</csdo:EDocId>");
+    fileRaw = fileRaw.replaceAll(">urn:uuid:.*</wsa:MessageID>", ">urn:uuid:" + uuid() + "</wsa:MessageID>");
+    fileRaw = fileRaw.replaceAll(">urn:uuid:.*</int:ConversationID>", ">urn:uuid:" + uuid() + "</int:ConversationID>");
+    fileRaw = fileRaw.replaceAll(">urn:uuid:.*</int:ProcedureID>", ">urn:uuid:" + uuid() + "</int:ProcedureID>");
+    fileRaw = fileRaw.replaceAll(">.*</csdo:EDocId>", ">" + uuid() + "</csdo:EDocId>");
     return fileRaw;
   }
 
   /*Метод выборки значения из указанного файла XML согласно выражению xpath*/
-
   private String variableFromXml(String filepath, String xpath) {
     return XPathBaseHelper.go(filepath, xpath);
   }
 
   /*Метод форматирования XML в читаемый вид*/
-
   private String formatXml(String unFormatedXml) {
     Document document = XmlStringFormatter.convertStringToDocument(unFormatedXml);
     return XmlStringFormatter.toPrettyXmlString(document);
   }
 
+  /*Метод ожидания сообщений из целевой очереди*/
   void checkAndWaitMsgInQueue(int maxWaitTimeSec) throws JMSException, InterruptedException {
     QueueBrowser browser = this.queueSession.createBrowser(this.queueReciev);//Создаем браузер для наблюдения за очередью
     Enumeration e = browser.getEnumeration();//получаем Enumeration
@@ -347,10 +331,8 @@ abstract public class TestBase {
   private void setConversationIdForAssert() {
     assertTrue(new File(this.pathToLog + this.nameOfSavedInitMessage).exists(), "\nОШИБКА ТЕСТА - В папке \n" + this.pathToLog + "\n" +
             "отсутствует файл - " + this.nameOfSavedInitMessage + "\n");
-    setConversationID(variableFromXml(this.pathToLog + this.nameOfSavedInitMessage, "//int:ConversationID/text()"));
+    this.conversationID = variableFromXml(this.pathToLog + this.nameOfSavedInitMessage, "//int:ConversationID/text()");
   }
-
-
 
 
   protected void testAssert_For_Reply_Msg(String checkedFile, String tegCheckCode, String resultCode, String tegDescriptionText, String descriptionText) {
@@ -364,7 +346,7 @@ abstract public class TestBase {
     setConversationIdForAssert();
 
     /*Проверка сопадения ConversationID между ответным сообщением и инициирующим из папки Log*/
-    assertEquals(this.getConversationID(), Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
+    assertEquals(this.conversationID, Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
             "//int:ConversationID/text()")),
             "\nТесты для - " + checkedFile + ":\n" +
                     "ОШИБКА ТЕСТА                   - FAIL - int:ConversationID не совпадает с ID транзакции.\n");
@@ -404,8 +386,6 @@ abstract public class TestBase {
   }
 
 
-
-
   protected void testAssert_For_Signal(String checkedFile) {
 
     /*Проверка что проверяемый файл присутствует в папке*/
@@ -418,7 +398,7 @@ abstract public class TestBase {
     setConversationIdForAssert();
 
     /*Проверка сопадения ConversationID между ответным сообщением и инициирующим из папки Log*/
-    assertEquals(this.getConversationID(), Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
+    assertEquals(this.conversationID, Objects.requireNonNull(XPathBaseHelper.go(this.pathToLog + checkedFile,
             "//int:ConversationID/text()")),
             "\nТесты для - " + checkedFile + ":\n" +
                     "ОШИБКА ТЕСТА                   - FAIL - int:ConversationID не совпадает с ID транзакции.\n");
@@ -429,132 +409,29 @@ abstract public class TestBase {
   }
 
 
-  QueueReceiver getQueueReceiver() {
-    return queueReceiver;
-  }
 
-  public void setQueueReceiver(QueueReceiver queueReceiver) {
-    this.queueReceiver = queueReceiver;
-  }
-
-  Queue getQueueReciev() {
-    return queueReciev;
-  }
-
-  public void setQueueReciev(Queue queueReciev) {
-    this.queueReciev = queueReciev;
-  }
-
-  QueueSender getQueueSender() {
-    return queueSender;
-  }
-
-  public void setQueueSender(QueueSender queueSender) {
-    this.queueSender = queueSender;
-  }
-
-  QueueSession getQueueSession() {
-    return queueSession;
-  }
-
-  public void setQueueSession(QueueSession queueSession) {
-    this.queueSession = queueSession;
-  }
-
-  private Queue getQueueSend() {
-    return queueSend;
-  }
-
-  public void setQueueSend(Queue queueSend) {
-    this.queueSend = queueSend;
-  }
-
-  private QueueConnection getQueueConnection() {
-    return queueConnection;
-  }
-
-  public void setQueueConnection(QueueConnection queueConnection) {
-    this.queueConnection = queueConnection;
-  }
-
-  String getHostName() {
-    return hostName;
-  }
-
-  protected void setHostName(String hostName) {
-    this.hostName = hostName;
-  }
-
-  String getChannel() {
-    return channel;
-  }
-
-  void setChannel(String channel) {
-    this.channel = channel;
-  }
-
-  int getPort() {
-    return port;
-  }
-
-  void setPort(int port) {
-    this.port = port;
-  }
-
-  String getQueueManager() {
-    return queueManager;
-  }
-
-  void setQueueManager(String queueManager) {
-    this.queueManager = queueManager;
-  }
-
-  String getQueueSending() {
-    return queueSending;
-  }
-
-  void setQueueSending(String queueSending) {
-    this.queueSending = queueSending;
-  }
-
-  String getQueueRecieve() {
-    return queueRecieve;
-  }
-
-  void setQueueRecieve(String queueRecieve) {
-    this.queueRecieve = queueRecieve;
-  }
-
-  String getConversationID() {
-    return conversationID;
-  }
-
-  void setConversationID(String conversationID) {
-    this.conversationID = conversationID;
-  }
-
-  public String getNameOfSaveInitMessage() {
+  String getNameOfSaveInitMessage() {
     return nameOfSavedInitMessage;
   }
 
-  public void setNameOfSaveInitMessage(String nameOfSaveInitMessage) {
+  protected void setNameOfSaveInitMessage(String nameOfSaveInitMessage) {
     this.nameOfSavedInitMessage = nameOfSaveInitMessage;
   }
 
-  public String getPathToInitMessage() {
+  String getPathToInitMessage() {
     return this.pathToInitMessage;
   }
 
   protected void setPathToInitMessage(String pathToInitMessage) {
-    this.pathToInitMessage = pathCommon + pathToInitMessage;
+    this.pathToInitMessage = PATHCOMMON + pathToInitMessage;
   }
 
-  protected String getPathToLog() {
+  String getPathToLog() {
     return this.pathToLog;
   }
 
   protected void setPathToLog(String pathToLog) {
-    this.pathToLog = pathCommon + pathToLog;
+    this.pathToLog = PATHCOMMON + pathToLog;
   }
 
 
