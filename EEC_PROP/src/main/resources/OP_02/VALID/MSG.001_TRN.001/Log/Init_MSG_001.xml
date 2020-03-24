@@ -5,21 +5,21 @@
 			<wsa:Address>EAEU://EEC/CP/P.CC.01/P.CC.01.ACT.022AT</wsa:Address>
 		</wsa:ReplyTo>
 		<wsa:Action>int://CP/P.CC.01/1.0.0/P.CC.01.PRC.001/P.CC.01.TRN.001/P.CC.01.MSG.001</wsa:Action>
-		<wsa:MessageID>urn:uuid:398607aa-d1ef-400d-b93b-e4fed3ee8df3</wsa:MessageID>
-		<int:ProcedureID>urn:uuid:67339968-e911-4438-b8ed-c2824261457e</int:ProcedureID>
-		<int:ConversationID>urn:uuid:129cdc8b-35a4-4b4c-9439-1f4684d2c51e</int:ConversationID>
+		<wsa:MessageID>urn:uuid:ba927d9a-ace6-4f16-9d4e-2f18d8b67f78</wsa:MessageID>
+		<int:ProcedureID>urn:uuid:1f37ff97-be8c-430a-9cb5-49f1430940da</int:ProcedureID>
+		<int:ConversationID>urn:uuid:ca1372f4-fe0f-4bb4-922b-526c2c4844c9</int:ConversationID>
 	</soap:Header>
 	<soap:Body>
 		<cpl:CheckPointList xmlns:cacdo="urn:EEC:M:CA:ComplexDataObjects:v1.2.6" xmlns:casdo="urn:EEC:M:CA:SimpleDataObjects:v1.2.6" xmlns:ccdo="urn:EEC:M:ComplexDataObjects:v0.3.3" xmlns:cpl="urn:EEC:R:CA:CC:01:CheckPointList:v1.0.0" xmlns:csdo="urn:EEC:M:SimpleDataObjects:v0.3.3" xmlns:doc="urn:EEC:R:ProcessingResultDetails:v0.3.4" xmlns:ns6="urn:EEC:R:ResourceStatusDetails:v0.3.3">
 			<ccdo:EDocHeader>
 				<csdo:InfEnvelopeCode>P.CC.01.MSG.001</csdo:InfEnvelopeCode>
 				<csdo:EDocCode>R.CA.CC.01.001</csdo:EDocCode>
-				<csdo:EDocId>041116cb-af73-456a-9695-0f4fc7146544</csdo:EDocId>
+				<csdo:EDocId>01fa3cff-f56d-4fc9-9028-5e8b81b98943</csdo:EDocId>
 				<csdo:EDocDateTime>2019-10-31T10:53:58Z</csdo:EDocDateTime>
 			</ccdo:EDocHeader>
 			<cacdo:CheckPointDetails>
 				<casdo:RegisterCountryCode>RU</casdo:RegisterCountryCode>
-				<casdo:BorderCheckPointCode>PPG.RU.UA.36053883</casdo:BorderCheckPointCode>
+				<casdo:BorderCheckPointCode>PPG.RU.UA.43323402</casdo:BorderCheckPointCode>
 				<casdo:BorderCheckPointName>Романово</casdo:BorderCheckPointName>
 				<cacdo:NeighboringCheckPointDetails>
 					<casdo:BorderCheckPointName>Сергеево</casdo:BorderCheckPointName>

@@ -1,6 +1,6 @@
 package ru.EEC;
 
-class Property {
+final class Property {
 
   /*Переменные настройки подключения к шлюзу*/
   static final String HOSTNAME = "eek-test1-ip-mq-sync.tengry.com";       //Адресс шлюза SYNC;
@@ -13,4 +13,7 @@ class Property {
   /*Поля с путями к файлам*/
   static final String PATHCOMMON = "src/main/resources/";
 
+  private Property(){
+
+  }
 }

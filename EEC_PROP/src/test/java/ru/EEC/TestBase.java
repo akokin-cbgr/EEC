@@ -287,6 +287,7 @@ abstract public class TestBase {
     while (e.hasMoreElements()) {
       Message message = (Message) e.nextElement(); //Получение сообщения
       stringBuilder.append(onMessage(message)).append("\n"); // запись в stringBuilder вычитанного сообщения
+      Message receive = queueReceiver.receiveNoWait(); // вычитываем сообщение из очереди для его удаления
       /*Условия сортировки сообщений по типу*/
 
       if (stringBuilder.toString().contains("P.MSG.PRS</wsa:Action>")) {
@@ -324,7 +325,7 @@ abstract public class TestBase {
     //queueReceiver.receive();
     //String responseMsg = ((TextMessage) message).getText();
     System.out.println("\nИТОГ\n" +
-            "Получено и созданно в " + this.pathToLog + " : \n" + result); // формирование строки-отчета в консоли
+            "Получено и созданно в " + pathToLog + " : \n" + result); // формирование строки-отчета в консоли
     browser.close();
   }
 
