@@ -2,18 +2,18 @@
 <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
    <soap:Header xmlns:int="urn:EEC:Interaction:v1.0"
                 xmlns:wsa="http://www.w3.org/2005/08/addressing">
-      <wsa:MessageID>urn:uuid:90a0028c-8027-49c7-9cbc-280a1f3ab48f</wsa:MessageID>
-      <int:ProcedureID>urn:uuid:da2ec7ba-93bb-4186-9c20-4951a1bb4272</int:ProcedureID>
-      <int:ConversationID>urn:uuid:a56734e7-b059-447e-a29b-b2faa014a812</int:ConversationID>
+      <wsa:MessageID>urn:uuid:5a898a5f-061e-409a-bb75-9d00313939a8</wsa:MessageID>
+      <int:ProcedureID>urn:uuid:f89a8d03-be9e-40ef-9095-623246fcfbd7</int:ProcedureID>
+      <int:ConversationID>urn:uuid:6d1aa1c4-3f40-46a7-bb23-ba1a9df5bceb</int:ConversationID>
       <wsa:To>EAEU://EEC/CP/P.CC.05/P.CC.05.ACT.022AT</wsa:To>
       <wsa:Action>int://CP/P.CC.05/1.1.1/P.CC.05.PRC.001/P.CC.05.TRN.001/P.CC.05.MSG.002</wsa:Action>
       <wsa:ReplyTo>
          <wsa:Address>EAEU://EEC/CP/P.CC.05/P.ACT.001</wsa:Address>
       </wsa:ReplyTo>
-      <wsa:RelatesTo>urn:uuid:333ea622-14b8-424a-ab66-c12222708a81</wsa:RelatesTo>
+      <wsa:RelatesTo>urn:uuid:819bf3c7-3f94-4c0f-a709-759df221405e</wsa:RelatesTo>
       <int:Integration>
-         <int:TrackID>urn:uuid:a052ed6b-ea82-49d4-b756-b7cdafbb51f1</int:TrackID>
-         <int:AcceptTime>2020-03-24T20:55:30+03:00</int:AcceptTime>
+         <int:TrackID>urn:uuid:008954d3-b15a-4044-acd8-5f9453c7925e</int:TrackID>
+         <int:AcceptTime>2020-03-24T20:56:41+03:00</int:AcceptTime>
       </int:Integration>
    </soap:Header>
    <soap:Body>
@@ -31,11 +31,11 @@
          <ccdo:EDocHeader>
             <csdo:InfEnvelopeCode>P.CC.05.MSG.002</csdo:InfEnvelopeCode>
             <csdo:EDocCode>R.006</csdo:EDocCode>
-            <csdo:EDocId>45df1836-ecbc-49cb-bda1-c34aa32d06b9</csdo:EDocId>
-            <csdo:EDocRefId>ba4f7356-53d1-4e5e-981c-db05b96f0ddb</csdo:EDocRefId>
-            <csdo:EDocDateTime>2020-03-24T17:55:30.793Z</csdo:EDocDateTime>
+            <csdo:EDocId>7cb1c62a-6183-42df-997a-af6ae3700ee7</csdo:EDocId>
+            <csdo:EDocRefId>5e5b303d-9981-4223-8870-97376cf5faf5</csdo:EDocRefId>
+            <csdo:EDocDateTime>2020-03-24T17:56:41.259Z</csdo:EDocDateTime>
          </ccdo:EDocHeader>
-         <csdo:EventDateTime>2020-03-24T17:55:30.784Z</csdo:EventDateTime>
+         <csdo:EventDateTime>2020-03-24T17:56:41.247Z</csdo:EventDateTime>
          <csdo:ProcessingResultCode>3</csdo:ProcessingResultCode>
          <csdo:DescriptionText>Сведения добавлены</csdo:DescriptionText>
       </doc:ProcessingResultDetails>

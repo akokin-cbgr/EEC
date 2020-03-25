@@ -4,11 +4,19 @@
 
 
 
-    <test name="TRN.001">
+    <test name="TRN.001_OP02">
         <classes>
             <class name="ru.EEC.P_CC_01_TRN_001.Test_OP02_Valid_TRN_001"/>
             <class name="ru.EEC.P_CC_01_TRN_001.Test_Reply_MSG.Test_Reply_MSG"/>
             <class name="ru.EEC.P_CC_01_TRN_001.Test_Signal.Test_Signal_PRS"/>
+        </classes>
+    </test>
+
+    <test name="TRN.001_OP06">
+        <classes>
+            <class name="ru.EEC.P_CC_05_TRN_001.Test_OP06_Valid_TRN_001"/>
+            <class name="ru.EEC.P_CC_05_TRN_001.Test_Reply_MSG.Test_Reply_MSG"/>
+            <class name="ru.EEC.P_CC_05_TRN_001.Test_Signal.Test_Signal_PRS"/>
         </classes>
     </test>
 <!--    <listeners>-->

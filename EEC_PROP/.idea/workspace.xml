@@ -48,30 +48,36 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/P_CC_01_TRN_001/Test_OP02_Valid_TRN_001.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="660">
+              <caret line="63" column="24" lean-forward="true" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/TestBase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="395">
+              <caret line="258" column="35" lean-forward="true" selection-start-line="258" selection-start-column="35" selection-end-line="258" selection-end-column="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/P_CC_05_TRN_001/Test_OP06_Valid_TRN_001.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/XmlStringFormatter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="45" selection-start-line="45" selection-end-line="46" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/P_CC_05_TRN_001/Test_Reply_MSG/Test_Reply_MSG.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/P_CC_05_TRN_001/Test_Signal/Test_Signal_PRS.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="508">
-              <caret line="38" column="38" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
+            <state relative-caret-position="388">
+              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -165,6 +171,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -226,23 +233,6 @@
               <item name="EEC_PROP" type="b2602c69:ProjectViewProjectNode" />
               <item name="EEC_PROP" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="MSG.001_TRN.001" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="EEC_PROP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EEC_PROP" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="MSG.001_TRN.001" type="462c0819:PsiDirectoryNode" />
-              <item name="Log" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="EEC_PROP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EEC_PROP" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
@@ -268,52 +258,12 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="EEC" type="462c0819:PsiDirectoryNode" />
               <item name="P_CC_01_TRN_001" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="EEC_PROP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EEC_PROP" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="EEC" type="462c0819:PsiDirectoryNode" />
-              <item name="P_CC_01_TRN_001" type="462c0819:PsiDirectoryNode" />
-              <item name="Test_Reply_MSG" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="EEC_PROP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EEC_PROP" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="EEC" type="462c0819:PsiDirectoryNode" />
-              <item name="P_CC_05_TRN_001" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="EEC_PROP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EEC_PROP" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="EEC" type="462c0819:PsiDirectoryNode" />
-              <item name="P_CC_05_TRN_001" type="462c0819:PsiDirectoryNode" />
-              <item name="Test_Reply_MSG" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="EEC_PROP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EEC_PROP" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="EEC" type="462c0819:PsiDirectoryNode" />
-              <item name="P_CC_05_TRN_001" type="462c0819:PsiDirectoryNode" />
-              <item name="Test_Signal" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -373,24 +323,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="TestNG.ru.EEC.P_CC_05_TRN_001">
-    <configuration name="Test_OP02_Valid_TRN_001" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="PROP.EEC_PROP.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.EEC.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ru.EEC" />
-      <option name="MAIN_CLASS_NAME" value="ru.EEC.Test_OP02_Valid_TRN_001" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="TestNG.ru.EEC.P_CC_01_TRN_001">
     <configuration name="Test_OP02_Valid_TRN_001" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="PROP.EEC_PROP.test" />
       <extension name="coverage">
@@ -408,61 +341,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test_OP06_Valid_TRN_001" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="PROP.EEC_PROP.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.EEC.P_CC_05_TRN_001.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ru.EEC.P_CC_05_TRN_001" />
-      <option name="MAIN_CLASS_NAME" value="ru.EEC.P_CC_05_TRN_001.Test_OP06_Valid_TRN_001" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ru.EEC.P_CC_01_TRN_001" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="PROP.EEC_PROP.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.EEC.P_CC_01_TRN_001.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ru.EEC.P_CC_01_TRN_001" />
-      <option name="TEST_OBJECT" value="PACKAGE" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ru.EEC.P_CC_05_TRN_001" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="PROP.EEC_PROP.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.EEC.P_CC_05_TRN_001.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ru.EEC.P_CC_05_TRN_001" />
-      <option name="TEST_OBJECT" value="PACKAGE" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.ru.EEC.P_CC_05_TRN_001" />
         <item itemvalue="TestNG.ru.EEC.P_CC_01_TRN_001" />
+        <item itemvalue="TestNG.ru.EEC.P_CC_05_TRN_001" />
         <item itemvalue="TestNG.Test_OP06_Valid_TRN_001" />
-        <item itemvalue="TestNG.Test_OP02_Valid_TRN_001 (1)" />
         <item itemvalue="TestNG.Test_OP02_Valid_TRN_001" />
       </list>
     </recent_temporary>
@@ -530,9 +413,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1426" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22058824" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2228145" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -541,7 +425,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32791957" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" visible="true" weight="0.43078113" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" weight="0.43078113" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39365816" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -753,8 +637,8 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/OP_02/VALID/MSG.001_TRN.001/Log/Received_MSG_PRS.xml" />
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/cbgr/EEC/XmlStringFormatter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="52" column="47" lean-forward="true" selection-start-line="52" selection-start-column="47" selection-end-line="52" selection-end-column="47" />
+        <state relative-caret-position="388">
+          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -867,8 +751,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/TestBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-80">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="395">
+          <caret line="258" column="35" lean-forward="true" selection-start-line="258" selection-start-column="35" selection-end-line="258" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -892,16 +776,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/Test_OP02_Valid_TRN_001.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="26" column="29" lean-forward="true" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/Test_OP02_Valid_TRN_001.java" />
     <entry file="file://$PROJECT_DIR$/src/test/resources/testng.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4280">
@@ -962,8 +837,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/EEC/P_CC_01_TRN_001/Test_OP02_Valid_TRN_001.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="46" column="7" selection-start-line="46" selection-start-column="7" selection-end-line="46" selection-end-column="7" />
+        <state relative-caret-position="660">
+          <caret line="63" column="24" lean-forward="true" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="24" />
         </state>
       </provider>
     </entry>
