@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static com.ibm.mq.jms.JMSC.MQJMS_TP_CLIENT_MQ_TCPIP;
 import static org.testng.Assert.assertEquals;
@@ -36,6 +37,7 @@ abstract public class TestBase {
   /*Переменные для assert`ов*/
   private String conversationID;
 
+  /*Последовательность действий выполняемых ДО теста*/
   @BeforeTest
   public void setUp() throws JMSException {
     /*Инициализация подключения и создания необходимых переменных*/
@@ -63,7 +65,6 @@ abstract public class TestBase {
   }
 
 
-
   /*Последовательность действий выполняемых ПОСЛЕ теста*/
   @AfterTest
   void close() throws JMSException {
@@ -80,7 +81,7 @@ abstract public class TestBase {
 
 
   /*Метод генерации UUID при помощи стандартной библиотеки из java.util,
-   * возвращается строка для использование в подготовке отправляемого инициирующего файла транзакции*/
+   * возвращается строка для использования в подготовке отправляемого инициирующего файла транзакции*/
   private String uuid() {
     return UUID.randomUUID().toString();
   }
@@ -89,8 +90,9 @@ abstract public class TestBase {
   /*Генерация случайного числа из устанавливаемого диапазона значений в параметрах min и max соответственно
    * Стандартно rand.nextInt() генерирует случайное число от 0 до указанного в параметре значения*/
   protected int randInt(int min, int max) {
-    Random rand = new Random();
-    return rand.nextInt((max - min) + 1) + min;
+    //Random rand = new Random();
+    //return rand.nextInt((max - min) + 1) + min;
+    return ThreadLocalRandom.current().nextInt(min, max + 1);
   }
 
 
@@ -203,10 +205,10 @@ abstract public class TestBase {
 
     /*в случае необходимости устанавливаем параметры для отправляемого сообщения*/
     //textMessage.setJMSReplyTo(queueReciever);
-    //textMessage.setJMSType("mcd://xmlns");//message type
-    //textMessage.setJMSExpiration(50*1000);//message expiration
-    //textMessage.setJMSDeliveryMode(DeliveryMode.PERSISTENT); //message delivery mode either persistent or non-persistemnt
-    //queueSender.setTimeToLive(50*1000);// установка времени жизни сообщения
+    //textMessage.setJMSType("mcd://xmlns");                          //тип сообщения
+    //textMessage.setJMSExpiration(50*1000);                          //время истечения
+    //textMessage.setJMSDeliveryMode(DeliveryMode.PERSISTENT);        //режим доставки сообщений постоянный или непостоянный
+    //queueSender.setTimeToLive(50*1000);                             // установка времени жизни сообщения
 
     /*Определение типа отправляемого сообщения*/
     if (textMessage.getText().contains("MSG.001")) {
@@ -223,7 +225,9 @@ abstract public class TestBase {
       result.append("MSG.006");
     }
     queueSender.send(textMessage);//отправляем в очередь ранее созданное сообщение
-    System.out.println("Запуск теста для ОП " + getPathToInitMessage().substring(22, 24) + " - TRN." + getPathToInitMessage().substring(43, 46) + "\nСообщение " + result + " отправлено:\n" +
+    System.out.println("Запуск теста для ОП " + getPathToInitMessage().substring(22, 24) +
+            " - TRN." + getPathToInitMessage().substring(43, 46) +
+            "\nСообщение " + result + " отправлено:\n" +
             "- Очередь           - " + QUEUESENDING +
             "\n- Адрес шлюза       - " + HOSTNAME + "\n");
   }
@@ -239,12 +243,12 @@ abstract public class TestBase {
     /*Проверка что инициирующее сообщение существует в папке отправки*/
     assertTrue(new File(pathToInitMessage).exists(),
             "ОШИБКА ТЕСТА - Не найден инициирующий файл по пути: \n" + pathToInitMessage + "\n");
-    String fileRaw = getFile(filePath);//считываем из файла XML
-    /*Производим замену UUID на сгенерированные*/
-    fileRaw = fileRaw.replaceAll(">urn:uuid:.*</wsa:MessageID>", ">urn:uuid:" + uuid() + "</wsa:MessageID>");
-    fileRaw = fileRaw.replaceAll(">urn:uuid:.*</int:ConversationID>", ">urn:uuid:" + uuid() + "</int:ConversationID>");
-    fileRaw = fileRaw.replaceAll(">urn:uuid:.*</int:ProcedureID>", ">urn:uuid:" + uuid() + "</int:ProcedureID>");
-    fileRaw = fileRaw.replaceAll(">.*</csdo:EDocId>", ">" + uuid() + "</csdo:EDocId>");
+    /*Считываем из файла XML и производим замену UUID на сгенерированные*/
+    String fileRaw = getFile(filePath)
+            .replaceAll(">urn:uuid:.*</wsa:MessageID>", ">urn:uuid:" + uuid() + "</wsa:MessageID>")
+            .replaceAll(">urn:uuid:.*</int:ConversationID>", ">urn:uuid:" + uuid() + "</int:ConversationID>")
+            .replaceAll(">urn:uuid:.*</int:ProcedureID>", ">urn:uuid:" + uuid() + "</int:ProcedureID>")
+            .replaceAll(">.*</csdo:EDocId>", ">" + uuid() + "</csdo:EDocId>");
     return fileRaw;
   }
 
@@ -287,32 +291,32 @@ abstract public class TestBase {
       Message message = (Message) e.nextElement(); //Получение сообщения
       stringBuilder.append(onMessage(message)).append("\n"); // запись в stringBuilder вычитанного сообщения
       Message receive = queueReceiver.receiveNoWait(); // вычитываем сообщение из очереди для его удаления
+      receive.clearBody();
       /*Условия сортировки сообщений по типу*/
-
       if (stringBuilder.toString().contains("P.MSG.PRS</wsa:Action>")) {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                pathToLog + "Received_MSG_PRS.xml");
-        result.append("- MSG.PRS\n");
+                pathToLog + "Received_MSG_PRS.xml");        //осуществляем запись на диск вычитанного сообщения из очереди
+        result.append("- MSG.PRS\n");                              //формирование строки консоли о типе полученного сообщения
       } else if (stringBuilder.toString().contains("P.MSG.RCV</wsa:Action>")) {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                pathToLog + "Received_MSG_RCV.xml");
-        result.append("- MSG.RCV\n");
+                pathToLog + "Received_MSG_RCV.xml");        //осуществляем запись на диск вычитанного сообщения из очереди
+        result.append("- MSG.RCV\n");                              //формирование строки консоли о типе полученного сообщения
       } else if (stringBuilder.toString().contains("P.MSG.ERR</wsa:Action>")) {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                pathToLog + "Received_MSG_ERR.xml");
-        result.append("- MSG.ERR\n");
+                pathToLog + "Received_MSG_ERR.xml");        //осуществляем запись на диск вычитанного сообщения из очереди
+        result.append("- MSG.ERR\n");                              //формирование строки консоли о типе полученного сообщения
       } else if (stringBuilder.toString().contains("MSG.002</wsa:Action>")) {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                pathToLog + "Received_MSG_002.xml");
-        result.append("- MSG.002\n");
+                pathToLog + "Received_MSG_002.xml");        //осуществляем запись на диск вычитанного сообщения из очереди
+        result.append("- MSG.002\n");                              //формирование строки консоли о типе полученного сообщения
       } else if (stringBuilder.toString().contains("MSG.004</wsa:Action>")) {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                pathToLog + "Received_MSG_004.xml");
-        result.append("- MSG.004\n");
+                pathToLog + "Received_MSG_004.xml");        //осуществляем запись на диск вычитанного сообщения из очереди
+        result.append("- MSG.004\n");                              //формирование строки консоли о типе полученного сообщения
       } else {
         writeMsgToHdd(formatXml(stringBuilder.toString().replaceAll("UTF", "utf")),
-                pathToLog + "Received_MSG_XXX.xml");
-        result.append("- MSG.XXX\n");
+                pathToLog + "Received_MSG_XXX.xml");        //осуществляем запись на диск вычитанного НЕИЗВЕСТНОГО сообщения из очереди
+        result.append("- MSG.XXX\n");                              //формирование строки консоли о НЕИЗВЕСТНОМ типе полученного сообщения
       }
       /*Очистка stringBuilder*/
       stringBuilder.delete(0, stringBuilder.length());
@@ -406,7 +410,6 @@ abstract public class TestBase {
             "int:ConversationID             - PASSED - совпадает с ID транзакции.");
 
   }
-
 
 
   protected String getNameOfSaveInitMessage() {
